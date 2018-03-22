@@ -10,7 +10,6 @@ height: 100%;
     background-position: right;
     background-repeat: no-repeat;
     background-size: 80%;
-    position: relative;
 }
 .hero-text {
 	font-family: 'Lato:900', sans-serif;
@@ -73,20 +72,20 @@ li {
 #footer {
 	background-color: #3AAFA9;
 }
-ul {
+ul.navbar {
     list-style-type: none;
     margin: 0;
     padding: 0;
     overflow: hidden;
     background-color: black;
-	opacity: 0.7;
+	opacity: 0.9;
 }
 
-li {
+li.navbar {
     float: left;
 }
 
-li a, .dropbtn {
+li a.navbar, .dropbtn {
     display: inline-block;
     color: white;
     text-align: center;
