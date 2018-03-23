@@ -4,173 +4,77 @@
 
 <head>
 
-	<title>Somebodys Resume</title>
+	<title>Ciaráns Website</title>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta name="author" content="Ciaran Brennan">
 	
-	<link rel="stylesheet" href="/styles.css">
+	<link rel="stylesheet" href="/css/landing.css">
 	<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 	
-	<link rel="shortcut icon" href="https://scholarshipbd.com/wp-content/uploads/2017/01/cropped-Scholarship-favicon-512.png" type="image/x-icon" />
+	<link rel="shortcut icon" href="/img/favicon.ico" type="image/x-icon" />
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-	<link href="https://fonts.googleapis.com/css?family=Lato:400,700,900,900i" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
 	<!-- Javascript -->
-	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.4/jquery.min.js" type="text/javascript"></script> 
-	
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js" type="text/javascript"></script>
+	<script>
+	$(function(){
+		$('#header').load("header.html");
+		$('#footer').load("footer.html");
+	});
+	</script>
+
 </head>
 
 <body>
-	<ul class="navbar">
-	  <li class="navbar"><a href="#home" class="navbar">Home</a></li>
-	  <li class="navbar"><a href="https://cbrennan18.github.io/index.html" class="navbar">My Resume</a></li>
-	  <li class="dropdown">
-		<a href="javascript:void(0)" class="dropbtn">Projects</a>
-		<div class="dropdown-content">
-		  <a href="https://cbrennan18.github.io/ChangeCalc">ChangeCalc</a>
-		  <a href="#">Link 2</a>
-		  <a href="#">Link 3</a>
-		</div>
-	  </li>
-	</ul>
 
-<div class="hero-image">
-  <div class="hero-text">
-	<header>
-		<h1 class="name">JOHN DOE</h1>
-		<hr class="hr">
-		<p class="email">9 Street Road, City, State, 01234 | (121) 121-1212 | <a href="mailto:" target="_top" class="email">me.email@mail.com</a></p>
-		<br><br>
-		<a href="#linktotop"><i class="fa fa-angle-double-down" id="fa-fa-down"></i></a>
-	</header>
+	<!-- Header -->
+		<div id="header"></div>
+	 <!-- End Header -->
+	<div class="bgimg">
+	
+	  <div class="middle">
+		<h1>COMING SOON</h1>
+		<hr>
+		<p id="demo"></p>
+	  </div>
 	</div>
-</div>
-	<a name="linktotop"></a>
-	<div class="w3-row-padding">
-	<div class="w3-half">
-	<div class="w3-container w3-card w3-white w3-margin-bottom">
-	<div class="w3-container">
-		<h2><i class="fa fa-graduation-cap"></i> Education</h2>
-		
-		<h3>Course Name | University | 1969 to 1972</h3>
-		<ul class="ul-circle">
-			<li>3rd Year Course Name student in University.</li>
-			<li>Achieved a <b>result</b> in second year exams, including <b>73%</b> in <i>this module</i>.
-			<li>Achieved <b>83%</b> in the <i>other module</i> assignment, which involved taking part in a <b>big</b> project with students from another University. Our team had to complete lots of tasks using <b>this software</b> according to their specifications.</li>
-			<li>Have participated in numerous <b>group projects</b> over the past two years in University, which placed a strong emphasis on <b>teamwork, computer and interpersonal skills</b>. One of these projects involved creating some lorem ipsum text. This text was designed using <b>hardware</b> and <b>software</b>,and was developed using <b>software</b> and an integrated <b>more software.</b></li>
-		</ul>
-		</div>
-		<hr>
-		<div class="w3-container">
-		<h3>High School | Name | 1966 to 1969</h3>
-		<ul class="ul-circle">
-			<li>Achieved this score in exams</li>
-			<li>Winner of the 1st Year Competition.</li>
-			<li>Helped organise a conference or event.</li>
-		</ul>
-		</div>
-		</div>
-		<div class="w3-container w3-card w3-white w3-margin-bottom">
-		<h2><i class="fa fa-briefcase"></i> Work Experience</h2>
-		<div class="w3-container">
-		<h3>Job Title | Company | 1972 - 1977</h3>
-		<ul class="ul-circle">
-			<li><b>This role</b>, including something else and another thing was the main duty, requiring a <b>great attribute</b>.</li>
-			<li><b>Completed task</b> over a period of time and <b>went above and beyond</b> in some way.</li>
-			<li>Responsible for this duty and <b>that duty</b> while also ensuring this happened and that happened.</li>
-		</ul>	
-		</div>
-		<hr>
-		<div class="w3-container">
-		<h3>Job Title | Company | 1965 - 1972</h3>
-		<ul class="ul-circle">
-			<li><b>This role</b>, including something else and another thing was the main duty, requiring a <b>great attribute</b>.</li>
-			<li><b>Completed task</b> over a period of time and <b>went above and beyond</b> in some way.</li>
-			<li>Responsible for this duty and <b>that duty</b> while also ensuring this happened and that happened.</li>
-		</ul>
-		</div>
-	</div>
-</div>
-	<div class="w3-half">
-	<div class="w3-container w3-card w3-white w3-margin-bottom">
-		<h2><i class="fa fa-wrench"></i> Volunteering</h2>
-		<div class="w3-container">
-		<ul class="ul-circle">
-			<li>Travelled to a country in this year to build houses and dig wells for a period of time</li>
-			<li>Completed these tasks in the small village in this part of the country.</li>
-			<li>Skill one and skill two were essential in these conditions.</li>
-		</ul>
-		</div>
-		</div>
-		<div class="w3-container w3-card w3-white w3-margin-bottom">
-		<h2><i class="fa fa-ticket"></i> Hobbies and Interests</h2>
-		<div class="w3-container">
-		<h3>Sport</h3>
-		<ul class="ul-circle">
-			<li>Strong interest in this sport and played with my club from 1957 to 1977.</li>
-			<li>Played another sport with somebody else also.</li>
-			<li>Have a cert in CPR.</li>
-			<li>Keep fit now doing this and that.</li>
-			<li>Sporting knowledge includes these sports.</li>
-		</ul>
-		</div>
-		<hr>
-		<div class="w3-container">
-		<h3>Other</h3>
-		<ul class="ul-circle">
-			<li>Member of the <b>University Society</b> and regularly attend society-organised talks and events.</li>
-			<li>Keen interest in books and newspapers, and currently write and maintain a  blog called my blog name, which can be found at <a href="www.google.com" class="email">www.google.com</a>.</li>
-			<li><b>Did something</b> that I find really interesting. This was done during my spare time as a way of doing something</li>
-			<li>Holder of a full, clean drivers licence since March 1965.</li>
-		</ul>
-		</div>
-		</div>
-		<div class="w3-container w3-card w3-white w3-margin-bottom">
-		<h2><i class="fa fa-phone"></i> References</h2>
-		<div class="w3-container">
-		<ul class="ul-references">
-			<li>Ms Jane Andrews</li>
-			<li>Job Title</li>
-			<li>University </li>
-			<li><a href="mailto:" target="_top" class="email">j.lynch@mail.com</a></li>
-			<li>+(353) 21-2121212</li>
-		</ul>
-		<ul class="ul-references">
-			<li>Mr John Dunne</li>
-			<li>Job Title</li>
-			<li>Company</li>
-			<li>Country</li>
-			<li>+(353) 21-1212121</li>
-		</ul>
-		</div>
-		</div>
-		</div>
-		</div>
+	
+	
+	<!-- Footer --> 
+		<footer id="footer"></footer>
+	<!-- End Footer -->
+	
+	<script>
+	// Set the date we're counting down to
+	var countDownDate = new Date("Apr 6, 2018 16:30:00").getTime();
 
-<footer class="w3-container w3-teal w3-center w3-margin-top" id="#footer">
-  	<p>Find me on social media.</p>
-  		<i class="fa fa-facebook-official w3-hover-opacity"></i>
-  		<i class="fa fa-instagram w3-hover-opacity"></i>
-  		<i class="fa fa-snapchat w3-hover-opacity"></i>
-  		<i class="fa fa-pinterest-p w3-hover-opacity"></i>
- 		<i class="fa fa-twitter w3-hover-opacity"></i>
-  		<i class="fa fa-linkedin w3-hover-opacity"></i>
-  		<br>
-  		<br>
-</footer>
-<!-- Javascript code for smooth click -->
-<script type="text/javascript">
-	$('a[href^="#"]').click(function () {
-    $('html, body').animate({
-        scrollTop: $('[name="' + $.attr(this, 'href').substr(1) + '"]').offset().top
-    }, 800);
+	// Update the count down every 1 second
+	var x = setInterval(function() {
 
-    return false;
-});
+	// Get todays date and time
+	var now = new Date().getTime();
 
+	// Find the distance between now an the count down date
+	var distance = countDownDate - now;
+
+	// Time calculations for days, hours, minutes and seconds
+	var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+	var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+	var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+	var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+	// Display the result in an element with id="demo"
+	document.getElementById("demo").innerHTML = days + "d " + hours + "h "
+	+ minutes + "m " + seconds + "s ";
+
+	// If the count down is finished, write some text 
+	if (distance < 0) {
+		clearInterval(x);
+		document.getElementById("demo").innerHTML = "EXPIRED";
+	}
+	}, 1000);
 </script>
-
 </body>
 
 </html>
-

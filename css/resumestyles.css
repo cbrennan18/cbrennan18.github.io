@@ -12,7 +12,6 @@ height: 100%;
     background-size: 80%;
 }
 .hero-text {
-	font-family: 'Lato:900', sans-serif;
     text-align: center;
     position: absolute;
     top: 50%;
@@ -23,17 +22,9 @@ height: 100%;
 
 h1 {
     color: #3AAFA9;
-	font-family: 'Lato', sans-serif;
 }
 h2 {
     color: #3AAFA9;
-	font-family: 'Lato', sans-serif;
-}
-h3 {
-	font-family: 'Lato', sans-serif;
-}
-p {
-	font-family: 'Lato', sans-serif;
 }
 a {
 	color: #3AAFA9;
@@ -42,11 +33,7 @@ a {
 	border: none;
     color: #2B7A78;
 	background-color: #2B7A78;
-	font-family: 'Lato', sans-serif;
 	height: 1px;
-}
-ul {
-	font-family: 'Lato', sans-serif;
 }
 .ul-circle {
 	list-style-type:circle;
@@ -54,9 +41,6 @@ ul {
 .ul-references {
 	display:inline-block; 
 	list-style-type: none;
-}
-li {
-	font-family: 'Lato', sans-serif;
 }
 .email {
 	color: #2B7A78;

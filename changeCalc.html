@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+	<head>
+	
+		<title>Ciaráns Website</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="author" content="Ciaran Brennan">
+	
+	<link rel="stylesheet" href="/css/changeCalcstyles.css">
+	<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+	
+	<link rel="shortcut icon" href="/img/favicon.ico" type="image/x-icon" />
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	<link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
+	<!-- Javascript -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js" type="text/javascript"></script>
+	<script>
+	$(function(){
+		$('#header').load("header.html");
+		$('#footer').load("footer.html");
+	});
+	</script>
+	
+	</head>
+
+	<body>
+		
+		<!-- Header --> 
+		<div id="header"></div>
+		<!-- End Header -->
+		
+		<div id="center">
+			<!-- Main Form -->
+			<h1>Calculate Change</h1>
+			<p>Numeric restrictions will apply in the input fields:</p>
+			<form id="formCalc" name="formCalc">
+				Price of bill:<br>
+				<input type=number id="price" name="price" step=".01" required><br>		
+				Amount paid:<br>
+				<input type=number id="paid" name="paid" step=".01" required><br><br>
+				<input type=submit id="calc" value="Calculate"><br><br>
+			</form>
+			<!-- End Main Form -->	
+		</div>
+		
+		<!-- Footer -->
+			<footer id="footer"></footer>
+		<!-- End Footer -->
+			
+		<!-- Modal Form -->
+		<div id="id01" class="modal">
+			<form class="modal-content animate" action="/action_page.php">
+			
+				<div class="imgcontainer">
+					<span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span>
+					<img src="img/bill.jpeg" alt="Avatar" class="avatar">
+					<div id = "notext-block" class="text-block">
+						<p>Hope this 'Bill' doesnt burden you</p>
+					</div>
+				</div>
+				
+				<div class="container">
+					
+					<div id="denom" class="denom">
+						<b>Denominations:</b> <br>
+						<input type="text" id="ten" name="ten" disabled><br>
+						<input type="text" id="five" name="five" disabled><br>
+						<input type="text" id="one" name="one" disabled><br>
+						<input type="text" id="quarter" name="quarter" disabled><br>
+						<input type="text" id="dime" name="dime" disabled><br>
+						<input type="text" id="nickel" name="nickel" disabled><br>
+						<input type="text" id="penny" name="penny" disabled><br>
+						<b>Change due:</b> <br>
+						<input type="text" id="due" name="due" readonly><br>
+					</div>
+				</div>
+
+				<div class="container" style="background-color:#f1f1f1">
+					<button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">Cancel</button>
+				</div>
+			</form>
+		</div>
+		<!-- End Modal Form -->
+
+		<script>
+		// Get the modal
+		var modal = document.getElementById('id01');
+
+		// When the user clicks anywhere outside of the modal, close it
+		window.onclick = function(event) {
+			if (event.target == modal) {
+				modal.style.display = "none";
+			}
+		}
+		
+		$(document).ready(function() {
+			$('#formCalc').submit(function(e) {
+				changeObj.validAmount = false;
+				assignValues();
+				checkValidAmount(changeObj.price, changeObj.paid);
+				if (changeObj.validAmount == true) {
+					fadeInDenominations();
+					findDenominations();
+					e.preventDefault();
+					return false;	
+				} else {
+				createAlert();
+				}
+			}); 		
+
+			var changeObj = {
+				partial: 0, 
+				price: 0,
+				paid: 0,
+				due: 0,
+				validAmount: false
+			};
+			
+			var  calcArray = [
+			 {
+				resultsObj: 0,
+				amount: 1000,
+				divId: "#ten",
+				text: "10 dollar notes: "
+			 },
+			 {
+				resultsObj: 0,
+				amount: 500,
+				divId: "#five",
+				text: "5 dollar notes: "
+			 },
+			 {
+				resultsObj: 0,
+				amount: 100,
+				divId: "#one",
+				text: "1 dollar notes: "
+			 },
+			 {
+				resultsObj: 0,
+				amount: 25,
+				divId: "#quarter",
+				text: "Quarters: "
+			 },
+			 {
+				resultsObj: 0,
+				amount: 10,
+				divId: "#dime",
+				text: "Dimes: "
+			 },
+			 {
+				resultsObj: 0,
+				amount: 5,
+				divId: "#nickel",
+				text: "Nickels: "
+			 }
+			];
+			
+			function assignValues () {
+				changeObj.price = parseFloat($('#price').val());
+				changeObj.paid = parseFloat($('#paid').val());          
+				changeObj.due = (changeObj.paid - changeObj.price).toFixed(2);
+				$('#due').val("$" + changeObj.due);
+				changeObj.partial = changeObj.due * 100;
+			}
+			
+			function checkValidAmount(price, paid) {
+				if (price < paid) {
+					changeObj.validAmount = true;
+				} else {
+					changeObj.validAmount = false;
+					price = "";
+					paid = "";
+				}
+			}
+			
+			function fadeInDenominations() {
+				$('#id01').css( "display", "block" );
+				$('#denom').fadeIn(3000, function() {
+					$("highlighted").fadeIn(100);
+				});
+				$('#nobill').fadeIn(5000, function() {
+					$("bill").fadeIn(300);
+				});
+			}
+
+			function findDenominations() {
+				for (var i = 0; i < calcArray.length; i++) {
+				calcArray[i].resultsObj = doRemainderCalc(changeObj.partial, calcArray[i].amount);
+				outputDenominationText(calcArray[i].divId, calcArray[i].text, calcArray[i].resultsObj);
+				}
+				// Have to hardcode the penny line as it is just rounding the remainder left over
+				outputDenominationText("#penny", "Pennys: ", Math.round(changeObj.partial));
+			}
+			
+			function doRemainderCalc(balance, devisor) {
+				var countWhole = Math.floor(balance / devisor);
+					if (countWhole < 1) {
+						countWhole = 0;
+						changeObj.partial = balance;
+					} else changeObj.partial = Math.round(balance - countWhole * devisor);
+				return countWhole;	
+			}
+			
+			function outputDenominationText(divId, amountString, total) {
+				$(divId).val(amountString + total);
+			}
+			
+			function createAlert() {
+				alert("You are not paying enough money and you will not recieve change. \n Please amend your paid amount!");
+				$('#paid').val("");
+				$('#price').val("");
+				}
+		});
+		</script>
+
+	</body>
+
+</html>
