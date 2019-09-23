@@ -23,10 +23,12 @@ footer {
     display: block;
 	background-color: transparent;
 }
-#social {
-	color: black;
-	font-size: 25px;
+.social {
+    width: auto;
+    max-width: 680px;
+    padding: 0 15px;
 }
+
 /* Full-width input fields */
 input[type=number] {
     width: 20%;

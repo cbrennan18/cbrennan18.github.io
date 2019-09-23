@@ -1,81 +1,105 @@
 <!DOCTYPE html>
-
 <html lang="en">
-
 <head>
-
-	<title>Ciaráns Website</title>
+	<title>Ciaran's Website</title>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta name="author" content="Ciaran Brennan">
-	
-	<link rel="stylesheet" href="./css/landing.css">
-	<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-	
+
+	<!-- Favicon -->
 	<link rel="shortcut icon" href="./img/favicon.ico" type="image/x-icon" />
-	<link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-	<!-- Javascript -->
+
+	<!-- Fonts -->
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js" type="text/javascript"></script>
 	<script src="https://kit.fontawesome.com/5306a965db.js"></script>
-	<script>
-	$(function(){
-		$('#header').load("header.html");
-		$('#footer').load("footer.html");
-	});
-	</script>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	<link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
 
+	<!-- Javascript -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js" type="text/javascript"></script>
+
+	<!-- Bootstrap -->
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 </head>
-
 <body>
-
-	<!-- Header -->
-		<div id="header"></div>
-	 <!-- End Header -->
-	<div class="bgimg">
-	
-	  <div class="middle">
-		<h1>COMING SOON</h1>
-		<hr>
-		<p id="demo"></p>
-	  </div>
+	<!-- Navbar -->
+	<nav class="navbar navbar-expand-lg navbar-light bg-light">
+		<a class="navbar-brand" href="./index.html">
+			<img src="./img/favicon.ico" width="30" height="30" class="d-inline-block align-top" alt="">
+			CB
+		</a>
+		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+			<span class="navbar-toggler-icon"></span>
+		</button>
+		<div class="collapse navbar-collapse" id="navbarNav">
+			<ul class="navbar-nav">
+				<li class="nav-item active">
+					<a class="nav-link" href="./index.html">Home <span class="sr-only">(current)</span></a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" href="./running.html">Running</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" href="./resume.html">My Resume</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" href="./wireframes.html">Wireframes</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" href="./changeCalc.html">Projects</a>
+				</li>
+			</ul>
+		</div>
+	</nav>
+	<div class="row">
+		<div class="col-sm-8">
+			<h1>COMING SOON</h1>
+			<p id="demo"></p>
+		</div>
+		<div class="col-sm-4">Image Here</div>
 	</div>
-	
-	
-	<!-- Footer --> 
-		<footer id="footer"></footer>
-	<!-- End Footer -->
+	<footer class="footer mt-auto py-3">
+		<div class="container social">
+			<span class="text-muted">Created by Ciaran Brennan.</span>
+			<a href="https://github.com/cbrennan18" target="_blank"><i class="fab fa-github w3-hover-opacity"></i></a>
+			<a href="http://www.linkedin.com/in/ciaranbrennan18" target="_blank"><i class="fab fa-linkedin w3-hover-opacity"></i></a>
+			<a href="https://www.strava.com/athletes/cbrennan93" target="_blank"><i class="fab fa-strava w3-hover-opacity"></i></a>
+			<a href="http://www.theankletap.com" target="_blank"><i class="fab fa-wordpress w3-hover-opacity"></i></a>
+		</div>
+	</footer>
+</body>
 	
 	<script>
 	// Set the date we're counting down to
-	var countDownDate = new Date("Nov 1, 2019 00:00:00").getTime();
+	const countDownDate = new Date("Nov 1, 2019 00:00:00").getTime();
 
 	// Update the count down every 1 second
-	var x = setInterval(function() {
+	const x = setInterval(function () {
 
-	// Get todays date and time
-	var now = new Date().getTime();
+		// Get todays date and time
+		const now = new Date().getTime();
 
-	// Find the distance between now an the count down date
-	var distance = countDownDate - now;
+		// Find the distance between now an the count down date
+		const distance = countDownDate - now;
 
-	// Time calculations for days, hours, minutes and seconds
-	var days = Math.floor(distance / (1000 * 60 * 60 * 24));
-	var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-	var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-	var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+		// Time calculations for days, hours, minutes and seconds
+		const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+		const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+		const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+		const seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
-	// Display the result in an element with id="demo"
-	document.getElementById("demo").innerHTML = days + "d " + hours + "h "
-	+ minutes + "m " + seconds + "s ";
+		// Display the result in an element with id="demo"
+		document.getElementById("demo").innerHTML = days + "d " + hours + "h "
+				+ minutes + "m " + seconds + "s ";
 
-	// If the count down is finished, write some text 
-	if (distance < 0) {
-		clearInterval(x);
-		document.getElementById("demo").innerHTML = "EXPIRED";
-	}
+		// If the count down is finished, write some text
+		if (distance < 0) {
+			clearInterval(x);
+			document.getElementById("demo").innerHTML = "EXPIRED";
+		}
 	}, 1000);
-</script>
-</body>
-
+	</script>
 </html>
