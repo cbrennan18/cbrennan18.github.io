@@ -56,24 +56,43 @@ function includeHTML() {
     }
 }
 
-function hrefSoftScrollClick() {
+function hrefSoftScrollClickAbout() {
     if (/home/.test(window.location.href)) {
-        softScrollClick();
+        softScrollClickAbout();
         return false;
     }
     else {
         window.location.href = "./home.html#scroll1"
-        softScrollClick();
+        softScrollClickAbout();
+        return false;
+    }
+}
+function hrefSoftScrollClickExperience() {
+    if (/home/.test(window.location.href)) {
+        softScrollClickExperience();
+        return false;
+    }
+    else {
+        window.location.href = "./home.html#scroll2"
+        softScrollClickExperience();
         return false;
     }
 }
 
-function softScrollClick() {
+function softScrollClickAbout() {
     $('html, body').animate({
         scrollTop: $("#scroll1").offset().top
     }, 2000);
     softScroll();
 }
+
+function softScrollClickExperience() {
+    $('html, body').animate({
+        scrollTop: $("#scroll2").offset().top
+    }, 2000);
+    softScroll();
+}
+
 function softScroll() {
     $("#hero-image").css("opacity", 1 - $(window).scrollTop() / ($('#hero-image').height()));
 }
