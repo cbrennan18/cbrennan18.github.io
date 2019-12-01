@@ -41,7 +41,7 @@
 }
 
 .resume-list li {
-    margin-bottom: 120px;
+    margin-bottom: 60px;
     position: relative;
 }
 
@@ -57,7 +57,7 @@
     border: 2px solid #40424a;
     border-radius: 50px;
     background: #cacaca;
-    top: 30px;
+    top: 10px;
     left: -118px;
 }
 
@@ -68,4 +68,18 @@
         padding-left: 0;
         border-left: none;
     }
+}
+
+#module #collapsebigintothefitness.collapse:not(.show) {
+    display: block;
+    height: 3rem;
+    overflow: hidden;
+}
+
+#module #collapsebigintothefitness.collapsing {
+    height: 3rem;
+}
+
+#module a.collapsed::after {
+    content: '+ Read More';
 }
