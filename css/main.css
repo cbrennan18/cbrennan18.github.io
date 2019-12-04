@@ -1,5 +1,11 @@
-.body-padding {
+.body-padding-top {
     padding-top: 60px;
+}
+.body-padding {
+     padding-top: 60px;
+     padding-bottom: 60px;
+ }
+.body-padding-bottom {
     padding-bottom: 60px;
 }
 .img-overlay-wrap {
@@ -7,11 +13,20 @@
     display: inline-block; /* <= shrinks container to image size */
     transition: transform 150ms ease-in-out;
 }
-
 .img-overlay-wrap img { /* <= optional, for responsiveness */
     display: block;
     max-width: 100%;
     height: auto;
+}
+/* Large Mobile :480px. */
+@media only screen and (max-width: 767px) {
+    .img-overlay-wrap img { /* <= optional, for responsiveness */
+        display: block;
+        max-width: 80%;
+        height: auto;
+        margin-left: auto;
+        margin-right: auto;
+    }
 }
 
 .img-overlay-wrap svg {
@@ -62,24 +77,19 @@
 }
 
 /* Large Mobile :480px. */
-@media only screen and (max-width: 767px) {
+        @media only screen and (max-width: 767px) {
     .resume-list {
         margin-left: 0;
         padding-left: 0;
         border-left: none;
     }
 }
-
-#module #collapsebigintothefitness.collapse:not(.show) {
-    display: block;
-    height: 3rem;
-    overflow: hidden;
+.blog-footer {
+    color: #999;
+    text-align: center;
+    background-color: #f9f9f9;
+    border-top: .05rem solid #e5e5e5;
 }
-
-#module #collapsebigintothefitness.collapsing {
-    height: 3rem;
-}
-
-#module a.collapsed::after {
-    content: '+ Read More';
+.blog-footer p:last-child {
+    margin-bottom: 0;
 }

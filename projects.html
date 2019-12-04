@@ -8,7 +8,8 @@
         function gtag(){dataLayer.push(arguments);}
         gtag('js', new Date());
 
-        gtag('config', 'UA-153213137-1');
+        gtag('config', 'UA-153213137-1', { 'anonymize_ip': true });
+
     </script>
     <title>Ciaran Brennan | Projects</title>
     <meta charset="UTF-8">
@@ -17,9 +18,9 @@
     <link rel="stylesheet" type="text/css" href="./css/main.css" />
 
     <!-- OpenGraph Meta -->
-    <meta property="og:title" content="Ciaran Brennan - Projects">
-    <meta property="og:description" content="I've recently decided to build my own personal website to use as a blog about some of the projects I do in my spare time, so here is my first quick crack at it.">
-    <meta property="og:image" content="https://cbrennan18.github.io/img/bitf.png" />
+    <meta property="og:title" content="Ciaran Brennan - Big Into The Fitness">
+    <meta property="og:description" content="I've recently decided to build my own personal website to use as a blog about some of the projects I do in my spare time, which can be found here.">
+    <meta property="og:image" content="https://cbrennan18.github.io/img/bif.png" />
     <meta property="og:url" content="https://cbrennan18.github.io/projects">
 
     <!-- Favicon -->
@@ -30,6 +31,7 @@
     <script src="https://kit.fontawesome.com/5306a965db.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
     <!-- AOS Library -->
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
@@ -46,23 +48,18 @@
     <!-- Navbar -->
     <div w3-include-html="navbar.html"></div>
 
-    <div class="body-padding">
+    <div class="body-padding-bottom">
         <section class="pt-4 pt-md-11">
             <div class="container">
                 <div class="row justify-content-center">
                     <div class="col-12 col-md-10 col-lg-8 order-md-2">
-                        <!-- Heading -->
-                        <h1 class="text-center">
-                            MY <span class="text-primary">PROJECTS</span>.
-                        </h1>
-                        <br>
-                        <div data-aos="fade-up" data-aos-delay="1000" data-aos-duration="2000">
-                            <h2 class="text-center text-md-left">
-                                BIG INTO <span class="text-primary">THE FITNESS</span>.
-                            </h2>
-                            <h6 class="text-center text-md-left">
-                                <i>01 December 2019, 20:07</i>
-                            </h6>
+                        <h2 class="text-center text-md-left">
+                            BIG INTO <span class="text-primary">THE FITNESS</span>.
+                        </h2>
+                        <h6 class="text-center text-md-left">
+                            <i>01 December 2019, 20:07</i>
+                        </h6>
+                        <div data-aos="fade-up" data-aos-duration="2000">
                             <!-- Content -->
                             <div class="embed-responsive embed-responsive-16by9">
                             <video autoplay loop muted class="embed-responsive-item">
@@ -73,16 +70,19 @@
                             <i>Made with <a href="http://renderfast.com/runparticles/">RunParticles</a></i>
                             </div>
                             <br><br>
-                            <div id="module" class="text-justify">
-                                <p class="collapse" id="collapsebigintothefitness" aria-expanded="false">
+                            <div class="text-justify">
+                                <p>
                                     I've recently decided to build my own personal website to use as a blog about some of the projects I do in my spare time, so here is my first quick crack at it.
                                 <br><br>
                                     Back in March, as <a href="https://www.instagram.com/crimsonmintern/?hl=en">Chris Mintern</a> would say, I got <i>"big into the fitness."</i>
                                     The video above is just a quick GPS drawing of the 80 or so runs I have done in and around Cork since then. I downloaded all of my .gpx files from <a href="https://www.strava.com/athletes/cbrennan93">Strava</a> and used <a href="http://renderfast.com/runparticles/">some software</a> to create the map above. 30 seconds of video roughly equate to 128 minutes of real time (x256).<br><br>
                                     The dots visualise each of my runs around the best city in the world, with the yellow dot being the longest run I did this year in Cork.<br><br>
                                     I hope to post some more visualisations and stories to go with them over the coming months, so be sure to stay tuned.
+                                    <br><br>
                                 </p>
-                                <a role="button" class="collapsed" data-toggle="collapse" href="#collapsebigintothefitness" aria-expanded="false" aria-controls="collapsebigintothefitness"></a>
+                                <div class="text-center">
+                                    <a href="projects-menu.html" class="btn btn-outline-dark btn-lg">See More Projects...</a>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -90,6 +90,7 @@
             </div> <!-- / .container -->
         </section>
     </div>
+    <div w3-include-html="footer.html"></div>
 </body>
 
 <script>
