@@ -2,38 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="67446fdf-5c38-491d-974f-df70b2a407ad" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/img/generic/undraw_product_teardown_elol.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/img/generic/undraw_source_code_xx2e.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/img/generic/undraw_typewriter_i8xd (1).svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/projects-menu.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/privacypolicy.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/changeCalc.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/content.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/css/main.css" beforeDir="false" afterPath="$PROJECT_DIR$/css/main.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/footer.html" beforeDir="false" afterPath="$PROJECT_DIR$/footer.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/img/argos-3.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/img/background.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/img/ballycotton.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/img/ballycotton2.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/img/bill.jpeg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/img/bitf.png" beforeDir="false" afterPath="$PROJECT_DIR$/img/bitf.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/img/ciaran.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/img/derrynane.jpeg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/img/derrynane.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/img/derrynane_small.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/img/heineken-corporate.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/img/landing.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/img/linkedin.JPG" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/img/logo-patientkeeper-color.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/img/received_273711923535692.jpeg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/img/seaside.jpeg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/img/seaside.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/img/ucc_logo.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/navbar.html" beforeDir="false" afterPath="$PROJECT_DIR$/navbar.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/projects.html" beforeDir="false" afterPath="$PROJECT_DIR$/projects.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resume.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/wireframes.html" beforeDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -111,7 +82,8 @@
       <workItem from="1575208338645" duration="11468000" />
       <workItem from="1575240492593" duration="236000" />
       <workItem from="1575315816507" duration="3685000" />
-      <workItem from="1575329115544" duration="15295000" />
+      <workItem from="1575329115544" duration="15893000" />
+      <workItem from="1576453532059" duration="1389000" />
     </task>
     <servers />
   </component>
