@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en" prefix="og: http://ogp.me/ns#">
+<head>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-153213137-1"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'UA-153213137-1', { 'anonymize_ip': true });
+
+    </script>
+    <title>Ciaran Brennan | Netflix and Stand Still</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="Ciaran Brennan">
+    <link rel="stylesheet" type="text/css" href="./css/main.css" />
+
+    <!-- OpenGraph Meta -->
+    <meta property="og:title" content="Ciaran Brennan - Netflix and StandStill?">
+    <meta property="og:description" content="I combined my Netflix viewing stats with IMDb to examine if there has been a drop in quality on Netflix in general over the past few years.">
+    <meta property="og:image" content="https://cbrennan18.github.io/img/netflix.jpg" />
+    <meta property="og:url" content="https://cbrennan18.github.io/netflix-and-standstill">
+
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="./img/favicon.ico" type="image/x-icon" />
+
+    <!-- Fonts -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js" type="text/javascript"></script>
+    <script src="https://kit.fontawesome.com/5306a965db.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+    <!-- AOS Library -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+
+    <!-- Javascript -->
+    <script type="text/javascript" src="js/external.js"></script>
+
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
+
+<body>
+<!-- Navbar -->
+<div w3-include-html="navbar.html"></div>
+<div class="body-padding-bottom">
+    <section class="pt-4 pt-md-11">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-12 col-md-10 col-lg-8 order-md-2">
+                    <h2 class="text-center text-md-left">
+                        <span class="text-danger">NETFLIX</span> AND STANDSTILL?
+                    </h2>
+                    <h6 class="text-center text-md-left">
+                        <i>01 February 2020, 18:40<br>4 min read</i>
+                    </h6>
+                    <div data-aos="fade-up" data-aos-duration="2000">
+                        <img src="./img/netflix.jpg" class="img-fluid" alt="Netflix on TV Screen with remote control"/>
+                        <div class="text-center">
+                            <i>Photo by <a href="https://unsplash.com/@freestocks">freestocks.org </a>on <a href="https://unsplash.com">Unsplash</a></i>
+                        </div>
+                        <br>
+                        <div class="text-justify">
+                            <p>
+                                Has Netflix and Chill become Netflix and Standstill? Recently, I have heard a growing number of people complaining about the quality of shows and films now available on the Netflix platform. Many of these people said they were on the verge of cancelling or had already ended their subscription. Over the past few years, the online streaming subscription market has seen new entrants attempt to gain share in what has been traditionally Netflix’s back yard.
+                            </p>
+                            <p>
+                                With a wider choice of providers, it should stand to reason that the quality of movies and shows on offer gets spread around each service, which in theory should lead to a reduction in quality on the Netflix platform.
+                            </p>
+                            <h4>First Chart: Viewing Stats</h4>
+                            <p>I decided to take a look at the numbers to see if there was any truth to these grumblings. Using the data Netflix allows me to download from my own account, I was able to get a list of all of the TV shows and movies I have watched since I began my subscription. This data should be available for everyone from
+                                <a href="https://www.netflix.com/viewingactivity">this link</a>.
+                                My total viewing numbers since 2014 came to 960 shows and movies watched.
+                            </p>
+                            <p>I separated data into movies and shows, to allow me to combine the movies with the IMDb dataset, which is available for free, non-commercial use
+                                <a href="https://www.imdb.com/interfaces/">here</a>.
+                                Using a combination of Python and Excel, I managed to merge the IMDb data with the movies I have watched on Netflix. You can see some basic viewing information below. Each data point is clickable and acts as a filter on the other parts of the graph.
+                            </p>
+                            <div class='tableauPlaceholder' id='viz1580434161393' style='position: relative'><noscript><a href='https:&#47;&#47;cbrennan18.github.io&#47;netflix-and-stand-still.html'><img alt=' ' src='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;Ne&#47;Netflix_15774858118320&#47;NetflixViews&#47;1_rss.png' style='border: none' /></a></noscript><object class='tableauViz'  style='display:none;'><param name='host_url' value='https%3A%2F%2Fpublic.tableau.com%2F' /> <param name='embed_code_version' value='3' /> <param name='site_root' value='' /><param name='name' value='Netflix_15774858118320&#47;NetflixViews' /><param name='tabs' value='no' /><param name='toolbar' value='no' /><param name='static_image' value='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;Ne&#47;Netflix_15774858118320&#47;NetflixViews&#47;1.png' /> <param name='animate_transition' value='yes' /><param name='display_static_image' value='yes' /><param name='display_spinner' value='yes' /><param name='display_overlay' value='yes' /><param name='display_count' value='yes' /></object></div>                <script type='text/javascript'>                    var divElement = document.getElementById('viz1580434161393');                    var vizElement = divElement.getElementsByTagName('object')[0];                    if ( divElement.offsetWidth > 800 ) { vizElement.style.width='100%';vizElement.style.height=(divElement.offsetWidth*0.75)+'px';} else if ( divElement.offsetWidth > 500 ) { vizElement.style.width='100%';vizElement.style.height=(divElement.offsetWidth*0.75)+'px';} else { vizElement.style.width='100%';vizElement.style.height=(divElement.offsetWidth*1.77)+'px';}                     var scriptElement = document.createElement('script');                    scriptElement.src = 'https://public.tableau.com/javascripts/api/viz_v1.js';                    vizElement.parentNode.insertBefore(scriptElement, vizElement);                </script>
+                            <br>
+                            <h4>Second Chart: IMDb Stats</h4>
+                            <p>
+                                This next graph looks at the IMDb ratings over time, with both the highest and lowest rated film appearing at the top. Once again, the graph is interactive, with the films and their ratings changing depending on the year you select.
+                            </p>
+                            <p>
+                                Unlike what I was expecting, there isn’t a huge difference in the ratings from year to year. I was surprised to find that there hadn’t been a strong drop-off in quality in the past year or two. In fact, the average rating remains quite constant, ranging between 7.5 and 6.8 over the five years.
+                            </p>
+                            <div class='tableauPlaceholder' id='viz1580445637324' style='position: relative'><noscript><a href='https:&#47;&#47;cbrennan18.github.io&#47;netflix-and-stand-still.html'><img alt=' ' src='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;Ne&#47;Netflix_15774858118320&#47;NetflixIMDb&#47;1_rss.png' style='border: none' /></a></noscript><object class='tableauViz'  style='display:none;'><param name='host_url' value='https%3A%2F%2Fpublic.tableau.com%2F' /> <param name='embed_code_version' value='3' /> <param name='site_root' value='' /><param name='name' value='Netflix_15774858118320&#47;NetflixIMDb' /><param name='tabs' value='no' /><param name='toolbar' value='no' /><param name='static_image' value='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;Ne&#47;Netflix_15774858118320&#47;NetflixIMDb&#47;1.png' /> <param name='animate_transition' value='yes' /><param name='display_static_image' value='yes' /><param name='display_spinner' value='yes' /><param name='display_overlay' value='yes' /><param name='display_count' value='yes' /><param name='filter' value='publish=yes' /></object></div>                <script type='text/javascript'>                    var divElement = document.getElementById('viz1580445637324');                    var vizElement = divElement.getElementsByTagName('object')[0];                    if ( divElement.offsetWidth > 800 ) { vizElement.style.width='100%';vizElement.style.height=(divElement.offsetWidth*0.75)+'px';} else if ( divElement.offsetWidth > 500 ) { vizElement.style.width='100%';vizElement.style.height=(divElement.offsetWidth*0.75)+'px';} else { vizElement.style.width='100%';vizElement.style.height=(divElement.offsetWidth*1.77)+'px';}                     var scriptElement = document.createElement('script');                    scriptElement.src = 'https://public.tableau.com/javascripts/api/viz_v1.js';                    vizElement.parentNode.insertBefore(scriptElement, vizElement);                </script>
+                            <br>
+                            <h4>Third Chart: Grouped IMDb Ratings</h4>
+                            <p>
+                                If you delve deeper however you start to see some similarities and some differences through the years that perhaps reflects the growing disenchantment with Netflix. I grouped the films into three ranking categories to get a better idea of their distribution. You can see each of these groupings in the stacked bar chart below. The categories I chose are as follows:
+                            </p>
+                            <ol>
+                                <li style="font-weight: bold">Good films: IMDb rating of 7.5 or above</li>
+                                <li style="font-weight: bold">Average films: IMDb rating between 7.4 and 6.5</li>
+                                <li style="font-weight: bold">Bad films: IMDb rating of 6.4 or below</li>
+                            </ol>
+                            <p>
+                                Although I have watched more movies each year on Netflix, it can be clearly seen that this increased consumption has resulted in a higher percentage of bad films being watched, especially over the last two years.
+                            </p>
+                            <div class='tableauPlaceholder' id='viz1580877295149' style='position: relative'><noscript><a href='#'><img alt=' ' src='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;Ne&#47;NetflixRatingDist_ByYear&#47;Dist_Dashboard&#47;1_rss.png' style='border: none' /></a></noscript><object class='tableauViz'  style='display:none;'><param name='host_url' value='https%3A%2F%2Fpublic.tableau.com%2F' /> <param name='embed_code_version' value='3' /> <param name='site_root' value='' /><param name='name' value='NetflixRatingDist_ByYear&#47;Dist_Dashboard' /><param name='tabs' value='no' /><param name='toolbar' value='yes' /><param name='static_image' value='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;Ne&#47;NetflixRatingDist_ByYear&#47;Dist_Dashboard&#47;1.png' /> <param name='animate_transition' value='yes' /><param name='display_static_image' value='yes' /><param name='display_spinner' value='yes' /><param name='display_overlay' value='yes' /><param name='display_count' value='yes' /><param name='filter' value='publish=yes' /></object></div>                <script type='text/javascript'>                    var divElement = document.getElementById('viz1580877295149');                    var vizElement = divElement.getElementsByTagName('object')[0];                    if ( divElement.offsetWidth > 800 ) { vizElement.style.width='100%';vizElement.style.height=(divElement.offsetWidth*0.75)+'px';} else if ( divElement.offsetWidth > 500 ) { vizElement.style.width='100%';vizElement.style.height=(divElement.offsetWidth*0.75)+'px';} else { vizElement.style.width='100%';vizElement.style.height=(divElement.offsetWidth*1.77)+'px';}                     var scriptElement = document.createElement('script');                    scriptElement.src = 'https://public.tableau.com/javascripts/api/viz_v1.js';                    vizElement.parentNode.insertBefore(scriptElement, vizElement);                </script>
+                            <br>
+                            <h4>Fourth Chart: Full IMDb Ratings</h4>
+                            <p>
+                                This final graph shows each movie and their ratings, grouped by year. It provides some context to the stacked bar chart above and further stands to highlight the lack of growth in views of good films, while there is a marked increase in views of bad films.
+                            </p>
+                            <p>
+                                You can click on each dot to find the names of the movies. It must be noted that any dots that display the movie name as a * have multiple movies for that rating.
+                            </p>
+                            <div class='tableauPlaceholder' id='viz1580709405727' style='position: relative'><noscript><a href='https:&#47;&#47;cbrennan18.github.io&#47;netflix-and-stand-still.html'><img alt=' ' src='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;Ne&#47;Netflix_15774858118320&#47;NetflixIMDbDetail&#47;1_rss.png' style='border: none' /></a></noscript><object class='tableauViz'  style='display:none;'><param name='host_url' value='https%3A%2F%2Fpublic.tableau.com%2F' /> <param name='embed_code_version' value='3' /> <param name='site_root' value='' /><param name='name' value='Netflix_15774858118320&#47;NetflixIMDbDetail' /><param name='tabs' value='no' /><param name='toolbar' value='no' /><param name='static_image' value='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;Ne&#47;Netflix_15774858118320&#47;NetflixIMDbDetail&#47;1.png' /> <param name='animate_transition' value='yes' /><param name='display_static_image' value='yes' /><param name='display_spinner' value='yes' /><param name='display_overlay' value='yes' /><param name='display_count' value='yes' /><param name='filter' value='publish=yes' /></object></div>                <script type='text/javascript'>                    var divElement = document.getElementById('viz1580709405727');                    var vizElement = divElement.getElementsByTagName('object')[0];                    if ( divElement.offsetWidth > 800 ) { vizElement.style.width='100%';vizElement.style.height=(divElement.offsetWidth*0.75)+'px';} else if ( divElement.offsetWidth > 500 ) { vizElement.style.width='100%';vizElement.style.height=(divElement.offsetWidth*0.75)+'px';} else { vizElement.style.width='100%';vizElement.style.height=(divElement.offsetWidth*1.77)+'px';}                     var scriptElement = document.createElement('script');                    scriptElement.src = 'https://public.tableau.com/javascripts/api/viz_v1.js';                    vizElement.parentNode.insertBefore(scriptElement, vizElement);                </script>
+                            <br>
+                            <p>
+                                In conclusion, it must be added that people can often spend quite a bit of time scrolling on Netflix before they settle on something to watch. From the above analysis, it can be seen that the increase in viewing has by and large been in the average and bad movie categories.
+                            </p>
+                            <p>
+                                This wasted time scrolling through quantity, searching in vain for some missing quality, may be the reason why many people are becoming disenfranchised with Netflix as their preferred movie streaming provider.
+                            </p>
+                            <div class="text-center">
+                                <br>
+                                <br>
+                                <a href="projects-menu.html" class="btn btn-outline-dark btn-lg">See More Projects...</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div> <!-- / .row -->
+        </div> <!-- / .container -->
+    </section>
+</div>
+
+<div w3-include-html="footer.html"></div>
+</body>
+
+<script>
+    includeHTML();
+    AOS.init();
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+</html>

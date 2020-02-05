@@ -5,10 +5,24 @@
       xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
             http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
 
-<url>
-  <loc>https://cbrennan18.github.io/</loc>
-  <lastmod>2019-11-24T12:59:54+00:00</lastmod>
-</url>
-
-
+  <url>
+    <loc>https://cbrennan18.github.io/</loc>
+    <lastmod>2019-12-16T00:19:46+00:00</lastmod>
+    <priority>1.00</priority>
+  </url>
+  <url>
+    <loc>https://cbrennan18.github.io/projects-menu.html</loc>
+    <lastmod>2019-12-16T00:19:46+00:00</lastmod>
+    <priority>0.80</priority>
+  </url>
+  <url>
+    <loc>https://cbrennan18.github.io/big-into-the-fitness.html</loc>
+    <lastmod>2019-12-16T00:19:46+00:00</lastmod>
+    <priority>0.64</priority>
+  </url>
+  <url>
+    <loc>https://cbrennan18.github.io/netflix-and-standstill.html</loc>
+    <lastmod>2020-02-05T00:17:40+11:00</lastmod>
+    <priority>0.64</priority>
+  </url>
 </urlset>

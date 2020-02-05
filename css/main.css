@@ -8,6 +8,9 @@
 .body-padding-bottom {
     padding-bottom: 60px;
 }
+.body-padding-bottom-two {
+    padding-bottom: 180px;
+}
 .img-overlay-wrap {
     position: relative;
     display: inline-block; /* <= shrinks container to image size */

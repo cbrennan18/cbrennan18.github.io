@@ -2,11 +2,17 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="67446fdf-5c38-491d-974f-df70b2a407ad" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/privacypolicy.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/netflix-and-standstill.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/cbrennan18.github.io.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/cbrennan18.github.io.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/jsLibraryMappings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/jsLibraryMappings.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/footer.html" beforeDir="false" afterPath="$PROJECT_DIR$/footer.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/css/main.css" beforeDir="false" afterPath="$PROJECT_DIR$/css/main.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/img/linkedin_bw.jpeg" beforeDir="false" afterPath="$PROJECT_DIR$/img/linkedin_bw.jpeg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/projects-menu.html" beforeDir="false" afterPath="$PROJECT_DIR$/projects-menu.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/projects.html" beforeDir="false" afterPath="$PROJECT_DIR$/big-into-the-fitness.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sitemap.xml" beforeDir="false" afterPath="$PROJECT_DIR$/sitemap.xml" afterDir="false" />
     </list>
-    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -24,6 +30,11 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="ProjectId" id="1PCgPUQ6yXdJc12FP14lMYYfFAs" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showExcludedFiles" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
   <component name="PropertiesComponent">
     <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="DefaultHtmlFileTemplate" value="HTML File" />
@@ -46,15 +57,15 @@
       <recent name="$PROJECT_DIR$/_includes" />
     </key>
   </component>
-  <component name="RunDashboard">
-    <option name="ruleStates">
+  <component name="ServiceViewManager">
+    <option name="viewStates">
       <list>
-        <RuleState>
-          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
-        </RuleState>
-        <RuleState>
-          <option name="name" value="StatusDashboardGroupingRule" />
-        </RuleState>
+        <serviceView>
+          <treeState>
+            <expand />
+            <select />
+          </treeState>
+        </serviceView>
       </list>
     </option>
   </component>
@@ -83,7 +94,18 @@
       <workItem from="1575240492593" duration="236000" />
       <workItem from="1575315816507" duration="3685000" />
       <workItem from="1575329115544" duration="15893000" />
-      <workItem from="1576453532059" duration="1389000" />
+      <workItem from="1576453532059" duration="4885000" />
+      <workItem from="1578236216730" duration="310000" />
+      <workItem from="1579052074827" duration="927000" />
+      <workItem from="1579182362130" duration="141000" />
+      <workItem from="1579182605899" duration="2225000" />
+      <workItem from="1580085691259" duration="9000" />
+      <workItem from="1580085726107" duration="1524000" />
+      <workItem from="1580268698021" duration="43000" />
+      <workItem from="1580433209627" duration="2429000" />
+      <workItem from="1580703580990" duration="2802000" />
+      <workItem from="1580796386445" duration="1338000" />
+      <workItem from="1580874447017" duration="5684000" />
     </task>
     <servers />
   </component>
@@ -102,5 +124,15 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="320" y="115" key="#Images" timestamp="1579191710334">
+      <screen x="0" y="0" width="1440" height="900" />
+    </state>
+    <state x="320" y="115" key="#Images/0.0.1440.900@0.0.1440.900" timestamp="1579191710334" />
+    <state x="386" y="207" width="667" height="486" key="find.popup" timestamp="1580881990499">
+      <screen x="0" y="0" width="1440" height="900" />
+    </state>
+    <state x="386" y="207" width="667" height="486" key="find.popup/0.0.1440.900@0.0.1440.900" timestamp="1580881990499" />
   </component>
 </project>
