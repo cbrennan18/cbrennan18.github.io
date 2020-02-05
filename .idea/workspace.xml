@@ -1,18 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="67446fdf-5c38-491d-974f-df70b2a407ad" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/netflix-and-standstill.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/cbrennan18.github.io.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/cbrennan18.github.io.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/jsLibraryMappings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/jsLibraryMappings.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/css/main.css" beforeDir="false" afterPath="$PROJECT_DIR$/css/main.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/img/linkedin_bw.jpeg" beforeDir="false" afterPath="$PROJECT_DIR$/img/linkedin_bw.jpeg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/projects-menu.html" beforeDir="false" afterPath="$PROJECT_DIR$/projects-menu.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/projects.html" beforeDir="false" afterPath="$PROJECT_DIR$/big-into-the-fitness.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/sitemap.xml" beforeDir="false" afterPath="$PROJECT_DIR$/sitemap.xml" afterDir="false" />
-    </list>
+    <list default="true" id="67446fdf-5c38-491d-974f-df70b2a407ad" name="Default Changelist" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -105,7 +94,7 @@
       <workItem from="1580433209627" duration="2429000" />
       <workItem from="1580703580990" duration="2802000" />
       <workItem from="1580796386445" duration="1338000" />
-      <workItem from="1580874447017" duration="5684000" />
+      <workItem from="1580874447017" duration="5936000" />
     </task>
     <servers />
   </component>
