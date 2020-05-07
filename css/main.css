@@ -196,7 +196,34 @@ html {
     width: 80%;
     background-color: rgba(0, 0, 0, 0.5);
     color: white;
-    font-size: 25px;
-    font-weight: bolder;
     padding: 25px;
+}
+
+/* Large Mobile :480px. */
+@media only screen and (max-width: 767px) {
+    .caption {
+        position: absolute;
+        top: 30%;
+        left: 10%;
+        width: 80%;
+        background-color: rgba(0, 0, 0, 0.5);
+        color: white;
+        padding: 25px;
+    }
+}
+@media only screen and (max-width: 336px) {
+    .caption {
+        position: absolute;
+        top: 20%;
+        width: 80%;
+        background-color: rgba(0, 0, 0, 0.5);
+        color: white;
+        font-size: 12px !important;
+        font-weight: bolder !important;
+    }
+}
+@media only screen and (max-width: 273px) {
+    .caption {
+        display: none;
+    }
 }

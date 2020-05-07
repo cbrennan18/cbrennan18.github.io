@@ -72,12 +72,30 @@
                         </div>
                         <br>
                         <!-- Default form subscription -->
-                        <div class="border border-light p-5 mb-4">
+                        <form class="running-form border border-light p-5 mb-4">
                             <p class="text-center h4 mb-4">Current Fitness Level</p>
-                            <p class="text-center mb-4">Enter some basic information below to get a personalized 10K running plan.</p>
+                            <p class="text-center mb-4">Enter some basic information below to get a personalized 10km running plan.</p>
                             <!-- Time -->
-                            <label for="currentRunningTime">Current 5K Personal Best (hh:mm:ss)</label>
-                            <input type="time" id="currentRunningTime" class="form-control mb-4" placeholder="Time" step="1">
+                            <label for="currentRunningTime">What is your current 5km personal best?</label>
+                            <div class="input-group" id="currentRunningTime">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text mb-4" id="">Time</span>
+                                </div>
+                                <label for="hours"></label>
+                                <input type="number" id="hours" class="form-control mb-4" min="0" max="1"
+                                       oninput="if (this.value.length > 2) this.value = this.value.slice(0, 2);"
+                                       placeholder="hrs" required/>
+                                &nbsp;:&nbsp;
+                                <label for="mins"></label>
+                                <input type="number" id="mins" class="form-control mb-4" min="0" max="59"
+                                       oninput="if (this.value.length > 2) this.value = this.value.slice(0, 2);"
+                                       placeholder="min" required/>
+                                &nbsp;:&nbsp;
+                                <label for="secs"></label>
+                                <input type="number" id="secs" class="form-control mb-4" min="0" max="59"
+                                       oninput="if (this.value.length > 2) this.value = this.value.slice(0, 2);"
+                                       placeholder="sec" required/>
+                            </div>
                             <!-- Runs -->
                             <label for="runsPerWeek">How many days a week do you run?</label>
                             <select class="custom-select mb-4" id="runsPerWeek">
@@ -88,8 +106,8 @@
                                 <option value="6">6</option>
                             </select>
                             <!-- Submit button -->
-                            <a class="btn btn-primary btn-block" onclick="showPlan()" href="#runs">Get Plan</a>
-                        </div>
+                            <input class="btn btn-primary btn-block" type="submit" value="Get Plans"/>
+                        </form>
                         <!-- Default form subscription -->
                         <div class="border border-light p-5 mb-4" id="plan" style="display: none">
                             <!-- Plan -->
@@ -100,7 +118,7 @@
                         </div>
                         <div class="thumbnail text-center" id="olympics" style="display: none">
                             <img src="./img/olympics-84221_640.jpg" class="rounded" alt="Olympics 2004 Race" style="width: 100%; filter: grayscale(100%); -webkit-filter: grayscale(1); opacity: 0.8;"/>
-                            <div class="caption text-center rounded">
+                            <div class="h3 text-center rounded caption">
                                 BEST OF LUCK AT THE OLYMPICS
                             </div>
                             <br>Image by <a href="https://pixabay.com/users/12019-12019/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=84221">David Mark</a> from <a href="https://pixabay.com/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=84221">Pixabay</a>
@@ -123,568 +141,41 @@
 </body>
 
 <script>
-
-    planMile = {
-        "Day1": {
-            "Day": "Monday",
-            "Exercise": {
-                "Week1": "2 Mile",
-                "Week2": "2 Mile",
-                "Week3": "3 Mile",
-                "Week4": "3 Mile",
-                "Week5": "3 Mile",
-                "Week6": "3 Mile",
-                "Week7": "3 Mile",
-                "Week8": "3 Mile"
-            }
-        },
-        "Day2": {
-            "Day": "Tuesday",
-            "Exercise": {
-                "Week1": "3 Mile",
-                "Week2": "2x1 Mile with 90s recovery",
-                "Week3": "2x2 Mile with 5 minutes recovery",
-                "Week4": "25 minute tempo run",
-                "Week5": "3x1 Mile with 90s recovery",
-                "Week6": "2x2 Mile with 5 mins recovery",
-                "Week7": "30 minute tempo run",
-                "Week8": "6x200m with 90s recovery"
-            }
-        },
-        "Day3": {
-            "Day": "Wednesday",
-            "Exercise": {
-                "Week1": "2 Mile",
-                "Week2": "2 Mile",
-                "Week3": "3 Mile",
-                "Week4": "3 Mile",
-                "Week5": "3 Mile",
-                "Week6": "3 Mile",
-                "Week7": "3 Mile",
-                "Week8": "3 Mile"
-            }
-        },
-        "Day4": {
-            "Day": "Thursday",
-            "Exercise": {
-                "Week1": "2 Mile",
-                "Week2": "2 Mile",
-                "Week3": "3 Mile",
-                "Week4": "3 Mile",
-                "Week5": "3 Mile",
-                "Week6": "3 Mile",
-                "Week7": "3 Mile",
-                "Week8": "3 Mile"
-            }
-        },
-        "Day5": {
-            "Day": "Friday",
-            "Exercise": {
-                "Week1": "3 Mile",
-                "Week2": "6x400m with 2 mins recovery",
-                "Week3": "6x200m with 90s recovery",
-                "Week4": "Optional 3 Mile",
-                "Week5": "8x400m with 2 mins recovery",
-                "Week6": "8x200m with 2 mins recovery",
-                "Week7": "4x1 Mile with 4 mins recovery",
-                "Week8": "Optional 3 Mile"
-            }
-        },
-        "Day6": {
-            "Day": "Saturday",
-            "Exercise": {
-                "Week1": "4 Mile",
-                "Week2": "4 Mile",
-                "Week3": "4 Mile",
-                "Week4": "5K Time Trial",
-                "Week5": "5 Mile",
-                "Week6": "6 Mile",
-                "Week7": "6 Mile",
-                "Week8": "10K Race"
-            }
-        }
-    }
-
-    planKM = {
-        "Day1": {
-            "Day": "Monday",
-            "Exercise": {
-                "Week1": "3km",
-                "Week2": "3km",
-                "Week3": "5km",
-                "Week4": "5km",
-                "Week5": "5km",
-                "Week6": "5km",
-                "Week7": "5km",
-                "Week8": "5km"
-            }
-        },
-        "Day2": {
-            "Day": "Tuesday",
-            "Exercise": {
-                "Week1": "5km",
-                "Week2": "2x1600m with 90s recovery",
-                "Week3": "2x3200m with 5 minutes recovery",
-                "Week4": "25 minute tempo run",
-                "Week5": "3x1600m with 90s recovery",
-                "Week6": "2x3200m with 5 mins recovery",
-                "Week7": "30 minute tempo run",
-                "Week8": "6x200m with 90s recovery"
-            }
-        },
-        "Day3": {
-            "Day": "Wednesday",
-            "Exercise": {
-                "Week1": "3km",
-                "Week2": "3km",
-                "Week3": "5km",
-                "Week4": "5km",
-                "Week5": "5km",
-                "Week6": "5km",
-                "Week7": "5km",
-                "Week8": "5km"
-            }
-        },
-        "Day4": {
-            "Day": "Thursday",
-            "Exercise": {
-                "Week1": "3km",
-                "Week2": "3km",
-                "Week3": "5km",
-                "Week4": "5km",
-                "Week5": "5km",
-                "Week6": "5km",
-                "Week7": "5km",
-                "Week8": "5km"
-            }
-        },
-        "Day5": {
-            "Day": "Friday",
-            "Exercise": {
-                "Week1": "5km",
-                "Week2": "6x400m with 2 mins recovery",
-                "Week3": "6x200m with 90s recovery",
-                "Week4": "Optional 5km",
-                "Week5": "8x400m with 2 mins recovery",
-                "Week6": "8x200m with 2 mins recovery",
-                "Week7": "4x1600m with 4 mins recovery",
-                "Week8": "Optional 5km"
-            }
-        },
-        "Day6": {
-            "Day": "Saturday",
-            "Exercise": {
-                "Week1": "6km",
-                "Week2": "6.5km",
-                "Week3": "7km",
-                "Week4": "5K Time Trial",
-                "Week5": "8km",
-                "Week6": "9km",
-                "Week7": "10km",
-                "Week8": "10K Race"
-            }
-        }
-    }
-
     includeHTML();
     AOS.init();
+    let currentRunningTime = null;
 
-    document.getElementById("currentRunningTime").value = "hh:mm:ss";
-
-    function showDays(a, b) {
-        let dayNums = [0];
-        let dayNames = ["Error Name"];
-        switch (a) {
-            case "1":
-                dayNums = [2];
-                dayNames = ["Tuesday"];
-                break;
-            case "2":
-                dayNums = [2, 6];
-                dayNames = ["Tuesday", "Saturday"];
-                break;
-            case "3":
-                dayNums = [2, 4, 6];
-                dayNames = ["Tuesday", "Thursday", "Saturday"];
-                break;
-            case "4":
-                dayNums = [2, 4, 5, 6];
-                dayNames = ["Tuesday", "Thursday", "Friday", "Saturday"];
-                break;
-            case "5":
-                dayNums = [1, 2, 4, 5, 6];
-                dayNames = ["Monday", "Tuesday", "Thursday", "Friday", "Saturday"];
-                break;
-            case "6":
-                dayNums = [1, 2, 3, 4, 5, 6];
-                dayNames = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
-                break;
-        }
-        dayNames.unshift("Week:");
-        createTable(dayNums, dayNames, b);
-    }
-
-    // function getPaces(varTime) {
-    //     let a = varTime.split(':'); // split it at the colons
-    //
-    //     // minutes are worth 60 seconds. Hours are worth 60 minutes.
-    //     let seconds =  (+a[0]) * 60 * 60 + (+a[1]) * 60 + (+a[2]);
-    //     let var1 = seconds/5000;
-    //     let var200 = new Date(Math.round((var1 * 200) * 0.865) * 1000).toISOString().substr(11, 8);
-    //     let var400 = new Date(Math.round((var1 * 400) * 0.9) * 1000).toISOString().substr(11, 8);
-    //     let var1mile = new Date(Math.round((var1 * 1609) * 1.05) * 1000).toISOString().substr(11, 8);
-    //     let var2mile = new Date(Math.round((var1 * 1609) * 1.14) * 1000).toISOString().substr(11, 8);
-    //     let varTempo = new Date(Math.round((var1 * 1609) * 1.14) * 1000).toISOString().substr(11, 8);
-    //
-    //     let arrTblHead = ["Distance", "Rep Pace"];
-    //     let arrHead = ["200m", "400m", "1 Mile", "2 Mile / Tempo"];
-    //     let arrPace = [var200, var400, var1mile, var2mile];
-    //     let arrPaceColor = ["#ffeeba", "rgba(255,238,186,0.5)", "rgba(214,216,219,0.5)", "#d6d8db"]
-    //
-    //     $("#tablePaces thead").remove();
-    //     $("#tablePaces tr").remove();
-    //     let table = document.getElementById("tablePaces");
-    //     let header = table.createTHead();
-    //     let tblBody = table.createTBody();
-    //     let row = tblBody.insertRow(0);
-    //     header.classList.add('thead-dark');
-    //
-    //     // Create an empty <tr> element and add it to the 1st position of the table:
-    //     let rowHead = header.insertRow(0);
-    //     let i
-    //     for (i = 0; i < arrTblHead.length; i++) {
-    //         let headerCell = document.createElement("th");
-    //         headerCell.innerHTML = arrTblHead[i];
-    //         rowHead.appendChild(headerCell);
-    //     }
-    //     for (i = 0; i < arrPace.length; i++) {
-    //         let row = tblBody.insertRow(i);
-    //         row.style.backgroundColor = arrPaceColor[i].toString();
-    //         let hCell = document.createElement("th");
-    //         hCell.setAttribute("scope", "row");
-    //         hCell.classList.add('thead-dark');
-    //         hCell.innerHTML = arrHead[i].toString();
-    //         row.prepend(hCell);
-    //         let cell = row.insertCell(1);
-    //         cell.innerHTML = arrPace[i].toString();
-    //     }
-    //
-    //
-    //
-    // }
-
-    function createTable(a, b, c) {
-
-        $("#tablePlan thead").remove();
-        $("#tablePlan tr").remove();
-
-        let table = document.getElementById("tablePlan");
-        let header = table.createTHead();
-        let tblBody = table.createTBody();
-        header.classList.add('thead-dark');
-        // Create an empty <tr> element and add it to the 1st position of the table:
-        let rowHead = header.insertRow(0);
-
-        // Iterate through length of array for day names
-        let i, j;
-        for (i = 0; i < b.length; i++) {
-            let headerCell = document.createElement("th");
-            headerCell.innerHTML = b[i];
-            rowHead.appendChild(headerCell);
-        }
-        for (j = 0; j < 8; j++) {
-            let row = tblBody.insertRow(j);
-            let cell = row.insertCell(0);
-            let strWeek = "Week" + (j + 1).toString();
-            cell.innerHTML = strWeek;
-            for (i = 1; i < b.length; i++) {
-                // Insert new cells (<td> elements) at the 1st and 2nd position of the "new" <tr> element:
-                 cell = row.insertCell(i);
-                // Add some text to the new cells:
-                let strDay = "Day" + a[i - 1];
-                let strColor = planMile[strDay].Exercise[strWeek];
-                if (strColor.includes("x200m")) {
-                    cell.style.backgroundColor = "#ffeeba";
-                    cell.innerHTML = planMile[strDay].Exercise[strWeek];
-                }
-                else if (strColor.includes("x400m")) {
-                    cell.style.backgroundColor = "rgba(255,238,186,0.5)";
-                    cell.innerHTML = planMile[strDay].Exercise[strWeek];
-                }
-                else if (strColor.includes("x1 Mile")) {
-                    cell.style.backgroundColor = "rgba(214,216,219,0.5)";
-                    cell.innerHTML = planMile[strDay].Exercise[strWeek];
-                }
-                else if (strColor.includes("x2 Mile")) {
-                    cell.style.backgroundColor = "#d6d8db";
-                    cell.innerHTML = planMile[strDay].Exercise[strWeek];
-                }
-                else if (strColor.includes("tempo")) {
-                    cell.style.backgroundColor = "#d6d8db";
-                    cell.innerHTML = planMile[strDay].Exercise[strWeek];
-                }
-                else if (strColor.includes("Time Trial")) {
-                    cell.classList.add("table-primary");
-                    cell.innerHTML = planMile[strDay].Exercise[strWeek];
-                }
-                else if (strColor.includes("Race")) {
-                    cell.classList.add("table-primary");
-                    cell.innerHTML = planMile[strDay].Exercise[strWeek];
-                }
-                else {
-                    cell.innerHTML = planMile[strDay].Exercise[strWeek];
-                }
-            }
-        }
-        // for (j = 0; j < 8; j++) {
-        //     let row = tblBody.insertRow(j);
-        //     let cell = row.insertCell(0);
-        //     let strWeek = "Week" + (j + 1).toString();
-        //     cell.innerHTML = strWeek;
-        //     for (i = 1; i < b.length; i++) {
-        //         // Insert new cells (<td> elements) at the 1st and 2nd position of the "new" <tr> element:
-        //         cell = row.insertCell(i);
-        //         // Add some text to the new cells:
-        //         let strDay = "Day" + a[i - 1];
-        //         let strColor = planKM[strDay].Exercise[strWeek];
-        //         if (strColor.length > 15) {
-        //             cell.classList.add("table-warning");
-        //             cell.innerHTML = planKM[strDay].Exercise[strWeek] + '<br>' + calculatePace(c, strColor);
-        //         }
-        //         else if (strColor.includes("Time Trial")) {
-        //             cell.classList.add("table-primary");
-        //             cell.innerHTML = planKM[strDay].Exercise[strWeek];
-        //         }
-        //         else if (strColor.includes("Race")) {
-        //             cell.classList.add("table-primary");
-        //             cell.innerHTML = planKM[strDay].Exercise[strWeek];
-        //         }
-        //         else if (strColor.includes("Optional")) {
-        //             cell.classList.add("table-info");
-        //             cell.innerHTML = planKM[strDay].Exercise[strWeek];
-        //         }
-        //         else {
-        //             cell.innerHTML = planKM[strDay].Exercise[strWeek];
-        //         }
-        //     }
-        // }
-    }
-
-    function calculatePace(varTime, strColor) {
-
-        let a = varTime.split(':'); // split it at the colons
-
-        // minutes are worth 60 seconds. Hours are worth 60 minutes.
-        let seconds =  (+a[0]) * 60 * 60 + (+a[1]) * 60 + (+a[2]);
-        let var1 = seconds/5000;
-        let var200 = var1 * 200;
-        let var400 = var1 * 400;
-        let var800 = var1 * 800;
-        let var1mile = var1 * 1609;
-        let var2mile = var1mile * 2;
-
-        if (strColor.includes("1 Mile")) {
-            return "@ " + new Date(Math.round(var1mile * 1.05) * 1000).toISOString().substr(11, 8) + " per mile";
-        }
-        else if (strColor.includes("2 Mile")) {
-            return "@ " + new Date(Math.round(var1mile * 1.14) * 1000).toISOString().substr(11, 8) + " per mile";
-        }
-        else if (strColor.includes("400m")) {
-            return "@ " + new Date(Math.round(var400 * 0.9) * 1000).toISOString().substr(11, 8) + " per rep";
-        }
-        else if (strColor.includes("200m")) {
-            return "@ " + new Date(Math.round(var200 * 0.865) * 1000).toISOString().substr(11, 8) + " per rep";
-        }
-        else if (strColor.includes("tempo")) {
-            return "@ " + new Date(Math.round(var1mile * 1.14) * 1000).toISOString().substr(11, 8) + " per mile";
-        }
-        else return seconds;
-    }
-
-    // function showPlan() {
-    //     getValues();
-    //     let x = document.getElementById("plan");
-    //     if (x.style.display === "none") {
-    //         x.style.display = "block";
-    //     }
-    // }
+    $('.running-form').on('submit', function () {
+        getTime();
+        getData();
+        return false;
+    });
 
     function isEmpty(value) {
         return (value == null || value.length === 0);
     }
-</script>
-<script>
-    planMile = {
-        "Day1": {
-            "Day": "Monday",
-            "Exercise": {
-                "Week1": "2 Mile",
-                "Week2": "2 Mile",
-                "Week3": "3 Mile",
-                "Week4": "3 Mile",
-                "Week5": "3 Mile",
-                "Week6": "3 Mile",
-                "Week7": "3 Mile",
-                "Week8": "3 Mile"
-            }
-        },
-        "Day2": {
-            "Day": "Tuesday",
-            "Exercise": {
-                "Week1": "3 Mile",
-                "Week2": "2x1 Mile with 90s recovery",
-                "Week3": "2x2 Mile with 5 minutes recovery",
-                "Week4": "25 minute tempo run",
-                "Week5": "3x1 Mile with 90s recovery",
-                "Week6": "2x2 Mile with 5 mins recovery",
-                "Week7": "30 minute tempo run",
-                "Week8": "6x200m with 90s recovery"
-            }
-        },
-        "Day3": {
-            "Day": "Wednesday",
-            "Exercise": {
-                "Week1": "2 Mile",
-                "Week2": "2 Mile",
-                "Week3": "3 Mile",
-                "Week4": "3 Mile",
-                "Week5": "3 Mile",
-                "Week6": "3 Mile",
-                "Week7": "3 Mile",
-                "Week8": "3 Mile"
-            }
-        },
-        "Day4": {
-            "Day": "Thursday",
-            "Exercise": {
-                "Week1": "2 Mile",
-                "Week2": "2 Mile",
-                "Week3": "3 Mile",
-                "Week4": "3 Mile",
-                "Week5": "3 Mile",
-                "Week6": "3 Mile",
-                "Week7": "3 Mile",
-                "Week8": "3 Mile"
-            }
-        },
-        "Day5": {
-            "Day": "Friday",
-            "Exercise": {
-                "Week1": "3 Mile",
-                "Week2": "6x400m with 2 mins recovery",
-                "Week3": "6x200m with 90s recovery",
-                "Week4": "Optional 3 Mile",
-                "Week5": "8x400m with 2 mins recovery",
-                "Week6": "8x200m with 2 mins recovery",
-                "Week7": "4x1 Mile with 4 mins recovery",
-                "Week8": "Optional 3 Mile"
-            }
-        },
-        "Day6": {
-            "Day": "Saturday",
-            "Exercise": {
-                "Week1": "4 Mile",
-                "Week2": "4 Mile",
-                "Week3": "4 Mile",
-                "Week4": "5K Time Trial",
-                "Week5": "5 Mile",
-                "Week6": "6 Mile",
-                "Week7": "6 Mile",
-                "Week8": "10K Race"
-            }
-        }
-    }
-    planKM = {
-        "Day1": {
-            "Day": "Monday",
-            "Exercise": {
-                "Week1": "3km",
-                "Week2": "3km",
-                "Week3": "5km",
-                "Week4": "5km",
-                "Week5": "5km",
-                "Week6": "5km",
-                "Week7": "5km",
-                "Week8": "5km"
-            }
-        },
-        "Day2": {
-            "Day": "Tuesday",
-            "Exercise": {
-                "Week1": "5km",
-                "Week2": "2x1600m with 90s recovery",
-                "Week3": "2x3200m with 5 minutes recovery",
-                "Week4": "25 minute tempo run",
-                "Week5": "3x1600m with 90s recovery",
-                "Week6": "2x3200m with 5 mins recovery",
-                "Week7": "30 minute tempo run",
-                "Week8": "6x200m with 90s recovery"
-            }
-        },
-        "Day3": {
-            "Day": "Wednesday",
-            "Exercise": {
-                "Week1": "3km",
-                "Week2": "3km",
-                "Week3": "5km",
-                "Week4": "5km",
-                "Week5": "5km",
-                "Week6": "5km",
-                "Week7": "5km",
-                "Week8": "5km"
-            }
-        },
-        "Day4": {
-            "Day": "Thursday",
-            "Exercise": {
-                "Week1": "3km",
-                "Week2": "3km",
-                "Week3": "5km",
-                "Week4": "5km",
-                "Week5": "5km",
-                "Week6": "5km",
-                "Week7": "5km",
-                "Week8": "5km"
-            }
-        },
-        "Day5": {
-            "Day": "Friday",
-            "Exercise": {
-                "Week1": "5km",
-                "Week2": "6x400m with 2 mins recovery",
-                "Week3": "6x200m with 90s recovery",
-                "Week4": "Optional 5km",
-                "Week5": "8x400m with 2 mins recovery",
-                "Week6": "8x200m with 2 mins recovery",
-                "Week7": "4x1600m with 4 mins recovery",
-                "Week8": "Optional 5km"
-            }
-        },
-        "Day6": {
-            "Day": "Saturday",
-            "Exercise": {
-                "Week1": "6km",
-                "Week2": "6.5km",
-                "Week3": "7km",
-                "Week4": "5K Time Trial",
-                "Week5": "8km",
-                "Week6": "9km",
-                "Week7": "10km",
-                "Week8": "10K Race"
-            }
-        }
-    }
+
     let dataSet = [];
 
     // Function 1
-    function showPlan() {
-        getData();
-    }
+    function getTime() {
+        let hours = document.getElementById("hours").value;
+        let minutes = document.getElementById("mins").value;
+        let seconds = document.getElementById("secs").value;
+
+        if (hours + minutes + seconds > 0) {
+            currentRunningTime = hours + ":" + minutes + ":" + seconds;
+        }
+        else {
+            currentRunningTime = null;
+        }
+    };
+
 
     // Function 2
     function getData() {
 
-        let varTime = document.getElementById("currentRunningTime").value;
+        let varTime = currentRunningTime;
         let varRuns = document.getElementById("runsPerWeek").value;
         let e =  $('#example');
 
@@ -714,7 +205,7 @@
         let a = varTime.split(':'); // split it at the colons
         let seconds = (+a[0]) * 60 * 60 + (+a[1]) * 60 + (+a[2]); // minutes are worth 60 seconds. Hours are worth 60 minutes.
 
-        if ( seconds < 900 ) {
+        if ( seconds > 0 && seconds < 900 ) {
             $("#plan").fadeOut(0);
             $("#olympics").fadeIn(3000);
         }
@@ -858,7 +349,7 @@
             ["Wednesday", "30 min"],
             ["Thursday", "5 x 400m w/2 min recovery"],
             ["Friday", "30 min"],
-            ["Saturday", "Race/TT"],
+            ["Saturday", "10km Race", "Race"],
         ];
 
         return dataSet;
@@ -894,7 +385,13 @@
             data: dataSet,
             dom: 'Bfrtip',
             buttons: [
-                'pdfHtml5'
+                {
+                    extend: 'pdfHtml5',
+                    text: 'Save as PDF',
+                    title: "8 Week Running Plan for 10km",
+                    filename: "10km Eight Week Running Plan",
+                    messageBottom: "Created By Ciarán Brennan © Copyright 2020"
+                },
             ],
             "searching": false,
             "lengthChange": false,
