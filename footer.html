@@ -9,11 +9,11 @@
 		</div>
 		<div class="col-md-6">
 			<div class="container-fluid p-1">
-				<p class="text-secondary text-center">Created by Ciarán Brennan &copy; Copyright 2019</p>
+				<p class="text-secondary text-center">Created by Ciarán Brennan &copy; Copyright 2020</p>
 			</div>
 
 			<div class="container-fluid p-1">
-				<a href="mailto: ciaranbrennan18@gmail.com" class="col-md-3 text-secondary">Contact</a>
+				<a data-toggle="modal" data-target="#contactModal" href="#" class="col-md-3 text-secondary">Contact</a>
 				<a href="./privacypolicy.html" class="col-md-3 text-secondary">Privacy Policy</a>
 			</div>
 		</div>
@@ -29,6 +29,51 @@
 				</p>
 			</div>
 		</div>
+		<!-- Modal -->
+		<div id="contactModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="contactModal" aria-hidden="true">>
+			<div class="modal-dialog modal-dialog-centered" role="document">
+				<!-- Modal content-->
+				<div class="modal-content">
+					<div class="modal-header">
+						<h4 class="modal-title text-dark">Contact Me</h4>
+						<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+							<span aria-hidden="true">&times;</span>
+						</button>
+					</div>
+					<!-- https://docs.google.com/forms/d/e/1FAIpQLSdaX9TXS1V3LsqCv85vSALoQ7N3giXX8v0jkMQugeHXc-MOKg/viewform?usp=pp_url&entry.470389604=test1&entry.1381346986=test2&entry.1538027040=test3 -->
+					<form name="gform" id="gform" enctype="text/plain" action="https://docs.google.com/forms/d/e/1FAIpQLSdaX9TXS1V3LsqCv85vSALoQ7N3giXX8v0jkMQugeHXc-MOKg/formResponse?" target="hidden_iframe" onsubmit="submitted=true;">
+						<div class="modal-body">
+							<div class="text-left form-group">
+								<label for="entry.470389604">Your Name</label>
+								<input type="text" class="form-control" name="entry.470389604" id="entry.470389604">
+							</div>
+							<div class="text-left form-group">
+								<label for="entry.1381346986">Your Email</label>
+								<input type="email" class="form-control" name="entry.1381346986" id="entry.1381346986" placeholder="someone@example.com">
+							</div>
+							<div class="text-left form-group">
+								<label for="entry.1538027040">Your Message</label>
+								<textarea type="text" class="form-control" name="entry.1538027040" id="entry.1538027040"></textarea>
+							</div>
+						</div>
+						<div class="modal-footer">
+							<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+							<button id="formSubmit" type="submit" class="btn btn-primary" onclick="submit()">Submit</button>
+						</div>
+					</form>
+				</div>
+				<iframe name="hidden_iframe" id="hidden_iframe" style="display:none;" onload="if(submitted) {}"></iframe>
+			</div>
+		</div>
 	</div>
 </footer>
+<script src="./js/jquery-3.3.1.min.js"></script>
+<script type="text/javascript">let submitted=false;</script>
+<script type="text/javascript">
+	$('#gform').on('submit', function(e) {
+		e.preventDefault();
+		$('#gform *').fadeOut(100);
+		$('#gform').prepend('Your submission has been processed...');
+	});
+</script>
 <!-- Footer -->

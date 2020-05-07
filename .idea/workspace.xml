@@ -1,7 +1,41 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="BranchesTreeState">
+    <expand>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="LOCAL_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:origin" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+    </expand>
+    <select />
+  </component>
   <component name="ChangeListManager">
-    <list default="true" id="67446fdf-5c38-491d-974f-df70b2a407ad" name="Default Changelist" comment="" />
+    <list default="true" id="67446fdf-5c38-491d-974f-df70b2a407ad" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/img/generic/undraw_online_test_gba7.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/img/running.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/img/startline.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/running-plans.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/cbrennan18.github.io.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/cbrennan18.github.io.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/jsLibraryMappings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/jsLibraryMappings.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/big-into-the-fitness.html" beforeDir="false" afterPath="$PROJECT_DIR$/big-into-the-fitness.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/css/main.css" beforeDir="false" afterPath="$PROJECT_DIR$/css/main.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/footer.html" beforeDir="false" afterPath="$PROJECT_DIR$/footer.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/navbar.html" beforeDir="false" afterPath="$PROJECT_DIR$/navbar.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/netflix-and-standstill.html" beforeDir="false" afterPath="$PROJECT_DIR$/netflix-and-standstill.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/privacypolicy.html" beforeDir="false" afterPath="$PROJECT_DIR$/privacypolicy.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/projects-menu.html" beforeDir="false" afterPath="$PROJECT_DIR$/projects-menu.html" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -21,7 +55,6 @@
   <component name="ProjectId" id="1PCgPUQ6yXdJc12FP14lMYYfFAs" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
-    <option name="showExcludedFiles" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
@@ -45,18 +78,6 @@
       <recent name="$PROJECT_DIR$" />
       <recent name="$PROJECT_DIR$/_includes" />
     </key>
-  </component>
-  <component name="ServiceViewManager">
-    <option name="viewStates">
-      <list>
-        <serviceView>
-          <treeState>
-            <expand />
-            <select />
-          </treeState>
-        </serviceView>
-      </list>
-    </option>
   </component>
   <component name="SvnConfiguration">
     <configuration />
@@ -94,34 +115,54 @@
       <workItem from="1580433209627" duration="2429000" />
       <workItem from="1580703580990" duration="2802000" />
       <workItem from="1580796386445" duration="1338000" />
-      <workItem from="1580874447017" duration="5936000" />
+      <workItem from="1580874447017" duration="6262000" />
+      <workItem from="1581034104235" duration="273000" />
+      <workItem from="1582249269065" duration="125000" />
+      <workItem from="1585696872556" duration="2509000" />
+      <workItem from="1586744662496" duration="792000" />
+      <workItem from="1586745518840" duration="86000" />
+      <workItem from="1586745637423" duration="571000" />
+      <workItem from="1586748375328" duration="325000" />
+      <workItem from="1586830243758" duration="14719000" />
+      <workItem from="1586866046220" duration="98000" />
+      <workItem from="1586912530866" duration="22453000" />
+      <workItem from="1587102766691" duration="231000" />
+      <workItem from="1587750413987" duration="965000" />
+      <workItem from="1588218431225" duration="26183000" />
+      <workItem from="1588563665575" duration="10362000" />
+      <workItem from="1588817648350" duration="7072000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
-    <option name="version" value="1" />
+    <option name="version" value="2" />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
     <option name="TAB_STATES">
       <map>
         <entry key="MAIN">
           <value>
-            <State>
-              <option name="COLUMN_ORDER" />
-            </State>
+            <State />
           </value>
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="320" y="115" key="#Images" timestamp="1579191710334">
+    <state x="386" y="207" width="667" height="578" key="find.popup" timestamp="1588833392599">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state x="320" y="115" key="#Images/0.0.1440.900@0.0.1440.900" timestamp="1579191710334" />
-    <state x="386" y="207" width="667" height="486" key="find.popup" timestamp="1580881990499">
+    <state x="386" y="207" width="667" height="578" key="find.popup/0.0.1440.900@0.0.1440.900" timestamp="1588833392599" />
+    <state x="386" y="207" width="667" height="486" key="find.popup/0.23.1440.800@0.23.1440.800" timestamp="1588224363923" />
+    <state x="385" y="191" key="run.anything.popup" timestamp="1588224258521">
+      <screen x="0" y="23" width="1440" height="800" />
+    </state>
+    <state x="385" y="191" key="run.anything.popup/0.23.1440.800@0.23.1440.800" timestamp="1588224258521" />
+    <state x="385" y="196" width="670" height="676" key="search.everywhere.popup" timestamp="1588675679579">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state x="386" y="207" width="667" height="486" key="find.popup/0.0.1440.900@0.0.1440.900" timestamp="1580881990499" />
+    <state x="385" y="196" width="670" height="676" key="search.everywhere.popup/0.0.1440.900@0.0.1440.900" timestamp="1588675679579" />
+    <state x="385" y="197" width="670" height="601" key="search.everywhere.popup/0.23.1440.800@0.23.1440.800" timestamp="1586921326553" />
   </component>
 </project>
