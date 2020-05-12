@@ -3,14 +3,7 @@
 <head>
 	<!-- Global site tag (gtag.js) - Google Analytics -->
 	<script async src="https://www.googletagmanager.com/gtag/js?id=UA-153213137-1"></script>
-	<script>
-		window.dataLayer = window.dataLayer || [];
-		function gtag(){dataLayer.push(arguments);}
-		gtag('js', new Date());
 
-		gtag('config', 'UA-153213137-1', { 'anonymize_ip': true });
-
-	</script>
 	<title>Ciaran Brennan | Home</title>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -37,11 +30,12 @@
 
 	<!-- Bootstrap -->
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
 </head>
 
 <body>
 <!-- Navbar -->
-<div class="vh-100">
+<div class="min-vh-100">
 	<div w3-include-html="navbar.html"></div>
 	<section id="hero-image">
 		<div class="container">
@@ -69,7 +63,7 @@
 	</section>
 </div>
 <div class="body-padding bg-light" id="scroll1">
-	<section class="pt-4 pt-md-11 pb-4 pb-md-11">
+	<section class="my-4 my-md-11">
 		<div class="container">
 			<div class="row align-items-center">
 				<div class="col-12 order-md-1">
@@ -89,9 +83,9 @@
 				<div class="col-12 col-md-7 col-lg-6 order-md-2">
 					<!-- Heading -->
 					<h3 class="text-center text-md-left">
-						My name is<span class="text-primary"><br>Ciarán Brennan</span>.<br>
+						My name is<span class="text-primary"><br>Ciarán Brennan</span><br>
 					</h3>
-					<p>I am a graduate Commercial Analyst currently based in Melbourne with a love for design, web development, analytics and experiencing new worlds and cultures.</p>
+					<p>I am a graduate Commercial Analyst currently based in Melbourne with a love for analytics, web development, design and experiencing new worlds and cultures.</p>
 				</div>
 			</div>
 		</div> <!-- / .container -->
@@ -109,56 +103,84 @@
 				</div>
 			</div> <!-- / .row -->
 			<div class="row align-items-center pt-5">
-				<div class="col-12">
-					<ul class="resume-list">
-						<li>
-							<h4>Commercial Analyst Intern</h4>
-							<h5>Heineken</h5>
-							<h6>Jun 19-Jan 20</h6>
+				<div class="col-md-12">
+					<ul class="timeline m-lg-5">
+						<li class="px-lg-5 py-lg-3">
+							<h5 class="text-primary">Heineken Ireland</h5>
+							<h6 class="text-secondary"><span>Commercial Analyst Intern</span><span class="float-lg-right "> Jun 19 - Jan 20</span></h6>
 							<p class="text-justify">
-								Using an agile approach, I gathered requirements, designed and built a mobile-first suite of Power BI reports for the Commercial On Trade function. The work involved included building custom visuals in Power BI and getting constant feedback. The solution delivered now enables end users to easily access their own live information from their phones.<br><br>
-								Trained reps in how to use and leverage Power BI as part of their sales calls with customers.<br><br>
-								Built a model for image classification to identify different brands visible in outlets. Deployed the model into an app using PowerApps to allow for live classification when the photos were taken.<br><br>
-								Built a program to automatically crop and split photos into different folders to enable quick classification of images for the above machine learning project.<br><br>
-								Completed a cross-functional intern project with my fellow interns, titled “The Changing Legal Landscape and Heineken”, examining the impacts of MUP and drink driving and the possible approaches the company can take in the future.<br>
+								Using an agile approach, I gathered requirements, designed and built a mobile-first suite of Power BI reports for the Commercial On Trade function. The work involved included building custom visuals in Power BI and getting constant feedback. The solution delivered now enables end users to easily access their own live information from their phones.<br>
 							</p>
 						</li>
-						<li>
-							<h4>3rd Year Java Tutor</h4>
-							<h5>University College Cork</h5>
-							<h6>Sept 18-May 19</h6>
+						<li class="px-lg-5 py-lg-3">
+							<h5 class="text-primary">University College Cork</h5>
+							<h6 class="text-secondary"><span>Java Tutor</span><span class="float-lg-right"> Sep 18 - May 19</span></h6>
 							<p class="text-justify">
-								Taught a class with basic programming knowledge how to build their own functional e-commerce web application.<br>
-								Shared knowledge on a wide range programming skills including Java, HTML, CSS, Javascript and SQL.
+								Taught a class that had basic programming knowledge how to build their own functional e-commerce web application. This involved tutoring on a wide range of programming skills including Java, HTML, CSS, Javascript and SQL.
 							</p>
 						</li>
-						<li>
-							<h4>Technical Services Intern</h4>
-							<h5>PatientKeeper USA</h5>
-							<h6>Mar 18-Sept 18</h6>
+						<li class="px-lg-5 py-lg-3">
+							<h5 class="text-primary">PatientKeeper USA</h5>
+							<h6 class="text-secondary"><span>Technical Services Intern</span><span class="float-lg-right"> Mar 18 - Sep 18</span></h6>
 							<p class="text-justify">
-								Worked on generating automatic reports from the database comparing application changes for end users.<br>
-								Met business stakeholders to gather user requirements and enhancements for in-house applications.<br>
-								Designed and implemented a new visual appearance for PatientKeeper’s internal reporting website.
+								Worked on generating automatic reports from the database comparing application changes for end users. Met business stakeholders to gather user requirements and enhancements for in-house applications. Designed and implemented a new visual appearance for PatientKeeper’s internal reporting website.
 							</p>
 						</li>
-						<li>
-							<h4>Customer Advisor</h4>
-							<h5>Argos</h5>
-							<h6>Sept 13-Dec 17</h6>
+						<li class="px-lg-5 py-lg-3">
+							<h5 class="text-primary">Argos</h5>
+							<h6 class="text-secondary"><span>Customer Advisor</span><span class="float-lg-right"> Sep 13 - Dec 18</span></h6>
 							<p class="text-justify">
-								Stockroom management, including taking of deliveries and the upkeep of inventory, was the main duty.<br>
-								Helped to train Christmas staff in the stockroom for peaks of 2015-2017.<br>
-								Responsible for serving and advising customers on the products Argos sell.
+								Stockroom management, including taking of deliveries and the upkeep of inventory, was the main duty. I also helped to train Christmas staff in the stockroom for peaks of 2015-2017.
 							</p>
 						</li>
 					</ul>
+					<div class="text-center"><a class="btn btn-lg btn-outline-primary" role="button" href="./files/Ciarán_Brennan_CV.pdf" download="Ciarán_Brennan_CV.pdf"><span>Download CV</span></a></div>
 				</div>
 			</div>
 		</div>
 	</section>
 </div>
 <div w3-include-html="footer.html"></div>
+<!-- Cookie Consent -->
+<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.1.1/cookieconsent.min.css" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.1.1/cookieconsent.min.js" data-cfasync="false"></script>
+<script>
+	window.addEventListener('load', function(){
+		window.cookieconsent.initialise({
+			type: "opt-in",
+			theme: "classic",
+			palette: {
+				popup: {
+					background: "#28f",
+					text: "#fff"
+				},
+				button: {
+					background: "#fff",
+					text: "#28f"
+				}
+			},
+			content: {
+				link: "Learn more.",
+				href: "https://www.cookiesandyou.com/"
+			},
+			onInitialise: function(status) {
+				if(status === cookieconsent.status.allow) myScripts();
+			},
+			onStatusChange: function(status) {
+				if (this.hasConsented()) myScripts();
+			}
+		})
+	});
+
+	function myScripts() {
+		window.dataLayer = window.dataLayer || [];
+		function gtag(){dataLayer.push(arguments);}
+		gtag('js', new Date());
+
+		gtag('config', 'UA-153213137-1', { 'anonymize_ip': true });
+
+	}
+</script>
 </body>
 
 <script>
