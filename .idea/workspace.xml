@@ -20,17 +20,16 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="67446fdf-5c38-491d-974f-df70b2a407ad" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/files/Ciarán_Brennan_CV.pdf" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/cbrennan18.github.io.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/cbrennan18.github.io.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/jsLibraryMappings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/jsLibraryMappings.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/big-into-the-fitness.html" beforeDir="false" afterPath="$PROJECT_DIR$/big-into-the-fitness.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/css/main.css" beforeDir="false" afterPath="$PROJECT_DIR$/css/main.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/netflix-and-standstill.html" beforeDir="false" afterPath="$PROJECT_DIR$/netflix-and-standstill.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/privacypolicy.html" beforeDir="false" afterPath="$PROJECT_DIR$/privacypolicy.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/projects-menu.html" beforeDir="false" afterPath="$PROJECT_DIR$/projects-menu.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/running-plans.html" beforeDir="false" afterPath="$PROJECT_DIR$/running-plans.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vid/running.mov" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -40,8 +39,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="JavaScript File" />
         <option value="HTML File" />
+        <option value="JavaScript File" />
       </list>
     </option>
   </component>
@@ -65,6 +64,7 @@
     <property name="node.js.path.for.package.tslint" value="project" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
+    <property name="settings.editor.selected.configurable" value="project.propDebugger" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
@@ -132,6 +132,16 @@
       <workItem from="1588909114019" duration="2535000" />
       <workItem from="1589009454821" duration="3608000" />
       <workItem from="1589264963575" duration="4151000" />
+      <workItem from="1589274234718" duration="426000" />
+      <workItem from="1589948526071" duration="3399000" />
+      <workItem from="1590374600462" duration="2054000" />
+      <workItem from="1590382729728" duration="8429000" />
+      <workItem from="1592882602792" duration="27577000" />
+      <workItem from="1593003223387" duration="8958000" />
+      <workItem from="1593134250666" duration="5002000" />
+      <workItem from="1593584752931" duration="182000" />
+      <workItem from="1593599436264" duration="5434000" />
+      <workItem from="1593749840611" duration="29915000" />
     </task>
     <servers />
   </component>
@@ -151,23 +161,36 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="WindowStateProjectService">
+    <state x="416" y="259" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1592968139097">
+      <screen x="0" y="0" width="1440" height="900" />
+    </state>
+    <state x="416" y="259" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1440.900@0.0.1440.900" timestamp="1592968139097" />
+    <state x="458" y="204" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1594184963892">
+      <screen x="0" y="0" width="1440" height="900" />
+    </state>
+    <state x="458" y="204" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1440.900@0.0.1440.900" timestamp="1594184963892" />
+    <state x="229" y="89" key="SettingsEditor" timestamp="1590394104434">
+      <screen x="0" y="0" width="1440" height="900" />
+    </state>
+    <state x="229" y="89" key="SettingsEditor/0.0.1440.900@0.0.1440.900" timestamp="1590394104434" />
     <state width="653" height="445" key="SwitcherDM" timestamp="1589172230902">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
     <state width="653" height="445" key="SwitcherDM/0.0.1440.900@0.0.1440.900" timestamp="1589172230902" />
-    <state x="386" y="207" width="667" height="578" key="find.popup" timestamp="1589271316138">
+    <state x="386" y="207" width="667" height="578" key="find.popup" timestamp="1592967100304">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state x="386" y="207" width="667" height="578" key="find.popup/0.0.1440.900@0.0.1440.900" timestamp="1589271316138" />
+    <state x="386" y="207" width="667" height="578" key="find.popup/0.0.1440.900@0.0.1440.900" timestamp="1592967100304" />
     <state x="386" y="207" width="667" height="486" key="find.popup/0.23.1440.800@0.23.1440.800" timestamp="1588224363923" />
     <state x="385" y="191" key="run.anything.popup" timestamp="1588224258521">
       <screen x="0" y="23" width="1440" height="800" />
     </state>
     <state x="385" y="191" key="run.anything.popup/0.23.1440.800@0.23.1440.800" timestamp="1588224258521" />
-    <state x="385" y="196" width="670" height="676" key="search.everywhere.popup" timestamp="1589269173187">
+    <state x="385" y="196" width="670" height="676" key="search.everywhere.popup" timestamp="1594183400937">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state x="385" y="196" width="670" height="676" key="search.everywhere.popup/0.0.1440.900@0.0.1440.900" timestamp="1589269173187" />
+    <state x="385" y="196" width="670" height="676" key="search.everywhere.popup/0.0.1440.900@0.0.1440.900" timestamp="1594183400937" />
+    <state x="385" y="196" width="670" height="676" key="search.everywhere.popup/0.23.1440.797@0.23.1440.797" timestamp="1593664804963" />
     <state x="385" y="197" width="670" height="601" key="search.everywhere.popup/0.23.1440.800@0.23.1440.800" timestamp="1586921326553" />
   </component>
 </project>

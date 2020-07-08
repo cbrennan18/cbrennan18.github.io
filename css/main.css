@@ -1,5 +1,6 @@
 html {
     scroll-behavior: smooth;
+    font-family: Roboto, sans-serif !important;
 }
 .body-padding-top {
     padding-top: 60px;
@@ -265,4 +266,72 @@ ul.timeline > li:before {
     width: 20px;
     height: 20px;
     z-index: 400;
+}
+
+.cc-animate.cc-revoke.cc-bottom {
+    display: none;
+}
+
+.cc-animate.cc-revoke.cc-active.cc-bottom {
+    display: none;
+}
+
+body > div.cc-revoke.cc-bottom.cc-color-override--1437066272 {
+    display: none;
+}
+
+/*
+*
+* ==========================================
+* SPOTIFY IMAGES
+* ==========================================
+*
+*/
+
+#top-artists img {
+    max-height: 200px;
+    max-width: 200px;
+}
+#top-tracks img {
+    max-height: 200px;
+    max-width: 200px;
+}
+@media only screen and (max-width: 489px) {
+    #top-artists img {
+        max-height: 180px;
+        max-width: 180px;
+    }
+    #top-tracks img {
+        max-height: 200px;
+        max-width: 200px;
+    }
+}
+
+@media only screen and (max-width: 336px) {
+    #top-artists img {
+        max-height: 150px;
+        max-width: 150px;
+    }
+    #top-tracks img {
+        max-height: 150px;
+        max-width: 150px;
+    }
+}
+@media only screen and (max-width: 273px) {
+    #top-artists img {
+        max-height: 120px;
+        max-width: 120px;
+    }
+    #top-tracks img {
+        max-height: 120px;
+        max-width: 120px;
+    }
+}
+#btnSpotifyArtists:disabled {
+    cursor: not-allowed;
+    pointer-events: all !important;
+}
+#btnSpotifyTracks:disabled {
+    cursor: not-allowed;
+    pointer-events: all !important;
 }
