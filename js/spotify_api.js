@@ -38,7 +38,9 @@ function getSpotify() {
 
     // Replace with your app's client ID, redirect URI and desired scopes
     const clientId = '54d26b92340c44bdaa4b0f54b09a858f';
-    const redirectUri = 'https%3A%2F%2Fcbrennan18.github.io%2Fspotify.html';
+    const redirectUri = 'http%3A%2F%2Flocalhost%3A8080%2Fcbrennan18.github.io%2Fspotify.html';
+    // 'https%3A%2F%2Fcbrennan18.github.io%2Fspotify.html'
+    // 'http%3A%2F%2Flocalhost%3A8080%2Fcbrennan18.github.io%2Fspotify.html'
     const scopes = [
         'user-read-email',
         'user-read-private',
@@ -67,7 +69,7 @@ function getMySpotifyArtists() {
             let i = 0;
             data.items.map(function (artist) {
                 i += 1;
-                let item = $('<div class="card mb-3 border-0" style="border-radius: 45px;">' +
+                let item = $('<div class="card border-0" style="border-radius: 45px;">' +
                     '<div class="row no-gutters">' +
                         '<div class="col-5 col-md-4">' +
                             '<img src="' + artist.images[0].url + '" class="card-img-top" style="border-top-left-radius: 45px; border-bottom-left-radius: 45px;" alt="image"/>' +
@@ -75,13 +77,13 @@ function getMySpotifyArtists() {
                         '<div class="col-7 col-md-8">' +
                             '<div class="card-body my-auto">' +
                                 '<div class="row">' +
-                                    '<h5 class="text-left card-title text-truncate px-2 px-md-4" style="font-family: ' + 'Roboto Light' + ',sans-serif">' + artist.name + '</h5>' +
+                                    '<h5 class="text-left card-title text-truncate px-0 px-md-4" style="font-family: ' + 'Roboto Light' + ',sans-serif">' + artist.name + '</h5>' +
                                 '</div>' +
                                 '<div class="row">' +
-                                    '<div class="col-5 px-2 col-md-4 px-md-4">' +
+                                    '<div class="col-4 px-0 col-md-3 px-md-4">' +
                                         '<h1 class="display-4">' + i + '</h1>' +
                                     '</div>' +
-                                    '<div class="col-7 px-2 col-md-8 px-md-4">' +
+                                    '<div class="col-8 px-2 col-md-9 px-md-4">' +
                                         '<p class="text-secondary my-1" style="font-family: ' + 'Roboto Light' + ',sans-serif;">' + toTitleCase(artist.genres[1]) + '</p>' +
                                         '<p class="text-secondary my-1" style="font-family: ' + 'Roboto Light' + ',sans-serif;">Popularity: ' + numberWithCommas(artist.popularity) + '</p>' +
                                     '</div>' +
@@ -111,7 +113,7 @@ function getMySpotifyTracks() {
             let i = 0;
             data.items.map(function (track) {
                 i += 1;
-                let item = $('<div class="card mb-3 border-0" style="border-radius: 45px;">' +
+                let item = $('<div class="card border-0" style="border-radius: 45px;">' +
                     '<div class="row no-gutters">' +
                         '<div class="col-5 col-md-4">' +
                             '<img src="' + track.album.images[0].url + '" class="card-img-top" style="border-top-left-radius: 45px; border-bottom-left-radius: 45px;" alt="image"/>' +
@@ -119,13 +121,13 @@ function getMySpotifyTracks() {
                         '<div class="col-7 col-md-8">' +
                             '<div class="card-body my-auto">' +
                                 '<div class="row">' +
-                                    '<h5 class="text-left card-title text-truncate px-2 px-md-4" style="font-family: ' + 'Roboto Light' + ',sans-serif">' + track.name + '</h5>' +
+                                    '<h5 class="text-left card-title text-truncate px-0 px-md-4" style="font-family: ' + 'Roboto Light' + ',sans-serif">' + track.name + '</h5>' +
                                 '</div>' +
                                 '<div class="row">' +
-                                    '<div class="col-5 px-2 col-md-4 px-md-4">' +
+                                    '<div class="col-4 px-0 col-md-3 px-md-4">' +
                                         '<h1 class="display-4">' + i + '</h1>' +
                                     '</div>' +
-                                    '<div class="col-7 px-2 col-md-8 px-md-4">' +
+                                    '<div class="col-8 px-2 col-md-9 px-md-4">' +
                                         '<p class="text-secondary my-1" style="font-family: ' + 'Roboto Light' + ',sans-serif;">Length: ' + getTime(track.duration_ms) + '</p>' +
                                         '<p class="text-secondary my-1" style="font-family: ' + 'Roboto Light' + ',sans-serif;">Popularity: ' + numberWithCommas(track.popularity) + '</p>' +
                                     '</div>' +
@@ -148,40 +150,95 @@ let genres_dict = new Map();
 let audio_dict = new Map();
 let final_dict = new Map();
 
+async function showData() {
+    await getSpotifyPlaylists().done(function(data) {
+        getPlaylists(data);
+    });
+    await getCurrentTracks().done(function(data) {
+        let track_ids = [];
+        let artist_ids = [];
+        let genre_counts = {};
+        let i;
+        let tracks = data.items;
+        for (i = 0; i < tracks.length; i++) {
+
+            track_ids.push(tracks[i].id);
+            artist_ids.push(tracks[i].album.artists[0].id);
+        }
+        song_id_dict.set("2020", track_ids);
+        genres_dict.set("2020", getSpotifyArtistIds(artist_ids, genre_counts));
+    });
+    await getAudioFeatures();
+    await getCurrentArtists();
+
+    final_dict = {
+        'audio_features': new Map([...audio_dict.entries()].sort()),
+        'artists': new Map([...artists_dict.entries()].sort()),
+        'genres': new Map([...genres_dict.entries()].sort())
+    };
+
+    await getCharts(final_dict);
+    await getYearlyArtists(final_dict);
+}
+
 function getSpotifyPlaylists() {
-    $.ajax({
+    return $.ajax({
         url: "https://api.spotify.com/v1/search?q=%22Your%20Top%20Songs%22&type=playlist&limit=50",
         type: "GET",
         beforeSend: function (xhr) {
             xhr.setRequestHeader('Authorization', 'Bearer ' + _token);
         },
         success: function (data) {
-            getPlaylists(data);
-            getCurrentTracks().done(async function(a) {
-                let track_ids = [];
-                let artist_ids = [];
-                let genre_counts = [];
-                let i;
-                let tracks = a.items;
-                for (i = 0; i < tracks.length; i++) {
-
-                    track_ids.push(tracks[i].id);
-                    artist_ids.push(tracks[i].album.artists[0].id);
-                }
-                song_id_dict.set("2020", track_ids);
-                genres_dict.set("2020", getSpotifyArtistIds(artist_ids, genre_counts));
-                await getAudioFeatures();
-                await getCurrentArtists();
-                final_dict = {
-                    'audio_features': new Map([...audio_dict.entries()].sort()),
-                    'artists': new Map([...artists_dict.entries()].sort()),
-                    'genres': new Map([...genres_dict.entries()].sort())
-                };
-                await getCharts(final_dict);
-            });
         }
     });
 }
+
+function getYearlyArtists(final_dict) {
+    let att = $("#year-top-five");
+    att.empty();
+    let y = [], a = [];
+    for (let [year, value] of final_dict.artists.entries()) {
+        y.push(year);
+        a.push(value);
+    }
+
+    for (let i = 0; i < a.length; i++) {
+        let obj = a[i];
+        let keys = Object.keys(obj);
+        keys.sort(function(a, b) { return obj[b] - obj[a] });
+        for (let i = 0; i < keys.length; i++) {
+            if(keys[i] === "Various Artists") {
+                keys.splice(i, 1);
+            }
+        }
+        keys.length = 5;
+        console.log(y[i] + "," + keys);
+    }
+    att.html(y[4]);
+
+    getYearlyGenres(final_dict);
+}
+
+
+function getYearlyGenres(final_dict) {
+    let y = [], a = [];
+    for (let [year, value] of final_dict.genres.entries()) {
+        y.push(year);
+        a.push(value.genre_counts);
+    }
+    for (let i = 0; i < a.length; i++) {
+        let obj = a[i];
+        // Get an array of the keys:
+        let keys = Object.keys(obj);
+        // Then sort by using the keys to lookup the values in the original object:
+        keys.sort(function(a, b) { return obj[b] - obj[a] });
+
+        keys.length = 5;
+        console.log(y[i] + "," + keys);
+    }
+
+}
+
 function getCharts(final_dict) {
     let y = [], a = [], d = [], e=[], v=[];
     for (let [year, value] of final_dict.audio_features.entries()) {
@@ -197,15 +254,22 @@ function getCharts(final_dict) {
     // #0078ad
     // #0050a9
     // #0b1d78
-    let valence_average = 0.5059, energy_average = 0.6121, danceability_average = 0.5746, acousticness_average = 0.2204;
+    // original averages
+    // acousticness_average = 0.1672, energy_average = 0.6739, danceability_average = 0.6585, valence_average = 0.4991;
 
-    populateChart('acousticChart', y, a, '#1db954', 'Acousticness', acousticness_average);
-    populateChart('danceChart', y, d, '#009b89', 'Danceability', danceability_average);
-    populateChart('energyChart', y, e, '#0078ad', 'Energy', energy_average);
-    populateChart('valenceChart', y, v, '#0050a9', 'Valence', valence_average);
+    let acousticness_average = ['0.1660', '0.1588', '0.1660', '0.1278', '0.2174'];
+    let danceability_average = ['0.6366', '0.6333', '0.6537', '0.6720', '0.6971'];
+    let energy_average = ['0.7034', '0.6724', '0.6917', '0.6547', '0.6474'];
+    let valence_average = ['0.5253', '0.4515', '0.5228', '0.4877', '0.5081'];
+
+
+    populateChart('acousticChart', y, a, 'rgb(29,185,84)', 'rgba(29,185,84,0.5)', 'Acousticness', acousticness_average);
+    populateChart('danceChart', y, d, 'rgb(0,155,137)',  'rgba(0,155,137,0.5)', 'Danceability', danceability_average);
+    populateChart('energyChart', y, e, 'rgb(0,120,173)', 'rgba(0,120,173,0.5)', 'Energy', energy_average);
+    populateChart('valenceChart', y, v, 'rgb(0,80,169)', 'rgba(0,80,169, 0.5)', 'Valence', valence_average);
 }
 
-function populateChart(element, labels, data, color, title, average) {
+function populateChart(element, labels, data, color, bgColor, title, average) {
     let ctx = document.getElementById(element).getContext('2d');
     let chart = new Chart(ctx, {
         // The type of chart we want to create
@@ -214,37 +278,62 @@ function populateChart(element, labels, data, color, title, average) {
         // The data for our dataset
         data: {
             labels: labels,
-            datasets: [{
-                label: title,
-                borderColor: color,
-                pointBackgroundColor: color,
-                data: data
-            }]
+            datasets: [
+                {
+                    label: title,
+                    borderColor: color,
+                    pointBackgroundColor: color,
+                    data: data,
+                    backgroundColor: bgColor
+                },
+                {
+                    label: 'Top 50 Average',
+                    borderColor: 'rgba(0,0,0,0.5)',
+                    pointBackgroundColor: 'rgb(0,0,0, 0.5)',
+                    data: average
+                }
+            ]
         },
-
-        // Configuration options go here
         options: {
-            annotation: {
-                annotations: [{
-                    type: 'line',
-                    mode: 'horizontal',
-                    scaleID: 'y-axis-0',
-                    value: average,
-                    borderColor: 'rgb(0, 0, 0)',
-                    borderWidth: 2,
-                    borderDash: [2, 2],
-                    label: {
-                        enabled: true,
-                        content: 'Global Average',
-                        backgroundColor: 'rgba(0,0,0,0.5)',
-                        fontColor: "#fff",
-                        xPadding: 6,
-                        yPadding: 6,
-                        cornerRadius: 6,
-                        position: "center",
+            responsive: true,
+            maintainAspectRatio: false,
+            legend: {
+                position: 'top',
+                labels: {
+                    usePointStyle: true,
+                    boxWidth: 10
+                }
+            },
+            title: {
+                display: true,
+                text: title,
+                fontSize: 24,
+                fontFamily: 'Roboto-Light, sans-serif'
+            },
+            scales: {
+                yAxes: [{
+                    scaleLabel: {
+                        display: true,
+                        labelString: 'Percentage'
+                    },
+                    ticks: {
+                        callback: function(value) {
+                            let percentage = (value * 100).toFixed(0);
+                            return percentage + "%"
+                        }
+                    }
+                }],
+                xAxes: [{
+                    scaleLabel: {
+                        display: true,
+                        labelString: 'Year'
                     }
                 }]
-            }
+            },
+            tooltips : {
+                mode : 'index',
+                position: 'nearest'
+            },
         }
     });
 }
@@ -265,8 +354,8 @@ function getPlaylists(data) {
 
         let track_ids = [];
         let artist_ids = [];
-        let genre_counts = [];
-        let artist_counts = [];
+        let genre_counts = {};
+        let artist_counts = {};
 
         try {
             let url = "https://api.spotify.com/v1/playlists/" + playlist_ids[i].split(":").pop();
@@ -335,7 +424,7 @@ function getSpotifyArtistIds(artist_ids, genre_counts) {
        });
    }
 
-   return genre_counts;
+   return {genre_counts};
 }
 
 function getSpotifyArtists(str1) {
@@ -397,7 +486,7 @@ function getCurrentArtists() {
         },
         success: function (data) {
             let i;
-            let artist_counts = [];
+            let artist_counts = {};
             for (i = 0; i < data.items.length; i++) {
                 let artist = data.items[i].name;
                 artist_counts[artist] = 10-i;

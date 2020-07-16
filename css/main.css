@@ -289,42 +289,42 @@ body > div.cc-revoke.cc-bottom.cc-color-override--1437066272 {
 */
 
 #top-artists img {
-    max-height: 200px;
-    max-width: 200px;
+    max-height: 150px;
+    max-width: 150px;
 }
 #top-tracks img {
-    max-height: 200px;
-    max-width: 200px;
+    max-height: 150px;
+    max-width: 150px;
 }
 @media only screen and (max-width: 489px) {
     #top-artists img {
-        max-height: 180px;
-        max-width: 180px;
+        max-height: 120px;
+        max-width: 120px;
     }
     #top-tracks img {
-        max-height: 200px;
-        max-width: 200px;
+        max-height: 120px;
+        max-width: 120px;
     }
 }
 
 @media only screen and (max-width: 336px) {
     #top-artists img {
-        max-height: 150px;
-        max-width: 150px;
+        max-height: 100px;
+        max-width: 100px;
     }
     #top-tracks img {
-        max-height: 150px;
-        max-width: 150px;
+        max-height: 100px;
+        max-width: 100px;
     }
 }
 @media only screen and (max-width: 273px) {
     #top-artists img {
-        max-height: 120px;
-        max-width: 120px;
+        max-height: 80px;
+        max-width: 80px;
     }
     #top-tracks img {
-        max-height: 120px;
-        max-width: 120px;
+        max-height: 80px;
+        max-width: 80px;
     }
 }
 #btnSpotifyArtists:disabled {
@@ -334,4 +334,49 @@ body > div.cc-revoke.cc-bottom.cc-color-override--1437066272 {
 #btnSpotifyTracks:disabled {
     cursor: not-allowed;
     pointer-events: all !important;
+}
+
+.chart-container {
+    height:400px
+}
+/*
+*
+* ==========================================
+CAROUSEL INDICATOR COLORS
+* ==========================================
+*
+*/
+
+.carousel-indicators li {
+    background-color: #999999;
+    background-color: rgba(70, 70, 70, 0.25) !important;
+}
+
+.carousel-indicators .active {
+    background-color: #1DB954 !important;
+}
+
+/*
+*
+* ==========================================
+SCROLLING ANIMATION
+* ==========================================
+*
+*/
+
+#sticky {
+    position: -webkit-sticky;
+    position: sticky;
+    top: 0;
+    margin-bottom: 20%;
+    margin-right: 20%;
+    margin-left: 20%;
+    padding: 15px;
+    border-radius: 90px;
+    z-index: 1;
+}
+
+.green-bg {
+    background-color: #1DB954 !important;
+    transition: background-color 200ms linear;
 }
