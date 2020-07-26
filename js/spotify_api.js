@@ -17,16 +17,11 @@ document.addEventListener("DOMContentLoaded", function() {
     // Set token
     _token = hash.access_token;
 
-    document.getElementById('spotifyArtists').style.display = 'none';
-    document.getElementById('spotifyTracks').style.display = 'none';
-
     if (typeof _token === 'undefined') {
-        document.getElementById('btnSpotifyArtists').style.display = 'none';
-        document.getElementById('btnSpotifyTracks').style.display = 'none';
+        document.getElementById('blog-description').style.display = 'none';
         document.getElementById('btnSpotify').style.display = 'inline';
     } else {
-        document.getElementById('btnSpotifyArtists').style.display = 'inline';
-        document.getElementById('btnSpotifyTracks').style.display = 'inline';
+        document.getElementById('blog-description').style.display = 'inline';
         document.getElementById('btnSpotify').style.display = 'none';
     }
 
@@ -38,7 +33,7 @@ function getSpotify() {
 
     // Replace with your app's client ID, redirect URI and desired scopes
     const clientId = '54d26b92340c44bdaa4b0f54b09a858f';
-    const redirectUri = 'http%3A%2F%2Flocalhost%3A8080%2Fcbrennan18.github.io%2Fspotify.html';
+    const redirectUri = 'https%3A%2F%2Fcbrennan18.github.io%2Fspotify.html';
     // 'https%3A%2F%2Fcbrennan18.github.io%2Fspotify.html'
     // 'http%3A%2F%2Flocalhost%3A8080%2Fcbrennan18.github.io%2Fspotify.html'
     const scopes = [
@@ -56,94 +51,6 @@ function getSpotify() {
     }
 }
 
-function getMySpotifyArtists() {
-    $.ajax({
-        url: "https://api.spotify.com/v1/me/top/artists?time_range=long_term&limit=10",
-        type: "GET",
-        beforeSend: function (xhr) {
-            xhr.setRequestHeader('Authorization', 'Bearer ' + _token);
-        },
-        success: function (data){
-            $("#top-artists").empty();
-            // Do something with the returned data
-            let i = 0;
-            data.items.map(function (artist) {
-                i += 1;
-                let item = $('<div class="card border-0" style="border-radius: 45px;">' +
-                    '<div class="row no-gutters">' +
-                        '<div class="col-5 col-md-4">' +
-                            '<img src="' + artist.images[0].url + '" class="card-img-top" style="border-top-left-radius: 45px; border-bottom-left-radius: 45px;" alt="image"/>' +
-                        '</div>' +
-                        '<div class="col-7 col-md-8">' +
-                            '<div class="card-body my-auto">' +
-                                '<div class="row">' +
-                                    '<h5 class="text-left card-title text-truncate px-0 px-md-4" style="font-family: ' + 'Roboto Light' + ',sans-serif">' + artist.name + '</h5>' +
-                                '</div>' +
-                                '<div class="row">' +
-                                    '<div class="col-4 px-0 col-md-3 px-md-4">' +
-                                        '<h1 class="display-4">' + i + '</h1>' +
-                                    '</div>' +
-                                    '<div class="col-8 px-2 col-md-9 px-md-4">' +
-                                        '<p class="text-secondary my-1" style="font-family: ' + 'Roboto Light' + ',sans-serif;">' + toTitleCase(artist.genres[1]) + '</p>' +
-                                        '<p class="text-secondary my-1" style="font-family: ' + 'Roboto Light' + ',sans-serif;">Popularity: ' + numberWithCommas(artist.popularity) + '</p>' +
-                                    '</div>' +
-                                '</div>' +
-                            '</div>' +
-                        '</div>' +
-                    '</div></div>');
-                item.appendTo($('#top-artists'));
-                buttonChanges('btnSpotifyArtists', 'btnSpotifyTracks');
-                document.getElementById('spotifyArtists').style.display = 'inline';
-                document.getElementById('spotifyTracks').style.display = 'none';
-            });
-        }
-    });
-}
-
-function getMySpotifyTracks() {
-    $.ajax({
-        url: "https://api.spotify.com/v1/me/top/tracks?time_range=long_term&limit=10",
-        type: "GET",
-        beforeSend: function (xhr) {
-            xhr.setRequestHeader('Authorization', 'Bearer ' + _token);
-        },
-        success: function (data){
-            $("#top-tracks").empty();
-            // Do something with the returned data
-            let i = 0;
-            data.items.map(function (track) {
-                i += 1;
-                let item = $('<div class="card border-0" style="border-radius: 45px;">' +
-                    '<div class="row no-gutters">' +
-                        '<div class="col-5 col-md-4">' +
-                            '<img src="' + track.album.images[0].url + '" class="card-img-top" style="border-top-left-radius: 45px; border-bottom-left-radius: 45px;" alt="image"/>' +
-                        '</div>' +
-                        '<div class="col-7 col-md-8">' +
-                            '<div class="card-body my-auto">' +
-                                '<div class="row">' +
-                                    '<h5 class="text-left card-title text-truncate px-0 px-md-4" style="font-family: ' + 'Roboto Light' + ',sans-serif">' + track.name + '</h5>' +
-                                '</div>' +
-                                '<div class="row">' +
-                                    '<div class="col-4 px-0 col-md-3 px-md-4">' +
-                                        '<h1 class="display-4">' + i + '</h1>' +
-                                    '</div>' +
-                                    '<div class="col-8 px-2 col-md-9 px-md-4">' +
-                                        '<p class="text-secondary my-1" style="font-family: ' + 'Roboto Light' + ',sans-serif;">Length: ' + getTime(track.duration_ms) + '</p>' +
-                                        '<p class="text-secondary my-1" style="font-family: ' + 'Roboto Light' + ',sans-serif;">Popularity: ' + numberWithCommas(track.popularity) + '</p>' +
-                                    '</div>' +
-                                '</div>' +
-                            '</div>' +
-                        '</div>' +
-                    '</div></div>');
-                item.appendTo($('#top-tracks'));
-                buttonChanges('btnSpotifyTracks', 'btnSpotifyArtists');
-                document.getElementById('spotifyTracks').style.display = 'inline';
-                document.getElementById('spotifyArtists').style.display = 'none';
-            });
-        }
-    });
-}
-
 let song_id_dict = new Map();
 let artists_dict = new Map();
 let genres_dict = new Map();
@@ -151,6 +58,14 @@ let audio_dict = new Map();
 let final_dict = new Map();
 
 async function showData() {
+    document.getElementById('btnLoadData').style.display = 'none';
+    document.getElementById('spinner').style.display = 'inline-block';
+    document.getElementById('artists-display').style.display = 'none';
+    document.getElementById('audio-features').style.display = 'none';
+    document.getElementById('scroll-icon').style.display = 'none';
+    document.getElementById('scroll-icon-2').style.display = 'none';
+
+    $(document).unbind('audio_features_complete');
     await getSpotifyPlaylists().done(function(data) {
         getPlaylists(data);
     });
@@ -169,16 +84,25 @@ async function showData() {
         genres_dict.set("2020", getSpotifyArtistIds(artist_ids, genre_counts));
     });
     await getAudioFeatures();
-    await getCurrentArtists();
-
-    final_dict = {
-        'audio_features': new Map([...audio_dict.entries()].sort()),
-        'artists': new Map([...artists_dict.entries()].sort()),
-        'genres': new Map([...genres_dict.entries()].sort())
-    };
+    await $(document).bind('audio_features_complete',
+        await getCurrentArtists().done(function() {
+            final_dict = {
+                'audio_features': new Map([...audio_dict.entries()].sort()),
+                'artists': new Map([...artists_dict.entries()].sort()),
+                'genres': new Map([...genres_dict.entries()].sort())
+            };
+        })
+    );
 
     await getCharts(final_dict);
     await getYearlyArtists(final_dict);
+    document.getElementById('spinner').style.display = 'none';
+    document.getElementById('artists-display').style.display = 'block';
+    document.getElementById('audio-features').style.display = 'block';
+    document.getElementById('scroll-icon').style.display = 'block';
+    document.getElementById('scroll-icon-2').style.display = 'block';
+
+    await softScrollClickSpotify();
 }
 
 function getSpotifyPlaylists() {
@@ -193,48 +117,251 @@ function getSpotifyPlaylists() {
     });
 }
 
-function getYearlyArtists(final_dict) {
-    let att = $("#year-top-five");
-    att.empty();
-    let y = [], a = [];
+async function getYearlyArtists(final_dict) {
+
+    let y = [], a = [], top_five = [];
     for (let [year, value] of final_dict.artists.entries()) {
         y.push(year);
         a.push(value);
     }
 
     for (let i = 0; i < a.length; i++) {
-        let obj = a[i];
-        let keys = Object.keys(obj);
-        keys.sort(function(a, b) { return obj[b] - obj[a] });
-        for (let i = 0; i < keys.length; i++) {
-            if(keys[i] === "Various Artists") {
-                keys.splice(i, 1);
+        let values = Object.values(a[i]);
+        values.sort((a, b) => parseFloat(b.count) - parseFloat(a.count));
+        for (let j = 0; j < values.length; j++) {
+            if(values[j].name === "Various Artists") {
+                values.splice(j, 1);
             }
         }
-        keys.length = 5;
-        console.log(y[i] + "," + keys);
-    }
-    att.html(y[4]);
+        values.length = 5;
+        let str1 = "";
+        for (let k = 0; k < values.length; k++) {
+            str1 = str1.concat(values[k].id);
+            str1 += ",";
+        }
+        str1 = str1.slice(0, -1);
+        await getSpotifyArtists(str1).done(function(data) {
+            for (let l = 0; l < values.length; l++) {
+                if(values[l].name === data.artists[l].name) {
+                    Object.assign(values[l], {url: data.artists[l].images[0].url});
 
-    getYearlyGenres(final_dict);
+                }
+            }
+        });
+        await top_five.push({year: y[i], artist: values});
+    }
+    $(".spotify-history").empty();
+
+    for (let i = 0; i < top_five.length; i++) {
+        let item_name_group = '';
+        for (let j = 0; j < top_five[i].artist.length; j++) {
+            let rank = j + 1;
+            let item_name =
+                '<div data-aos="fade-up"' +
+                    'data-aos-delay="50"' +
+                    'data-aos-duration="1000"' +
+                    'data-aos-easing="ease-in-out"' +
+                    'data-aos-anchor-placement="top-bottom">' +
+                    '<div class="card card-spotify border-0 mt-3 m-md-3" style="border-radius: 45px;"> ' +
+                        '<div class="row "> ' +
+                            '<div class="col-5"> ' +
+                                '<img src="' + top_five[i].artist[j].url + '" class="crop" style="border-top-left-radius: 45px; border-bottom-left-radius: 45px;" alt="image"/> ' +
+                            '</div> ' +
+                            '<div class="col-7 px-3"> ' +
+                                '<div class="card-block d-flex"> ' +
+                                    '<h3 class="float-left card-title mr-3 mr-md-5 pr-5 align-self-center infront" style="font-family: ' + 'Lato' + ',sans-serif">' + top_five[i].artist[j].name + '</h3> ' +
+                                    '<h1 class="display-4 behind ml-auto pr-3 mt-3">' + rank + '</h1>' +
+                                '</div> ' +
+                            '</div> ' +
+                        '</div>' +
+                    '</div>' +
+                '</div>';
+            item_name_group += item_name;
+        }
+
+        let item1 = $(
+            '<section>' +
+                '<div class="display-4 text-center normal-bg sticky">' +
+                    top_five[i].year +
+                '</div> ' +
+                '<div class="p-5-xl"> ' +
+                    '<span class="artists" style="font-weight: 400; font-size: 40px">' +
+                        item_name_group +
+                    '</span>' +
+                '</div>' +
+            '</section>');
+
+        item1.appendTo($('.spotify-history'));
+    }
+
+
+    let $sticky = $('.sticky');
+    let $artists = $('.artists');
+    let $tasteSticky = $('.taste-sticky');
+    let $taste = $('.taste');
+    let num = $('#data-display .spotify-history .sticky').length;
+
+    $(window).scroll(function(){
+
+        AOS.init();
+        AOS.refresh();
+        for (let i = 0; i < num; i++) {
+            let rem = parseInt(getComputedStyle(document.documentElement).fontSize);
+            if ($sticky.eq(i).offset().top + $sticky.eq(i).outerHeight() > ($artists.eq(i).offset().top) - (8 * rem)) {
+                $sticky.eq(i).removeClass('normal-bg');
+                $sticky.eq(i).addClass('green-bg');
+            } else {
+                $sticky.eq(i).removeClass('green-bg');
+                $sticky.eq(i).addClass('normal-bg');
+            }
+        }
+        if ($tasteSticky.offset().top + $tasteSticky.outerHeight() > ($taste.offset().top)) {
+            $tasteSticky.removeClass('normal-bg');
+            $tasteSticky.addClass('green-bg');
+        } else {
+            $tasteSticky.removeClass('green-bg');
+            $tasteSticky.addClass('normal-bg');
+        }
+    });
+
+    getYearlyGenres(top_five, final_dict);
+
 }
 
-
-function getYearlyGenres(final_dict) {
+function getYearlyGenres(top_five, final_dict) {
     let y = [], a = [];
     for (let [year, value] of final_dict.genres.entries()) {
         y.push(year);
         a.push(value.genre_counts);
     }
+
     for (let i = 0; i < a.length; i++) {
         let obj = a[i];
+
         // Get an array of the keys:
         let keys = Object.keys(obj);
         // Then sort by using the keys to lookup the values in the original object:
         keys.sort(function(a, b) { return obj[b] - obj[a] });
 
         keys.length = 5;
-        console.log(y[i] + "," + keys);
+        top_five[i].genres = keys;
+    }
+
+    getYearlyFeatures(top_five, final_dict);
+
+
+}
+
+function getYearlyFeatures(top_five, final_dict) {
+
+    let y = [], a = [];
+    for (let [year, value] of final_dict.audio_features.entries()) {
+        y.push(year);
+        a.push(value);
+    }
+
+    for (let i = 0; i < a.length; i++) {
+        let values = Object.values(a[i]);
+        for (let j = 0; j < values.length; j++) {
+            values[j] = Math.round(values[j] * 100);
+        }
+
+        top_five[i].features = values;
+    }
+
+    getModals(top_five);
+}
+
+function getModals(top_five) {
+    // d v e a
+    $(".spotify-graphic").empty();
+
+    let graphic_name;
+
+    for (let i = 0; i < top_five.length; i++) {
+        graphic_name = $(
+            '<div class="modal fade" id="graphic-' + top_five[i].year + '" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true"> ' +
+                '<div class="modal-dialog"> ' +
+                    '<div class="modal-content modal-content-spotify"> ' +
+                        '<div class="modal-body"> ' +
+                            '<div class="col-12 d-flex rectangle"> ' +
+                                '<h5 class="col-12 text-center my-music-2016 my-auto" id="exampleModalLabel">My Music ' + top_five[i].year + '</h5> ' +
+                            '</div> ' +
+                            '<div class="col-12 rectangle-large"> ' +
+                                '<h6 class="col-12 text-center rectangle-title">Top Artists</h6> ' +
+                                '<hr class="line-title"> ' +
+                                '<div class="row d-flex"> ' +
+                                    '<img src="' + top_five[i].artist[0].url + '" class="artist-image" alt="artist image"/> ' +
+                                    '<p class="artist-name text-truncate">' + top_five[i].artist[0].name + '</p> ' +
+                                    '<p class="artist-number ml-auto mr-4">1</p> ' +
+                                '</div> ' +
+                                '<div class="row d-flex"> ' +
+                                    '<img src="' + top_five[i].artist[1].url + '" class="artist-image" alt="artist image"/> ' +
+                                    '<p class="artist-name text-truncate">' + top_five[i].artist[1].name + '</p> ' +
+                                    '<p class="artist-number ml-auto mr-4">2</p> ' +
+                                '</div> ' +
+                                '<div class="row d-flex"> ' +
+                                    '<img src="' + top_five[i].artist[2].url + '" class="artist-image" alt="artist image"/> ' +
+                                    '<p class="artist-name text-truncate">' + top_five[i].artist[2].name + '</p> ' +
+                                    '<p class="artist-number ml-auto mr-4">3</p> ' +
+                                '</div> ' +
+                            '</div> ' +
+                            '<div class="col-12 rectangle-large"> ' +
+                                '<h6 class="col-12 text-center rectangle-title">Top Genres</h6> ' +
+                                '<hr class="line-title"> ' +
+                                '<div class="row d-flex"> ' +
+                                    '<p class="genre-number ml-4">1</p> ' +
+                                    '<p class="genre-name ml-auto text-truncate">' + top_five[i].genres[0] + '</p> ' +
+                                    '<i class="fas fa-music ml-auto genre-image ml-auto mr-3"></i> ' +
+                                '</div> ' +
+                                '<div class="row d-flex"> ' +
+                                    '<p class="genre-number ml-4">2</p> ' +
+                                    '<p class="genre-name ml-auto text-truncate">' + top_five[i].genres[1] + '</p> ' +
+                                    '<i class="fas fa-headphones-alt genre-image ml-auto mr-3"></i> ' +
+                                '</div> ' +
+                                '<div class="row d-flex"> ' +
+                                    '<p class="genre-number ml-4">3</p> ' +
+                                    '<p class="genre-name ml-auto text-truncate">' + top_five[i].genres[2] + '</p> ' +
+                                    '<i class="fas fa-compact-disc genre-image ml-auto mr-3"></i> ' +
+                                '</div> ' +
+                            '</div> ' +
+                            '<div class="col-12 rectangle-large"> ' +
+                                '<h6 class="col-12 text-center rectangle-title">Musical Taste</h6> ' +
+                                '<hr class="line-title"> ' +
+                                '<div class="pt-3"> ' +
+                                    '<i class="fas fa-guitar taste-image"></i> ' +
+                                    '<div class="progress"> ' +
+                                        '<div class="progress-bar progress-bar-striped progress-bar-animated bg-dark" role="progressbar" style="width: ' + top_five[i].features[3] + '%" aria-valuenow="' + top_five[i].features[3] + '" aria-valuemin="0" aria-valuemax="100">' + top_five[i].features[3] + '%</div> ' +
+                                    '</div> ' +
+                                '</div> ' +
+                                '<div class="pt-3"> ' +
+                                    '<i class="fas fa-child taste-image"></i> ' +
+                                    '<div class="progress"> ' +
+                                        '<div class="progress-bar progress-bar-striped progress-bar-animated bg-dark" role="progressbar" style="width: ' + top_five[i].features[0] + '%" aria-valuenow="' + top_five[i].features[0] + '" aria-valuemin="0" aria-valuemax="100">' + top_five[i].features[0] + '%</div> ' +
+                                    '</div> ' +
+                                '</div> ' +
+                                '<div class="pt-3"> ' +
+                                    '<i class="fas fa-atom taste-image"></i> ' +
+                                    '<div class="progress"> ' +
+                                        '<div class="progress-bar progress-bar-striped progress-bar-animated bg-dark" role="progressbar" style="width: ' + top_five[i].features[2] + '%" aria-valuenow="' + top_five[i].features[2] + '" aria-valuemin="0" aria-valuemax="100">' + top_five[i].features[2] + '%</div> ' +
+                                    '</div> ' +
+                                '</div> ' +
+                                '<div class="pt-3"> ' +
+                                    '<i class="far fa-laugh-beam taste-image"></i> ' +
+                                    '<div class="progress"> ' +
+                                        '<div class="progress-bar progress-bar-striped progress-bar-animated bg-dark" role="progressbar" style="width: ' + top_five[i].features[1] + '%" aria-valuenow="' + top_five[i].features[1] + '" aria-valuemin="0" aria-valuemax="100">' + top_five[i].features[1] + '%</div> ' +
+                                    '</div> ' +
+                                '</div> ' +
+                            '</div> ' +
+                        '</div> ' +
+                        '<div class="modal-footer"> ' +
+                            '<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button> ' +
+                        '</div> ' +
+                    '</div> ' +
+                '</div> ' +
+            '</div>');
+
+        graphic_name.appendTo($('.spotify-graphic'));
     }
 
 }
@@ -375,11 +502,13 @@ function getPlaylists(data) {
                         track_ids.push(tracks[i].id);
                         artist_ids.push(tracks[i].album.artists[0].id);
 
+
                         let artist_name = tracks[i].album.artists[0].name;
                         if (!artist_counts[artist_name] || artist_counts[artist_name] < 1) {
-                            artist_counts[artist_name] = 1;
+                            artist_counts[artist_name] =  {"name": artist_name, "count": 1, "id": tracks[i].album.artists[0].id};
+
                         } else {
-                            artist_counts[artist_name] += 1;
+                            artist_counts[artist_name].count += 1;
                         }
                     }
                     song_id_dict.set(year, track_ids);
@@ -445,7 +574,7 @@ function getGenreCounts(data, genre_counts) {
     let i, j = 0;
     for (i = 0; i < data.artists.length; i++) {
         for (j = 0; j < data.artists[i].genres.length; j++) {
-            let genre = data.artists[i].genres[j];
+            let genre = toTitleCase(data.artists[i].genres[j]);
             if (genre !== 'pop') {
                 getGenre(genre_counts, genre);
             } else {
@@ -489,7 +618,7 @@ function getCurrentArtists() {
             let artist_counts = {};
             for (i = 0; i < data.items.length; i++) {
                 let artist = data.items[i].name;
-                artist_counts[artist] = 10-i;
+                artist_counts[artist] = {"name": artist, "count": 10-i,"id": data.items[i].id};
                 artists_dict.set("2020", artist_counts);
             }
         }
@@ -497,7 +626,7 @@ function getCurrentArtists() {
 
 }
 
-function getAudioFeatures() {
+async function getAudioFeatures() {
 
     let audioFeatures;
     for (const [year, value] of song_id_dict.entries()) {
@@ -527,7 +656,7 @@ function getAudioFeatures() {
         songstr = songstr.slice(0, -1);
         songstr2 = songstr2.slice(0, -1);
 
-        audioFeaturesRequest(songstr).done(function (data) {
+        await audioFeaturesRequest(songstr).done(function (data) {
             let i;
             for (i = 0; i < 50; i++) {
                 count += 1;
@@ -552,6 +681,7 @@ function getAudioFeatures() {
             audio_dict.set(year, audioFeatures);
         });
     }
+    await $(document).trigger('audio_features_complete');
     return(audio_dict);
 }
 
@@ -567,45 +697,18 @@ function audioFeaturesRequest(str) {
     });
 }
 
-function buttonChanges(button1, button2) {
-
-    let var1 = document.getElementById(button1);
-    let var2 = document.getElementById(button2);
-
-    var1.classList.add("btn-success");
-    var1.classList.remove("btn-outline-success");
-    var2.classList.remove("btn-success");
-    var2.classList.add("btn-outline-success");
-    var1.setAttribute("disabled", "disabled");
-    var2.removeAttribute("disabled");
-
-}
-
-function numberWithCommas(x) {
-    return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-}
-
 function toTitleCase(str) {
     return str.replace(/\w\S*/g, function(txt){
         return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();
     });
 }
 
-function getTime(time) {
-    time = time/1000;
-    let minutes = Math.round(Math.floor(time / 60));
-    let seconds = Math.round(time % 60);
 
-    if (minutes < 10 && seconds < 10) {
-        return "0" + minutes + ":0" + seconds
-    } else if (minutes < 10) {
-        return "0" + minutes + ":" + seconds
-    } else if (seconds < 10) {
-        return minutes + ":0" + seconds
-    } else {
-        return minutes + ":" + seconds
-    }
-
+function softScrollClickSpotify() {
+    $('html, body').animate({
+        scrollTop: $("#scroll-icon").offset().top
+    }, 100);
+    softScroll();
 }
 
 
