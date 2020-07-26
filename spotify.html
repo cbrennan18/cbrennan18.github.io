@@ -7,14 +7,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="author" content="Ciaran Brennan">
-    <meta name="description" content=""/>
+    <meta name="description" content="I have used the Spotify API to allow you to visualise your own listening habits. Explore how your top artists, genres and overall musical taste has changed over the past number of years on Spotify."/>
     <link rel="stylesheet" type="text/css" href="./css/main.css" />
 
     <!-- OpenGraph Meta -->
-    <!-- TODO -->
     <meta property="og:title" content="Ciaran Brennan - Spotify Analysis">
-    <meta property="og:description" content="">
-    <meta property="og:image" content="" />
+    <meta property="og:description" content="I have used the Spotify API to allow you to visualise your own listening habits. Explore how your top artists, genres and overall musical taste has changed over the years on Spotify.">
+    <meta property="og:image" content="https://cbrennan18.github.io/img/music.jpg" />
     <meta property="og:url" content="https://cbrennan18.github.io/spotify">
 
     <!-- Favicon -->
@@ -53,68 +52,77 @@
         <div class="container">
             <div class="row justify-content-center">
                 <div class="col-12 col-md-10 col-lg-8 order-md-2">
-                    <h2 class="text-center text-md-left">
-                        SPOTIFY <span class="text-danger">ANALYSIS</span>
-                    </h2>
+                    <h2 class="text-center text-md-left spotify-heading">SPOTIFY ANALYSIS</h2>
                     <h6 class="text-center text-md-left">
                         <i>01 July 2020, 20:00</i>
                     </h6>
                     <div data-aos="fade-up" data-aos-duration="2000">
-                        <img src="./img/music.jpg" class="img-fluid" alt="Person in front of musical neon sign in window"/>
+                        <img src="./img/music.jpg" class="img-fluid" alt="Spotify app open on a laptop and tablet"/>
                         <div class="text-right">
                             <a style="background-color:black;color:white;text-decoration:none;padding:4px 6px;/*noinspection CssInvalidPropertyValue*/font-family:-apple-system, BlinkMacSystemFont, San Francisco, Helvetica Neue, Helvetica, Ubuntu, Roboto, Noto, Segoe UI, Arial, sans-serif;font-size:12px;font-weight:bold;line-height:1.2;display:inline-block;border-radius:3px" href="https://unsplash.com/@heidifin" target="_blank" rel="noopener noreferrer"><span style="display:inline-block;padding:2px 3px"><svg xmlns="http://www.w3.org/2000/svg" style="height:12px;width:auto;position:relative;vertical-align:middle;top:-2px;fill:white" viewBox="0 0 32 32"><title>unsplash-logo</title><path d="M10 9V0h12v9H10zm12 5h10v18H0V14h10v9h12v-9z"></path></svg></span><span style="display:inline-block;padding:2px 3px">Heidi Fin</span></a>
                         </div>
                         <br>
                         <div class="text-justify">
-                            <p>
-                                Following a bit of a break from programming, I have finally got around to starting a new project on my website.
-                                It took me quite some time to decide on the right project to undertake.
-                                This was down to my struggle striking the right balance between learning and interesting.
-                                Having decided to learn more about APIs, I began to look at what apps I use on a daily basis.
-                                For those of you who are wondering, an API is basically a way to access the data and features of another app or service.
-                                An API functions in the same way a waiter does at a restaurant, communicating your order to the kitchen and hopefully returning the meal that you ordered when it is ready.
-                                Put simply, I wanted to learn how to access data in another app or service using an API and visualize the data the API returned.
-                            </p>
-                            <p>
-                                When I began, I initially chose to try and access the Strava API to visualise my running data.
-                                Unfortunately, Strava has severely restricted the use of their API in recent months and I was unable to get the quantity of information to tell an interesting story.
-                                Thus, my attention turned towards another app that I use daily, Spotify.
-                                I chose to use the Spotify API for this project as I was interested to see if I could recreate some of the end-of-year statistics that Spotify produces for their users.
-                            </p>
-                            <p>
-                                Instead of boring everyone to death with insights into my questionable musical tastes, I wanted to push the boundaries out a little bit and allow each of you to see your own Spotify data.
-                                The Spotify Top 50 Average data in the graphs below was taken from <a href="https://www.kaggle.com/leonardopena/top-spotify-songs-from-20102019-by-year/data#">this Kaggle dataset</a>.
-                                The user data is taken from a variety of different endpoints, including your 'Top Songs of ____' playlists. More information on the full capabilities of the Spotify Web API is available <a href = "https://developer.spotify.com/documentation/web-api/reference/">here</a>.
-                                Please click the button below to connect to Spotify and see what it looks like for yourself!
-                            </p>
-                            <div class="text-left">
+                            <div id="btnSpotify">
+                                <p class="blog-design">Please click the button below to connect to Spotify and see what your data looks like on the inside!</p>
                                 <div class="text-center">
-                                    <button class="btn btn-lg btn-success align-center" id="btnSpotify" onclick="getSpotify()">Connect to Spotify</button>
-                                    <button class="btn btn-outline-primary" onclick="showData()">Get Playlists</button>
+                                    <button class="btn btn-lg btn-success align-center" onclick="getSpotify()">Connect to Spotify</button>
                                 </div>
-                                <br>
-                                <div class="text-center">
-                                    <button class="btn btn-outline-success align-center" id="btnSpotifyArtists" onclick="getMySpotifyArtists()">View Top Artists</button>
-                                    <button class="btn btn-outline-success align-center" id="btnSpotifyTracks" onclick="getMySpotifyTracks()">View Top Tracks</button>
-                                    <p id="demo"></p>
-                                </div>
-                                <br>
-                                <div id="spotifyArtists">
-                                    <h4 style="font-family: 'Lato', sans-serif; font-size: 36px">Scroll to discover your Top 10 artists.</h4><br>
-                                    <div id="top-artists">
-
-                                    </div>
-                                </div>
-                                <div id="spotifyTracks">
-                                    <h4 class="display-4" style="font-family: 'Lato', sans-serif; font-size: 36px">Scroll to discover your Top 10 tracks.</h4><br>
-                                    <div id="top-tracks">
-
+                            </div>
+                            <div id="blog-description">
+                                <p class="blog-design">
+                                    Following a bit of a break from programming, I have finally got around to starting a new project on my website.
+                                    It took me quite some time to decide on the right project to undertake.
+                                    This was down to my struggle striking the right balance between learning and interesting.
+                                    Having decided to learn more about APIs, I began to look at what apps I use on a daily basis.
+                                    For those of you who are wondering, an API is basically a way to access the data and features of another app or service.
+                                    An API functions in the same way a waiter does at a restaurant, communicating your order to the kitchen and hopefully returning the meal that you ordered when it is ready.
+                                    Put simply, I wanted to learn how to access data in another app or service using an API and visualize the data the API returned.
+                                </p>
+                                <p class="blog-design">
+                                    When I began, I initially chose to try and access the Strava API to visualise my running data.
+                                    Unfortunately, Strava has severely restricted the use of their API in recent months and I was unable to get the quantity of information to tell an interesting story.
+                                    Thus, my attention turned towards another app that I use daily, Spotify.
+                                    I chose to use the Spotify API for this project as I was interested to see if I could recreate some of the end-of-year statistics that Spotify produces for their users.
+                                </p>
+                                <p class="blog-design">
+                                    Instead of boring everyone to death with insights into my questionable musical tastes, I wanted to push the boundaries out a little bit and allow each of you to see your own Spotify data.
+                                    The Spotify Top 50 Average data in the graphs below was taken from <a href="https://www.kaggle.com/leonardopena/top-spotify-songs-from-20102019-by-year/data#">this Kaggle dataset</a>.
+                                    The user data is taken from a variety of different endpoints, including your 'Top Songs of ____' playlists. More information on the full capabilities of the Spotify Web API is available <a href = "https://developer.spotify.com/documentation/web-api/reference/">here</a>.
+                                </p>
+                                <div class="text-left">
+                                    <div class="text-center">
+                                        <button id="btnLoadData" class="btn btn-outline-primary" onclick="showData()">Load Data</button>
+                                        <div id="spinner" class="spinner-border" style="width: 5rem; height: 5rem; display: none" role="status">
+                                            <span class="sr-only">Loading...</span>
+                                        </div>
+                                        <div id="scroll-icon" class="pt-5" style="display: none">
+                                            <p class="scroll-icon">Scroll down to begin exploring your Spotify data!</p>
+                                            <i class="fas fa-angle-double-down scroll-icon"></i>
+                                            <div class="vh-60"></div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                            <!-- TODO show and hide buttons and audio features-->
-                            <!-- TODO add descriptions and insights-->
-                            <div id="audio-features" style="display: none">
+                        </div>
+                        <div id="artists-display" style="display: none">
+                            <div id="data-display" class="bg-light" style="font-family: 'Lato', sans-serif;">
+                                <div data-aos="fade-up"
+                                     data-aos-duration="1000"
+                                     data-aos-easing="ease-in-out"
+                                     data-aos-anchor-placement="bottom-bottom"
+                                >
+                                    <p class="display-4 text-center scroll-icon" style="font-weight: 700; font-size: 3.5rem">My Spotify, Visualised</p>
+                                </div>
+                                <section class="spotify-history">
+                                </section>
+                            </div>
+                        </div>
+                        <div class="text-justify" id="audio-features" style="display: none">
+                            <div class="display-5 text-center sticky taste-sticky green-bg">
+                                Musical Taste
+                            </div>
+                            <div class="taste p-5-xl">
                                 <p>
                                 <div class="chart-container">
                                     <canvas id="acousticChart"></canvas>
@@ -144,120 +152,41 @@
                                 <b>Valence</b> is a measure from 0% to 100% describing the musical positiveness conveyed by a track. Tracks with high valence sound more positive (e.g. happy, cheerful, euphoric), while tracks with low valence sound more negative (e.g. sad, depressed, angry).
                             </div>
                         </div>
-                        <section>
-                            <div class="bg-light" style="font-family: 'Lato', sans-serif;">
-                                <div data-aos="fade-up"
-                                     data-aos-offset="200"
-                                     data-aos-delay="50"
-                                     data-aos-duration="1000"
-                                     data-aos-easing="ease-in-out"
-                                     data-aos-anchor-placement="center-bottom"
-                                >
-                                    <p class="display-4 text-center" style="font-weight: 700; font-size: 100px">My Spotify Story</p>
-                                </div>
-                                <div class="display-4 text-center"
-                                     data-aos="fade-up"
-                                     data-aos-offset="200"
-                                     data-aos-delay="50"
-                                     data-aos-duration="1000"
-                                     data-aos-easing="ease-in-out"
-                                     data-aos-anchor-placement="top-bottom"
-                                     id="sticky"
-                                >
-                                    2016
-                                </div>
-                                <div data-aos="fade-right"
-                                     data-aos-offset="200"
-                                     data-aos-delay="50"
-                                     data-aos-duration="1000"
-                                     data-aos-easing="ease-in-out"
-                                     data-aos-anchor-placement="top-bottom"
-                                >
-                                    <p class="display-4 text-center" style="font-weight: 400; font-size: 40px">Artists</p>
-                                </div>
-                                <div data-aos="fade-left"
-                                     data-aos-offset="200"
-                                     data-aos-delay="50"
-                                     data-aos-duration="1000"
-                                     data-aos-easing="ease-in-out"
-                                     data-aos-anchor-placement="top-bottom"
-                                >
-                                    <p class="display-4 text-center" style="font-weight: 400; font-size: 40px">Genres</p>
-                                </div>
+                        <div id="scroll-icon-2" class="pt-5 text-center" style="display: none">
+                            <p class="scroll-icon pb-5">View Infographics</p>
+                            <button type="button" class="btn btn-primary btn-spotify btn-lg btn-block mb-3" data-toggle="modal" data-target="#graphic-2016">
+                                2016
+                            </button>
+                            <button type="button" class="btn btn-primary btn-spotify btn-lg btn-block mb-3" data-toggle="modal" data-target="#graphic-2017">
+                                2017
+                            </button>
+                            <button type="button" class="btn btn-primary btn-spotify btn-lg btn-block mb-3" data-toggle="modal" data-target="#graphic-2018">
+                                2018
+                            </button>
+                            <button type="button" class="btn btn-primary btn-spotify btn-lg btn-block mb-3" data-toggle="modal" data-target="#graphic-2019">
+                                2019
+                            </button>
+                            <button type="button" class="btn btn-primary btn-spotify btn-lg btn-block mb-3" data-toggle="modal" data-target="#graphic-2020">
+                                2020
+                            </button>
+                        </div>
+                        <!-- Button trigger modal -->
+                        <div class="text-justify">
+                            <div class="text-center">
                                 <br>
                                 <br>
-                                <br>
-                                <br>
-                                <br>
-                                <br>
-                                <br>
-                                <br>
-                                <br>
-                                <br>
-                                <br>
-                                <br>
-                                <br>
-                                <br>
-                                <br>
-                                <br>
-                                <br>
-                                <br>
-                                <br>
+                                <a href="projects-menu.html" class="btn btn-outline-dark btn-lg">See More Projects...</a>
                             </div>
-                        </section>
-<!--                        <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel" data-interval="false">-->
-<!--                            <ol class="carousel-indicators">-->
-<!--                                <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>-->
-<!--                                <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>-->
-<!--                                <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>-->
-<!--                                <li data-target="#carouselExampleIndicators" data-slide-to="3"></li>-->
-<!--                                <li data-target="#carouselExampleIndicators" data-slide-to="4"></li>-->
-<!--                            </ol>-->
-<!--                            <div class="carousel-inner bg-light">-->
-<!--                                <div class="carousel-item my-3 active">-->
-<!--                                    <h2 class="display-4 text-center">2016</h2>-->
-<!--                                    <h4 id="artist-2016">Artist</h4>-->
-<!--                                    <h4 id="genre-2016">Genre</h4>-->
-<!--                                </div>-->
-<!--                                <div class="carousel-item my-3">-->
-<!--                                    <h2 class="display-4 text-center">2017</h2>-->
-<!--                                    <h4 id="artist-2017">Artist</h4>-->
-<!--                                    <h4 id="genre-2017">Genre</h4>-->
-<!--                                </div>-->
-<!--                                <div class="carousel-item my-3">-->
-<!--                                    <h2 class="display-4 text-center">2018</h2>-->
-<!--                                    <h4 id="artist-2018">Artist</h4>-->
-<!--                                    <h4 id="genre-2018">Genre</h4>-->
-<!--                                </div>-->
-<!--                                <div class="carousel-item my-3">-->
-<!--                                    <h2 class="display-4 text-center">2019</h2>-->
-<!--                                    <h4 id="artist-2019">Artist</h4>-->
-<!--                                    <h4 id="genre-2019">Genre</h4>-->
-<!--                                </div>-->
-<!--                                <div class="carousel-item my-3">-->
-<!--                                    <h2 class="display-4 text-center">2020</h2>-->
-<!--                                    <h4 id="artist-2020">Artist</h4>-->
-<!--                                    <h4 id="genre-2020">Genre</h4>-->
-<!--                                </div>-->
-<!--                            </div>-->
-<!--                            <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">-->
-<!--                                <svg width="5em" height="5em" viewBox="0 0 16 16" class="bi bi-caret-left-fill" fill="#1DB954" xmlns="http://www.w3.org/2000/svg">-->
-<!--                                    <path d="M3.86 8.753l5.482 4.796c.646.566 1.658.106 1.658-.753V3.204a1 1 0 0 0-1.659-.753l-5.48 4.796a1 1 0 0 0 0 1.506z"/>-->
-<!--                                </svg>-->
-<!--                                <span class="sr-only">Previous</span>-->
-<!--                            </a>-->
-<!--                            <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">-->
-<!--                                <svg width="5em" height="5em" viewBox="0 0 16 16" class="bi bi-caret-right-fill" fill="#1DB954" xmlns="http://www.w3.org/2000/svg">-->
-<!--                                    <path d="M12.14 8.753l-5.482 4.796c-.646.566-1.658.106-1.658-.753V3.204a1 1 0 0 1 1.659-.753l5.48 4.796a1 1 0 0 1 0 1.506z"/>-->
-<!--                                </svg>-->
-<!--                                <span class="sr-only">Next</span>-->
-<!--                            </a>-->
-<!--                        </div>-->
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
+</div>
+<!-- Modal -->
+<div class="spotify-graphic">
+
 </div>
 <div w3-include-html="footer.html"></div>
 <!-- Cookie Consent -->
@@ -299,16 +228,6 @@
         gtag('config', 'UA-153213137-1', { 'anonymize_ip': true });
 
     }
-
-    var distance = $('#sticky').offset().top;
-
-    $(window).scroll(function() {
-        if ( $(this).scrollTop() >= distance ) {
-            console.log('is in top');
-        } else {
-            console.log('is not in top');
-        }
-    });
 
 </script>
 </body>
