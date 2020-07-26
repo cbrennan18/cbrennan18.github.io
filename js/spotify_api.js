@@ -414,7 +414,7 @@ function populateChart(element, labels, data, color, bgColor, title, average) {
                     backgroundColor: bgColor
                 },
                 {
-                    label: 'Top 50 Average',
+                    label: 'Global Users Average',
                     borderColor: 'rgba(0,0,0,0.5)',
                     pointBackgroundColor: 'rgb(0,0,0, 0.5)',
                     data: average

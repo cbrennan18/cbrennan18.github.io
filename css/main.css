@@ -414,6 +414,16 @@ SCROLLING ANIMATION SECTION
     height: 150px;
     object-fit: cover;
 }
+
+@media only screen and (max-width: 336px) {
+    .crop {
+        width: 100px;
+        height: 100px;
+        object-fit: cover;
+    }
+}
+
+
 .behind {
     float: right;
     font-weight: bolder !important;
