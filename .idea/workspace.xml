@@ -20,12 +20,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="67446fdf-5c38-491d-974f-df70b2a407ad" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/css/main.css" beforeDir="false" afterPath="$PROJECT_DIR$/css/main.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/js/spotify_api.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/spotify_api.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/projects-menu.html" beforeDir="false" afterPath="$PROJECT_DIR$/projects-menu.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/sitemap.xml" beforeDir="false" afterPath="$PROJECT_DIR$/sitemap.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/spotify.html" beforeDir="false" afterPath="$PROJECT_DIR$/spotify.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -139,7 +134,7 @@
       <workItem from="1593599436264" duration="5434000" />
       <workItem from="1593749840611" duration="43137000" />
       <workItem from="1594620015962" duration="51203000" />
-      <workItem from="1595392458494" duration="40552000" />
+      <workItem from="1595392458494" duration="40743000" />
     </task>
     <servers />
   </component>
