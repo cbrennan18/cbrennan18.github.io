@@ -118,7 +118,7 @@ function getSpotifyPlaylists() {
 }
 
 async function getYearlyArtists(final_dict) {
-
+     console.log(final_dict);
     let y = [], a = [], top_five = [];
     for (let [year, value] of final_dict.artists.entries()) {
         y.push(year);
