@@ -571,17 +571,24 @@ function getSpotifyArtists(str1) {
 }
 
 function getGenreCounts(data, genre_counts) {
-    let i, j = 0;
-    for (i = 0; i < data.artists.length; i++) {
-        for (j = 0; j < data.artists[i].genres.length; j++) {
-            let genre = toTitleCase(data.artists[i].genres[j]);
-            if (genre !== 'pop') {
-                getGenre(genre_counts, genre);
-            } else {
-                getGenre(genre_counts, 'Pop');
+    try {
+        let i, j = 0;
+        for (i = 0; i < data.artists.length; i++) {
+            if (data.artists[i].genres != null) {
+                for (j = 0; j < data.artists[i].genres.length; j++) {
+                    let genre = toTitleCase(data.artists[i].genres[j]);
+                    if (genre !== 'pop') {
+                        getGenre(genre_counts, genre);
+                    } else {
+                        getGenre(genre_counts, 'Pop');
+                    }
+                }
             }
         }
+    } catch(e) {
+        console.log(e);
     }
+
     return genre_counts;
 }
 
@@ -657,28 +664,38 @@ async function getAudioFeatures() {
         songstr2 = songstr2.slice(0, -1);
 
         await audioFeaturesRequest(songstr).done(function (data) {
-            let i;
-            for (i = 0; i < 50; i++) {
-                count += 1;
-                danceability_sum += data.audio_features[i].danceability;
-                valence_sum += data.audio_features[i].valence;
-                energy_sum += data.audio_features[i].energy;
-                acousticness_sum += data.audio_features[i].acousticness;
-            }
-            if(songstr2.length > 1) {
-                audioFeaturesRequest(songstr2).done(function (data) {
-                    let i;
-                    for (i = 0; i < 50; i++) {
+            try {
+                let i;
+                for (i = 0; i < 50; i++) {
+                    if (data.audio_features[i].danceability != null) {
                         count += 1;
                         danceability_sum += data.audio_features[i].danceability;
                         valence_sum += data.audio_features[i].valence;
                         energy_sum += data.audio_features[i].energy;
                         acousticness_sum += data.audio_features[i].acousticness;
+                    } else {
+
                     }
-                });
+                }
+                if(songstr2.length > 1) {
+                    audioFeaturesRequest(songstr2).done(function (data) {
+                        let i;
+                        for (i = 0; i < 50; i++) {
+                            if (data.audio_features[i].danceability != null) {
+                                count += 1;
+                                danceability_sum += data.audio_features[i].danceability;
+                                valence_sum += data.audio_features[i].valence;
+                                energy_sum += data.audio_features[i].energy;
+                                acousticness_sum += data.audio_features[i].acousticness;
+                            }
+                        }
+                    });
+                }
+                audioFeatures = {'danceability':danceability_sum/count,'valence':valence_sum/count,'energy':energy_sum/count,'acousticness':acousticness_sum/count};
+                audio_dict.set(year, audioFeatures);
+            } catch(e) {
+                console.log(e);
             }
-            audioFeatures = {'danceability':danceability_sum/count,'valence':valence_sum/count,'energy':energy_sum/count,'acousticness':acousticness_sum/count};
-            audio_dict.set(year, audioFeatures);
         });
     }
     await $(document).trigger('audio_features_complete');
