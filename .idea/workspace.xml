@@ -20,8 +20,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="67446fdf-5c38-491d-974f-df70b2a407ad" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/codeStyles/codeStyleConfig.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/cbrennan18.github.io.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/cbrennan18.github.io.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Gemfile" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Gemfile.lock" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/js/spotify_api.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/spotify_api.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/projects-menu.html" beforeDir="false" afterPath="$PROJECT_DIR$/projects-menu.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -57,6 +62,7 @@
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
     <property name="settings.editor.selected.configurable" value="editing.templates" />
+    <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
@@ -68,6 +74,7 @@
       <recent name="$PROJECT_DIR$/img/generic" />
     </key>
   </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="project-level" UseSingleDictionary="true" transferred="true" />
   <component name="SvnConfiguration">
     <configuration />
   </component>
@@ -138,12 +145,15 @@
       <workItem from="1595392458494" duration="40842000" />
       <workItem from="1595761386839" duration="118000" />
       <workItem from="1595774626551" duration="1380000" />
-      <workItem from="1595844442212" duration="1591000" />
+      <workItem from="1595844442212" duration="1941000" />
+      <workItem from="1599491899412" duration="297000" />
+      <workItem from="1599492251874" duration="271000" />
+      <workItem from="1603297991844" duration="513000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
-    <option name="version" value="2" />
+    <option name="version" value="3" />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
     <option name="TAB_STATES">
@@ -158,35 +168,13 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="416" y="259" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1592968139097">
-      <screen x="0" y="0" width="1440" height="900" />
-    </state>
-    <state x="416" y="259" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1440.900@0.0.1440.900" timestamp="1592968139097" />
-    <state x="458" y="204" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1594184963892">
-      <screen x="0" y="0" width="1440" height="900" />
-    </state>
-    <state x="458" y="204" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1440.900@0.0.1440.900" timestamp="1594184963892" />
     <state x="229" y="89" key="SettingsEditor" timestamp="1594962069533">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
     <state x="229" y="89" key="SettingsEditor/0.0.1440.900@0.0.1440.900" timestamp="1594962069533" />
-    <state width="653" height="445" key="SwitcherDM" timestamp="1589172230902">
+    <state x="385" y="196" width="670" height="676" key="search.everywhere.popup" timestamp="1603298067123">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state width="653" height="445" key="SwitcherDM/0.0.1440.900@0.0.1440.900" timestamp="1589172230902" />
-    <state x="386" y="207" width="667" height="578" key="find.popup" timestamp="1592967100304">
-      <screen x="0" y="0" width="1440" height="900" />
-    </state>
-    <state x="386" y="207" width="667" height="578" key="find.popup/0.0.1440.900@0.0.1440.900" timestamp="1592967100304" />
-    <state x="386" y="207" width="667" height="486" key="find.popup/0.23.1440.800@0.23.1440.800" timestamp="1588224363923" />
-    <state x="385" y="191" key="run.anything.popup" timestamp="1588224258521">
-      <screen x="0" y="23" width="1440" height="800" />
-    </state>
-    <state x="385" y="191" key="run.anything.popup/0.23.1440.800@0.23.1440.800" timestamp="1588224258521" />
-    <state x="385" y="196" width="670" height="676" key="search.everywhere.popup" timestamp="1595775304940">
-      <screen x="0" y="0" width="1440" height="900" />
-    </state>
-    <state x="385" y="196" width="670" height="676" key="search.everywhere.popup/0.0.1440.900@0.0.1440.900" timestamp="1595775304940" />
-    <state x="385" y="196" width="670" height="676" key="search.everywhere.popup/0.23.1440.797@0.23.1440.797" timestamp="1593664804963" />
+    <state x="385" y="196" width="670" height="676" key="search.everywhere.popup/0.0.1440.900@0.0.1440.900" timestamp="1603298067123" />
   </component>
 </project>

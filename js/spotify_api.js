@@ -34,8 +34,7 @@ function getSpotify() {
     // Replace with your app's client ID, redirect URI and desired scopes
     const clientId = '54d26b92340c44bdaa4b0f54b09a858f';
     const redirectUri = 'https%3A%2F%2Fcbrennan18.github.io%2Fspotify.html';
-    // 'https%3A%2F%2Fcbrennan18.github.io%2Fspotify.html'
-    // 'http%3A%2F%2Flocalhost%3A8080%2Fcbrennan18.github.io%2Fspotify.html'
+    // const redirectUri = 'http%3A%2F%2Flocalhost%3A8080%2Fcbrennan18.github.io%2Fspotify.html';
     const scopes = [
         'user-read-email',
         'user-read-private',
