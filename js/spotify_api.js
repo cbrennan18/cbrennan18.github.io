@@ -41,7 +41,6 @@ function getSpotify() {
         'user-top-read',
         'playlist-read-private'
     ];
-    // TODO change dialog
     const showDialog = 'false';
 
     // If there is no token, redirect to Spotify authorization
@@ -157,10 +156,10 @@ async function getYearlyArtists(final_dict) {
             let rank = j + 1;
             let item_name =
                 '<div data-aos="fade-up"' +
-                    'data-aos-delay="50"' +
-                    'data-aos-duration="1000"' +
-                    'data-aos-easing="ease-in-out"' +
-                    'data-aos-anchor-placement="top-bottom">' +
+                    ' data-aos-delay="50"' +
+                    ' data-aos-duration="1000"' +
+                    ' data-aos-easing="ease-in-out"' +
+                    ' data-aos-anchor-placement="top-bottom">' +
                     '<div class="card card-spotify border-0 mt-3 m-md-3" style="border-radius: 45px;"> ' +
                         '<div class="row "> ' +
                             '<div class="col-5"> ' +

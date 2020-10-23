@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
   <component name="BranchesTreeState">
     <expand>
       <path>
@@ -20,13 +23,17 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="67446fdf-5c38-491d-974f-df70b2a407ad" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/codeStyles/codeStyleConfig.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/cbrennan18.github.io.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/cbrennan18.github.io.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Gemfile" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Gemfile.lock" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/big-into-the-fitness.html" beforeDir="false" afterPath="$PROJECT_DIR$/big-into-the-fitness.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/footer.html" beforeDir="false" afterPath="$PROJECT_DIR$/footer.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/js/spotify_api.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/spotify_api.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/netflix-and-standstill.html" beforeDir="false" afterPath="$PROJECT_DIR$/netflix-and-standstill.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/privacypolicy.html" beforeDir="false" afterPath="$PROJECT_DIR$/privacypolicy.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/projects-menu.html" beforeDir="false" afterPath="$PROJECT_DIR$/projects-menu.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/running-plans.html" beforeDir="false" afterPath="$PROJECT_DIR$/running-plans.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sitemap.xml" beforeDir="false" afterPath="$PROJECT_DIR$/sitemap.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spotify.html" beforeDir="false" afterPath="$PROJECT_DIR$/spotify.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -43,6 +50,12 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="ProblemsViewState">
+    <hideBySeverity>
+      <option value="15" />
+      <option value="200" />
+    </hideBySeverity>
   </component>
   <component name="ProjectId" id="1PCgPUQ6yXdJc12FP14lMYYfFAs" />
   <component name="ProjectViewState">
@@ -148,7 +161,8 @@
       <workItem from="1595844442212" duration="1941000" />
       <workItem from="1599491899412" duration="297000" />
       <workItem from="1599492251874" duration="271000" />
-      <workItem from="1603297991844" duration="513000" />
+      <workItem from="1603297991844" duration="895000" />
+      <workItem from="1603319298252" duration="2193000" />
     </task>
     <servers />
   </component>
@@ -172,9 +186,13 @@
       <screen x="0" y="0" width="1440" height="900" />
     </state>
     <state x="229" y="89" key="SettingsEditor/0.0.1440.900@0.0.1440.900" timestamp="1594962069533" />
-    <state x="385" y="196" width="670" height="676" key="search.everywhere.popup" timestamp="1603298067123">
+    <state x="421" y="205" width="598" height="548" key="find.popup" timestamp="1603324205381">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state x="385" y="196" width="670" height="676" key="search.everywhere.popup/0.0.1440.900@0.0.1440.900" timestamp="1603298067123" />
+    <state x="421" y="205" width="598" height="548" key="find.popup/0.0.1440.900@0.0.1440.900" timestamp="1603324205381" />
+    <state x="385" y="196" width="670" height="676" key="search.everywhere.popup" timestamp="1603319484329">
+      <screen x="0" y="0" width="1440" height="900" />
+    </state>
+    <state x="385" y="196" width="670" height="676" key="search.everywhere.popup/0.0.1440.900@0.0.1440.900" timestamp="1603319484329" />
   </component>
 </project>

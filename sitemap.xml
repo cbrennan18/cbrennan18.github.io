@@ -1,38 +1,43 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
   <!--  created with Free Online Sitemap Generator www.xml-sitemaps.com  -->
   <url>
-    <loc>https://cbrennan18.github.io/</loc>
+    <loc>https://cbrennan.ie/</loc>
     <lastmod>2020-07-26T09:43:40+00:00</lastmod>
     <priority>1.00</priority>
   </url>
   <url>
-    <loc>https://cbrennan18.github.io/projects-menu.html</loc>
+    <loc>https://cbrennan.ie/projects-menu.html</loc>
     <lastmod>2020-07-26T09:43:40+00:00</lastmod>
     <priority>0.80</priority>
   </url>
   <url>
-    <loc>https://cbrennan18.github.io/files/Ciar%C3%A1n_Brennan_CV.pdf</loc>
+    <loc>https://cbrennan.ie/files/Ciar%C3%A1n_Brennan_CV.pdf</loc>
     <lastmod>2020-07-26T09:43:40+00:00</lastmod>
     <priority>0.80</priority>
   </url>
   <url>
-    <loc>https://cbrennan18.github.io/spotify.html</loc>
+    <loc>https://cbrennan.ie/spotify.html</loc>
     <lastmod>2020-07-26T09:43:40+00:00</lastmod>
     <priority>0.64</priority>
   </url>
   <url>
-    <loc>https://cbrennan18.github.io/running-plans.html</loc>
+    <loc>https://cbrennan.ie/running-plans.html</loc>
     <lastmod>2020-07-26T09:43:40+00:00</lastmod>
     <priority>0.64</priority>
   </url>
   <url>
-    <loc>https://cbrennan18.github.io/netflix-and-standstill.html</loc>
+    <loc>https://cbrennan.ie/netflix-and-standstill.html</loc>
     <lastmod>2020-07-26T09:43:40+00:00</lastmod>
     <priority>0.64</priority>
   </url>
   <url>
-    <loc>https://cbrennan18.github.io/big-into-the-fitness.html</loc>
+    <loc>https://cbrennan.ie/big-into-the-fitness.html</loc>
     <lastmod>2020-07-26T09:43:40+00:00</lastmod>
     <priority>0.64</priority>
+  </url>
+  <url>
+    <loc>https://cbrennan.ie/privacypolicy.html</loc>
+    <lastmod>2020-07-26T09:43:40+00:00</lastmod>
+    <priority>0.01</priority>
   </url>
 </urlset>
