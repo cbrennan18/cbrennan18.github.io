@@ -23,8 +23,34 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="67446fdf-5c38-491d-974f-df70b2a407ad" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/css/fontawesome-5.15.1/css/brands.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/css/fontawesome-5.15.1/css/brands.min.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/css/fontawesome-5.15.1/css/fontawesome.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/css/fontawesome-5.15.1/css/fontawesome.min.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/css/fontawesome-5.15.1/webfonts/fa-brands-400.eot" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/css/fontawesome-5.15.1/webfonts/fa-brands-400.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/css/fontawesome-5.15.1/webfonts/fa-brands-400.ttf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/css/fontawesome-5.15.1/webfonts/fa-brands-400.woff" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/css/fontawesome-5.15.1/webfonts/fa-brands-400.woff2" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/css/fontawesome-5.15.1/webfonts/fa-regular-400.eot" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/css/fontawesome-5.15.1/webfonts/fa-regular-400.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/css/fontawesome-5.15.1/webfonts/fa-regular-400.ttf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/css/fontawesome-5.15.1/webfonts/fa-regular-400.woff" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/css/fontawesome-5.15.1/webfonts/fa-regular-400.woff2" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/css/fontawesome-5.15.1/webfonts/fa-solid-900.eot" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/css/fontawesome-5.15.1/webfonts/fa-solid-900.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/css/fontawesome-5.15.1/webfonts/fa-solid-900.ttf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/css/fontawesome-5.15.1/webfonts/fa-solid-900.woff" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/css/fontawesome-5.15.1/webfonts/fa-solid-900.woff2" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/big-into-the-fitness.html" beforeDir="false" afterPath="$PROJECT_DIR$/big-into-the-fitness.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/css/main.css" beforeDir="false" afterPath="$PROJECT_DIR$/css/main.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/navbar.html" beforeDir="false" afterPath="$PROJECT_DIR$/navbar.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/netflix-and-standstill.html" beforeDir="false" afterPath="$PROJECT_DIR$/netflix-and-standstill.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/privacypolicy.html" beforeDir="false" afterPath="$PROJECT_DIR$/privacypolicy.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/running-plans.html" beforeDir="false" afterPath="$PROJECT_DIR$/running-plans.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spotify.html" beforeDir="false" afterPath="$PROJECT_DIR$/spotify.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -36,6 +62,7 @@
       <list>
         <option value="HTML File" />
         <option value="JavaScript File" />
+        <option value="CSS File" />
       </list>
     </option>
   </component>
@@ -59,23 +86,28 @@
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="js.last.introduce.type" value="LET" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/img/generic" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/css" />
+    <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
     <property name="node.js.path.for.package.tslint" value="project" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
+    <property name="run.code.analysis.last.selected.profile" value="pProject Default" />
     <property name="settings.editor.selected.configurable" value="editing.templates" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/css" />
+      <recent name="$PROJECT_DIR$/css/fontawesome-5.15.1" />
+      <recent name="$PROJECT_DIR$/css/fontawesome" />
+      <recent name="$PROJECT_DIR$/img/generic" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/files" />
       <recent name="$PROJECT_DIR$" />
       <recent name="$PROJECT_DIR$/_includes" />
-    </key>
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/img/generic" />
     </key>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="project-level" UseSingleDictionary="true" transferred="true" />
@@ -154,7 +186,7 @@
       <workItem from="1599492251874" duration="271000" />
       <workItem from="1603297991844" duration="895000" />
       <workItem from="1603319298252" duration="2658000" />
-      <workItem from="1603816348420" duration="525000" />
+      <workItem from="1603816348420" duration="6937000" />
     </task>
     <servers />
   </component>
@@ -174,17 +206,25 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="229" y="89" key="SettingsEditor" timestamp="1594962069533">
+    <state x="455" y="259" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1603835608293">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state x="229" y="89" key="SettingsEditor/0.0.1440.900@0.0.1440.900" timestamp="1594962069533" />
-    <state x="421" y="205" width="598" height="548" key="find.popup" timestamp="1603324205381">
+    <state x="455" y="259" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1440.900@0.0.1440.900" timestamp="1603835608293" />
+    <state x="468" y="312" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1" timestamp="1603835691632">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state x="421" y="205" width="598" height="548" key="find.popup/0.0.1440.900@0.0.1440.900" timestamp="1603324205381" />
-    <state x="385" y="196" width="670" height="676" key="search.everywhere.popup" timestamp="1603319484329">
+    <state x="468" y="312" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1/0.0.1440.900@0.0.1440.900" timestamp="1603835691632" />
+    <state x="100" y="100" width="1240" height="700" key="dock-window-1" timestamp="1603833518357">
+      <screen x="0" y="23" width="1440" height="797" />
+    </state>
+    <state x="100" y="100" width="1240" height="700" key="dock-window-1/0.23.1440.797@0.23.1440.797" timestamp="1603833518357" />
+    <state x="413" y="205" width="648" height="640" key="find.popup" timestamp="1603837094523">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state x="385" y="196" width="670" height="676" key="search.everywhere.popup/0.0.1440.900@0.0.1440.900" timestamp="1603319484329" />
+    <state x="413" y="205" width="648" height="640" key="find.popup/0.0.1440.900@0.0.1440.900" timestamp="1603837094523" />
+    <state x="385" y="196" width="670" height="676" key="search.everywhere.popup" timestamp="1603837974778">
+      <screen x="0" y="0" width="1440" height="900" />
+    </state>
+    <state x="385" y="196" width="670" height="676" key="search.everywhere.popup/0.0.1440.900@0.0.1440.900" timestamp="1603837974778" />
   </component>
 </project>
