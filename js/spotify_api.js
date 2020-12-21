@@ -60,8 +60,6 @@ async function showData() {
     document.getElementById('spinner').style.display = 'inline-block';
     document.getElementById('artists-display').style.display = 'none';
     document.getElementById('audio-features').style.display = 'none';
-    document.getElementById('scroll-icon').style.display = 'none';
-    document.getElementById('scroll-icon-2').style.display = 'none';
 
     $(document).unbind('audio_features_complete');
     await getSpotifyPlaylists().done(function(data) {
@@ -97,8 +95,6 @@ async function showData() {
     document.getElementById('spinner').style.display = 'none';
     document.getElementById('artists-display').style.display = 'block';
     document.getElementById('audio-features').style.display = 'block';
-    document.getElementById('scroll-icon').style.display = 'block';
-    document.getElementById('scroll-icon-2').style.display = 'block';
 
     await softScrollClickSpotify();
 }
@@ -267,102 +263,9 @@ function getYearlyFeatures(top_five, final_dict) {
         top_five[i].features = values;
     }
 
-    getModals(top_five);
 }
 
-function getModals(top_five) {
-    // d v e a
-    $(".spotify-graphic").empty();
 
-    let graphic_name;
-
-    for (let i = 0; i < top_five.length; i++) {
-        graphic_name = $(
-            '<div class="modal fade" id="graphic-' + top_five[i].year + '" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true"> ' +
-                '<div class="modal-dialog"> ' +
-                    '<div class="modal-content modal-content-spotify"> ' +
-                        '<div class="modal-body"> ' +
-                            '<div class="col-12 d-flex rectangle"> ' +
-                                '<h5 class="col-12 text-center my-music-2016 my-auto" id="exampleModalLabel">My Music ' + top_five[i].year + '</h5> ' +
-                            '</div> ' +
-                            '<div class="col-12 rectangle-large"> ' +
-                                '<h6 class="col-12 text-center rectangle-title">Top Artists</h6> ' +
-                                '<hr class="line-title"> ' +
-                                '<div class="row d-flex"> ' +
-                                    '<img src="' + top_five[i].artist[0].url + '" class="artist-image" alt="artist image"/> ' +
-                                    '<p class="artist-name text-truncate">' + top_five[i].artist[0].name + '</p> ' +
-                                    '<p class="artist-number ml-auto mr-4">1</p> ' +
-                                '</div> ' +
-                                '<div class="row d-flex"> ' +
-                                    '<img src="' + top_five[i].artist[1].url + '" class="artist-image" alt="artist image"/> ' +
-                                    '<p class="artist-name text-truncate">' + top_five[i].artist[1].name + '</p> ' +
-                                    '<p class="artist-number ml-auto mr-4">2</p> ' +
-                                '</div> ' +
-                                '<div class="row d-flex"> ' +
-                                    '<img src="' + top_five[i].artist[2].url + '" class="artist-image" alt="artist image"/> ' +
-                                    '<p class="artist-name text-truncate">' + top_five[i].artist[2].name + '</p> ' +
-                                    '<p class="artist-number ml-auto mr-4">3</p> ' +
-                                '</div> ' +
-                            '</div> ' +
-                            '<div class="col-12 rectangle-large"> ' +
-                                '<h6 class="col-12 text-center rectangle-title">Top Genres</h6> ' +
-                                '<hr class="line-title"> ' +
-                                '<div class="row d-flex"> ' +
-                                    '<p class="genre-number ml-4">1</p> ' +
-                                    '<p class="genre-name ml-auto text-truncate">' + top_five[i].genres[0] + '</p> ' +
-                                    '<i class="fas fa-music ml-auto genre-image ml-auto mr-3"></i> ' +
-                                '</div> ' +
-                                '<div class="row d-flex"> ' +
-                                    '<p class="genre-number ml-4">2</p> ' +
-                                    '<p class="genre-name ml-auto text-truncate">' + top_five[i].genres[1] + '</p> ' +
-                                    '<i class="fas fa-headphones-alt genre-image ml-auto mr-3"></i> ' +
-                                '</div> ' +
-                                '<div class="row d-flex"> ' +
-                                    '<p class="genre-number ml-4">3</p> ' +
-                                    '<p class="genre-name ml-auto text-truncate">' + top_five[i].genres[2] + '</p> ' +
-                                    '<i class="fas fa-compact-disc genre-image ml-auto mr-3"></i> ' +
-                                '</div> ' +
-                            '</div> ' +
-                            '<div class="col-12 rectangle-large"> ' +
-                                '<h6 class="col-12 text-center rectangle-title">Musical Taste</h6> ' +
-                                '<hr class="line-title"> ' +
-                                '<div class="pt-3"> ' +
-                                    '<i class="fas fa-guitar taste-image"></i> ' +
-                                    '<div class="progress"> ' +
-                                        '<div class="progress-bar progress-bar-striped progress-bar-animated bg-dark" role="progressbar" style="width: ' + top_five[i].features[3] + '%" aria-valuenow="' + top_five[i].features[3] + '" aria-valuemin="0" aria-valuemax="100">' + top_five[i].features[3] + '%</div> ' +
-                                    '</div> ' +
-                                '</div> ' +
-                                '<div class="pt-3"> ' +
-                                    '<i class="fas fa-child taste-image"></i> ' +
-                                    '<div class="progress"> ' +
-                                        '<div class="progress-bar progress-bar-striped progress-bar-animated bg-dark" role="progressbar" style="width: ' + top_five[i].features[0] + '%" aria-valuenow="' + top_five[i].features[0] + '" aria-valuemin="0" aria-valuemax="100">' + top_five[i].features[0] + '%</div> ' +
-                                    '</div> ' +
-                                '</div> ' +
-                                '<div class="pt-3"> ' +
-                                    '<i class="fas fa-atom taste-image"></i> ' +
-                                    '<div class="progress"> ' +
-                                        '<div class="progress-bar progress-bar-striped progress-bar-animated bg-dark" role="progressbar" style="width: ' + top_five[i].features[2] + '%" aria-valuenow="' + top_five[i].features[2] + '" aria-valuemin="0" aria-valuemax="100">' + top_five[i].features[2] + '%</div> ' +
-                                    '</div> ' +
-                                '</div> ' +
-                                '<div class="pt-3"> ' +
-                                    '<i class="far fa-laugh-beam taste-image"></i> ' +
-                                    '<div class="progress"> ' +
-                                        '<div class="progress-bar progress-bar-striped progress-bar-animated bg-dark" role="progressbar" style="width: ' + top_five[i].features[1] + '%" aria-valuenow="' + top_five[i].features[1] + '" aria-valuemin="0" aria-valuemax="100">' + top_five[i].features[1] + '%</div> ' +
-                                    '</div> ' +
-                                '</div> ' +
-                            '</div> ' +
-                        '</div> ' +
-                        '<div class="modal-footer"> ' +
-                            '<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button> ' +
-                        '</div> ' +
-                    '</div> ' +
-                '</div> ' +
-            '</div>');
-
-        graphic_name.appendTo($('.spotify-graphic'));
-    }
-
-}
 
 function getCharts(final_dict) {
     let y = [], a = [], d = [], e=[], v=[];

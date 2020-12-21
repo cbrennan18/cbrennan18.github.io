@@ -372,7 +372,7 @@ SCROLLING ANIMATION SECTION
 .sticky {
     position: -webkit-sticky;
     position: sticky;
-    top: 0;
+    top: 40px;
     padding: 15px;
     clip-path: ellipse(51% 100% at 50% 0%);
     z-index: 1;

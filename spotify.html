@@ -57,20 +57,20 @@
                     <h6 class="text-center text-md-left">
                         <i>26 July 2020, 11:00</i>
                     </h6>
-                    <div data-aos="fade-up" data-aos-duration="2000">
-                        <img src="./img/music.jpg" class="img-fluid" alt="Spotify app open on a laptop and tablet"/>
-                        <div class="text-right">
-                            <a style="background-color:black;color:white;text-decoration:none;padding:4px 6px;/*noinspection CssInvalidPropertyValue*/font-family:-apple-system, BlinkMacSystemFont, San Francisco, Helvetica Neue, Helvetica, Ubuntu, Roboto, Noto, Segoe UI, Arial, sans-serif;font-size:12px;font-weight:bold;line-height:1.2;display:inline-block;border-radius:3px" href="https://unsplash.com/@heidifin" target="_blank" rel="noopener noreferrer"><span style="display:inline-block;padding:2px 3px"><svg xmlns="http://www.w3.org/2000/svg" style="height:12px;width:auto;position:relative;vertical-align:middle;top:-2px;fill:white" viewBox="0 0 32 32"><title>unsplash-logo</title><path d="M10 9V0h12v9H10zm12 5h10v18H0V14h10v9h12v-9z"></path></svg></span><span style="display:inline-block;padding:2px 3px">Heidi Fin</span></a>
+                    <div id="btnSpotify">
+                        <p class="blog-design">Click the button below to connect to Spotify and see what your data looks like on the inside!</p>
+                        <div class="text-center">
+                            <button class="btn btn-lg btn-success align-center" onclick="getSpotify()">Connect to Spotify</button>
                         </div>
-                        <br>
-                        <div class="text-justify">
-                            <div id="btnSpotify">
-                                <p class="blog-design">Click the button below to connect to Spotify and see what your data looks like on the inside!</p>
-                                <div class="text-center">
-                                    <button class="btn btn-lg btn-success align-center" onclick="getSpotify()">Connect to Spotify</button>
-                                </div>
+                    </div>
+                    <div id="blog-description">
+                        <div data-aos="fade-up" data-aos-duration="2000">
+                            <img src="./img/music.jpg" class="img-fluid" alt="Spotify app open on a laptop and tablet"/>
+                            <div class="text-right">
+                                <a style="background-color:black;color:white;text-decoration:none;padding:4px 6px;/*noinspection CssInvalidPropertyValue*/font-family:-apple-system, BlinkMacSystemFont, San Francisco, Helvetica Neue, Helvetica, Ubuntu, Roboto, Noto, Segoe UI, Arial, sans-serif;font-size:12px;font-weight:bold;line-height:1.2;display:inline-block;border-radius:3px" href="https://unsplash.com/@heidifin" target="_blank" rel="noopener noreferrer"><span style="display:inline-block;padding:2px 3px"><svg xmlns="http://www.w3.org/2000/svg" style="height:12px;width:auto;position:relative;vertical-align:middle;top:-2px;fill:white" viewBox="0 0 32 32"><title>unsplash-logo</title><path d="M10 9V0h12v9H10zm12 5h10v18H0V14h10v9h12v-9z"></path></svg></span><span style="display:inline-block;padding:2px 3px">Heidi Fin</span></a>
                             </div>
-                            <div id="blog-description">
+                            <br>
+                            <div class="text-justify">
                                 <p class="blog-design">
                                     Following a bit of a break from programming, I have finally got around to starting a new project on my website.
                                     It took me quite some time to decide on the right project to undertake.
@@ -97,11 +97,6 @@
                                         <div id="spinner" class="spinner-border" style="width: 5rem; height: 5rem; display: none" role="status">
                                             <span class="sr-only">Loading...</span>
                                         </div>
-                                        <div id="scroll-icon" class="pt-5" style="display: none">
-                                            <p class="scroll-icon">Scroll down to begin exploring your Spotify data!</p>
-                                            <i class="fas fa-angle-double-down scroll-icon"></i>
-                                            <div class="vh-60"></div>
-                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -113,7 +108,7 @@
                                      data-aos-easing="ease-in-out"
                                      data-aos-anchor-placement="bottom-bottom"
                                 >
-                                    <p class="display-4 text-center scroll-icon" style="font-weight: 700; font-size: 3.5rem">My Spotify, Visualised</p>
+                                    <p class="display-4 text-center scroll-icon" style="font-weight: 700; font-size: 3.5rem">Your Spotify, Visualised</p>
                                 </div>
                                 <section class="spotify-history">
                                 </section>
@@ -121,7 +116,7 @@
                         </div>
                         <div class="text-justify" id="audio-features" style="display: none">
                             <div class="display-5 text-center sticky taste-sticky green-bg">
-                                Musical Taste
+                                Attributes
                             </div>
                             <div class="taste p-5-xl">
                                 <p>
@@ -152,24 +147,6 @@
                                 <br>
                                 <b>Valence</b> is a measure from 0% to 100% describing the musical positiveness conveyed by a track. Tracks with high valence sound more positive (e.g. happy, cheerful, euphoric), while tracks with low valence sound more negative (e.g. sad, depressed, angry).
                             </div>
-                        </div>
-                        <div id="scroll-icon-2" class="pt-5 text-center" style="display: none">
-                            <p class="scroll-icon pb-5">View Infographics</p>
-                            <button type="button" class="btn btn-primary btn-spotify btn-lg btn-block mb-3" data-toggle="modal" data-target="#graphic-2016">
-                                2016
-                            </button>
-                            <button type="button" class="btn btn-primary btn-spotify btn-lg btn-block mb-3" data-toggle="modal" data-target="#graphic-2017">
-                                2017
-                            </button>
-                            <button type="button" class="btn btn-primary btn-spotify btn-lg btn-block mb-3" data-toggle="modal" data-target="#graphic-2018">
-                                2018
-                            </button>
-                            <button type="button" class="btn btn-primary btn-spotify btn-lg btn-block mb-3" data-toggle="modal" data-target="#graphic-2019">
-                                2019
-                            </button>
-                            <button type="button" class="btn btn-primary btn-spotify btn-lg btn-block mb-3" data-toggle="modal" data-target="#graphic-2020">
-                                2020
-                            </button>
                         </div>
                         <!-- Button trigger modal -->
                         <div class="text-justify">
