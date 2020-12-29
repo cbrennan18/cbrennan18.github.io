@@ -51,33 +51,39 @@
 <div class="body-padding-bottom d-flex flex-column min-vh-100">
     <div class="vh-100 fpl-bg-image">
         <div class="fpl-centered">
-            <p class="text-center display-4">FPL Analysis Dashboard</p>
-            <div id="loadDataFpl" class="mt-5 mb-4 animate__animated animate__fadeInUpBig animate__slower">
+            <p class="text-center h4 d-sm-none">FPL Analysis Dashboard</p>
+            <p class="text-center display-4 d-none d-md-block">FPL Analysis Dashboard</p>
+            <div id="loadDataFpl" class="mt-lg-5 mb-lg-4 animate__animated animate__fadeInUpBig animate__slower">
+                <p class="text-center d-sm-none">Enter League ID</p>
                 <div class="input-group">
                     <div class="input-group-prepend">
-                        <span class="input-group-text mb-4" id="">League ID:</span>
+                        <span class="input-group-text mb-4 d-none d-md-block">League ID:</span>
+                        <span class="input-group-text mb-4 d-sm-none" >ID:</span>
                     </div>
                     <label for="fplLeagueId"></label>
                     <input type="number" id="fplLeagueId" class="form-control mb-4"
                            placeholder="435209"/>
                 </div>
-                <a id="btnFplLeagueId" class="btn btn-block btn-fpl-green align-center" onclick="getFpl();" href="#viewData">Connect to FPL</a>
+                <a id="btnFplLeagueId" class="btn btn-block btn-fpl-green align-center" onclick="getFplMiniLeague();" href="#viewData">Connect to FPL</a>
             </div>
         </div>
     </div>
 
     <section class="viewDataFpl pt-4 pt-md-11 flex-fill bg-fpl-light">
+        <div class="m-1 text-left fpl-gameweek">
+
+        </div>
         <div class="container">
             <div class="row justify-content-center">
-                <div class="col-12 col-md-10 col-lg-8 order-md-2 pt-5 pt-5 pb-5">
-                    <h2 class="mt-5 text-center fpl-league-name">
-                        &nbsp;
-                    </h2>
+                <div class="col-12 col-md-10 col-lg-8 order-md-2">
+                    <div class="mt-5 text-center fpl-league-name">
+
+                    </div>
                     <div class="rounded bg-white">
-                        <table class="table table-borderless">
+                        <table class="table table-sm table-borderless text-fpl">
                             <thead>
                             <tr>
-                                <th scope="col">#</th>
+                                <th scope="col">Rank</th>
                                 <th scope="col">Player</th>
                                 <th scope="col">Points</th>
                             </tr>
