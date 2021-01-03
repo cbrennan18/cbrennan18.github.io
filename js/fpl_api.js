@@ -1,103 +1,8 @@
-// function getFplMiniLeague() {
-//     $(document).ready(function() {
-//
-//         let objApi = {};
-//         getFplBootstrapApi(function(results) {
-//             objApi["bootstrapApi"] = results;
-//             $(".fpl-gameweek").html("<h5 class='font-weight-normal'>" + objApi.bootstrapApi.gameweek.name + "</h5>");
-//         });
-//
-//         let leagueId = document.getElementById("fplLeagueId").value;
-//         if (leagueId === "") {
-//             leagueId = "435209";
-//         }
-//         let cors_api_url = 'https://cors-anywhere.herokuapp.com/';
-//         function doCORSRequest(options, printResult) {
-//             var x = new XMLHttpRequest();
-//             x.open(options.method, cors_api_url + options.url);
-//             x.onload = x.onerror = function() {
-//                 printResult(
-//                     (x.responseText)
-//                 );
-//             };
-//             x.send(options.data);
-//         }
-//
-//         // Bind event
-//         // API Fields
-//         let urlField = "https://fantasy.premierleague.com/api/leagues-classic/" + leagueId + "/standings/";
-//
-//         let myObj = null;
-//         doCORSRequest({
-//             method: 'GET',
-//             url: urlField,
-//         }, function printResult(result) {
-//
-//             let obj = JSON.parse(result);
-//             // Change JSON object pointer here
-//             myObj = obj;
-//             // document.getElementById('output').value = JSON.stringify(myObj, undefined, 4);
-//             $(".fpl-league-name").html("<h5 class='font-weight-normal'>" + obj.league.name + "</h5>");
-//             $('.table-fpl-league').empty();
-//             getFplTable(myObj);
-//
-//         });
-//
-//         document.querySelector('.viewDataFpl').scrollIntoView({
-//             behavior: 'smooth'
-//         });
-//
-//     });
-// }
-//
-//
-// function getFplBootstrapApi(callback) {
-//     let objApi = {};
-//     let cors_api_url = 'https://cors-anywhere.herokuapp.com/';
-//     function doCORSRequest(options, printResult) {
-//         var x = new XMLHttpRequest();
-//         x.open(options.method, cors_api_url + options.url);
-//         x.onload = x.onerror = function() {
-//             printResult(
-//                 (x.responseText)
-//             );
-//         };
-//         x.send(options.data);
-//     }
-//
-//     // Bind event
-//     let urlField = "https://fantasy.premierleague.com/api/bootstrap-static/";
-//
-//     let myObj = null;
-//     doCORSRequest({
-//         method: 'GET',
-//         url: urlField,
-//     }, function printResult(result) {
-//
-//         let obj = JSON.parse(result);
-//         // Change JSON object pointer here
-//         myObj = obj;
-//         objApi["gameweek"] = getFplGameweek(myObj.events);
-//         callback(objApi);
-//     });
-// }
-//
-// function getFplGameweek(obj) {
-//     let today = new Date();
-//     for(let i = 0; i < obj.length; i++) {
-//         let d = new Date((obj[i].deadline_time_epoch * 1000));
-//         if (d > today) {
-//             return(obj[i-1]);
-//         }
-//     }
-// }
-//
-// /* To access FPL team
-// get https://fantasy.premierleague.com/api/entry/261192/event/16/picks/ '.picks[i].element'
-// add each element to https://fantasy.premierleague.com/api/element-summary/
-// add each element to https://fantasy.premierleague.com/api/bootstrap-static/ '.
-//
-//  */
+/* To access FPL team
+get https://fantasy.premierleague.com/api/entry/261192/event/16/picks/ '.picks[i].element'
+add each element to https://fantasy.premierleague.com/api/element-summary/
+add each element to https://fantasy.premierleague.com/api/bootstrap-static/ '.
+ */
 
 const proxyURL = 'https://cors-anywhere.herokuapp.com/';
 const baseURL = 'https://fantasy.premierleague.com/api/';
@@ -115,7 +20,10 @@ const reqType = {
 }
 
 const doCORSRequest = async (url) => {
-    const response = await fetch(proxyURL + baseURL + url)
+    const response = await fetch(proxyURL + baseURL + url, {
+        method: 'GET', // *GET, POST, PUT, DELETE, etc.
+        mode: 'cors' // no-cors, *cors, same-origin
+    });
     return await response.json()
 }
 
@@ -156,20 +64,22 @@ function getFplMiniLeague() {
             leagueId = "435209";
         }
         let league = await getLeague(leagueId);
+        let gameweek = await getFplGameweek(bootstrap.events);
+        let teamByGW = await getTeamByGW(league.standings.results[0].entry, gameweek);
 
-        await getFplGameweek(bootstrap.events);
         await showLeague(league);
+        await showTeam(teamByGW, bootstrap);
+
     });
 }
 
 function getFplGameweek(obj) {
-    console.log(obj);
     let today = new Date();
     for(let i = 0; i < obj.length; i++) {
         let d = new Date((obj[i].deadline_time_epoch * 1000));
         if (d > today) {
             $(".fpl-gameweek").html("<h5 class='font-weight-normal'>" + obj[i-1].name + "</h5>");
-            break;
+            return obj[i-1].id;
         }
     }
 }
@@ -183,6 +93,49 @@ function showLeague(obj) {
     document.querySelector('.viewDataFpl').scrollIntoView({
         behavior: 'smooth'
     });
+
+}
+
+function showTeam(team, bootstrap)  {
+    let squad = {}
+    for (let i = 0; i < team.picks.length; i++) {
+        for (let j = 0; j < bootstrap.elements.length; j++) {
+            if (bootstrap.elements[j].id === team.picks[i].element) {
+                squad[i] = {
+                    "id": bootstrap.elements[j].id,
+                    "name": bootstrap.elements[j].web_name,
+                    "position": bootstrap.elements[j].element_type,
+                    "points": bootstrap.elements[j].event_points,
+                    "photo": "https://resources.premierleague.com/premierleague/photos/players/110x140/p" + bootstrap.elements[j].code + ".png",
+                }
+            }
+        }
+    }
+    $(".fpl-team div").html('');
+    for (let i = 0; i < Object.keys(squad).length; i++) {
+        let item = $(
+            "<div class='card text-center border-0 m-0 p-0'>" +
+                "<div class='card-body m-1 p-0'>" +
+                    "<img class='img-fpl-player' src='" + squad[i].photo + "' alt='Player Image'/>" +
+                    "<p class='card-title fpl-player bg-fpl-green-name'>" + squad[i].name + " </p>" +
+                    "<p class='card-text fpl-player bg-fpl-green bg-fpl-player-score'>" + squad[i].points + " </p>" +
+                "</div>" +
+            "</div>"
+        );
+        if (i < 15) {
+            if (squad[i].position === 1) {
+                item.appendTo($(".gk"));
+            } else if (squad[i].position === 2) {
+                item.appendTo($(".def"));
+            } else if (squad[i].position === 3) {
+                item.appendTo($(".mid"));
+            } else {
+                item.appendTo($(".fwd"));
+            }
+        } else {
+            item.appendTo($(".bench"));
+        }
+    }
 }
 
 function getFplTable(obj) {
