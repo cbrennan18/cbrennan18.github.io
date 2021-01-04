@@ -728,9 +728,9 @@ FPL EXTRA STYLES SECTION
 .fpl-player {
     min-width: 10vw;
     margin: 0 !important;
-    padding: 5px !important;
+    padding: 3px !important;
     font-size: small;
-    font-weight: bolder;
+    font-weight: normal;
 }
 
 @media only screen and (max-width: 480px) {

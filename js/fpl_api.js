@@ -4,7 +4,7 @@ add each element to https://fantasy.premierleague.com/api/element-summary/
 add each element to https://fantasy.premierleague.com/api/bootstrap-static/ '.
  */
 
-const proxyURL = 'https://cors-anywhere.herokuapp.com/';
+const proxyURL = 'https://fplcorsproxy.herokuapp.com/';
 const baseURL = 'https://fantasy.premierleague.com/api/';
 
 const reqType = {
@@ -22,7 +22,9 @@ const reqType = {
 const doCORSRequest = async (url) => {
     const response = await fetch(proxyURL + baseURL + url, {
         method: 'GET', // *GET, POST, PUT, DELETE, etc.
-        mode: 'cors' // no-cors, *cors, same-origin
+        headers: {
+            'Access-Control-Allow-Origin':'*'
+        }
     });
     return await response.json()
 }
@@ -65,13 +67,20 @@ function getFplMiniLeague() {
         }
         let league = await getLeague(leagueId);
         let gameweek = await getFplGameweek(bootstrap.events);
-        let teamByGW = await getTeamByGW(league.standings.results[0].entry, gameweek);
 
-        await showLeague(league);
-        await showTeam(teamByGW, bootstrap);
+        await showLeague(league, gameweek);
 
     });
 }
+
+function getTeamByClick(id, gameweek) {
+    $(document).ready(async function() {
+        let bootstrap = await getBootstrap();
+        let teamByGW = await getTeamByGW(id, gameweek);
+        await showTeam(teamByGW, bootstrap);
+    });
+}
+
 
 function getFplGameweek(obj) {
     let today = new Date();
@@ -84,11 +93,11 @@ function getFplGameweek(obj) {
     }
 }
 
-function showLeague(obj) {
+function showLeague(obj, gameweek) {
 
     $(".fpl-league-name").html("<h5 class='font-weight-normal'>" + obj.league.name + "</h5>");
     $('.table-fpl-league').empty();
-    getFplTable(obj);
+    getFplTable(obj, gameweek);
 
     document.querySelector('.viewDataFpl').scrollIntoView({
         behavior: 'smooth'
@@ -122,7 +131,7 @@ function showTeam(team, bootstrap)  {
                 "</div>" +
             "</div>"
         );
-        if (i < 15) {
+        if (i < 11) {
             if (squad[i].position === 1) {
                 item.appendTo($(".gk"));
             } else if (squad[i].position === 2) {
@@ -136,13 +145,16 @@ function showTeam(team, bootstrap)  {
             item.appendTo($(".bench"));
         }
     }
+    document.querySelector('#fplTeam').scrollIntoView({
+        behavior: 'smooth'
+    });
 }
 
-function getFplTable(obj) {
+function getFplTable(obj, gameweek) {
     let rank = obj.standings.results;
     for (let i = 0; i < rank.length; i++) {
         let item = $(
-            '<tr>' +
+            '<tr onClick="getTeamByClick(' + rank[i].entry +',' + gameweek + ')">' +
                 '<th scope="row">' + rank[i].rank + '</th>' +
                 '<td><span class="fpl-red">' + rank[i].entry_name + '</span><br><span class="font-weight-lighter">' + rank[i].player_name + '</span></td>' +
                 '<td>' + rank[i].total + '</td>' +
