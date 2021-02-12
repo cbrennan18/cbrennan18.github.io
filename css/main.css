@@ -716,10 +716,10 @@ FPL EXTRA STYLES SECTION
 }
 
 .text-fpl {
-    font-size: 1rem;
+    font-size: 1rem !important;
 }
 .img-fpl-player {
-    width: 5vw;
+    width: 4vw;
     border-radius: 50%;
     display: block;
     margin: 0 auto;
@@ -728,14 +728,17 @@ FPL EXTRA STYLES SECTION
 .fpl-player {
     min-width: 10vw;
     margin: 0 !important;
-    padding: 3px !important;
     font-size: small;
     font-weight: normal;
 }
 
 @media only screen and (max-width: 480px) {
+    .text-fpl{
+        font-size: 0.9rem !important;
+    }
+
     .img-fpl-player {
-        width: 10vw;
+        width: 8vw;
     }
     .fpl-player {
         min-width: 16vw;
@@ -745,12 +748,61 @@ FPL EXTRA STYLES SECTION
         font-weight: normal;
     }
 }
+
+@media only screen and (max-width: 380px) {
+    .text-fpl{
+        font-size: 0.7rem !important;
+    }
+}
+
 @media only screen and (max-width: 336px) {
     .text-fpl{
-        font-size: 0.7rem;
+        font-size: 0.7rem !important;
     }
     .img-fpl-player {
-        width: 8vw;
+        width: 7vw;
     }
+}
+
+.scrolling-wrapper{
+    overflow-x: auto;
+}
+
+.card-block{
+    height: 250px;
+    background-color: #fff;
+    border: none;
+    background-position: center;
+    background-size: cover;
+    transition: all 0.2s ease-in-out !important;
+    border-radius: 24px;
+}
+
+.card-1{
+    background-color: #38003c !important;
+    border: none !important;
+}
+
+.card-2{
+    background-color: #00ff85 !important;
+    border: none !important;
+}
+
+.card-3{
+    background-color: #e90052 !important;
+    border: none !important;
+}
+
+.card-4{
+    background-color: #04f5ff !important;
+    border: none !important;
+}
+
+.card-5{
+    background-color: #ffffff !important;
+    border: none !important;
+}
+.fpl-click {
+    cursor:pointer;
 }
 

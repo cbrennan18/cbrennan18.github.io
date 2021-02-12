@@ -25,5 +25,6 @@
     <orderEntry type="library" name="chartjs-plugin-annotation" level="application" />
     <orderEntry type="library" name="Chart.js" level="application" />
     <orderEntry type="library" name="animate.css" level="application" />
+    <orderEntry type="library" name="embed" level="application" />
   </component>
 </module>

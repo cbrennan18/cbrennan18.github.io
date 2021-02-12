@@ -23,6 +23,7 @@ const doCORSRequest = async (url) => {
     const response = await fetch(proxyURL + baseURL + url, {
         method: 'GET', // *GET, POST, PUT, DELETE, etc.
         headers: {
+            "X-Requested-With": "XMLHttpRequest",
             'Access-Control-Allow-Origin':'*'
         }
     });
@@ -73,10 +74,12 @@ function getFplMiniLeague() {
     });
 }
 
-function getTeamByClick(id, gameweek) {
+function getTeamByClick(id, gameweek, name) {
     $(document).ready(async function() {
+        $(".fpl-team-name").html("<h5 class='font-weight-normal'>" + name + "</h5>");
         let bootstrap = await getBootstrap();
         let teamByGW = await getTeamByGW(id, gameweek);
+        console.log(teamByGW, bootstrap);
         await showTeam(teamByGW, bootstrap);
     });
 }
@@ -94,7 +97,6 @@ function getFplGameweek(obj) {
 }
 
 function showLeague(obj, gameweek) {
-
     $(".fpl-league-name").html("<h5 class='font-weight-normal'>" + obj.league.name + "</h5>");
     $('.table-fpl-league').empty();
     getFplTable(obj, gameweek);
@@ -153,11 +155,12 @@ function showTeam(team, bootstrap)  {
 function getFplTable(obj, gameweek) {
     let rank = obj.standings.results;
     for (let i = 0; i < rank.length; i++) {
+        let name = "'" + rank[i].entry_name + "'";
         let item = $(
-            '<tr onClick="getTeamByClick(' + rank[i].entry +',' + gameweek + ')">' +
-                '<th scope="row">' + rank[i].rank + '</th>' +
-                '<td><span class="fpl-red">' + rank[i].entry_name + '</span><br><span class="font-weight-lighter">' + rank[i].player_name + '</span></td>' +
-                '<td>' + rank[i].total + '</td>' +
+            '<tr onClick="getTeamByClick(' + rank[i].entry + ',' + gameweek + ',' + name + ')">' +
+                '<th class="p-0" scope="row">' + rank[i].rank + '</th>' +
+                '<td class="p-0"><span class="fpl-red fpl-click">' + rank[i].entry_name + '</span><br><span class="font-weight-lighter fpl-click">' + rank[i].player_name + '</span></td>' +
+                '<td class="p-0">' + rank[i].total + '</td>' +
             '</tr>');
         item.appendTo($('.table-fpl-league'));
     }
