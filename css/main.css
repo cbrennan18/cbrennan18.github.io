@@ -49,6 +49,14 @@ html {
     color : rgba(2, 101, 216, 0.6);
 }
 
+.faw {
+    color : rgba(255, 255, 255, 0.8);
+}
+
+.faw:hover {
+    color : rgba(0, 255, 133, 0.6);
+}
+
 p.blog-design {
     min-font-size: 18px;
     line-height: 1.7;
