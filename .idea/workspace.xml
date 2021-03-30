@@ -23,7 +23,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="67446fdf-5c38-491d-974f-df70b2a407ad" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/cbrennan18.github.io.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/cbrennan18.github.io.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/jsLibraryMappings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/jsLibraryMappings.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/fantasy-premier-league.html" beforeDir="false" afterPath="$PROJECT_DIR$/fantasy-premier-league.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -193,6 +197,10 @@
       <workItem from="1615371208583" duration="201000" />
       <workItem from="1615427303885" duration="1952000" />
       <workItem from="1615562917373" duration="553000" />
+      <workItem from="1616503322418" duration="345000" />
+      <workItem from="1616790732080" duration="765000" />
+      <workItem from="1616791774262" duration="98000" />
+      <workItem from="1617045832508" duration="736000" />
     </task>
     <servers />
   </component>
