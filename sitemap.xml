@@ -2,42 +2,52 @@
   <!--  created with Free Online Sitemap Generator www.xml-sitemaps.com  -->
   <url>
     <loc>https://cbrennan.ie/</loc>
-    <lastmod>2020-07-26T09:43:40+00:00</lastmod>
+    <lastmod>2021-04-07T15:26:48+00:00</lastmod>
     <priority>1.00</priority>
   </url>
   <url>
+    <loc>https://cbrennan.ie/index.html</loc>
+    <lastmod>2021-04-07T15:26:48+00:00</lastmod>
+    <priority>0.80</priority>
+  </url>
+  <url>
     <loc>https://cbrennan.ie/projects-menu.html</loc>
-    <lastmod>2020-07-26T09:43:40+00:00</lastmod>
+    <lastmod>2021-04-07T15:26:48+00:00</lastmod>
     <priority>0.80</priority>
   </url>
   <url>
     <loc>https://cbrennan.ie/files/Ciaran_Brennan_CV.pdf</loc>
-    <lastmod>2020-07-26T09:43:40+00:00</lastmod>
+    <lastmod>2021-04-07T15:26:48+00:00</lastmod>
     <priority>0.80</priority>
   </url>
   <url>
+    <loc>https://cbrennan.ie/masters.html</loc>
+    <lastmod>2021-04-07T15:26:48+00:00</lastmod>
+    <priority>0.64</priority>
+  </url>
+  <url>
+    <loc>https://cbrennan.ie/fantasy-premier-league.html</loc>
+    <lastmod>2021-04-07T15:26:48+00:00</lastmod>
+    <priority>0.64</priority>
+  </url>
+  <url>
     <loc>https://cbrennan.ie/spotify.html</loc>
-    <lastmod>2020-07-26T09:43:40+00:00</lastmod>
+    <lastmod>2021-04-07T15:26:48+00:00</lastmod>
     <priority>0.64</priority>
   </url>
   <url>
     <loc>https://cbrennan.ie/running-plans.html</loc>
-    <lastmod>2020-07-26T09:43:40+00:00</lastmod>
+    <lastmod>2021-04-07T15:26:48+00:00</lastmod>
     <priority>0.64</priority>
   </url>
   <url>
     <loc>https://cbrennan.ie/netflix-and-standstill.html</loc>
-    <lastmod>2020-07-26T09:43:40+00:00</lastmod>
+    <lastmod>2021-04-07T15:26:48+00:00</lastmod>
     <priority>0.64</priority>
   </url>
   <url>
     <loc>https://cbrennan.ie/big-into-the-fitness.html</loc>
-    <lastmod>2020-07-26T09:43:40+00:00</lastmod>
+    <lastmod>2021-04-07T15:26:48+00:00</lastmod>
     <priority>0.64</priority>
-  </url>
-  <url>
-    <loc>https://cbrennan.ie/privacypolicy.html</loc>
-    <lastmod>2020-07-26T09:43:40+00:00</lastmod>
-    <priority>0.01</priority>
   </url>
 </urlset>
