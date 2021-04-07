@@ -814,3 +814,5 @@ FPL EXTRA STYLES SECTION
     cursor:pointer;
 }
 
+table.dataTable.table-sm>thead>tr>th:not(.sorting_disabled) { padding-right: 30px !important; }
+

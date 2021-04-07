@@ -1,0 +1,354 @@
+[
+  {
+    "owner": "Ryan",
+    "player": "Adam Scott"
+  },
+  {
+    "owner": "Brian",
+    "player": "Bernd Wiesberger"
+  },
+  {
+    "owner": "Diarmuid",
+    "player": "Dylan Frittelli"
+  },
+  {
+    "owner": "Cathal",
+    "player": "Bernhard Langer"
+  },
+  {
+    "owner": "Thommo",
+    "player": "Billy Horschel"
+  },
+  {
+    "owner": "KP",
+    "player": "Brendon Todd"
+  },
+  {
+    "owner": "Mark",
+    "player": "Brian Gay"
+  },
+  {
+    "owner": "Mark",
+    "player": "Brian Harman"
+  },
+  {
+    "owner": "Jack",
+    "player": "Brooks Koepka"
+  },
+  {
+    "owner": "Robbie",
+    "player": "Bryson DeChambeau"
+  },
+  {
+    "owner": "Cathal",
+    "player": "Bubba Watson"
+  },
+  {
+    "owner": "Brian",
+    "player": "Cheng Tsung Pan"
+  },
+  {
+    "owner": "Thommo",
+    "player": "Cameron Champ"
+  },
+  {
+    "owner": "Thommo",
+    "player": "Cameron Smith"
+  },
+  {
+    "owner": "Robbie",
+    "player": "Carlos Ortiz"
+  },
+  {
+    "owner": "Brennan",
+    "player": "Ian Poulter"
+  },
+  {
+    "owner": "Thommo",
+    "player": "Charl Schwartzel"
+  },
+  {
+    "owner": "",
+    "player": "Charles Osborne"
+  },
+  {
+    "owner": "Jake",
+    "player": "Christiaan Bezuidenhout"
+  },
+  {
+    "owner": "Ryan",
+    "player": "Collin Morikawa"
+  },
+  {
+    "owner": "KP",
+    "player": "Corey Conners"
+  },
+  {
+    "owner": "Jack",
+    "player": "Daniel Berger"
+  },
+  {
+    "owner": "Mark",
+    "player": "Danny Willett"
+  },
+  {
+    "owner": "KP",
+    "player": "Dustin Johnson"
+  },
+  {
+    "owner": "Niall",
+    "player": "Francesco Molinari"
+  },
+  {
+    "owner": "Niall",
+    "player": "Fred Couples"
+  },
+  {
+    "owner": "Diarmuid",
+    "player": "Abraham Ancer"
+  },
+  {
+    "owner": "Ryan",
+    "player": "Gary Woodland"
+  },
+  {
+    "owner": "Seánie",
+    "player": "Harris English"
+  },
+  {
+    "owner": "Seánie",
+    "player": "Henrik Stenson"
+  },
+  {
+    "owner": "KP",
+    "player": "Hideki Matsuyama"
+  },
+  {
+    "owner": "Jake",
+    "player": "Hudson Swafford"
+  },
+  {
+    "owner": "",
+    "player": "Ian Woosnam"
+  },
+  {
+    "owner": "Robbie",
+    "player": "Jason Day"
+  },
+  {
+    "owner": "Brian",
+    "player": "Jason Kokrak"
+  },
+  {
+    "owner": "Ryan",
+    "player": "Jim Herman"
+  },
+  {
+    "owner": "Brennan",
+    "player": "Tyler Strafaci"
+  },
+  {
+    "owner": "",
+    "player": "Jimmy Walker"
+  },
+  {
+    "owner": "Ryan",
+    "player": "Joaquin Niemann"
+  },
+  {
+    "owner": "Brennan",
+    "player": "Jon Rahm"
+  },
+  {
+    "owner": "",
+    "player": "Joe Long"
+  },
+  {
+    "owner": "Cathal",
+    "player": "Jordan Spieth"
+  },
+  {
+    "owner": "",
+    "player": "José María Olazábal"
+  },
+  {
+    "owner": "Diarmuid",
+    "player": "Patrick Reed"
+  },
+  {
+    "owner": "Diarmuid",
+    "player": "Martin Laird"
+  },
+  {
+    "owner": "Jake",
+    "player": "Justin Rose"
+  },
+  {
+    "owner": "Jake",
+    "player": "Justin Thomas"
+  },
+  {
+    "owner": "KP",
+    "player": "Kevin Kisner"
+  },
+  {
+    "owner": "Ryan",
+    "player": "Lanto Griffin"
+  },
+  {
+    "owner": "",
+    "player": "Larry Mize"
+  },
+  {
+    "owner": "Thommo",
+    "player": "Lee Westwood"
+  },
+  {
+    "owner": "Niall",
+    "player": "Mackenzie Hughes"
+  },
+  {
+    "owner": "Jack",
+    "player": "Marc Leishman"
+  },
+  {
+    "owner": "Jack",
+    "player": "Matt Jones"
+  },
+  {
+    "owner": "Mark",
+    "player": "Matt Kuchar"
+  },
+  {
+    "owner": "Cathal",
+    "player": "Matt Fitzpatrick"
+  },
+  {
+    "owner": "Cathal",
+    "player": "Matthew Wolff"
+  },
+  {
+    "owner": "Diarmuid",
+    "player": "Matt Wallace"
+  },
+  {
+    "owner": "Jack",
+    "player": "Max Homa"
+  },
+  {
+    "owner": "Jack",
+    "player": "Michael Thompson"
+  },
+  {
+    "owner": "",
+    "player": "Mike Weir"
+  },
+  {
+    "owner": "Mark",
+    "player": "Patrick Cantlay"
+  },
+  {
+    "owner": "Seánie",
+    "player": "Paul Casey"
+  },
+  {
+    "owner": "Robbie",
+    "player": "Phil Mickelson"
+  },
+  {
+    "owner": "Cathal",
+    "player": "Robert MacIntyre"
+  },
+  {
+    "owner": "Brennan",
+    "player": "Kevin Na"
+  },
+  {
+    "owner": "",
+    "player": "Robert Streb"
+  },
+  {
+    "owner": "Brian",
+    "player": "Rory McIlroy"
+  },
+  {
+    "owner": "KP",
+    "player": "Ryan Palmer"
+  },
+  {
+    "owner": "",
+    "player": "Sandy Lyle"
+  },
+  {
+    "owner": "Mark",
+    "player": "Scottie Scheffler"
+  },
+  {
+    "owner": "Jake",
+    "player": "Sebastián Muñoz"
+  },
+  {
+    "owner": "Jake",
+    "player": "Sergio Garcia"
+  },
+  {
+    "owner": "Brian",
+    "player": "Shane Lowry"
+  },
+  {
+    "owner": "Seánie",
+    "player": "Si Woo Kim"
+  },
+  {
+    "owner": "Robbie",
+    "player": "Stewart Cink"
+  },
+  {
+    "owner": "Niall",
+    "player": "Tommy Fleetwood"
+  },
+  {
+    "owner": "Robbie",
+    "player": "Tyrrell Hatton"
+  },
+  {
+    "owner": "Diarmuid",
+    "player": "Sungjae Im"
+  },
+  {
+    "owner": "Thommo",
+    "player": "Victor Perez"
+  },
+  {
+    "owner": "",
+    "player": "Vijay Singh"
+  },
+  {
+    "owner": "Seánie",
+    "player": "Viktor Hovland"
+  },
+  {
+    "owner": "Brennan",
+    "player": "Tony Finau"
+  },
+  {
+    "owner": "Brennan",
+    "player": "Louis Oosthuizen"
+  },
+  {
+    "owner": "Brian",
+    "player": "Webb Simpson"
+  },
+  {
+    "owner": "Niall",
+    "player": "Will Zalatoris"
+  },
+  {
+    "owner": "Niall",
+    "player": "Xander Schauffele"
+  },
+  {
+    "owner": "Seánie",
+    "player": "Zach Johnson"
+  }
+]

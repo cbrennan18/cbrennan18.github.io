@@ -27,5 +27,6 @@
     <orderEntry type="library" name="animate.css" level="application" />
     <orderEntry type="library" name="embed" level="application" />
     <orderEntry type="library" name="beacon" level="application" />
+    <orderEntry type="library" name="jquery.dataTables" level="application" />
   </component>
 </module>
