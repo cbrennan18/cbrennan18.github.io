@@ -244,10 +244,14 @@
             } );
             $("div.toolbar").html('<h3 class="text-center">Leaderboard</h3><p class="text-center font-italic font-weight-light">Click on headers to sort</p>');
         }
-
         function addPeople(golfers) {
             let i, j;
             for (i = 0; i < golfers.length; i++) {
+                if (golfers[i].lastName === "Mickelson") {
+                    golfers[i].representsCountryUrl = "https://lh3.googleusercontent.com/elcTmvlkEv7ILtg1_wUL29U66hpGb6merMkWcrP7fR0DSw-V-TgLR9HeO39E_yKaMRtQ1Yd6hnA4bdIhJxoR9M1xMq2Fn3EuH6Cd3tmuyPh6xYcqPZdW7aJqLX78F3HIuF_xlocSmSRyh4k_6KzjLNVIfTmhYYiYg0XjTcHFWhpb1-PLIghXpvHTggzhiIEYslvcNoQxqvPuiBvz57fzIFFK-s6jaUzaQ-UHMzRuinKJnbIyLoFHGJY7tK6tXWBaYPriUah2sgl9JvGOuTUDx64nOO9wdEvPtdxQxOcq3dYOLIz4wukOMZGgD6YFSwf8YHFZz33IODBKxou5u00ujD6oikhaPw2_oCsRzJcjGGRxMGdqnp_rtR30yRHS4y-TF_ZHXQOhdH3kKWad8a4KgQ7Iov5TPDzXItV9QwQRY5z6t95gY8zsUc55IPl1i02VriN_8meBMh9Sv3Kvd0d4Kc_9WqU5u8s7GJWZJN3s6k08lY1DZk_DbYzgql0pc6kNXbY1QDqYQ7DsOkLdN66iPeq4lh_y8gCsyTXAf1KesgwuZtZV4gu51T1KOCrf8c7HFwlDndZMLgHmzJYQL_Iq8qNHauCrA5ewu5NFUgxsx7E-qZF2bShRgXGiLw8HyMlw-fhx2Q-sjehZElQqqAjmrjZ10Ikbvt7PCI7GhuAH81rUBceAQL3W1KYyf93gU9B7_ZcMDVhSliy5eJRkrXGpwJ_U=w2374-h1334-no?authuser=0";
+                } else if (golfers[i].lastName === "Koepka") {
+                    golfers[i].representsCountryUrl = "https://lh3.googleusercontent.com/R-SlgT_L7cntwlMK0mnk586ERw8BeQeKqloqlTBW35c51ZvONkQce4K69TrUAdFC6aAyns-Y7gfC9oB9L6ojKI64OJJHyicLsnd5jMhcAMAlCon0V2RQRFV5Tph2bSVuvDpDkCCU5XSc32kzsZ3RUJwwbxWcraxf1xJa1_Y8d4VaIgiT059eO1dq0sD_CA9ttgvgTYyzX9eYVguUEzD160EHx4D2ftm_LJWi9WZCrbK5MWTvUYhcxj_6PkPi5seeUkxW9eSF3MquDrpZYCGmOOYFc0w6jw-oYkZAcPIXQGAjIVAudzg2BTAB6fnDXsLIsEDdofbcjkSCdfnX7DJ1E41jgTip1Rm-nj73bS8t2A8PZkCi-RmNRZYVbdrbhT6Smwf7JJDKiJX-mkGfEVXyGud706txA0uo4hSukVIZliCmhAcHhDKdZegWNnCGd_bCrcjN2P96J1ylsPrFBdD7ckPvAg2N0bMDOxKOeiKmAi3DFzLop5Jz2GflwqBW_3Sg49vDgWOOZd6sRojj-tdEtsr1MWz1rbSD2EN_dKLta-gc73WBco1uPhDF45X1wtGMUGINqaYog5GYLFgxY564-mgIf5e_-_N56JyIVTiT9IzPRRxV_qYGjWakp75VhOZvnnduonmS69CJknm2oBtGLirvb2VaOV-IyKEeV7SPEvIwAG_ChmLla-3d-Cahcdz-LfkxjuPty_FJjbgeqAFApPP8=w1138-h640-no?authuser=0";
+                }
                 golfers[i].fullName = getInitials(golfers[i].firstName) + ". " + golfers[i].lastName;
                 for (j = 0; j < ownerArray.length; j++) {
                     if (ownerArray[j].player === (golfers[i].firstName + " " + golfers[i].lastName)) {
