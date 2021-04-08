@@ -22,7 +22,10 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="67446fdf-5c38-491d-974f-df70b2a407ad" name="Default Changelist" comment="" />
+    <list default="true" id="67446fdf-5c38-491d-974f-df70b2a407ad" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/masters.html" beforeDir="false" afterPath="$PROJECT_DIR$/masters.html" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -61,6 +64,8 @@
   <component name="PropertiesComponent">
     <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="DefaultHtmlFileTemplate" value="HTML File" />
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="js.last.introduce.type" value="LET" />
@@ -204,6 +209,9 @@
       <workItem from="1617793724825" duration="7597000" />
       <workItem from="1617813347789" duration="1482000" />
       <workItem from="1617821910324" duration="985000" />
+      <workItem from="1617826270588" duration="991000" />
+      <workItem from="1617827627336" duration="408000" />
+      <workItem from="1617885836925" duration="2578000" />
     </task>
     <servers />
   </component>

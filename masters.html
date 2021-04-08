@@ -82,8 +82,6 @@
                                 <th class="font-weight-normal pb-1 px-2">POS</th>
                                 <th class="font-weight-normal pb-1 px-2"></th>
                                 <th class="font-weight-normal pb-1 px-2">PLAYER</th>
-                                <th class="font-weight-normal pb-1 px-2">ODDS</th>
-                                <th class="font-weight-normal pb-1 px-2">ODDS2</th>
                                 <th class="font-weight-normal pb-1 px-2">OVR</th>
                                 <th class="font-weight-normal pb-1 px-2">THRU</th>
                                 <th class="font-weight-normal pb-1 px-2">RND</th>
@@ -91,6 +89,9 @@
                                 <th class="font-weight-normal pb-1 px-2">R2</th>
                                 <th class="font-weight-normal pb-1 px-2">R3</th>
                                 <th class="font-weight-normal pb-1 px-2">R4</th>
+                                <th class="font-weight-normal pb-1 px-2">ODDS</th>
+                                <th style="display: none">ODDS2</th>
+                                <th style="display: none">SORT</th>
                             </tr>
                             </thead>
                             <tbody style="font-size:smaller; font-weight: 600">
@@ -177,7 +178,7 @@
                         title: "2021 Masters Buster",
                         filename: "2021MastersBuster",
                         exportOptions: {
-                            columns: [ 0, 1, 3, 4, 6, 7, 8, 9, 10, 11, 12]
+                            columns: [ 0, 1, 3, 4, 5, 6, 7, 8, 9, 10, 11]
                         }
                     },
                 ],
@@ -194,43 +195,68 @@
                 "columns": [
                     { "data": "owner" },
                     { "data": "position" },
-                    {"data": "representsCountryUrl",
+                    { "data": "representsCountryUrl",
                         "render": function(data, type, row) {
                         return '<img src="'+data+'" height="18px" width="30px" style="padding: 0 !important;" />';
                         }
                     },
                     { "data": "fullName" },
-                    { "data": "odds"},
-                    { "data": "oddsTranslated"},
                     { "data": "overallPar",
                         "render": function(data, type, row) {
                             if (data === 0) {
                                 return '<td><div class="text-white bg-primary">'+ "E" +'</div></td>';
+                            } else if (data < 0) {
+                                return '<td><div class="text-white bg-danger">'+ data +'</div></td>';
                             } else {
-                                return data
+                                return '<td><div class="text-white bg-dark">+' + data +'</div></td>';
                             }
 
                         }
                     },
                     { "data": "thruHole",
                         "render": function(data, type, row) {
-                            if (data == null) {
+                            if(type === 'display' && data == null) {
                                 return row.teeTimeUTC.slice(0, -7);
-                            }
-                            else {
+                            } else {
                                 return data
+                            }
+                        },
+                        "sort": "thruHole"
+                    },
+                    { "data": "todayPar",
+                        "render": function(data, type, row) {
+                            if (data === 0 || data == null) {
+                                return '<td><div class="text-white bg-primary">'+ "E" +'</div></td>';
+                            } else if (data < 0) {
+                                return '<td><div class="text-white bg-danger">'+ data +'</div></td>';
+                            } else {
+                                return '<td><div class="text-white bg-dark">+' + data +'</div></td>';
+                            }
+
+                        }
+                    },
+                    { "data": "totalStrokes"},
+                    { "data": "totalStrokes"},
+                    { "data": "totalStrokes"},
+                    { "data": "totalStrokes"},
+                    { "data": "odds"},
+                    { "data": "oddsTranslated"},
+                    { "data": "sortHelp",
+                        "render": function(data) {
+                            if (data == null) {
+                                return 100;
+                            } else {
+                                return data;
                             }
                         }
                     },
-                    { "data": "todayPar"},
-                    { "data": "todayPar"},
-                    { "data": "todayPar"},
-                    { "data": "todayPar"},
-                    { "data": "todayPar"}
-
+                    { "data": "teeTimeUTC"},
                 ],
                 'columnDefs': [
-                    { 'orderData':[5], 'targets': [4] },
+                    { 'orderData':[12], 'targets': [11] },
+                    { 'orderData':[13], 'targets': [1] },
+                    { 'orderData':[13], 'targets': [4] },
+                    { 'orderData':[13], 'targets': [6] },
                     {
                         'targets': [2],
                         'visible': true,
@@ -238,14 +264,24 @@
                         'searchable': false
                     },
                     {
-                        'targets': [5],
+                        'targets': [12],
                         'visible': false,
                         'searchable': false
                     },
-                    { 'className': "text-right", "targets": [4, 8, 9, 10, 11, 12] },
-                    { 'className': "text-center", "targets": [6, 7] },
+                    {
+                        'targets': [13],
+                        'visible': false,
+                        'searchable': false
+                    },
+                    {
+                        'targets': [14],
+                        'visible': false,
+                        'searchable': false
+                    },
+                    { 'className': "text-right", "targets": [7, 8, 9, 10, 11] },
+                    { 'className': "text-center", "targets": [4, 5, 6] },
                 ],
-                "order": [[ 4, "asc" ]]
+                "order": [[ 1, "asc" ], [ 5, 'desc' ], [14, 'asc']]
             } );
             $("div.toolbar").html('<h3 class="text-center">Leaderboard</h3><p class="text-center font-italic font-weight-light">Click on headers to sort</p>');
         }
