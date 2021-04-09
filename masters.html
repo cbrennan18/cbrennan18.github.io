@@ -11,7 +11,7 @@
     <link rel="stylesheet" type="text/css" href="./css/main.css" />
 
     <!-- OpenGraph Meta -->
-    <<meta property="og:site_name" content="cbrennan.ie">
+    <meta property="og:site_name" content="cbrennan.ie">
     <meta property="og:title" content="Ciaran Brennan - 2021 US Masters Augusta Buster">
     <meta property="og:description" content="Tracking how the group's players are performing at the 2021 US Masters in Augusta.">
     <meta property="og:image" itemprop="image" content="https://cbrennan.ie/img/oldheadofkinsale.min.jpg" />
@@ -50,6 +50,7 @@
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/pdfmake.min.js"></script>
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/vfs_fonts.js"></script>
     <script type="text/javascript" src="https://cdn.datatables.net/v/bs4/jszip-2.5.0/dt-1.10.24/af-2.3.5/b-1.7.0/b-colvis-1.7.0/b-html5-1.7.0/b-print-1.7.0/cr-1.5.3/date-1.0.3/fc-3.3.2/fh-3.1.8/kt-2.6.1/r-2.2.7/rg-1.1.2/rr-1.2.7/sc-2.0.3/sb-1.0.1/sp-1.2.2/sl-1.3.3/datatables.min.js"></script>
+    <script type="text/javascript" src="https://cdn.datatables.net/plug-ins/1.10.24/sorting/absolute.js"></script>
 </head>
 
 <body>
@@ -168,6 +169,10 @@
             golfers = masters_data.result.golfers;
             addPeople(golfers);
 
+            let nameType = $.fn.dataTable.absoluteOrder( {
+                value: 100, position: 'bottom'
+            } );
+
             $('#masters').DataTable( {
                 "data": golfers,
                 dom: '<"toolbar">Bfrtip',
@@ -236,14 +241,23 @@
                     },
                     { "data": "todayPar",
                         "render": function(data, type, row) {
-                            if (data === 0 || data == null) {
-                                return '<td><div class="text-white bg-primary">'+ "E" +'</div></td>';
-                            } else if (data < 0) {
-                                return '<td><div class="text-white bg-danger">'+ data +'</div></td>';
+                            if (type === "display") {
+                                if (data === 0) {
+                                    return '<td><div class="text-white bg-primary">'+ "E" +'</div></td>';
+                                } else if (data < 0) {
+                                    return '<td><div class="text-white bg-danger">'+ data +'</div></td>';
+                                } else if (data > 0) {
+                                    return '<td><div class="text-white bg-dark">+' + data +'</div></td>';
+                                } else {
+                                    return "";
+                                }
+                            } else if (data !== null) {
+                                return data;
                             } else {
-                                return '<td><div class="text-white bg-dark">+' + data +'</div></td>';
+                                return 100;
                             }
-                        }
+                        },
+                        "sort": "todayPar"
                     },
                     { "data": "totalStrokes",
                         "render": function(data, type, row) {
@@ -302,12 +316,15 @@
                     { 'orderData':[12], 'targets': [11] },
                     { 'orderData':[13], 'targets': [1] },
                     { 'orderData':[13], 'targets': [4] },
-                    { 'orderData':[13], 'targets': [6] },
                     {
                         'targets': [2],
                         'visible': true,
                         'orderable': false,
                         'searchable': false
+                    },
+                    {
+                        'targets':  [6],
+                        'type': 'nameType'
                     },
                     {
                         'targets': [12],

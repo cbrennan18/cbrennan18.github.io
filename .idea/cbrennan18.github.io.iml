@@ -28,5 +28,6 @@
     <orderEntry type="library" name="embed" level="application" />
     <orderEntry type="library" name="beacon" level="application" />
     <orderEntry type="library" name="jquery.dataTables" level="application" />
+    <orderEntry type="library" name="absolute" level="application" />
   </component>
 </module>
