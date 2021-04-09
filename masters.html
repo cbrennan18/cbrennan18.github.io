@@ -226,8 +226,10 @@
                         "render": function(data, type, row) {
                             if(type === 'display' && data == null) {
                                 return row.teeTimeUTC.slice(0, -7);
+                            } else if (type === 'display' && data === 18){
+                                return "F"
                             } else {
-                                return data
+                                return data;
                             }
                         },
                         "sort": "thruHole"
@@ -241,13 +243,48 @@
                             } else {
                                 return '<td><div class="text-white bg-dark">+' + data +'</div></td>';
                             }
-
                         }
                     },
-                    { "data": "totalStrokes"},
-                    { "data": "totalStrokes"},
-                    { "data": "totalStrokes"},
-                    { "data": "totalStrokes"},
+                    { "data": "totalStrokes",
+                        "render": function(data, type, row) {
+                            let score = row.leaderboardRounds;
+                            if(type === "display" && score.length > 0) {
+                                return score[0].roundScore;
+                            } else {
+                                return data;
+                            }
+                        }
+                    },
+                    { "data": "totalStrokes",
+                        "render": function(data, type, row) {
+                            let score = row.leaderboardRounds;
+                            if(type === "display" && score.length > 1) {
+                                return score[1].roundScore;
+                            } else {
+                                return "";
+                            }
+                        }
+                    },
+                    { "data": "totalStrokes",
+                        "render": function(data, type, row) {
+                            let score = row.leaderboardRounds;
+                            if(type === "display" && score.length > 2) {
+                                return score[2].roundScore;
+                            } else {
+                                return "";
+                            }
+                        }
+                    },
+                    { "data": "totalStrokes",
+                        "render": function(data, type, row) {
+                            let score = row.leaderboardRounds;
+                            if(type === "display" && score.length > 3) {
+                                return score[3].roundScore;
+                            } else {
+                                return "";
+                            }
+                        }
+                    },
                     { "data": "odds"},
                     { "data": "oddsTranslated"},
                     { "data": "sortHelp",
