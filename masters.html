@@ -172,6 +172,9 @@
             let nameType = $.fn.dataTable.absoluteOrder( {
                 value: 100, position: 'bottom'
             } );
+            let numbersType = $.fn.dataTable.absoluteOrderNumber( [
+                { value: null, position: 'bottom' }
+            ] );
 
             $('#masters').DataTable( {
                 "data": golfers,
@@ -262,9 +265,12 @@
                     { "data": "totalStrokes",
                         "render": function(data, type, row) {
                             let score = row.leaderboardRounds;
-                            if(score.length > 0) {
+                            if (score.length > 0) {
                                 return score[0].roundScore;
+                            } else {
+                                return null;
                             }
+
                         }
                     },
                     { "data": "totalStrokes",
@@ -273,7 +279,7 @@
                             if(score.length > 1) {
                                 return score[1].roundScore;
                             } else {
-                                return "";
+                                return null;
                             }
                         }
                     },
@@ -283,7 +289,7 @@
                             if(score.length > 2) {
                                 return score[2].roundScore;
                             } else {
-                                return "";
+                                return null;
                             }
                         }
                     },
@@ -293,7 +299,7 @@
                             if(score.length > 3) {
                                 return score[3].roundScore;
                             } else {
-                                return "";
+                                return null;
                             }
                         }
                     },
@@ -323,6 +329,10 @@
                     {
                         'targets':  [6],
                         'type': 'nameType'
+                    },
+                    {
+                        type: numbersType,
+                        targets:  [7, 8, 9, 10]
                     },
                     {
                         'targets': [12],
