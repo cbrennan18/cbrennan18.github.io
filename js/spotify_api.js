@@ -35,6 +35,7 @@ function getSpotify() {
     const clientId = '54d26b92340c44bdaa4b0f54b09a858f';
     const redirectUri = 'https%3A%2F%2Fcbrennan.ie%2Fspotify.html';
     // const redirectUri = 'http%3A%2F%2Flocalhost%3A8080%2Fcbrennan18.github.io%2Fspotify.html';
+    // const redirectUri = 'http%3A%2F%2F127.0.0.1%3A5500%2Fspotify.html';
     const scopes = [
         'user-read-email',
         'user-read-private',
@@ -76,8 +77,8 @@ async function showData() {
             track_ids.push(tracks[i].id);
             artist_ids.push(tracks[i].album.artists[0].id);
         }
-        song_id_dict.set("2021", track_ids);
-        genres_dict.set("2021", getSpotifyArtistIds(artist_ids, genre_counts));
+        song_id_dict.set("2023", track_ids);
+        genres_dict.set("2023", getSpotifyArtistIds(artist_ids, genre_counts));
     });
     await getAudioFeatures();
     await $(document).bind('audio_features_complete',
@@ -112,7 +113,7 @@ function getSpotifyPlaylists() {
 }
 
 async function getYearlyArtists(final_dict) {
-     console.log(final_dict);
+    // console.log(final_dict);
     let y = [], a = [], top_five = [];
     for (let [year, value] of final_dict.artists.entries()) {
         y.push(year);
@@ -285,10 +286,10 @@ function getCharts(final_dict) {
     // original averages
     // acousticness_average = 0.1672, energy_average = 0.6739, danceability_average = 0.6585, valence_average = 0.4991;
 
-    let acousticness_average = ['0.1660', '0.1588', '0.1660', '0.1278', '0.2174', '0.2558'];
-    let danceability_average = ['0.6366', '0.6333', '0.6537', '0.6720', '0.6971', '0.7174'];
-    let energy_average = ['0.7034', '0.6724', '0.6917', '0.6547', '0.6474', '0.6098'];
-    let valence_average = ['0.5253', '0.4515', '0.5228', '0.4877', '0.5081', '0.5562'];
+    let acousticness_average = ['0.1660', '0.1588', '0.1660', '0.1278', '0.2174', '0.2558','0.2486' ,'0.2358'];
+    let danceability_average = ['0.6366', '0.6333', '0.6537', '0.6720', '0.6971', '0.7174','0.6899' ,'0.6884'];
+    let energy_average = ['0.7034', '0.6724', '0.6917', '0.6547', '0.6474', '0.6098','0.6334' ,'0.6728'];
+    let valence_average = ['0.5253', '0.4515', '0.5228', '0.4877', '0.5081', '0.5562','0.5147' ,'0.4914'];
 
 
     populateChart('acousticChart', y, a, 'rgb(29,185,84)', 'rgba(29,185,84,0.5)', 'Acousticness', acousticness_average);
@@ -369,13 +370,14 @@ function populateChart(element, labels, data, color, bgColor, title, average) {
 function getPlaylists(data) {
 
     data = data.playlists;
+    // console.log(data);
     let playlist_ids = [];
     data.items.map(function (playlist) {
-        if (playlist.owner.external_urls.spotify === "https://open.spotify.com/user/spotify") {
+        if (playlist.owner.external_urls.spotify === "https://open.spotify.com/user/spotify" && playlist.name.length == 19) {
             playlist_ids.push(playlist.uri);
         }
     });
-    console.log(playlist_ids);
+    // console.log(playlist_ids);
 
     let i;
 
@@ -528,7 +530,7 @@ function getCurrentArtists() {
             for (i = 0; i < data.items.length; i++) {
                 let artist = data.items[i].name;
                 artist_counts[artist] = {"name": artist, "count": 10-i,"id": data.items[i].id};
-                artists_dict.set("2021", artist_counts);
+                artists_dict.set("2023", artist_counts);
             }
         }
     });
