@@ -286,10 +286,10 @@ function getCharts(final_dict) {
     // original averages
     // acousticness_average = 0.1672, energy_average = 0.6739, danceability_average = 0.6585, valence_average = 0.4991;
 
-    let acousticness_average = ['0.1660', '0.1588', '0.1660', '0.1278', '0.2174', '0.2558','0.2486' ,'0.2358'];
-    let danceability_average = ['0.6366', '0.6333', '0.6537', '0.6720', '0.6971', '0.7174','0.6899' ,'0.6884'];
-    let energy_average = ['0.7034', '0.6724', '0.6917', '0.6547', '0.6474', '0.6098','0.6334' ,'0.6728'];
-    let valence_average = ['0.5253', '0.4515', '0.5228', '0.4877', '0.5081', '0.5562','0.5147' ,'0.4914'];
+    let acousticness_average = ['0.1660', '0.1588', '0.1660', '0.1278', '0.2174', '0.2558', '0.2486' ,'0.2358'];
+    let danceability_average = ['0.6366', '0.6333', '0.6537', '0.6720', '0.6971', '0.7174', '0.6899' ,'0.6884'];
+    let energy_average = ['0.7034', '0.6724', '0.6917', '0.6547', '0.6474', '0.6098',' 0.6334' ,'0.6728'];
+    let valence_average = ['0.5253', '0.4515', '0.5228', '0.4877', '0.5081', '0.5562',' 0.5147' ,'0.4914'];
 
 
     populateChart('acousticChart', y, a, 'rgb(29,185,84)', 'rgba(29,185,84,0.5)', 'Acousticness', acousticness_average);
@@ -373,7 +373,7 @@ function getPlaylists(data) {
     // console.log(data);
     let playlist_ids = [];
     data.items.map(function (playlist) {
-        if (playlist.owner.external_urls.spotify === "https://open.spotify.com/user/spotify" && playlist.name.length == 19) {
+        if (playlist.owner.external_urls.spotify === "https://open.spotify.com/user/spotify" && playlist.name.length == 19 && playlist.name.startsWith("Your Top Songs")) {
             playlist_ids.push(playlist.uri);
         }
     });
