@@ -77,8 +77,8 @@ async function showData() {
             track_ids.push(tracks[i].id);
             artist_ids.push(tracks[i].album.artists[0].id);
         }
-        song_id_dict.set("2023", track_ids);
-        genres_dict.set("2023", getSpotifyArtistIds(artist_ids, genre_counts));
+        song_id_dict.set("2024", track_ids);
+        genres_dict.set("2024", getSpotifyArtistIds(artist_ids, genre_counts));
     });
     await getAudioFeatures();
     await $(document).bind('audio_features_complete',
@@ -530,7 +530,7 @@ function getCurrentArtists() {
             for (i = 0; i < data.items.length; i++) {
                 let artist = data.items[i].name;
                 artist_counts[artist] = {"name": artist, "count": 10-i,"id": data.items[i].id};
-                artists_dict.set("2023", artist_counts);
+                artists_dict.set("2024", artist_counts);
             }
         }
     });
