@@ -3,7 +3,7 @@
 <head>
     <!-- Global site tag (gtag.js) - Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-153213137-1"></script>
-    <title>Ciaran Brennan | US Masters 2021</title>
+    <title>Ciaran Brennan | US Masters 2024</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="author" content="Ciaran Brennan">
@@ -15,11 +15,11 @@
     <meta property="og:title" content="Ciaran Brennan - 2024 US Masters Augusta Buster">
     <meta property="og:description" content="Tracking how the group's players are performing at the 2024 US Masters in Augusta.">
     <meta property="og:image" itemprop="image" content="https://cbrennan.ie/img/oldheadofkinsale.min.jpg" />
-    <meta property="og:url" content="https://cbrennan.ie/masters">
+    <meta property="og:url" content="https://cbrennan.ie/masters2024">
     <meta property="og:image:secure_url" itemprop="image" content="https://cbrennan.ie/img/oldheadofkinsale.min.jpg" />
     <meta property="og:type" content="website">
     <meta property="og:image:width" content="1200" />
-    <meta property="og:updated_time" content="1712818800">
+    <meta property="og:updated_time" content="1712869200">
 
     <!-- Favicon -->
     <link rel="shortcut icon" href="./img/favicon.ico" type="image/x-icon" />
@@ -63,27 +63,27 @@
                         MASTERS <span class="text-danger">BUSTER</span>
                     </h2>
                     <h6 class="text-center text-md-left">
-                        <i>11 April 2024, 07:00</i>
+                        <i>11 April 2024, 21:00</i>
                     </h6>
                     <div data-aos="fade-up" data-aos-duration="2000">
-                        <img src="img/oldheadofkinsale.jpg" class="img-fluid" alt="Full Moon Over The Old Head of Kinsale Photo by Cian O'Regan Photography"/>
+                        <img src="img/fota.webp" class="img-fluid" alt="Fota Island Golf Course Photo by Cian O'Regan Photography"/>
                         <div class="text-right">
-                            <a style="background-color:#d9d9d9;color:black;text-decoration:none;padding:4px 6px;/*noinspection CssInvalidPropertyValue*/font-family:-apple-system, BlinkMacSystemFont, San Francisco, Helvetica Neue, Helvetica, Ubuntu, Roboto, Noto, Segoe UI, Arial, sans-serif;font-size:12px;font-weight:bold;line-height:1.2;display:inline-block;border-radius:3px" href="https://www.cianoregan.com/collections/all/products/oldhead" target="_blank" rel="noopener noreferrer" title="Cian O'Regan Photography"><span style="display:inline-block;padding:2px 3px">Full Moon Over The Old Head of Kinsale<br>Photo by Cian O'Regan Photography</span></a>
+                            <a style="background-color:#d9d9d9;color:black;text-decoration:none;padding:4px 6px;/*noinspection CssInvalidPropertyValue*/font-family:-apple-system, BlinkMacSystemFont, San Francisco, Helvetica Neue, Helvetica, Ubuntu, Roboto, Noto, Segoe UI, Arial, sans-serif;font-size:12px;font-weight:bold;line-height:1.2;display:inline-block;border-radius:3px" href="https://www.cianoregan.com/collections/all/products/oldhead" target="_blank" rel="noopener noreferrer" title="Cian O'Regan Photography"><span style="display:inline-block;padding:2px 3px">Fota Island Golf Club<br>Photo by Cian O'Regan Photography</span></a>
                         </div>
                         <!-- Content -->
                         <div class="text-center">
                         </div>
                         <br><br>
-                        <div class="table-responsive">
-                            <table id="participantsTable" class="table table-striped">
+                        <div class="table-responsive table-sm">
+                            <table id="participantsTable" class="table table-striped table-bordered">
                                 <thead>
                                     <tr>
                                         <th>Name</th>
+                                        <th>Total</th>
                                         <th>Past Champ</th>
                                         <th>American</th>
                                         <th>International</th>
                                         <th>LIV</th>
-                                        <th>Total</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -219,11 +219,11 @@
             const row = document.createElement('tr');
             row.innerHTML = `
                 <td>${entry.participant}</td>
+                <td>${entry.totalScore}</td>
                 <td>${player1Surname}: ${entry.player1.score}</td>
                 <td>${player2Surname}: ${entry.player2.score}</td>
                 <td>${player3Surname}: ${entry.player3.score}</td>
                 <td>${player4Surname}: ${entry.player4.score}</td>
-                <td>${entry.totalScore}</td>
             `;
             tableBody.appendChild(row);
         });
