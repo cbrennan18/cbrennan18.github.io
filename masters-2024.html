@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en" prefix="og: http://ogp.me/ns#">
+<head>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-153213137-1"></script>
+    <title>Ciaran Brennan | US Masters 2021</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="Ciaran Brennan">
+    <meta name="description" content="I've recently decided to build my own personal website to use as a blog about some of the projects I do in my spare time, which can be found here."/>
+    <link rel="stylesheet" type="text/css" href="./css/main.css" />
+
+    <!-- OpenGraph Meta -->
+    <meta property="og:site_name" content="cbrennan.ie">
+    <meta property="og:title" content="Ciaran Brennan - 2024 US Masters Augusta Buster">
+    <meta property="og:description" content="Tracking how the group's players are performing at the 2024 US Masters in Augusta.">
+    <meta property="og:image" itemprop="image" content="https://cbrennan.ie/img/oldheadofkinsale.min.jpg" />
+    <meta property="og:url" content="https://cbrennan.ie/masters">
+    <meta property="og:image:secure_url" itemprop="image" content="https://cbrennan.ie/img/oldheadofkinsale.min.jpg" />
+    <meta property="og:type" content="website">
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:updated_time" content="1712818800">
+
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="./img/favicon.ico" type="image/x-icon" />
+
+    <!-- Google Fonts -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js" type="text/javascript"></script>
+    <link href="https://fonts.googleapis.com/css?family=Montserrat&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons&display=swap" rel="stylesheet">
+
+    <!--Font Awesome Solid + Brands -->
+    <link href="./css/fontawesome-5.15.1/css/fontawesome.css" rel="stylesheet">
+    <link href="./css/fontawesome-5.15.1/css/brands.css" rel="stylesheet">
+
+    <!-- AOS Library -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+
+    <!-- Javascript -->
+    <script type="text/javascript" src="js/external.js"></script>
+    <script type="text/javascript" src="js/masters.js"></script>
+
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+    <!-- Datatables -->
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/bs4/jszip-2.5.0/dt-1.10.24/af-2.3.5/b-1.7.0/b-colvis-1.7.0/b-html5-1.7.0/b-print-1.7.0/cr-1.5.3/date-1.0.3/fc-3.3.2/fh-3.1.8/kt-2.6.1/r-2.2.7/rg-1.1.2/rr-1.2.7/sc-2.0.3/sb-1.0.1/sp-1.2.2/sl-1.3.3/datatables.min.css"/>
+
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/pdfmake.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/vfs_fonts.js"></script>
+</head>
+
+<body>
+<!-- Navbar -->
+<div w3-include-html="navbar.html"></div>
+<div class="body-padding-bottom">
+    <section class="pt-4 pt-md-11">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-12 col-md-10 col-lg-8 order-md-2 pt-5 pb-5">
+                    <h2 class="text-center text-md-left pt-5">
+                        MASTERS <span class="text-danger">BUSTER</span>
+                    </h2>
+                    <h6 class="text-center text-md-left">
+                        <i>11 April 2024, 07:00</i>
+                    </h6>
+                    <div data-aos="fade-up" data-aos-duration="2000">
+                        <img src="img/oldheadofkinsale.jpg" class="img-fluid" alt="Full Moon Over The Old Head of Kinsale Photo by Cian O'Regan Photography"/>
+                        <div class="text-right">
+                            <a style="background-color:#d9d9d9;color:black;text-decoration:none;padding:4px 6px;/*noinspection CssInvalidPropertyValue*/font-family:-apple-system, BlinkMacSystemFont, San Francisco, Helvetica Neue, Helvetica, Ubuntu, Roboto, Noto, Segoe UI, Arial, sans-serif;font-size:12px;font-weight:bold;line-height:1.2;display:inline-block;border-radius:3px" href="https://www.cianoregan.com/collections/all/products/oldhead" target="_blank" rel="noopener noreferrer" title="Cian O'Regan Photography"><span style="display:inline-block;padding:2px 3px">Full Moon Over The Old Head of Kinsale<br>Photo by Cian O'Regan Photography</span></a>
+                        </div>
+                        <!-- Content -->
+                        <div class="text-center">
+                        </div>
+                        <br><br>
+                        <div class="table-responsive">
+                            <table id="participantsTable" class="table table-striped">
+                                <thead>
+                                    <tr>
+                                        <th>Name</th>
+                                        <th>Past Champ</th>
+                                        <th>American</th>
+                                        <th>International</th>
+                                        <th>LIV</th>
+                                        <th>Total</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <!-- Data will be inserted here -->
+                                </tbody>
+                            </table>
+                    </div>
+                </div>
+            </div> <!-- / .row -->
+        </div> <!-- / .container -->
+    </section>
+</div>
+
+<div w3-include-html="footer.html"></div>
+<!-- Cookie Consent -->
+<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.1.1/cookieconsent.min.css" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.1.1/cookieconsent.min.js" data-cfasync="false"></script>
+<script>
+    window.addEventListener('load', function(){
+        window.cookieconsent.initialise({
+            type: "opt-in",
+            theme: "classic",
+            palette: {
+                popup: {
+                    background: "#28f",
+                    text: "#fff"
+                },
+                button: {
+                    background: "#fff",
+                    text: "#28f"
+                }
+            },
+            content: {
+                link: "Learn more.",
+                href: "https://www.cookiesandyou.com/"
+            },
+            onInitialise: function(status) {
+                if(status === cookieconsent.status.allow) myScripts();
+            },
+            onStatusChange: function(status) {
+                if (this.hasConsented()) myScripts();
+            }
+        })
+    });
+
+    function myScripts() {
+
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'UA-153213137-1', { 'anonymize_ip': true });
+
+    }
+</script>
+<!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "872b7537826746aca4833c393945e92d"}'></script><!-- End Cloudflare Web Analytics -->
+</body>
+
+<script>
+    includeHTML();
+    scrollAnimation();
+    AOS.init();
+
+    document.addEventListener('DOMContentLoaded', function() {
+    let mastersData;
+    let participantsData;
+    const url_masters = 'https://www.masters.com/en_US/scores/feeds/2024/scores.json';
+    const url_participants = './files/masters2024.json';
+
+    Promise.all([getData(url_masters), getData(url_participants)])
+        .then(([masters, participants]) => {
+            mastersData = masters.data.player;
+            participantsData = participants;
+
+            // Create a new array to store the result
+            const resultArray = [];
+
+            // Iterate through each participant
+            participantsData.forEach(participant => {
+                const participantName = participant.Name;
+                const player1 = participant['Past Champion'];
+                const player2 = participant.American;
+                const player3 = participant.International;
+                const player4 = participant.LIV;
+
+                // Find scores for each player
+                const player1Score = findPlayerScore(player1, mastersData);
+                const player2Score = findPlayerScore(player2, mastersData);
+                const player3Score = findPlayerScore(player3, mastersData);
+                const player4Score = findPlayerScore(player4, mastersData);
+
+                // Calculate total score
+                const totalScore = player1Score + player2Score + player3Score + player4Score;
+
+                // Add the required items to the result array
+                resultArray.push({
+                    participant: participantName,
+                    player1: { name: player1, score: player1Score },
+                    player2: { name: player2, score: player2Score },
+                    player3: { name: player3, score: player3Score },
+                    player4: { name: player4, score: player4Score },
+                    totalScore: totalScore
+                });
+            });
+
+            // Sort the resultArray by total score ascending
+            resultArray.sort((a, b) => a.totalScore - b.totalScore);
+
+            // Output the result array
+            console.log(resultArray);
+
+            // Populate the Bootstrap table with the sorted result array
+            populateTable(resultArray);
+        })
+        .catch(error => {
+            console.error('Error fetching data:', error);
+        });
+
+    function populateTable(data) {
+        const tableBody = document.querySelector('#participantsTable tbody');
+
+        // Clear existing table rows
+        tableBody.innerHTML = '';
+
+        // Iterate through the data and populate the table
+        data.forEach(entry => {
+            // Extracting surnames from full names
+            const player1Surname = getPlayerSurname(entry.player1.name);
+            const player2Surname = getPlayerSurname(entry.player2.name);
+            const player3Surname = getPlayerSurname(entry.player3.name);
+            const player4Surname = getPlayerSurname(entry.player4.name);
+
+            const row = document.createElement('tr');
+            row.innerHTML = `
+                <td>${entry.participant}</td>
+                <td>${player1Surname}: ${entry.player1.score}</td>
+                <td>${player2Surname}: ${entry.player2.score}</td>
+                <td>${player3Surname}: ${entry.player3.score}</td>
+                <td>${player4Surname}: ${entry.player4.score}</td>
+                <td>${entry.totalScore}</td>
+            `;
+            tableBody.appendChild(row);
+        });
+    }
+
+    // Function to extract surname from full name
+    function getPlayerSurname(fullName) {
+        // Assuming the surname is the last word in the full name
+        const fullNameArray = fullName.split(' ');
+        return fullNameArray[fullNameArray.length - 1];
+    }
+
+    function getData(url) {
+        return fetch(url)
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                return response.json();
+            })
+            .catch(error => {
+                console.error('There was a problem with the fetch operation:', error);
+            });
+    }
+
+    function findPlayerScore(playerName, mastersData) {
+        const playerData = mastersData.find(player => player.full_name === playerName);
+        const playerScore = playerData ? parseInt(playerData.topar) : 0;
+        return isNaN(playerScore) ? 0 : playerScore;
+    }
+});
+
+
+
+
+
+
+
+
+
+
+
+</script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+</html>

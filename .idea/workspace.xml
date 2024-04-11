@@ -24,7 +24,7 @@
   <component name="ChangeListManager">
     <list default="true" id="67446fdf-5c38-491d-974f-df70b2a407ad" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/masters.html" beforeDir="false" afterPath="$PROJECT_DIR$/masters.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/fantasy-premier-league.html" beforeDir="false" afterPath="$PROJECT_DIR$/fantasy-premier-league.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -77,7 +77,7 @@
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
     <property name="run.code.analysis.last.selected.profile" value="pProject Default" />
-    <property name="settings.editor.selected.configurable" value="project.propDebugger" />
+    <property name="settings.editor.selected.configurable" value="vcs.Git" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
@@ -217,7 +217,12 @@
       <workItem from="1617961441210" duration="118000" />
       <workItem from="1617972328092" duration="4822000" />
       <workItem from="1618007230562" duration="1302000" />
-      <workItem from="1618068920257" duration="3188000" />
+      <workItem from="1618068920257" duration="3239000" />
+      <workItem from="1619381969833" duration="454000" />
+      <workItem from="1619425224663" duration="29000" />
+      <workItem from="1621774639713" duration="33000" />
+      <workItem from="1621774708429" duration="516000" />
+      <workItem from="1621791183451" duration="757000" />
     </task>
     <servers />
   </component>
