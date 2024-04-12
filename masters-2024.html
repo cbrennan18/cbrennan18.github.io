@@ -15,7 +15,7 @@
     <meta property="og:title" content="Ciaran Brennan - 2024 US Masters Augusta Buster">
     <meta property="og:description" content="Tracking how the group's players are performing at the 2024 US Masters in Augusta.">
     <meta property="og:image" itemprop="image" content="https://cbrennan.ie/img/corkgc.webp" />
-    <meta property="og:url" content="https://cbrennan.ie/masters2024">
+    <meta property="og:url" content="https://cbrennan.ie/masters-2024">
     <meta property="og:image:secure_url" itemprop="image" content="https://cbrennan.ie/img/corkgc.webp" />
     <meta property="og:type" content="website">
     <meta property="og:image:width" content="1200" />
@@ -157,7 +157,7 @@
         .then(([masters, participants]) => {
             mastersData = masters.data.player;
             participantsData = participants;
-
+            console.log(mastersData)
             // Create a new array to store the result
             const resultArray = [];
 
@@ -181,10 +181,10 @@
                 // Add the required items to the result array
                 resultArray.push({
                     participant: participantName,
-                    player1: { name: player1, score: player1Score },
-                    player2: { name: player2, score: player2Score },
-                    player3: { name: player3, score: player3Score },
-                    player4: { name: player4, score: player4Score },
+                    player1: { id: getPlayerId(player1, mastersData), name: player1, score: player1Score },
+                    player2: { id: getPlayerId(player2, mastersData), name: player2, score: player2Score },
+                    player3: { id: getPlayerId(player3, mastersData), name: player3, score: player3Score },
+                    player4: { id: getPlayerId(player4, mastersData), name: player4, score: player4Score },
                     totalScore: totalScore
                 });
             });
@@ -253,6 +253,11 @@
         const playerData = mastersData.find(player => player.full_name === playerName);
         const playerScore = playerData ? parseInt(playerData.topar) : 0;
         return isNaN(playerScore) ? 0 : playerScore;
+    }
+
+    function getPlayerId(playerName, mastersData) {
+        const playerData = mastersData.find(player => player.full_name === playerName);
+        return playerData ? playerData.id : null;
     }
 });
 
