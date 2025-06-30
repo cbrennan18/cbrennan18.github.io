@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://cbrennan.ie/sitemap.xml
