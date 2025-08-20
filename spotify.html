@@ -1,220 +1,140 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <!-- Global site tag (gtag.js) - Google Analytics -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-153213137-1"></script>
-    <title>Ciaran Brennan | Spotify Analysis</title>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="author" content="Ciaran Brennan">
-    <meta name="description" content="I have used the Spotify API to allow you to visualise your own listening habits. Explore how your top artists, genres and overall musical taste has changed over the past number of years on Spotify."/>
-    <link rel="stylesheet" type="text/css" href="./css/main.css" />
+  <meta charset="UTF-8" />
+  <title>Ciaran Brennan | Spotify Analysis</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="author" content="Ciaran Brennan" />
+  <meta name="description" content="Visualise your Spotify listening habits: top artists, genres and audio attributes over time." />
 
-    <!-- OpenGraph Meta -->
-    <meta property="og:title" content="Ciaran Brennan - Spotify Analysis">
-    <meta property="og:description" content="I have used the Spotify API to allow you to visualise your own listening habits. Explore how your top artists, genres and overall musical taste has changed over the years on Spotify.">
-    <meta property="og:image" content="https://cbrennan.ie/img/music.jpg" />
-    <meta property="og:url" content="https://cbrennan.ie/spotify">
+  <!-- OpenGraph -->
+  <meta property="og:title" content="Ciaran Brennan - Spotify Analysis" />
+  <meta property="og:description" content="Explore how your Spotify taste evolves: artists, genres, and audio attributes." />
+  <meta property="og:image" content="https://cbrennan.ie/img/music.jpg" />
+  <meta property="og:url" content="https://cbrennan.ie/spotify" />
 
-    <!-- Favicon -->
-    <link rel="shortcut icon" href="./img/favicon.ico" type="image/x-icon" />
+  <!-- Favicon -->
+  <link rel="icon" href="./img/favicon.ico" sizes="any">
 
-    <!-- Google Fonts -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js" type="text/javascript"></script>
-    <link href="https://fonts.googleapis.com/css?family=Montserrat&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons&display=swap" rel="stylesheet">
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
 
-        <!--Font Awesome Solid + Brands -->
-    <link href="./css/fontawesome-5.15.1/css/fontawesome.css" rel="stylesheet">
-    <link href="./css/fontawesome-5.15.1/css/brands.css" rel="stylesheet">
+  <!-- Font Awesome 7 -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css" rel="stylesheet">
 
-    <!-- AOS Library -->
-    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <!-- Bootstrap 5 -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
 
-    <!-- Javascript -->
-    <script type="text/javascript" src="js/external.js"></script>
-    <script type="text/javascript" src="js/spotify_api.js"></script>
+  <!-- AOS -->
+  <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
 
-    <!-- Bootstrap -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-
-    <!-- ChartJS -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.bundle.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/chartjs-plugin-annotation/0.5.7/chartjs-plugin-annotation.min.js"></script>
-
+  <!-- Site CSS -->
+  <link rel="stylesheet" href="./css/main.css">
 </head>
 
 <body>
-<!-- Navbar -->
-<div w3-include-html="navbar.html"></div>
-<div class="body-padding-bottom d-flex flex-column min-vh-100">
+  <!-- Navbar -->
+  <header w3-include-html="navbar.html"></header>
+
+  <main class="body-padding-bottom d-flex flex-column min-vh-100">
     <section class="pt-4 pt-md-11 flex-fill">
-        <div class="container">
-            <div class="row justify-content-center">
-                <div class="col-12 col-md-10 col-lg-8 order-md-2 pt-5 pt-5 pb-5">
-                    <h2 class="text-center text-md-left spotify-heading pt-5">SPOTIFY ANALYSIS</h2>
-                    <h6 class="text-center text-md-left">
-                        <i>26 July 2020, 11:00</i>
-                    </h6>
-                    <div id="btnSpotify">
-                        <p class="blog-design">Click the button below to connect to Spotify and see what your data looks like on the inside!</p>
-                        <div class="text-center">
-                            <button class="btn btn-lg btn-success align-center" onclick="getSpotify()">Connect to Spotify</button>
-                        </div>
-                    </div>
-                    <div id="blog-description">
-                        <div data-aos="fade-up" data-aos-duration="2000">
-                            <img src="./img/music.jpg" class="img-fluid" alt="Spotify app open on a laptop and tablet"/>
-                            <div class="text-right">
-                                <a style="background-color:black;color:white;text-decoration:none;padding:4px 6px;/*noinspection CssInvalidPropertyValue*/font-family:-apple-system, BlinkMacSystemFont, San Francisco, Helvetica Neue, Helvetica, Ubuntu, Roboto, Noto, Segoe UI, Arial, sans-serif;font-size:12px;font-weight:bold;line-height:1.2;display:inline-block;border-radius:3px" href="https://unsplash.com/@heidifin" target="_blank" rel="noopener noreferrer"><span style="display:inline-block;padding:2px 3px"><svg xmlns="http://www.w3.org/2000/svg" style="height:12px;width:auto;position:relative;vertical-align:middle;top:-2px;fill:white" viewBox="0 0 32 32"><title>unsplash-logo</title><path d="M10 9V0h12v9H10zm12 5h10v18H0V14h10v9h12v-9z"></path></svg></span><span style="display:inline-block;padding:2px 3px">Heidi Fin</span></a>
-                            </div>
-                            <br>
-                            <div class="text-justify">
-                                <p class="blog-design">
-                                    Following a bit of a break from programming, I have finally got around to starting a new project on my website.
-                                    It took me quite some time to decide on the right project to undertake.
-                                    This was down to my struggle striking the right balance between learning and interesting.
-                                    Having decided to learn more about APIs, I began to look at what apps I use on a daily basis.
-                                    For those of you who are wondering, an API is basically a way to access the data and features of another app or service.
-                                    An API functions in the same way a waiter does at a restaurant, communicating your order to the kitchen and hopefully returning the meal that you ordered when it is ready.
-                                    Put simply, I wanted to learn how to access data in another app or service using an API and visualize the data the API returned.
-                                </p>
-                                <p class="blog-design">
-                                    When I began, I initially chose to try and access the Strava API to visualise my running data.
-                                    Unfortunately, Strava has severely restricted the use of their API in recent months and I was unable to get the quantity of information to tell an interesting story.
-                                    Thus, my attention turned towards another app that I use daily, Spotify.
-                                    I chose to use the Spotify API for this project as I was interested to see if I could recreate some of the end-of-year statistics that Spotify produces for their users.
-                                </p>
-                                <p class="blog-design">
-                                    Instead of boring everyone to death with insights into my questionable musical tastes, I wanted to push the boundaries out a little bit and allow each of you to see your own Spotify data.
-                                    The Spotify Top 50 Average data in the graphs below was taken from <a href="https://www.kaggle.com/leonardopena/top-spotify-songs-from-20102019-by-year/data#">this Kaggle dataset</a>.
-                                    The user data is taken from a variety of different endpoints, including your 'Top Songs of ____' playlists. More information on the full capabilities of the Spotify Web API is available <a href = "https://developer.spotify.com/documentation/web-api/reference/">here</a>.
-                                </p>
-                                <div class="text-left">
-                                    <div class="text-center">
-                                        <button id="btnLoadData" class="btn btn-primary btn-spotify btn-lg btn-block mb-3" onclick="showData()">View Your Data</button>
-                                        <div id="spinner" class="spinner-border" style="width: 5rem; height: 5rem; display: none" role="status">
-                                            <span class="sr-only">Loading...</span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div id="artists-display" style="display: none">
-                            <div id="data-display" class="bg-light" style="font-family: 'Lato', sans-serif;">
-                                <div data-aos="fade-up"
-                                     data-aos-duration="1000"
-                                     data-aos-easing="ease-in-out"
-                                     data-aos-anchor-placement="bottom-bottom"
-                                >
-                                    <p class="display-4 text-center scroll-icon" style="font-weight: 700; font-size: 3.5rem">Your Spotify, Visualised</p>
-                                </div>
-                                <section class="spotify-history">
-                                </section>
-                            </div>
-                        </div>
-                        <div class="text-justify" id="audio-features" style="display: none">
-                            <div class="display-5 text-center sticky taste-sticky green-bg">
-                                Attributes
-                            </div>
-                            <div class="taste p-5-xl">
-                                <p>
-                                <div class="chart-container">
-                                    <canvas id="acousticChart"></canvas>
-                                    <br>
-                                </div>
-                                <b>Acousticness</b> is a confidence measure from 0% to 100% of whether the track is acoustic. 100% represents high confidence the track is acoustic.
-                                <p>
-                                <div class="chart-container">
-                                    <canvas id="danceChart"></canvas>
-                                    <br>
-                                </div>
-                                <br>
-                                <b>Danceability</b> describes how suitable a track is for dancing based on a combination of musical elements including tempo, rhythm stability, beat strength, and overall regularity. A value of 0% is least danceable and 100% is most danceable.
-                                <p>
-                                <div class="chart-container">
-                                    <canvas id="energyChart"></canvas>
-                                    <br>
-                                </div>
-                                <br>
-                                <b>Energy</b> is a measure from 0% to 100% and represents a perceptual measure of intensity and activity. Typically, energetic tracks feel fast, loud, and noisy. For example, death metal has high energy, while a Bach prelude scores low on the scale. Perceptual features contributing to this attribute include dynamic range, perceived loudness, timbre, onset rate, and general entropy.
-                                <p>
-                                <div class="chart-container">
-                                    <canvas id="valenceChart"></canvas>
-                                    <br>
-                                </div>
-                                <br>
-                                <b>Valence</b> is a measure from 0% to 100% describing the musical positiveness conveyed by a track. Tracks with high valence sound more positive (e.g. happy, cheerful, euphoric), while tracks with low valence sound more negative (e.g. sad, depressed, angry).
-                            </div>
-                        </div>
-                        <!-- Button trigger modal -->
-                        <div class="text-justify">
-                            <div class="text-center">
-                                <br>
-                                <br>
-                                <a href="projects-menu.html" class="btn btn-outline-dark btn-lg">See More Projects...</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+      <div class="container">
+        <div class="row justify-content-center">
+          <div class="col-12 col-md-10 col-lg-8 order-md-2 pt-5 pb-5">
+            <h1 class="pt-4 mb-2 text-center text-md-start text-gradient">SPOTIFY ANALYSIS</h1>
+            <p class="text-muted text-center text-md-start mb-4"><small>26 July 2020</small></p>
+
+            <!-- Connect -->
+            <div id="btnSpotify" class="mb-5">
+              <p class="lead">
+                Connect to Spotify to explore your top artists, genres and audio attributes over time.
+              </p>
+              <div class="text-center text-md-start">
+                <button class="btn btn-lg btn-success" id="btnConnect">Connect to Spotify</button>
+              </div>
             </div>
-        </div>
+
+            <!-- Body / description -->
+            <div id="blog-description" style="display:none">
+              <figure class="mb-3" data-aos="fade-up" data-aos-duration="800">
+                <img src="./img/music.jpg" class="img-fluid rounded shadow-sm" alt="Spotify app on devices" />
+                <figcaption class="mt-2 text-end text-muted small">
+                  Photo: <a class="link-secondary" href="https://unsplash.com/@heidifin" target="_blank" rel="noopener">Heidi Fin (Unsplash)</a>
+                </figcaption>
+              </figure>
+              <p class="mb-4">
+                After connecting, click “View your data”. We’ll fetch your top artists and tracks,
+                and summarise audio attributes (acousticness, danceability, energy, valence) based on your listening over time.
+              </p>
+
+              <div class="text-center text-md-start mb-5">
+                <button id="btnLoadData" class="btn btn-primary btn-lg me-3">View your data</button>
+                <div id="spinner" class="spinner-border align-middle" style="width:3rem;height:3rem;display:none" role="status" aria-label="Loading"></div>
+              </div>
+
+              <!-- Headline + timeline -->
+              <div id="artists-display" style="display:none">
+                <div id="data-display" class="bg-light rounded p-3 p-md-4">
+                  <h2 class="h3 text-center mb-4 text-gradient" id="scroll-icon">Your Spotify, visualised</h2>
+                  <section class="spotify-history"></section>
+                </div>
+              </div>
+
+              <!-- Audio features -->
+              <div id="audio-features" class="mt-5" style="display:none">
+                <div class="sticky-year text-gradient">Attributes</div>
+                <div class="attr-grid">
+                  <div class="chart-card">
+                    <canvas id="acousticChart"></canvas>
+                    <p class="small text-muted mt-3 mb-0"><b>Acousticness</b> — confidence a track is acoustic.</p>
+                  </div>
+                  <div class="chart-card">
+                    <canvas id="danceChart"></canvas>
+                    <p class="small text-muted mt-3 mb-0"><b>Danceability</b> — suitability for dancing.</p>
+                  </div>
+                  <div class="chart-card">
+                    <canvas id="energyChart"></canvas>
+                    <p class="small text-muted mt-3 mb-0"><b>Energy</b> — intensity & activity.</p>
+                  </div>
+                  <div class="chart-card">
+                    <canvas id="valenceChart"></canvas>
+                    <p class="small text-muted mt-3 mb-0"><b>Valence</b> — musical positiveness.</p>
+                  </div>
+                </div>
+              </div>
+
+              <div class="text-center mt-5">
+                <a href="projects-menu.html" class="btn btn-outline-secondary btn-lg">See more projects</a>
+              </div>
+            </div>
+          </div>
+        </div> <!-- /row -->
+      </div> <!-- /container -->
     </section>
-</div>
-<!-- Modal -->
-<div class="spotify-graphic">
+  </main>
 
-</div>
-<div w3-include-html="footer.html"></div>
-<!-- Cookie Consent -->
-<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.1.1/cookieconsent.min.css" />
-<script src="https://cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.1.1/cookieconsent.min.js" data-cfasync="false"></script>
-<script>
-    window.addEventListener('load', function(){
-        window.cookieconsent.initialise({
-            type: "opt-in",
-            theme: "classic",
-            palette: {
-                popup: {
-                    background: "#28f",
-                    text: "#fff"
-                },
-                button: {
-                    background: "#fff",
-                    text: "#28f"
-                }
-            },
-            content: {
-                link: "Learn more.",
-                href: "https://www.cookiesandyou.com/"
-            },
-            onInitialise: function(status) {
-                if(status === cookieconsent.status.allow) myScripts();
-            },
-            onStatusChange: function(status) {
-                if (this.hasConsented()) myScripts();
-            }
-        })
+  <footer w3-include-html="footer.html"></footer>
+
+  <!-- Cloudflare -->
+  <script defer src="https://static.cloudflareinsights.com/beacon.min.js"
+    data-cf-beacon='{"token": "872b7537826746aca4833c393945e92d"}'></script>
+
+  <!-- Libs -->
+  <script defer src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.bundle.min.js"></script>
+
+  <!-- Site helper + app -->
+  <script defer src="js/external.js"></script>
+  <script defer src="js/spotify_api.js"></script>
+
+  <script>
+    window.addEventListener('load', () => {
+      if (typeof includeHTML === 'function') includeHTML();
+      if (window.AOS) AOS.init({ once: true });
     });
-
-    function myScripts() {
-        window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
-        gtag('js', new Date());
-
-        gtag('config', 'UA-153213137-1', { 'anonymize_ip': true });
-
-    }
-
-</script>
-<!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "872b7537826746aca4833c393945e92d"}'></script><!-- End Cloudflare Web Analytics -->
+  </script>
 </body>
-
-<script>
-    includeHTML();
-    AOS.init();
-</script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 </html>

@@ -1,0 +1,70 @@
+[
+  {
+    "title": "FPL PULSE",
+    "url": "fpl-pulse/",
+    "img": "/img/premierleaguefootballs.jpg",
+    "alt": "FPL Pulse",
+    "excerpt": "An animated season summary experience for Fantasy Premier League managers – your highs, lows, and everything in between.",
+    "meta": "28 June 2025, 09:00<br>3 min read"
+  },
+  {
+    "title": "MASTERS BUSTER",
+    "url": "masters-2025.html",
+    "img": "/img/masters2025.jpeg",
+    "alt": "Masters 2025",
+    "excerpt": "A real-time, interactive Masters Leaderboard combined with player names for Masters Buster 2025.",
+    "meta": "11 April 2025, 14:00<br>1 min read"
+  },
+  {
+    "title": "MASTERS BUSTER",
+    "url": "masters-2024.html",
+    "img": "/img/corkgc.webp",
+    "alt": "Masters 2024",
+    "excerpt": "A real-time, interactive Masters Leaderboard combined with player names for Masters Buster 2024.",
+    "meta": "11 April 2024, 21:00<br>1 min read"
+  },
+  {
+    "title": "MASTERS BUSTER",
+    "url": "masters.html",
+    "img": "/img/oldheadofkinsale.jpg",
+    "alt": "Masters 2021",
+    "excerpt": "A real-time, interactive Masters Leaderboard combined with player names for Masters Buster 2021.",
+    "meta": "07 April 2021, 09:00<br>1 min read"
+  },
+  {
+    "titleHtml": "<span class=\"text-danger\">SPOTIFY</span> ANALYSIS",
+    "title": "SPOTIFY ANALYSIS",
+    "url": "spotify.html",
+    "img": "/img/music.jpg",
+    "alt": "Music",
+    "excerpt": "Explore how your Spotify data, including musical taste, changes over time.",
+    "meta": "26 July 2020, 11:00<br>10 min read"
+  },
+  {
+    "titleHtml": "<span class=\"text-danger\">FREE</span> RUNNING PLANS",
+    "title": "FREE RUNNING PLANS",
+    "url": "running-plans.html",
+    "img": "/img/startline.jpg",
+    "alt": "Running",
+    "excerpt": "Free running plans for all levels, tailored to your times and goals.",
+    "meta": "7 May 2020, 16:30<br>3 min read"
+  },
+  {
+    "titleHtml": "<span class=\"text-danger\">NETFLIX</span> AND STANDSTILL?",
+    "title": "NETFLIX AND STANDSTILL?",
+    "url": "netflix-and-standstill.html",
+    "img": "/img/netflix.jpg",
+    "alt": "Netflix on TV",
+    "excerpt": "A visual examination of the Netflix films I have watched between 2014 and 2019.",
+    "meta": "05 February 2020, 18:40<br>4 min read"
+  },
+  {
+    "titleHtml": "BIG INTO <span class=\"text-danger\">THE FITNESS</span>",
+    "title": "BIG INTO THE FITNESS",
+    "url": "big-into-the-fitness.html",
+    "img": "/img/bitf.png",
+    "alt": "Big Into The Fitness",
+    "excerpt": "My first visualisation — an animated video using GPS data to map my runs around Cork since March.",
+    "meta": "01 December 2019, 20:07<br>1 min read"
+  }
+]

@@ -26,29 +26,39 @@ function includeHTML() {
     }
 }
 function scrollAnimation() {
-    if (window.location.hash)
-        scroll(0,0);
-    setTimeout(function(){scroll(0,0);},1);
-    $(document).ready(function() {
-        $('.nav-scroll').on('click',function(e){
-            let url = window.location.href;
-            if (url.indexOf("index") > -1) {
-                e.preventDefault();
-                let href = $(this).attr("href");
-                let str = href.split("#");
-                str = "#" + str[1];
-                $("html, body").animate({scrollTop: $(str).offset().top}, 800, 'swing');
-            }
-        });
+    if (window.location.hash) {
+        window.scrollTo(0, 0);
+        setTimeout(() => window.scrollTo(0, 0), 1);
+    }
+
+    // Delegate so links added by includeHTML() also work
+    document.addEventListener('click', (e) => {
+        const link = e.target.closest('a.nav-scroll');
+        if (!link) return;
+
+        // Only smooth-scroll on the home page
+        const path = window.location.pathname;
+        const onHome = path.endsWith('/') || path.endsWith('/index.html');
+        if (!onHome) return;
+
+        const href = link.getAttribute('href') || '';
+        const hash = href.split('#')[1];
+        if (!hash) return;
+
+        const target = document.getElementById(hash);
+        if (!target) return;
+
+        e.preventDefault();
+        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
     });
-    if(window.location.hash){
-        $('html,body').animate({scrollTop:$(window.location.hash).offset().top}, 800, 'swing');
+
+    if (window.location.hash) {
+        const el = document.querySelector(window.location.hash);
+        if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
     }
 }
 
 function Scroll() {
-    $(document).ready(function() {
-        $("html, body").animate({scrollTop: 0}, "slow");
-        return false;
-    });
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+    return false;
 }

@@ -1,0 +1,73 @@
+[
+  {
+    "company": "HEINEKEN Ireland",
+    "url": "https://www.heinekenireland.ie/",
+    "roles": [
+      {
+        "title": "Category Manager",
+        "dates": "Aug 23 - Present",
+        "desc": "Lead category strategy in the Off Trade, partnering with major retailers to grow Beer and Cider through insights, range optimisation, and shopper engagement."
+      },
+      {
+        "title": "Power BI Specialist",
+        "dates": "Sep 20 - Jul 23",
+        "desc": "Developed and maintained enterprise BI solutions, delivering automated dashboards and advanced analytics in Power BI, Excel, and SQL to support commercial decision-making."
+      }
+    ]
+  },
+  {
+    "company": "Olytico",
+    "url": "https://olytico.com/",
+    "roles": [
+      {
+        "title": "PowerBI Contractor",
+        "dates": "Aug 20 - Sep 20",
+        "desc": "Designed automated workflows and dynamic dashboards in Power BI, enabling media analysts to turn complex social data into actionable insights."
+      }
+    ]
+  },
+  {
+    "company": "MBAnalyst Melbourne",
+    "url": "https://mbanalyst.com/",
+    "roles": [
+      {
+        "title": "Data Analytics Contractor",
+        "dates": "Mar 20 - Jul 20",
+        "desc": "Transformed raw data into client-ready dashboards using Power Query and DAX, driving evidence-based decisions across diverse industries."
+      }
+    ]
+  },
+  {
+    "company": "HEINEKEN Ireland",
+    "url": "https://www.heinekenireland.ie/",
+    "roles": [
+      {
+        "title": "Commercial Analyst Intern",
+        "dates": "Jun 19 - Jan 20",
+        "desc": "Built a mobile-first reporting suite in Power BI, giving sales teams real-time insights on-the-go and improving agility in commercial execution."
+      }
+    ]
+  },
+  {
+    "company": "University College Cork",
+    "url": "https://www.ucc.ie/",
+    "roles": [
+      {
+        "title": "Java Tutor",
+        "dates": "Sep 18 - May 19",
+        "desc": "Tutored undergraduate students in building functional e-commerce web applications, covering Java, SQL, HTML, CSS, and JavaScript."
+      }
+    ]
+  },
+  {
+    "company": "PatientKeeper USA",
+    "url": "https://www.patientkeeper.com/",
+    "roles": [
+      {
+        "title": "Technical Services Intern",
+        "dates": "Mar 18 - Sep 18",
+        "desc": "Automated reporting processes and redesigned the internal analytics portal, improving usability and speed of delivery for business stakeholders."
+      }
+    ]
+  }
+]

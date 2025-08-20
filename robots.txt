@@ -1,3 +1,6 @@
+# robots.txt for cbrennan.ie
 User-agent: *
 Allow: /
+
+# Primary XML sitemap
 Sitemap: https://cbrennan.ie/sitemap.xml

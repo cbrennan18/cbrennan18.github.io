@@ -1,635 +1,401 @@
-let _token;
-document.addEventListener("DOMContentLoaded", function() {
-    // Get the hash of the url
-    const hash = window.location.hash
-        .substring(1)
-        .split('&')
-        .reduce(function (initial, item) {
-            if (item) {
-                const parts = item.split('=');
-                initial[parts[0]] = decodeURIComponent(parts[1]);
-            }
-            return initial;
-        }, {});
+// ---- Config ----
+const CLIENT_ID = '54d26b92340c44bdaa4b0f54b09a858f'; // your app id
+const SCOPES = ['user-read-email','user-read-private','user-top-read','playlist-read-private'];
+const AUTH_ENDPOINT = 'https://accounts.spotify.com/authorize';
 
-    window.location.hash = '';
+// computed so it works both locally and on cbrennan.ie
+const REDIRECT_URI = encodeURIComponent(`${window.location.origin}/spotify.html`);
 
-    // Set token
-    _token = hash.access_token;
+// ---- State ----
+let ACCESS_TOKEN = null;
 
-    if (typeof _token === 'undefined') {
-        document.getElementById('blog-description').style.display = 'none';
-        document.getElementById('btnSpotify').style.display = 'inline';
-    } else {
-        document.getElementById('blog-description').style.display = 'inline';
-        document.getElementById('btnSpotify').style.display = 'none';
-    }
+// Year-keyed maps
+const songIdMap   = new Map(); // year -> [trackIds]
+const artistsMap  = new Map(); // year -> { artistName: {name,count,id} }
+const genresMap   = new Map(); // year -> { genre_counts: {genre:count} }
+const audioMap    = new Map(); // year -> { danceability,valence,energy,acousticness }
 
+// ---- DOM helpers ----
+const $ = (sel, root=document) => root.querySelector(sel);
+const $$ = (sel, root=document) => Array.from(root.querySelectorAll(sel));
+const show = el => el && (el.style.display = 'block');
+const hide = el => el && (el.style.display = 'none');
+
+// ---- Token parsing / UI gate ----
+document.addEventListener('DOMContentLoaded', () => {
+  // Parse fragment for token (implicit grant)
+  const hash = window.location.hash.replace(/^#/, '');
+  const params = Object.fromEntries(new URLSearchParams(hash));
+  if (params.access_token) {
+    ACCESS_TOKEN = params.access_token;
+    // Clear fragment for cleaner URL
+    history.replaceState(null, '', window.location.pathname + window.location.search);
+  }
+
+  // Toggle sections
+  if (ACCESS_TOKEN) {
+    show($('#blog-description'));
+    hide($('#btnSpotify'));
+  } else {
+    hide($('#blog-description'));
+    show($('#btnSpotify'));
+  }
+
+  // Buttons
+  $('#btnConnect')?.addEventListener('click', startSpotifyAuth);
+  $('#btnLoadData')?.addEventListener('click', showData);
 });
 
-function getSpotify() {
-
-    const authEndpoint = 'https://accounts.spotify.com/authorize';
-
-    // Replace with your app's client ID, redirect URI and desired scopes
-    const clientId = '54d26b92340c44bdaa4b0f54b09a858f';
-    const redirectUri = 'https%3A%2F%2Fcbrennan.ie%2Fspotify.html';
-    // const redirectUri = 'http%3A%2F%2Flocalhost%3A8080%2Fcbrennan18.github.io%2Fspotify.html';
-    // const redirectUri = 'http%3A%2F%2F127.0.0.1%3A5500%2Fspotify.html';
-    const scopes = [
-        'user-read-email',
-        'user-read-private',
-        'user-top-read',
-        'playlist-read-private'
-    ];
-    const showDialog = 'false';
-
-    // If there is no token, redirect to Spotify authorization
-    if (!_token) {
-        window.location = `${authEndpoint}?client_id=${clientId}&redirect_uri=${redirectUri}&scope=${scopes.join('%20')}&show_dialog=${showDialog}&response_type=token`;
-    }
+// ---- Auth ----
+function startSpotifyAuth() {
+  if (ACCESS_TOKEN) return;
+  const url = `${AUTH_ENDPOINT}?client_id=${CLIENT_ID}&redirect_uri=${REDIRECT_URI}&scope=${SCOPES.join('%20')}&response_type=token&show_dialog=false`;
+  window.location.assign(url);
 }
 
-let song_id_dict = new Map();
-let artists_dict = new Map();
-let genres_dict = new Map();
-let audio_dict = new Map();
-let final_dict = new Map();
+// ---- Fetch wrapper ----
+async function sFetch(url) {
+  const res = await fetch(url, {
+    headers: { 'Authorization': `Bearer ${ACCESS_TOKEN}` },
+    cache: 'no-store'
+  });
+  if (!res.ok) {
+    const text = await res.text().catch(() => '');
+    throw new Error(`HTTP ${res.status} for ${url}: ${text}`);
+  }
+  return res.json();
+}
 
+// ---- Core flow ----
 async function showData() {
-    document.getElementById('btnLoadData').style.display = 'none';
-    document.getElementById('spinner').style.display = 'inline-block';
-    document.getElementById('artists-display').style.display = 'none';
-    document.getElementById('audio-features').style.display = 'none';
+  hide($('#btnLoadData'));
+  show($('#spinner'));
+  hide($('#artists-display'));
+  hide($('#audio-features'));
 
-    $(document).unbind('audio_features_complete');
-    await getSpotifyPlaylists().done(function(data) {
-        getPlaylists(data);
-    });
-    await getCurrentTracks().done(function(data) {
-        let track_ids = [];
-        let artist_ids = [];
-        let genre_counts = {};
-        let i;
-        let tracks = data.items;
-        for (i = 0; i < tracks.length; i++) {
+  try {
+    // 1) Find "Your Top Songs {YEAR}" playlists made by Spotify
+    const playlists = await searchTopSongsPlaylists();
 
-            track_ids.push(tracks[i].id);
-            artist_ids.push(tracks[i].album.artists[0].id);
-        }
-        song_id_dict.set("2024", track_ids);
-        genres_dict.set("2024", getSpotifyArtistIds(artist_ids, genre_counts));
-    });
-    await getAudioFeatures();
-    await $(document).bind('audio_features_complete',
-        await getCurrentArtists().done(function() {
-            final_dict = {
-                'audio_features': new Map([...audio_dict.entries()].sort()),
-                'artists': new Map([...artists_dict.entries()].sort()),
-                'genres': new Map([...genres_dict.entries()].sort())
-            };
-        })
-    );
+    // 2) For each playlist: get tracks (IDs) + artist IDs + year
+    await Promise.all(playlists.map(processPlaylist));
 
-    await getCharts(final_dict);
-    await getYearlyArtists(final_dict);
-    document.getElementById('spinner').style.display = 'none';
-    document.getElementById('artists-display').style.display = 'block';
-    document.getElementById('audio-features').style.display = 'block';
+    // 3) Also add "current" snapshot (top tracks & artists)
+    const currentYear = String(new Date().getFullYear());
+    await addCurrentSnapshot(currentYear);
 
-    await softScrollClickSpotify();
-}
+    // 4) Compute audio features per year (avg)
+    await computeAudioFeatures();
 
-function getSpotifyPlaylists() {
-    return $.ajax({
-        url: "https://api.spotify.com/v1/search?q=%22Your%20Top%20Songs%22&type=playlist&limit=50",
-        type: "GET",
-        beforeSend: function (xhr) {
-            xhr.setRequestHeader('Authorization', 'Bearer ' + _token);
-        },
-        success: function (data) {
-        }
-    });
-}
+    // 5) Build charts + yearly artist sections
+    const final_dict = {
+      audio_features: new Map([...audioMap.entries()].sort()),
+      artists:        new Map([...artistsMap.entries()].sort()),
+      genres:         new Map([...genresMap.entries()].sort())
+    };
 
-async function getYearlyArtists(final_dict) {
-    // console.log(final_dict);
-    let y = [], a = [], top_five = [];
-    for (let [year, value] of final_dict.artists.entries()) {
-        y.push(year);
-        a.push(value);
+    buildCharts(final_dict);
+    await buildYearlyArtists(final_dict);
+
+    // 6) Reveal sections
+    hide($('#spinner'));
+    show($('#artists-display'));
+    show($('#audio-features'));
+
+    // smooth scroll to headline
+    const target = $('#scroll-icon');
+    if (target) {
+      window.scrollTo({ top: target.getBoundingClientRect().top + window.pageYOffset - 20, behavior: 'smooth' });
     }
 
-    for (let i = 0; i < a.length; i++) {
-        let values = Object.values(a[i]);
-        values.sort((a, b) => parseFloat(b.count) - parseFloat(a.count));
-        for (let j = 0; j < values.length; j++) {
-            if(values[j].name === "Various Artists") {
-                values.splice(j, 1);
-            }
-        }
-        values.length = 5;
-        let str1 = "";
-        for (let k = 0; k < values.length; k++) {
-            str1 = str1.concat(values[k].id);
-            str1 += ",";
-        }
-        str1 = str1.slice(0, -1);
-        await getSpotifyArtists(str1).done(function(data) {
-            for (let l = 0; l < values.length; l++) {
-                if(values[l].name === data.artists[l].name) {
-                    Object.assign(values[l], {url: data.artists[l].images[0].url});
-
-                }
-            }
-        });
-        await top_five.push({year: y[i], artist: values});
-    }
-    $(".spotify-history").empty();
-
-    for (let i = 0; i < top_five.length; i++) {
-        let item_name_group = '';
-        for (let j = 0; j < top_five[i].artist.length; j++) {
-            let rank = j + 1;
-            let item_name =
-                '<div data-aos="fade-up"' +
-                    ' data-aos-delay="50"' +
-                    ' data-aos-duration="1000"' +
-                    ' data-aos-easing="ease-in-out"' +
-                    ' data-aos-anchor-placement="top-bottom">' +
-                    '<div class="card card-spotify border-0 mt-3 m-md-3" style="border-radius: 45px;"> ' +
-                        '<div class="row "> ' +
-                            '<div class="col-5"> ' +
-                                '<img src="' + top_five[i].artist[j].url + '" class="crop" style="border-top-left-radius: 45px; border-bottom-left-radius: 45px;" alt="image"/> ' +
-                            '</div> ' +
-                            '<div class="col-7 px-3"> ' +
-                                '<div class="card-block d-flex"> ' +
-                                    '<h3 class="float-left card-title mr-3 mr-md-5 pr-5 align-self-center infront" style="font-family: ' + 'Lato' + ',sans-serif">' + top_five[i].artist[j].name + '</h3> ' +
-                                    '<h1 class="display-4 behind ml-auto pr-3 mt-3">' + rank + '</h1>' +
-                                '</div> ' +
-                            '</div> ' +
-                        '</div>' +
-                    '</div>' +
-                '</div>';
-            item_name_group += item_name;
-        }
-
-        let item1 = $(
-            '<section>' +
-                '<div class="display-4 text-center normal-bg sticky">' +
-                    top_five[i].year +
-                '</div> ' +
-                '<div class="p-5-xl"> ' +
-                    '<span class="artists" style="font-weight: 400; font-size: 40px">' +
-                        item_name_group +
-                    '</span>' +
-                '</div>' +
-            '</section>');
-
-        item1.appendTo($('.spotify-history'));
-    }
-
-
-    let $sticky = $('.sticky');
-    let $artists = $('.artists');
-    let $tasteSticky = $('.taste-sticky');
-    let $taste = $('.taste');
-    let num = $('#data-display .spotify-history .sticky').length;
-
-    $(window).scroll(function(){
-
-        AOS.init();
-        AOS.refresh();
-        for (let i = 0; i < num; i++) {
-            let rem = parseInt(getComputedStyle(document.documentElement).fontSize);
-            if ($sticky.eq(i).offset().top + $sticky.eq(i).outerHeight() > ($artists.eq(i).offset().top) - (8 * rem)) {
-                $sticky.eq(i).removeClass('normal-bg');
-                $sticky.eq(i).addClass('green-bg');
-            } else {
-                $sticky.eq(i).removeClass('green-bg');
-                $sticky.eq(i).addClass('normal-bg');
-            }
-        }
-        if ($tasteSticky.offset().top + $tasteSticky.outerHeight() > ($taste.offset().top)) {
-            $tasteSticky.removeClass('normal-bg');
-            $tasteSticky.addClass('green-bg');
-        } else {
-            $tasteSticky.removeClass('green-bg');
-            $tasteSticky.addClass('normal-bg');
-        }
-    });
-
-    getYearlyGenres(top_five, final_dict);
-
+  } catch (err) {
+    console.error('Spotify render error:', err);
+    hide($('#spinner'));
+    show($('#btnLoadData'));
+    alert('Sorry, there was a problem fetching your Spotify data. Try reconnecting and reloading.');
+  }
 }
 
-function getYearlyGenres(top_five, final_dict) {
-    let y = [], a = [];
-    for (let [year, value] of final_dict.genres.entries()) {
-        y.push(year);
-        a.push(value.genre_counts);
-    }
-
-    for (let i = 0; i < a.length; i++) {
-        let obj = a[i];
-
-        // Get an array of the keys:
-        let keys = Object.keys(obj);
-        // Then sort by using the keys to lookup the values in the original object:
-        keys.sort(function(a, b) { return obj[b] - obj[a] });
-
-        keys.length = 5;
-        top_five[i].genres = keys;
-    }
-
-    getYearlyFeatures(top_five, final_dict);
-
-
+// ---- Spotify API helpers ----
+async function searchTopSongsPlaylists() {
+  // The search API is limited; we’ll fetch 50 results and filter by owner + name prefix
+  const data = await sFetch('https://api.spotify.com/v1/search?q=%22Your%20Top%20Songs%22&type=playlist&limit=50');
+  const items = data?.playlists?.items || [];
+  return items.filter(p => {
+    const ownerOk = p?.owner?.external_urls?.spotify === 'https://open.spotify.com/user/spotify';
+    const nameOk  = typeof p?.name === 'string' && p.name.startsWith('Your Top Songs');
+    return ownerOk && nameOk;
+  });
 }
 
-function getYearlyFeatures(top_five, final_dict) {
+async function processPlaylist(playlist) {
+  const playlistId = (playlist?.uri || '').split(':').pop();
+  if (!playlistId) return;
 
-    let y = [], a = [];
-    for (let [year, value] of final_dict.audio_features.entries()) {
-        y.push(year);
-        a.push(value);
+  const details = await sFetch(`https://api.spotify.com/v1/playlists/${playlistId}`);
+  const year = (details?.name || '').split(' ').pop();
+  if (!/^\d{4}$/.test(year)) return;
+
+  const items = details?.tracks?.items || [];
+  const trackIds = [];
+  const artistIds = [];
+  const artistCounts = {};
+
+  for (const it of items) {
+    const track = it?.track;
+    if (!track) continue;
+    const tId = track.id;
+    const a = track.album?.artists?.[0];
+    if (tId) trackIds.push(tId);
+    if (a?.id) artistIds.push(a.id);
+
+    const artistName = a?.name;
+    if (artistName) {
+      if (!artistCounts[artistName]) {
+        artistCounts[artistName] = { name: artistName, count: 1, id: a.id || '' };
+      } else {
+        artistCounts[artistName].count += 1;
+      }
     }
+  }
 
-    for (let i = 0; i < a.length; i++) {
-        let values = Object.values(a[i]);
-        for (let j = 0; j < values.length; j++) {
-            values[j] = Math.round(values[j] * 100);
-        }
+  songIdMap.set(year, trackIds);
+  artistsMap.set(year, artistCounts);
 
-        top_five[i].features = values;
-    }
-
+  // genres for the year (via artists endpoint)
+  const genreCounts = await getGenreCountsForArtists(artistIds);
+  genresMap.set(year, { genre_counts: genreCounts });
 }
 
+async function addCurrentSnapshot(yearLabel) {
+  // top tracks -> ids
+  const topTracks = await sFetch('https://api.spotify.com/v1/me/top/tracks?time_range=medium_term&limit=50&offset=0');
+  const tItems = topTracks?.items || [];
+  const curTrackIds = [];
+  const curArtistIds = [];
+  for (const t of tItems) {
+    if (t?.id) curTrackIds.push(t.id);
+    const a = t?.album?.artists?.[0];
+    if (a?.id) curArtistIds.push(a.id);
+  }
+  songIdMap.set(yearLabel, curTrackIds);
 
+  // top artists -> counts 10..6 for top 5 (like old code)
+  const topArtists = await sFetch('https://api.spotify.com/v1/me/top/artists?time_range=medium_term&limit=5&offset=0');
+  const aItems = topArtists?.items || [];
+  const artistCounts = {};
+  aItems.forEach((a, i) => {
+    if (!a?.name) return;
+    artistCounts[a.name] = { name: a.name, count: 10 - i, id: a.id || '' };
+  });
+  artistsMap.set(yearLabel, artistCounts);
 
-function getCharts(final_dict) {
-    let y = [], a = [], d = [], e=[], v=[];
-    for (let [year, value] of final_dict.audio_features.entries()) {
-        y.push(year);
-        a.push(value.acousticness.toFixed(4));
-        d.push(value.danceability.toFixed(4));
-        e.push(value.energy.toFixed(4));
-        v.push(value.valence.toFixed(4));
-    }
-    // colors
-    // #1db954
-    // #009b89
-    // #0078ad
-    // #0050a9
-    // #0b1d78
-    // original averages
-    // acousticness_average = 0.1672, energy_average = 0.6739, danceability_average = 0.6585, valence_average = 0.4991;
-
-    let acousticness_average = ['0.1660', '0.1588', '0.1660', '0.1278', '0.2174', '0.2558', '0.2486' ,'0.2358'];
-    let danceability_average = ['0.6366', '0.6333', '0.6537', '0.6720', '0.6971', '0.7174', '0.6899' ,'0.6884'];
-    let energy_average = ['0.7034', '0.6724', '0.6917', '0.6547', '0.6474', '0.6098',' 0.6334' ,'0.6728'];
-    let valence_average = ['0.5253', '0.4515', '0.5228', '0.4877', '0.5081', '0.5562',' 0.5147' ,'0.4914'];
-
-
-    populateChart('acousticChart', y, a, 'rgb(29,185,84)', 'rgba(29,185,84,0.5)', 'Acousticness', acousticness_average);
-    populateChart('danceChart', y, d, 'rgb(0,155,137)',  'rgba(0,155,137,0.5)', 'Danceability', danceability_average);
-    populateChart('energyChart', y, e, 'rgb(0,120,173)', 'rgba(0,120,173,0.5)', 'Energy', energy_average);
-    populateChart('valenceChart', y, v, 'rgb(0,80,169)', 'rgba(0,80,169, 0.5)', 'Valence', valence_average);
+  const genreCounts = await getGenreCountsForArtists(curArtistIds);
+  genresMap.set(yearLabel, { genre_counts: genreCounts });
 }
 
-function populateChart(element, labels, data, color, bgColor, title, average) {
-    let ctx = document.getElementById(element).getContext('2d');
-    let chart = new Chart(ctx, {
-        // The type of chart we want to create
-        type: 'line',
+async function getGenreCountsForArtists(artistIds) {
+  const counts = {};
+  const chunks = chunk(artistIds, 50);
 
-        // The data for our dataset
-        data: {
-            labels: labels,
-            datasets: [
-                {
-                    label: title,
-                    borderColor: color,
-                    pointBackgroundColor: color,
-                    data: data,
-                    backgroundColor: bgColor
-                },
-                {
-                    label: 'Global Users Average',
-                    borderColor: 'rgba(0,0,0,0.5)',
-                    pointBackgroundColor: 'rgb(0,0,0, 0.5)',
-                    data: average
-                }
-            ]
-        },
-        options: {
-            responsive: true,
-            maintainAspectRatio: false,
-            legend: {
-                position: 'top',
-                labels: {
-                    usePointStyle: true,
-                    boxWidth: 10
-                }
-            },
-            title: {
-                display: true,
-                text: title,
-                fontSize: 24,
-                fontFamily: 'Roboto-Light, sans-serif'
-            },
-            scales: {
-                yAxes: [{
-                    scaleLabel: {
-                        display: true,
-                        labelString: 'Percentage'
-                    },
-                    ticks: {
-                        callback: function(value) {
-                            let percentage = (value * 100).toFixed(0);
-                            return percentage + "%"
-                        }
-                    }
-                }],
-                xAxes: [{
-                    scaleLabel: {
-                        display: true,
-                        labelString: 'Year'
-                    }
-                }]
-            },
-            tooltips : {
-                mode : 'index',
-                position: 'nearest'
-            },
-        }
-    });
+  for (const ids of chunks) {
+    if (!ids.length) continue;
+    const data = await sFetch('https://api.spotify.com/v1/artists?ids=' + ids.join(','));
+    for (const art of data?.artists || []) {
+      for (const g of (art?.genres || [])) {
+        const genre = toTitleCase(g === 'pop' ? 'Pop' : g);
+        counts[genre] = (counts[genre] || 0) + 1;
+      }
+    }
+  }
+  return counts;
 }
 
-function getPlaylists(data) {
+async function computeAudioFeatures() {
+  for (const [year, trackIds] of songIdMap.entries()) {
+    if (!trackIds?.length) continue;
+    let sum = { danceability:0, valence:0, energy:0, acousticness:0 }, n = 0;
+    const chunks = chunk(trackIds, 100);
 
-    data = data.playlists;
-    // console.log(data);
-    let playlist_ids = [];
-    data.items.map(function (playlist) {
-        if (playlist.owner.external_urls.spotify === "https://open.spotify.com/user/spotify" && playlist.name.length == 19 && playlist.name.startsWith("Your Top Songs")) {
-            playlist_ids.push(playlist.uri);
-        }
-    });
-    // console.log(playlist_ids);
-
-    let i;
-
-    for (i = 0; i < playlist_ids.length; i++) {
-
-        let track_ids = [];
-        let artist_ids = [];
-        let genre_counts = {};
-        let artist_counts = {};
-
-        try {
-            let url = "https://api.spotify.com/v1/playlists/" + playlist_ids[i].split(":").pop();
-            let tracks = [];
-            let year = "";
-            $.ajax({
-                url: url,
-                type: "GET",
-                beforeSend: function (xhr) {
-                    xhr.setRequestHeader('Authorization', 'Bearer ' + _token);
-                },
-                success: function (data) {
-                    year = data.name.split(" ").pop();
-                    let i;
-                    for (i = 0; i < data.tracks.items.length; i++) {
-                        tracks.push(data.tracks.items[i].track);
-                        track_ids.push(tracks[i].id);
-                        artist_ids.push(tracks[i].album.artists[0].id);
-
-
-                        let artist_name = tracks[i].album.artists[0].name;
-                        if (!artist_counts[artist_name] || artist_counts[artist_name] < 1) {
-                            artist_counts[artist_name] =  {"name": artist_name, "count": 1, "id": tracks[i].album.artists[0].id};
-
-                        } else {
-                            artist_counts[artist_name].count += 1;
-                        }
-                    }
-                    song_id_dict.set(year, track_ids);
-                    artists_dict.set(year, artist_counts);
-                    genres_dict.set(year, getSpotifyArtistIds(artist_ids, genre_counts));
-                }
-
-            });
-        }
-        catch(err) {
-            console.log(err.message);
-        }
+    for (const ids of chunks) {
+      const data = await sFetch('https://api.spotify.com/v1/audio-features/?ids=' + ids.join(','));
+      for (const f of data?.audio_features || []) {
+        if (!f || f.danceability == null) continue;
+        sum.danceability += +f.danceability;
+        sum.valence      += +f.valence;
+        sum.energy       += +f.energy;
+        sum.acousticness += +f.acousticness;
+        n++;
+      }
     }
-    return([song_id_dict, artists_dict, genres_dict]);
+    if (n > 0) {
+      audioMap.set(year, {
+        danceability: sum.danceability / n,
+        valence:      sum.valence / n,
+        energy:       sum.energy / n,
+        acousticness: sum.acousticness / n
+      });
+    }
+  }
 }
 
-function getSpotifyArtistIds(artist_ids, genre_counts) {
+// ---- Rendering ----
+function buildCharts(final_dict) {
+  const years = [];
+  const acoustic = [], dance = [], energy = [], valence = [];
 
-    let artist_ids_str = "";
-    let artist_ids_str_2 = "";
-    let i;
+  for (const [y, v] of final_dict.audio_features.entries()) {
+    years.push(y);
+    acoustic.push(+v.acousticness.toFixed(4));
+    dance.push(+v.danceability.toFixed(4));
+    energy.push(+v.energy.toFixed(4));
+    valence.push(+v.valence.toFixed(4));
+  }
 
-    for (i = 0; i < 50; i++) {
-        artist_ids_str = artist_ids_str.concat(artist_ids[i]);
-        artist_ids_str += ",";
+  // Averages from your original code (strings)
+  const acousticAvg = ['0.1660','0.1588','0.1660','0.1278','0.2174','0.2558','0.2486','0.2358'];
+  const danceAvg    = ['0.6366','0.6333','0.6537','0.6720','0.6971','0.7174','0.6899','0.6884'];
+  const energyAvg   = ['0.7034','0.6724','0.6917','0.6547','0.6474','0.6098','0.6334','0.6728'];
+  const valenceAvg  = ['0.5253','0.4515','0.5228','0.4877','0.5081','0.5562','0.5147','0.4914'];
+
+  makeLine('acousticChart', years, acoustic, 'rgb(29,185,84)',  'rgba(29,185,84,0.5)', 'Acousticness', acousticAvg);
+  makeLine('danceChart',    years, dance,    'rgb(0,155,137)',  'rgba(0,155,137,0.5)', 'Danceability', danceAvg);
+  makeLine('energyChart',   years, energy,   'rgb(0,120,173)',  'rgba(0,120,173,0.5)', 'Energy',       energyAvg);
+  makeLine('valenceChart',  years, valence,  'rgb(0,80,169)',   'rgba(0,80,169,0.5)',  'Valence',      valenceAvg);
+}
+
+function makeLine(canvasId, labels, data, color, bg, title, avg) {
+  const el = document.getElementById(canvasId);
+  if (!el) return;
+  const ctx = el.getContext('2d');
+  new Chart(ctx, {
+    type: 'line',
+    data: {
+      labels,
+      datasets: [
+        { label: title, borderColor: color, pointBackgroundColor: color, data, backgroundColor: bg },
+        { label: 'Global Users Average', borderColor: 'rgba(0,0,0,0.5)', pointBackgroundColor: 'rgba(0,0,0,0.5)', data: avg }
+      ]
+    },
+    options: {
+      responsive: true,
+      maintainAspectRatio: false,
+      legend: { position: 'top', labels: { usePointStyle: true, boxWidth: 10 } },
+      title: { display: true, text: title, fontSize: 24, fontFamily: 'Roboto-Light, sans-serif' },
+      scales: {
+        yAxes: [{
+          scaleLabel: { display: true, labelString: 'Percentage' },
+          ticks: {
+            callback: (v) => (v * 100).toFixed(0) + '%'
+          }
+        }],
+        xAxes: [{ scaleLabel: { display: true, labelString: 'Year' } }]
+      },
+      tooltips: { mode: 'index', position: 'nearest' }
     }
-    for (i = 50; i < artist_ids.length; i++) {
-        artist_ids_str_2 = artist_ids_str_2.concat(artist_ids[i]);
-        artist_ids_str_2 += ",";
+  });
+}
+
+async function buildYearlyArtists(final_dict) {
+  // Build top 5 artists per year (with images)
+  const container = $('.spotify-history');
+  if (!container) return;
+  container.innerHTML = '';
+
+  const yearEntries = [...final_dict.artists.entries()];
+  for (const [year, artistsObj] of yearEntries) {
+    // sort by count desc
+    const arr = Object.values(artistsObj || {}).sort((a,b) => b.count - a.count);
+    // remove "Various Artists"
+    const filtered = arr.filter(x => x.name !== 'Various Artists').slice(0,5);
+
+    // fetch images for these artists
+    const ids = filtered.map(x => x.id).filter(Boolean);
+    if (ids.length) {
+      const chunks = chunk(ids, 50);
+      const imagesById = {};
+      for (const c of chunks) {
+        const data = await sFetch('https://api.spotify.com/v1/artists?ids=' + c.join(','));
+        for (const a of data?.artists || []) {
+          imagesById[a.id] = a?.images?.[0]?.url || '';
+        }
+      }
+      filtered.forEach(x => x.url = imagesById[x.id] || '');
     }
 
-    artist_ids_str = artist_ids_str.slice(0, -1);
-    artist_ids_str_2 = artist_ids_str_2.slice(0, -1);
+    // render cards row
+    const cards = filtered.map((a, idx) => {
+      const rank = idx + 1;
+      return `
+        <div data-aos="fade-up" data-aos-delay="50" data-aos-duration="1000" data-aos-easing="ease-in-out" data-aos-anchor-placement="top-bottom">
+          <div class="card card-spotify border-0 mt-3 m-md-3" style="border-radius:45px;">
+            <div class="row g-0">
+              <div class="col-5">
+                <img src="${a.url || './img/music.jpg'}" class="img-fluid" style="object-fit:cover;height:100%;width:100%;border-top-left-radius:45px;border-bottom-left-radius:45px" alt="${a.name}" />
+              </div>
+              <div class="col-7 px-3">
+                <div class="card-body d-flex">
+                  <h3 class="card-title me-4 align-self-center" style="font-family:Lato,sans-serif">${a.name}</h3>
+                  <h1 class="display-4 ms-auto pe-3 mt-3">${rank}</h1>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>`;
+    }).join('');
 
-   getSpotifyArtists(artist_ids_str).done(function(data) {
-       getGenreCounts(data, genre_counts);
-   });
+    const section = document.createElement('section');
+    section.innerHTML = `
+      <div class="display-4 text-center normal-bg sticky">${year}</div>
+      <div class="p-5-xl">
+        <div class="artists" style="font-weight:400;font-size:40px">${cards}</div>
+      </div>
+    `;
+    container.appendChild(section);
+  }
 
-   if (artist_ids_str_2 !== "") {
-       getSpotifyArtists(artist_ids_str_2).done(function (data) {
-           getGenreCounts(data, genre_counts);
-       });
-   }
+  // Sticky color swap on scroll (approximate your original)
+  const stickies = $$('.sticky');
+  const artistBlocks = $$('.artists');
+  const tasteSticky = $('.taste-sticky');
+  const taste = $('.taste');
 
-   return {genre_counts};
-}
-
-function getSpotifyArtists(str1) {
-
-    return $.ajax({
-        url: "https://api.spotify.com/v1/artists?ids=" + str1,
-        type: "GET",
-        beforeSend: function (xhr) {
-            xhr.setRequestHeader('Authorization', 'Bearer ' + _token);
-        },
-        success: function (data) {
-
-        }
-    });
-}
-
-function getGenreCounts(data, genre_counts) {
-    try {
-        let i, j = 0;
-        for (i = 0; i < data.artists.length; i++) {
-            if (data.artists[i].genres != null) {
-                for (j = 0; j < data.artists[i].genres.length; j++) {
-                    let genre = toTitleCase(data.artists[i].genres[j]);
-                    if (genre !== 'pop') {
-                        getGenre(genre_counts, genre);
-                    } else {
-                        getGenre(genre_counts, 'Pop');
-                    }
-                }
-            }
-        }
-    } catch(e) {
-        console.log(e);
+  function onScroll() {
+    if (window.AOS) { AOS.refreshHard?.(); AOS.refresh(); }
+    const rem = parseInt(getComputedStyle(document.documentElement).fontSize, 10) || 16;
+    for (let i = 0; i < stickies.length; i++) {
+      const s = stickies[i], a = artistBlocks[i];
+      if (!s || !a) continue;
+      const sRect = s.getBoundingClientRect();
+      const aRect = a.getBoundingClientRect();
+      const trigger = aRect.top - (8 * rem);
+      const sBottom = sRect.top + sRect.height;
+      if (sBottom > trigger) {
+        s.classList.remove('normal-bg'); s.classList.add('green-bg');
+      } else {
+        s.classList.remove('green-bg'); s.classList.add('normal-bg');
+      }
     }
-
-    return genre_counts;
-}
-
-function getGenre(genre_counts, genre) {
-    if (!genre_counts[genre] || genre_counts[genre] < 1) {
-        genre_counts[genre] = 1;
-    } else {
-        genre_counts[genre] += 1;
+    if (tasteSticky && taste) {
+      const ts = tasteSticky.getBoundingClientRect();
+      const t  = taste.getBoundingClientRect();
+      if (ts.top + ts.height > t.top) {
+        tasteSticky.classList.remove('normal-bg'); tasteSticky.classList.add('green-bg');
+      } else {
+        tasteSticky.classList.remove('green-bg'); tasteSticky.classList.add('normal-bg');
+      }
     }
+  }
+  window.addEventListener('scroll', onScroll, { passive: true });
+  onScroll();
 }
 
-function getCurrentTracks() {
-    return $.ajax({
-        url: "https://api.spotify.com/v1/me/top/tracks?time_range=medium_term&limit=50&offset=0",
-        type: "GET",
-        beforeSend: function (xhr) {
-            xhr.setRequestHeader('Authorization', 'Bearer ' + _token);
-        },
-        success: function (data) {
-        }
-    });
+// ---- Utils ----
+function toTitleCase(str='') {
+  return str.replace(/\w\S*/g, t => t.charAt(0).toUpperCase() + t.substr(1).toLowerCase());
 }
-
-function getCurrentArtists() {
-
-    return $.ajax({
-        url: "https://api.spotify.com/v1/me/top/artists?time_range=medium_term&limit=5&offset=0",
-        type: "GET",
-        beforeSend: function (xhr) {
-            xhr.setRequestHeader('Authorization', 'Bearer ' + _token);
-        },
-        success: function (data) {
-            let i;
-            let artist_counts = {};
-            for (i = 0; i < data.items.length; i++) {
-                let artist = data.items[i].name;
-                artist_counts[artist] = {"name": artist, "count": 10-i,"id": data.items[i].id};
-                artists_dict.set("2024", artist_counts);
-            }
-        }
-    });
-
+function chunk(arr=[], size=50) {
+  const out = [];
+  for (let i = 0; i < arr.length; i += size) out.push(arr.slice(i, i + size));
+  return out;
 }
-
-async function getAudioFeatures() {
-
-    let audioFeatures;
-    for (const [year, value] of song_id_dict.entries()) {
-
-        let danceability_sum = 0, valence_sum = 0, energy_sum = 0, acousticness_sum = 0, count = 0;
-        let songstr = "", songstr2 = "";
-        let i;
-        for (i = 0; i < 50; i++) {
-            try {
-                songstr += value[i];
-                songstr += ",";
-            } catch (e) {
-                console.log(e);
-            }
-        }
-        if (value.length > 50) {
-            for (i = 0; i < 50; i++) {
-                try {
-                    songstr2 += value[i + 50];
-                    songstr2 += ",";
-                } catch (e) {
-                    console.log(e);
-                }
-            }
-        }
-
-        songstr = songstr.slice(0, -1);
-        songstr2 = songstr2.slice(0, -1);
-
-        await audioFeaturesRequest(songstr).done(function (data) {
-            try {
-                let i;
-                for (i = 0; i < 50; i++) {
-                    if (data.audio_features[i].danceability != null) {
-                        count += 1;
-                        danceability_sum += data.audio_features[i].danceability;
-                        valence_sum += data.audio_features[i].valence;
-                        energy_sum += data.audio_features[i].energy;
-                        acousticness_sum += data.audio_features[i].acousticness;
-                    } else {
-
-                    }
-                }
-                if(songstr2.length > 1) {
-                    audioFeaturesRequest(songstr2).done(function (data) {
-                        let i;
-                        for (i = 0; i < 50; i++) {
-                            if (data.audio_features[i].danceability != null) {
-                                count += 1;
-                                danceability_sum += data.audio_features[i].danceability;
-                                valence_sum += data.audio_features[i].valence;
-                                energy_sum += data.audio_features[i].energy;
-                                acousticness_sum += data.audio_features[i].acousticness;
-                            }
-                        }
-                    });
-                }
-                audioFeatures = {'danceability':danceability_sum/count,'valence':valence_sum/count,'energy':energy_sum/count,'acousticness':acousticness_sum/count};
-                audio_dict.set(year, audioFeatures);
-            } catch(e) {
-                console.log(e);
-            }
-        });
-    }
-    await $(document).trigger('audio_features_complete');
-    return(audio_dict);
-}
-
-function audioFeaturesRequest(str) {
-    return $.ajax({
-        url: "https://api.spotify.com/v1/audio-features/?ids=" + str,
-        type: "GET",
-        beforeSend: function (xhr) {
-            xhr.setRequestHeader('Authorization', 'Bearer ' + _token);
-        },
-        success: function (data) {
-        }
-    });
-}
-
-function toTitleCase(str) {
-    return str.replace(/\w\S*/g, function(txt){
-        return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();
-    });
-}
-
-
-function softScrollClickSpotify() {
-    $('html, body').animate({
-        scrollTop: $("#scroll-icon").offset().top
-    }, 100);
-    softScroll();
-}
-
-

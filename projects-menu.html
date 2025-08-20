@@ -1,249 +1,108 @@
 <!DOCTYPE html>
 <html lang="en" prefix="og: http://ogp.me/ns#">
-<head>
-    <!-- Global site tag (gtag.js) - Google Analytics -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-153213137-1"></script>
-    <title>Ciaran Brennan | Blog</title>
+  <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="author" content="Ciaran Brennan">
-    <meta name="description" content="I've recently decided to build my own personal website to use as a blog about some of the projects I do in my spare time, which can be found here.">
-    <link rel="stylesheet" type="text/css" href="./css/main.css" />
+    <title>Ciarán Brennan | Projects</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="author" content="Ciarán Brennan">
+    <meta name="description" content="A collection of projects covering analytics, web development, design and sport.">
+    <link rel="canonical" href="https://cbrennan.ie/projects-menu">
 
-    <!-- OpenGraph Meta -->
-    <meta property="og:title" content="Ciaran Brennan - Projects">
-    <meta property="og:description" content="I've recently decided to build my own personal website to use as a blog about some of the projects I do in my spare time, which can be found here.">
+    <!-- OpenGraph -->
+    <meta property="og:title" content="Ciarán Brennan - Projects">
+    <meta property="og:description" content="Projects across analytics, web development, design and sport.">
     <meta property="og:image" content="https://cbrennan.ie/img/linkedin_bw.jpeg" />
     <meta property="og:url" content="https://cbrennan.ie/projects-menu">
 
     <!-- Favicon -->
-    <link rel="shortcut icon" href="./img/favicon.ico" type="image/x-icon" />
+    <link rel="icon" href="./img/favicon.ico" sizes="any">
 
     <!-- Fonts -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js" type="text/javascript"></script>
-    <script src="https://kit.fontawesome.com/5306a965db.js"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
 
-    <!-- AOS Library -->
-    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <!-- Font Awesome 7 -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css" rel="stylesheet">
 
-    <!-- Javascript -->
-    <script type="text/javascript" src="js/external.js"></script>
+    <!-- Bootstrap 5 -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
 
-    <!-- Bootstrap -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-</head>
+    <!-- AOS -->
+    <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
 
-<body>
-<!-- Navbar -->
-<div w3-include-html="navbar.html"></div>
+    <!-- Site CSS -->
+    <link rel="stylesheet" href="./css/main.css">
+  </head>
 
-<div class="body-padding-bottom d-flex flex-column min-vh-100">
-  <section class="pt-4 pt-md-11 flex-fill">
-    <div class="container">
-      <div class="justify-content-center col-12 mt-5 mb-5">
-        <h2 class="text-center pt-5">
-            MY <span class="text-primary">PROJECTS</span><br>
-        </h2>
-        <div class="row pt-3 pb-3">
-          <!-- FPL Pulse -->
-          <div class="col-md-4 mb-4" data-aos="fade-up">
-            <div class="card h-100">
-              <img src="./img/premierleaguefootballs.jpg" class="card-img-top bg-light" alt="FPL Pulse" style="max-height: 200px">
-              <div class="card-body">
-                <h5 class="card-title">FPL PULSE</h5>
-                <p class="card-text">An animated season summary experience for Fantasy Premier League managers – your highs, lows, and everything in between.</p>
-                <a href="fpl-pulse/" class="stretched-link"></a>
-              </div>
-              <div class="card-footer">
-                <small class="text-muted">28 June 2025, 09:00<br>3 min journey</small>
-              </div>
-            </div>
-          </div>
+  <body>
+    <!-- Navbar -->
+    <header w3-include-html="navbar.html"></header>
+    <div class="body-padding-bottom d-flex flex-column min-vh-100">
+      <section class="pt-4 pt-md-11 flex-fill">
+        <div class="container">
+          <div class="justify-content-center col-12 mt-5 mb-5">
+            <h2 class="text-center pt-5">
+                MY <span class="text-primary">PROJECTS</span><br>
+            </h2>
+            <div id="projects-grid" class="row pt-3 pb-3"></div>
+          </div> <!-- / .row -->
+        </div> <!-- / .container -->
+      </section>
+    </div>
+    <footer w3-include-html="footer.html"></footer>
+    <!-- Cloudflare Web Analytics -->
+    <script defer src="https://static.cloudflareinsights.com/beacon.min.js"
+      data-cf-beacon='{"token": "872b7537826746aca4833c393945e92d"}'></script>
 
-          <!-- Masters 2025 -->
-          <div class="col-md-4 mb-4" data-aos="fade-up" data-aos-delay="300">
-            <div class="card h-100">
-              <img src="./img/masters2025.jpeg" class="card-img-top bg-light" alt="Fota Island" style="max-height: 200px">
-              <div class="card-body">
-                <h5 class="card-title">MASTERS BUSTER</h5>
-                <p class="card-text">A real-time, interactive Masters Leaderboard combined with player names for Masters Buster 2025.</p>
-                <a href="masters-2025.html" class="stretched-link"></a>
-              </div>
-              <div class="card-footer">
-                <small class="text-muted">11 April 2025, 14:00<br>1 min read</small>
-              </div>
-            </div>
-          </div>
+    <!-- AOS + site JS -->
+    <script defer src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+    <script defer src="js/external.js"></script>
 
-          <!-- Masters 2024 -->
-          <div class="col-md-4 mb-4" data-aos="fade-up" data-aos-delay="600">
-            <div class="card h-100">
-              <img src="./img/corkgc.webp" class="card-img-top bg-light" alt="Fota Island" style="max-height: 200px">
-              <div class="card-body">
-                <h5 class="card-title">MASTERS BUSTER</h5>
-                <p class="card-text">A real-time, interactive Masters Leaderboard combined with player names for Masters Buster 2024.</p>
-                <a href="masters-2024.html" class="stretched-link"></a>
-              </div>
-              <div class="card-footer">
-                <small class="text-muted">11 April 2024, 21:00<br>1 min read</small>
-              </div>
-            </div>
-          </div>
-          
-          <!-- Masters 2021 -->
-          <div class="col-md-4 mb-4" data-aos="fade-up" data-aos-delay="300">
-            <div class="card h-100">
-              <img src="./img/oldheadofkinsale.jpg" class="card-img-top bg-light" alt="Old Head of Kinsale" style="max-height: 200px">
-              <div class="card-body">
-                <h5 class="card-title">MASTERS BUSTER</h5>
-                <p class="card-text">A real-time, interactive Masters Leaderboard combined with player names for Masters Buster 2021.</p>
-                <a href="masters.html" class="stretched-link"></a>
-              </div>
-              <div class="card-footer">
-                <small class="text-muted">07 April 2021, 09:00<br>1 min read</small>
-              </div>
-            </div>
-          </div>
-          
-          <!-- Spotify Analysis -->
-          <div class="col-md-4 mb-4" data-aos="fade-up" data-aos-delay="600">
-            <div class="card h-100">
-              <img src="./img/music.jpg" class="card-img-top bg-light" alt="Music" style="max-height: 200px">
-              <div class="card-body">
-                <h5 class="card-title"><span class="text-danger">SPOTIFY</span> ANALYSIS</h5>
-                <p class="card-text">Explore how your Spotify data, including musical taste, changes over time.</p>
-                <a href="spotify.html" class="stretched-link"></a>
-              </div>
-              <div class="card-footer">
-                <small class="text-muted">26 July 2020, 11:00<br>10 min read</small>
-              </div>
-            </div>
-          </div>
-          
-          <!-- FPL Dashboard -->
-          <div class="col-md-4 mb-4" data-aos="fade-up" data-aos-delay="300">
-            <div class="card h-100">
-              <img src="./img/fpl.png" class="card-img-top bg-light" alt="Fantasy Premier League Dashboard" style="max-height: 200px">
-              <div class="card-body">
-                <h5 class="card-title">FPL DASHBOARD</h5>
-                <p class="card-text">An interactive Tableau dashboard that examines performance in some Mini Leagues in Fantasy Premier League.</p>
-                <a href="fantasy-premier-league.html" class="stretched-link"></a>
-              </div>
-              <div class="card-footer">
-                <small class="text-muted">15 February 2021, 21:00<br>2 min read</small>
-              </div>
-            </div>
-          </div>
-          
-          <!-- Free Running Plans -->
-          <div class="col-md-4 mb-4" data-aos="fade-up" data-aos-delay="600">
-            <div class="card h-100">
-              <img src="./img/startline.jpg" class="card-img-top bg-light" alt="Running" style="max-height: 200px">
-              <div class="card-body">
-                <h5 class="card-title"><span class="text-danger">FREE</span> RUNNING PLANS</h5>
-                <p class="card-text">Free running plans for all levels, tailored to your times and goals.</p>
-                <a href="running-plans.html" class="stretched-link"></a>
-              </div>
-              <div class="card-footer">
-                <small class="text-muted">7 May 2020, 16:30<br>3 min read</small>
-              </div>
-            </div>
-          </div>
-          
-          <!-- Netflix & Standstill -->
-          <div class="col-md-4 mb-4" data-aos="fade-up" data-aos-delay="300">
-            <div class="card h-100">
-              <img src="./img/netflix.jpg" class="card-img-top bg-light" alt="Netflix on TV Screen with remote control" style="max-height: 200px">
-              <div class="card-body">
-                <h5 class="card-title"><span class="text-danger">NETFLIX</span> AND STANDSTILL?</h5>
-                <p class="card-text">A visual examination of the Netflix films I have watched between 2014 and 2019.</p>
-                <a href="netflix-and-standstill.html" class="stretched-link"></a>
-              </div>
-              <div class="card-footer">
-                <small class="text-muted">05 February 2020, 18:40<br>4 min read</small>
-              </div>
-            </div>
-          </div>
-          
-          <!-- Big Into The Fitness -->
-          <div class="col-md-4 mb-4" data-aos="fade-up" data-aos-delay="600">
-            <div class="card h-100">
-              <img src="./img/bitf.png" class="card-img-top bg-light" alt="Big Into The Fitness" style="max-height: 200px">
-              <div class="card-body">
-                <h5 class="card-title">BIG INTO <span class="text-danger">THE FITNESS</span></h5>
-                <p class="card-text">This is my first visualisation. It is an animated video that uses GPS data to map my runs around Cork since March.</p>
-                <a href="big-into-the-fitness.html" class="stretched-link"></a>
-              </div>
-              <div class="card-footer">
-                <small class="text-muted">01 December 2019, 20:07<br>1 min read</small>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div> <!-- / .row -->
-    </div> <!-- / .container -->
-  </section>
-</div>
-<div w3-include-html="footer.html"></div>
-<!-- Cookie Consent -->
-<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.1.1/cookieconsent.min.css" />
-<script src="https://cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.1.1/cookieconsent.min.js" data-cfasync="false"></script>
-<script>
-    window.addEventListener('load', function(){
-        window.cookieconsent.initialise({
-            type: "opt-in",
-            theme: "classic",
-            palette: {
-                popup: {
-                    background: "#28f",
-                    text: "#fff"
-                },
-                button: {
-                    background: "#fff",
-                    text: "#28f"
-                }
-            },
-            content: {
-                link: "Learn more.",
-                href: "https://www.cookiesandyou.com/"
-            },
-            onInitialise: function(status) {
-                if(status === cookieconsent.status.allow) myScripts();
-            },
-            onStatusChange: function(status) {
-                if (this.hasConsented()) myScripts();
-            }
-        })
-    });
+    <!-- Bootstrap 5 bundle -->
+    <script defer src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 
-    function myScripts() {
+    <!-- Init -->
+    <script>
+      async function renderProjects() {
+        try {
+          const res = await fetch('/files/projects.json', { cache: 'no-store' });
+          if (!res.ok) throw new Error('projects.json not found');
+          const items = await res.json();
 
-        window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
-        gtag('js', new Date());
-
-        gtag('config', 'UA-153213137-1', { 'anonymize_ip': true });
-
-    }
-</script>
-<!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "872b7537826746aca4833c393945e92d"}'></script><!-- End Cloudflare Web Analytics -->
-</body>
-
-<script>
-    includeHTML();
-    scrollAnimation();
-    AOS.init({
-        disable: function() {
-            let maxWidth = 800;
-            return window.innerWidth < maxWidth;
+          const grid = document.getElementById('projects-grid');
+          grid.innerHTML = items.map((p, i) => {
+            const delay = (i % 3) * 300; // 0, 300, 600
+            const title = p.titleHtml || p.title;
+            return `
+              <div class="col-md-4 mb-4" data-aos="fade-up" ${delay ? `data-aos-delay="${delay}"` : ''}>
+                <div class="card h-100">
+                  <img src="${p.img}" class="card-img-top bg-light project-thumb" alt="${p.alt || ''}" loading="lazy">
+                  <div class="card-body">
+                    <h5 class="card-title">${title}</h5>
+                    <p class="card-text">${p.excerpt}</p>
+                    <a href="${p.url}" class="stretched-link" aria-label="${p.title}"></a>
+                  </div>
+                  <div class="card-footer">
+                    <small class="text-muted">${p.meta}</small>
+                  </div>
+                </div>
+              </div>`;
+          }).join('');
+        } catch (e) {
+          console.error('Projects JSON fetch failed:', e);
+          const grid = document.getElementById('projects-grid');
+          if (grid) grid.innerHTML = '<div class="col-12 text-center text-muted">Projects currently unavailable.</div>';
         }
-    });
+      }
 
-</script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+      window.addEventListener('load', async () => {
+        if (typeof includeHTML === 'function') includeHTML();
+        if (typeof scrollAnimation === 'function') scrollAnimation();
+        if (window.AOS) AOS.init({ once: true, disable: () => window.innerWidth < 800 });
+
+        await renderProjects();
+      });
+    </script>
+  </body>
 </html>
