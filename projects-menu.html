@@ -51,9 +51,6 @@
       </section>
     </div>
     <footer w3-include-html="footer.html"></footer>
-    <!-- Cloudflare Web Analytics -->
-    <script defer src="https://static.cloudflareinsights.com/beacon.min.js"
-      data-cf-beacon='{"token": "872b7537826746aca4833c393945e92d"}'></script>
 
     <!-- AOS + site JS -->
     <script defer src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
@@ -99,9 +96,12 @@
       window.addEventListener('load', async () => {
         if (typeof includeHTML === 'function') includeHTML();
         if (typeof scrollAnimation === 'function') scrollAnimation();
-        if (window.AOS) AOS.init({ once: true, disable: () => window.innerWidth < 800 });
 
-        await renderProjects();
+        await renderProjects();            // 1) render first
+        if (window.AOS) {
+          AOS.init({ once: true });        // 2) then init
+          AOS.refreshHard();               // 3) and rescan injected nodes
+        }
       });
     </script>
   </body>

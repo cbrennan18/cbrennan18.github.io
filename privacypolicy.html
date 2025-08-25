@@ -35,10 +35,6 @@
       border-radius: .5rem;
       padding: 1rem 1.25rem;
     }
-    .kvs { border: 1px solid rgba(0,0,0,.08); border-radius: .5rem; }
-    .kvs th { width: 35%; }
-    .kvs th, .kvs td { padding: .75rem; vertical-align: top; }
-    .kvs tr + tr { border-top: 1px solid rgba(0,0,0,.06); }
   </style>
 </head>
 <body>
@@ -47,80 +43,69 @@
 
   <main class="container py-5 policy">
     <h1 class="my-3">Privacy Policy</h1>
-    <p class="text-muted">Last updated: <strong>20 August 2025</strong></p>
+    <p class="text-muted">Last updated: <strong>25 August 2025</strong></p>
 
     <p>
       This Privacy Policy describes how <a href="https://cbrennan.ie">cbrennan.ie</a> (“the site”, “we”, “us”)
-      handles information when you browse pages like projects, visualisations, and interactive demos.
-      We aim to keep data collection minimal and transparent.
+      handles information when you browse pages like projects, visualisations, and interactive demos. We aim to keep data
+      collection minimal and transparent.
     </p>
 
     <div class="callout mb-4">
       <strong>Key points at a glance</strong>
       <ul class="mb-0 mt-2">
         <li>We do <em>not</em> use Google Analytics.</li>
-        <li>We use Cloudflare Web Analytics for privacy-friendly, aggregated usage metrics (no cookies).</li>
-        <li>Some pages embed third-party content (e.g., Tableau public charts) which may set their own cookies.</li>
-        <li>The Spotify page uses Spotify’s OAuth to fetch your stats in your browser; we don’t store or receive your token server-side.</li>
+        <li>We use a <strong>self-hosted Umami</strong> instance (cookieless by default) at <code>analytics.cbrennan.ie</code> for aggregated usage metrics.</li>
+        <li>Some pages embed third-party content (e.g., Tableau Public) which may set their own cookies.</li>
+        <li>The Spotify page uses Spotify OAuth in your browser; we don’t store your token or Spotify data server-side.</li>
+        <li>The contact modal submits to Google Forms; your submission is used only to reply to you.</li>
       </ul>
     </div>
 
     <h2>Information we collect</h2>
     <p>
-      <strong>Minimal, aggregated usage data.</strong> We use Cloudflare Web Analytics to understand basic site usage
-      (page views, referrers, device/viewport info, etc.). These metrics are reported in aggregate form and are not tied
-      to your identity. Cloudflare’s script does not use cookies.
+      <strong>Aggregated usage data (Umami).</strong> We measure basic site usage using our self-hosted
+      Umami analytics (<code>https://analytics.cbrennan.ie/script.js</code>). Umami is privacy-friendly and does not use cookies
+      by default. It records non-identifying metrics such as pages viewed, referrers, approximate device/viewport info,
+      and simple event counts. We review these reports in aggregate and do not attempt to identify individual visitors.
     </p>
     <p>
-      <strong>When you contact us.</strong> If you reach out via the site’s contact option (e.g., the footer modal or by
-      email), we’ll receive the information you provide (such as your name, email address, and message) solely to respond
-      to you. We don’t sell or share this information.
+      <strong>When you contact us.</strong> If you send a message via the footer contact modal (Google Forms) or by email,
+      we receive the information you provide (e.g., name, email, message) solely to respond to your enquiry. We don’t sell
+      or share this information.
     </p>
 
     <h2>Third-party content & embeds</h2>
-    <p>
-      Some pages embed or load content from third parties:
-    </p>
     <ul>
       <li>
-        <strong>Tableau Public</strong> (e.g., the Netflix analysis page) to display interactive charts.
-        These embeds load from <code>public.tableau.com</code> and may set their own cookies or collect usage
-        information under their privacy policies. We don’t control their data practices.
+        <strong>Tableau Public</strong> (e.g., the Netflix analysis page) loads interactive charts from
+        <code>public.tableau.com</code>. Tableau may set its own cookies or collect usage information under its
+        privacy policy. We don’t control their data practices.
       </li>
       <li>
-        <strong>CDNs</strong> for assets such as Bootstrap, AOS, Chart.js, and fonts. When your browser requests these
-        files from their CDNs, the providers receive standard request information (e.g., IP address, user agent).
+        <strong>CDNs & libraries</strong> (e.g., Bootstrap, AOS, Chart.js, Google Fonts). Requests for these files are made
+        to their respective providers, who receive standard request information (IP address, user agent, etc.).
+      </li>
+      <li>
+        <strong>Google Forms</strong> handles contact form submissions. Your message is processed by Google per their
+        privacy policy; we access the responses to reply to you.
       </li>
     </ul>
-    <p>
-      We include links to external sites (e.g., Unsplash photo credits). Visiting those sites is subject to their own
-      terms and privacy policies.
-    </p>
 
     <h2>Spotify page specifics</h2>
-    <p>
-      The Spotify analysis page lets you visualise your own listening data using the official Spotify Web API:
-    </p>
     <ul>
-      <li>You are redirected to Spotify to grant permission (OAuth). Spotify then redirects you back with an access token in the URL fragment.</li>
-      <li>The access token is used <em>client-side only</em> (in your browser) to fetch your top tracks/artists and audio features directly from Spotify’s API.</li>
+      <li>You are redirected to Spotify to grant permission (OAuth) for your own account.</li>
+      <li>The returned access token is used <em>client-side only</em> in your browser to fetch data directly from Spotify’s API.</li>
       <li>We do not receive, log, or store your access token or your Spotify data on our server.</li>
-      <li>When you close or reload the page, the token is cleared from the URL.</li>
+      <li>The URL fragment is cleared after authorisation; reloading/closing the page removes the token from view.</li>
     </ul>
 
     <h2>Cookies & local storage</h2>
-    <p>
-      <strong>First-party cookies:</strong> The site does not set analytics or marketing cookies. Interactive pages
-      (e.g., tables/charts) may use in-browser state (like memory) to render results but do not persist personal data.
-    </p>
-    <p>
-      <strong>Cloudflare Web Analytics:</strong> Used for aggregated metrics and does not use cookies.
-    </p>
-    <p>
-      <strong>Third-party embeds (e.g., Tableau):</strong> May set their own cookies. You can control third-party cookies
-      via your browser settings. If you prefer not to load embedded content, you can browse with script-blocking tools or
-      disable third-party cookies.
-    </p>
+    <ul>
+      <li><strong>First-party:</strong> The site does not set analytics or marketing cookies.</li>
+      <li><strong>Umami:</strong> Our analytics runs without cookies; we use only aggregated, non-identifying metrics.</li>
+      <li><strong>Third-party embeds:</strong> Services like Tableau may set their own cookies. You can block third-party cookies in your browser if you prefer.</li>
+    </ul>
 
     <h2>Data retention</h2>
     <p>
@@ -137,14 +122,14 @@
     <h2>Your choices</h2>
     <ul>
       <li>Use a modern browser to block third-party cookies if you don’t want embeds to set them.</li>
-      <li>You can choose not to authorise the Spotify page; the page will not access your Spotify data without your consent.</li>
+      <li>You can choose not to authorise the Spotify page; the page won’t access your Spotify data without your consent.</li>
       <li>Contact us if you want any message you’ve sent removed from our records.</li>
     </ul>
 
     <h2>Changes to this policy</h2>
     <p>
-      We may update this Privacy Policy occasionally to reflect site changes or legal requirements. Material updates will
-      be reflected by the “Last updated” date above.
+      We may update this Privacy Policy from time to time to reflect site changes or legal requirements. Material updates
+      will be reflected by the “Last updated” date above.
     </p>
 
     <h2>Contact</h2>
@@ -155,10 +140,6 @@
   </main>
 
   <footer w3-include-html="footer.html"></footer>
-
-  <!-- Cloudflare Web Analytics -->
-  <script defer src="https://static.cloudflareinsights.com/beacon.min.js"
-          data-cf-beacon='{"token":"872b7537826746aca4833c393945e92d"}'></script>
 
   <!-- AOS + Bootstrap -->
   <script defer src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
