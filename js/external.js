@@ -63,7 +63,7 @@ function Scroll() {
     return false;
 }
 
-// external.js
+// load Umami
 function loadUmamiOnce() {
   if (window.umami || document.querySelector('script[data-website-id="b8992f59-bcb2-4f10-a02a-2ffa23f482e0"]')) return;
 
