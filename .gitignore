@@ -1,32 +1,13 @@
-# OS cruft
+# OS
 .DS_Store
 Thumbs.db
 
-# Editor/IDE settings
+# Editors
 .vscode/
 .idea/
-
-# Logs
-*.log
-
-# Local env files (if any)
-.env
-.env.local
-.env.*.local
-
-# Node tooling (only matters if you add a build step later)
-node_modules/
-dist/
-build/
-.cache/
-
-# Jekyll (only if you run it locally)
-_site/
-.sass-cache/
-.jekyll-cache/
-.jekyll-metadata
-vendor/
-
-# Swap files
 *.swp
 *.swo
+
+# Environment
+.env
+.env.*

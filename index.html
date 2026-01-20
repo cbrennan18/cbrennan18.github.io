@@ -1,12 +1,26 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" prefix="og: http://ogp.me/ns#">
   <head>
     <meta charset="UTF-8">
-    <title>Ciarán Brennan | Home</title>
+    <title>Ciarán Brennan | Category Manager & Analytics Professional</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="author" content="Ciarán Brennan">
-    <meta name="description" content="Ciarán Brennan — Category Manager in Ireland with a love for analytics, web development, design and sport.">
-    <link rel="canonical" href="https://cbrennan.ie">
+    <meta name="description" content="Ciarán Brennan — Category Manager in Ireland specialising in analytics, data visualisation, and web development. View my portfolio and projects.">
+    <link rel="canonical" href="https://cbrennan.ie/">
+
+    <!-- OpenGraph -->
+    <meta property="og:site_name" content="Ciarán Brennan">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Ciarán Brennan | Category Manager & Analytics Professional">
+    <meta property="og:description" content="Category Manager in Ireland specialising in analytics, data visualisation, and web development. View my portfolio and projects.">
+    <meta property="og:image" content="https://cbrennan.ie/img/linkedin_bw.jpeg">
+    <meta property="og:url" content="https://cbrennan.ie/">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Ciarán Brennan | Category Manager & Analytics Professional">
+    <meta name="twitter:description" content="Category Manager in Ireland specialising in analytics, data visualisation, and web development.">
+    <meta name="twitter:image" content="https://cbrennan.ie/img/linkedin_bw.jpeg">
 
     <!-- Favicon -->
     <link rel="icon" href="./img/favicon.ico" sizes="any">
@@ -230,6 +244,27 @@
         renderExperience();
         renderAbout();
       });
+    </script>
+
+    <!-- Structured Data (JSON-LD) -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "name": "Ciarán Brennan",
+      "url": "https://cbrennan.ie",
+      "image": "https://cbrennan.ie/img/linkedin_bw.jpeg",
+      "jobTitle": "Category Manager",
+      "worksFor": {
+        "@type": "Organization",
+        "name": "HEINEKEN Ireland"
+      },
+      "sameAs": [
+        "https://github.com/cbrennan18",
+        "https://www.linkedin.com/in/ciaranbrennan18",
+        "https://www.strava.com/athletes/cbrennan93"
+      ]
+    }
     </script>
   </body>
 </html>

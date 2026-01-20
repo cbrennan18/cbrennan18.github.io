@@ -1,18 +1,27 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" prefix="og: http://ogp.me/ns#">
 <head>
   <meta charset="UTF-8" />
-  <title>Ciaran Brennan | Spotify Analysis</title>
+  <title>Spotify Analysis | Ciarán Brennan</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net https://cdnjs.cloudflare.com; style-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net https://cdnjs.cloudflare.com https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com https://cdnjs.cloudflare.com; img-src 'self' data: https://i.scdn.co https://mosaic.scdn.co https://image-cdn-ak.spotifycdn.com https://image-cdn-fa.spotifycdn.com https://images.unsplash.com; connect-src 'self' https://api.spotify.com https://accounts.spotify.com;" />
-  <meta name="author" content="Ciaran Brennan" />
+  <meta name="author" content="Ciarán Brennan" />
   <meta name="description" content="Visualise your Spotify listening habits: top artists, genres and audio attributes over time." />
+  <link rel="canonical" href="https://cbrennan.ie/spotify.html">
 
   <!-- OpenGraph -->
-  <meta property="og:title" content="Ciaran Brennan - Spotify Analysis" />
+  <meta property="og:site_name" content="Ciarán Brennan">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Spotify Analysis | Ciarán Brennan">
   <meta property="og:description" content="Explore how your Spotify taste evolves: artists, genres, and audio attributes." />
   <meta property="og:image" content="https://cbrennan.ie/img/music.jpg" />
-  <meta property="og:url" content="https://cbrennan.ie/spotify" />
+  <meta property="og:url" content="https://cbrennan.ie/spotify.html" />
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Spotify Analysis | Ciarán Brennan">
+  <meta name="twitter:description" content="Visualise your Spotify listening habits over time.">
+  <meta name="twitter:image" content="https://cbrennan.ie/img/music.jpg">
 
   <!-- Favicon -->
   <link rel="icon" href="./img/favicon.ico" sizes="any">
@@ -27,7 +36,7 @@
   <link rel="stylesheet" href="./css/main.css">
 
   <!-- Non-critical CSS (deferred) -->
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet" media="print" onload="this.media='all'">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css" rel="stylesheet" media="print" onload="this.media='all'">
   <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet" media="print" onload="this.media='all'">
 
   <!-- Preload critical scripts -->

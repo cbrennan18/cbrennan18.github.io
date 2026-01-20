@@ -306,18 +306,6 @@ ul.timeline > li:before {
     z-index: 400;
 }
 
-.cc-animate.cc-revoke.cc-bottom {
-    display: none;
-}
-
-.cc-animate.cc-revoke.cc-active.cc-bottom {
-    display: none;
-}
-
-body > div.cc-revoke.cc-bottom.cc-color-override--1437066272 {
-    display: none;
-}
-
 /* =========================
    SPOTIFY
    ========================= */
