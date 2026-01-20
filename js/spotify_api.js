@@ -151,31 +151,58 @@ async function refreshAccessToken() {
   return false;
 }
 
+// Loading state helpers
+function updateLoadingStatus(message) {
+  const statusEl = document.getElementById('loading-status');
+  if (statusEl) statusEl.textContent = message;
+}
+
+function showError(message) {
+  const errorEl = document.getElementById('error-toast');
+  const errorMsg = document.getElementById('error-message');
+  if (errorEl && errorMsg) {
+    errorMsg.textContent = message;
+    errorEl.style.display = 'block';
+    errorEl.setAttribute('role', 'alert');
+  }
+}
+
+function hideError() {
+  const errorEl = document.getElementById('error-toast');
+  if (errorEl) errorEl.style.display = 'none';
+}
+
 // Main data loading flow
 async function showData() {
   const btnLoadData = document.getElementById('btnLoadData');
-  const spinner = document.getElementById('spinner');
+  const loadingContainer = document.getElementById('loading-container');
   const artistsDisplay = document.getElementById('artists-display');
   const audioFeatures = document.getElementById('audio-features');
 
   btnLoadData.style.display = 'none';
-  spinner.style.display = 'block';
+  loadingContainer.style.display = 'flex';
   artistsDisplay.style.display = 'none';
   audioFeatures.style.display = 'none';
+  hideError();
 
   try {
+    updateLoadingStatus('Searching for your playlists...');
     const playlists = await searchTopSongsPlaylists();
+
+    updateLoadingStatus('Analysing your music taste...');
     await Promise.all(playlists.map(processPlaylist));
 
     const currentYear = String(new Date().getFullYear());
+    updateLoadingStatus(`Loading ${currentYear} snapshot...`);
     await addCurrentSnapshot(currentYear);
 
+    updateLoadingStatus('Building visualisations...');
     const sortedYears = Array.from(yearData.entries()).sort((a, b) => a[0].localeCompare(b[0]));
 
     buildCharts(sortedYears);
     buildYearlyArtists(sortedYears);
 
-    spinner.style.display = 'none';
+    loadingContainer.style.display = 'none';
     artistsDisplay.style.display = 'block';
     audioFeatures.style.display = 'block';
 
@@ -189,21 +216,34 @@ async function showData() {
 
   } catch (err) {
     console.error('Error loading Spotify data:', err);
-    spinner.style.display = 'none';
+    loadingContainer.style.display = 'none';
     btnLoadData.style.display = 'block';
-    alert('Sorry, there was a problem fetching your Spotify data. Try reconnecting and reloading.');
+    showError('There was a problem fetching your Spotify data. Please try reconnecting.');
   }
 }
 
 // Spotify API helpers
 async function searchTopSongsPlaylists() {
-  const data = await spotifyFetch('https://api.spotify.com/v1/search?q=%22Your%20Top%20Songs%22&type=playlist&limit=50');
-  const items = data?.playlists?.items || [];
-  return items.filter(p => {
-    const ownerOk = p?.owner?.external_urls?.spotify === 'https://open.spotify.com/user/spotify';
-    const nameOk = typeof p?.name === 'string' && p.name.startsWith('Your Top Songs');
-    return ownerOk && nameOk;
-  });
+  const currentYear = new Date().getFullYear();
+  const startYear = 2016; // Spotify Wrapped started in 2016
+  const playlists = [];
+
+  // Search for each year individually for more reliable results
+  for (let year = startYear; year < currentYear; year++) {
+    const query = encodeURIComponent(`"Your Top Songs ${year}"`);
+    const data = await spotifyFetch(`https://api.spotify.com/v1/search?q=${query}&type=playlist&limit=10`);
+
+    const items = data?.playlists?.items || [];
+    const match = items.find(p => {
+      const ownerOk = p?.owner?.external_urls?.spotify === 'https://open.spotify.com/user/spotify';
+      const nameOk = p?.name === `Your Top Songs ${year}`;
+      return ownerOk && nameOk;
+    });
+
+    if (match) playlists.push(match);
+  }
+
+  return playlists;
 }
 
 async function processPlaylist(playlist) {
@@ -406,25 +446,55 @@ function makeLine(canvasId, labels, data, color, bg, title, avg) {
     data: {
       labels,
       datasets: [
-        { label: title, borderColor: color, pointBackgroundColor: color, data, backgroundColor: bg },
-        { label: 'Global Users Average', borderColor: 'rgba(0,0,0,0.5)', pointBackgroundColor: 'rgba(0,0,0,0.5)', data: avg }
+        {
+          label: title,
+          borderColor: color,
+          backgroundColor: bg,
+          pointBackgroundColor: color,
+          pointBorderColor: '#fff',
+          data,
+          borderWidth: 3,
+          pointRadius: 5,
+          pointHoverRadius: 7,
+          tension: 0.3,
+          fill: true
+        },
+        {
+          label: 'Global Users Average',
+          borderColor: 'rgba(0,0,0,0.4)',
+          backgroundColor: 'transparent',
+          pointBackgroundColor: 'rgba(0,0,0,0.4)',
+          data: avg,
+          borderWidth: 2,
+          borderDash: [5, 5],
+          pointRadius: 0,
+          pointHoverRadius: 4,
+          tension: 0.3,
+          fill: false
+        }
       ]
     },
     options: {
       responsive: true,
       maintainAspectRatio: false,
-      legend: { position: 'top', labels: { usePointStyle: true, boxWidth: 10 } },
-      title: { display: true, text: title, fontSize: 24, fontFamily: 'Roboto-Light, sans-serif' },
+      interaction: {
+        intersect: false,
+        mode: 'index'
+      },
+      plugins: {
+        legend: { position: 'top', labels: { usePointStyle: true, boxWidth: 10 } },
+        title: { display: true, text: title, font: { size: 24, family: 'Roboto-Light, sans-serif' } },
+        tooltip: { mode: 'index', position: 'nearest' }
+      },
       scales: {
-        yAxes: [{
-          scaleLabel: { display: true, labelString: 'Percentage' },
+        y: {
+          title: { display: true, text: 'Percentage' },
           ticks: {
             callback: (v) => (v * 100).toFixed(0) + '%'
           }
-        }],
-        xAxes: [{ scaleLabel: { display: true, labelString: 'Year' } }]
-      },
-      tooltips: { mode: 'index', position: 'nearest' }
+        },
+        x: { title: { display: true, text: 'Year' } }
+      }
     }
   });
 }
@@ -433,6 +503,17 @@ function buildYearlyArtists(sortedYears) {
   const container = document.querySelector('.spotify-history');
   if (!container) return;
   container.innerHTML = '';
+
+  // Build year navigation pills
+  const yearNav = document.createElement('nav');
+  yearNav.className = 'year-nav';
+  yearNav.setAttribute('aria-label', 'Jump to year');
+  yearNav.innerHTML = `
+    <div class="year-nav-inner">
+      ${sortedYears.map(([year]) => `<a href="#year-${escapeHtml(year)}" class="year-pill">${escapeHtml(year)}</a>`).join('')}
+    </div>
+  `;
+  container.appendChild(yearNav);
 
   for (const [year, data] of sortedYears) {
     const topArtists = Object.values(data.artists || {})
@@ -445,29 +526,36 @@ function buildYearlyArtists(sortedYears) {
       artist.url = data.artistImages[artist.id] || '';
     });
 
-    const cards = topArtists.map((a, idx) => `
-      <div data-aos="fade-up" data-aos-delay="50" data-aos-duration="1000" data-aos-easing="ease-in-out" data-aos-anchor-placement="top-bottom">
-        <div class="card card-spotify border-0 mt-3 m-md-3" style="border-radius:45px;">
-          <div class="row g-0">
-            <div class="col-5">
-              <img src="${a.url || './img/music.jpg'}" class="img-fluid" style="object-fit:cover;height:100%;width:100%;border-top-left-radius:45px;border-bottom-left-radius:45px" alt="${a.name}" />
+    const cards = topArtists.map((a, idx) => {
+      const safeName = escapeHtml(a.name);
+      const safeUrl = sanitizeImageUrl(a.url);
+      return `
+      <div class="artist-card-wrapper" data-aos="fade-up" data-aos-delay="${50 + idx * 30}" data-aos-duration="600" data-aos-easing="ease-out">
+        <div class="card card-spotify border-0 shadow-sm">
+          <div class="row g-0 align-items-center">
+            <div class="col-4">
+              <div class="artist-img-wrapper">
+                <img src="${safeUrl}" class="artist-img" alt="${safeName}" loading="lazy" />
+              </div>
             </div>
-            <div class="col-7 px-3">
-              <div class="card-body d-flex">
-                <h3 class="card-title me-4 align-self-center" style="font-family:Lato,sans-serif">${a.name}</h3>
-                <h1 class="display-4 ms-auto pe-3 mt-3">${idx + 1}</h1>
+            <div class="col-8">
+              <div class="card-body d-flex align-items-center py-3 px-3">
+                <span class="artist-rank">${idx + 1}</span>
+                <h3 class="artist-name mb-0">${safeName}</h3>
               </div>
             </div>
           </div>
         </div>
-      </div>`).join('');
+      </div>`;
+    }).join('');
 
     const section = document.createElement('section');
+    section.className = 'year-section';
+    section.id = `year-${year}`;
+    const safeYear = escapeHtml(year);
     section.innerHTML = `
-      <div class="display-4 text-center normal-bg sticky">${year}</div>
-      <div class="p-5-xl">
-        <div class="artists" style="font-weight:400;font-size:40px">${cards}</div>
-      </div>
+      <div class="year-header normal-bg sticky">${safeYear}</div>
+      <div class="artists-grid">${cards}</div>
     `;
     container.appendChild(section);
   }
@@ -485,7 +573,7 @@ function setupStickyScrollEffect() {
   }
 
   const stickies = Array.from(document.querySelectorAll('.sticky'));
-  const artistBlocks = Array.from(document.querySelectorAll('.artists'));
+  const artistBlocks = Array.from(document.querySelectorAll('.artists-grid'));
   const tasteSticky = document.querySelector('.taste-sticky');
   const taste = document.querySelector('.taste');
   const rem = parseInt(getComputedStyle(document.documentElement).fontSize, 10) || 16;
@@ -533,4 +621,28 @@ function chunk(arr = [], size = 50) {
     chunks.push(arr.slice(i, i + size));
   }
   return chunks;
+}
+
+// HTML sanitization to prevent XSS attacks
+function escapeHtml(str) {
+  if (typeof str !== 'string') return '';
+  const div = document.createElement('div');
+  div.textContent = str;
+  return div.innerHTML;
+}
+
+// Sanitize URLs - only allow https URLs from trusted domains
+function sanitizeImageUrl(url, fallback = './img/music.jpg') {
+  if (typeof url !== 'string' || !url) return fallback;
+  try {
+    const parsed = new URL(url);
+    // Only allow HTTPS and specific trusted domains
+    const trustedDomains = ['i.scdn.co', 'mosaic.scdn.co', 'image-cdn-ak.spotifycdn.com', 'image-cdn-fa.spotifycdn.com'];
+    if (parsed.protocol === 'https:' && trustedDomains.some(d => parsed.hostname.endsWith(d))) {
+      return url;
+    }
+  } catch {
+    // Invalid URL
+  }
+  return fallback;
 }
