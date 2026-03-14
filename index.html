@@ -42,6 +42,9 @@
     <!-- Site CSS -->
     <link rel="stylesheet" href="./css/main.css">
 
+    <!-- Preload hero image (LCP) -->
+    <link rel="preload" as="image" href="img/derrynane_small_bw.png">
+
     <!-- Custom Javascript -->
     <script defer src="js/external.js"></script>
 
@@ -80,8 +83,7 @@
                        style="filter: grayscale(100%)"
                        alt="Landscape at Derrynane, Ireland"
                        width="800" height="1067"
-                       loading="lazy"
-                       data-aos="fade-up" data-aos-duration="3000">
+                       fetchpriority="high">
                   <svg viewBox="0 0 200 200" aria-hidden="true">
                     <circle cx="75" cy="75" r="50" fill="#0275d8" fill-opacity="0.6"
                             data-aos="fade-up" data-aos-delay="1000" data-aos-duration="2000"></circle>
@@ -177,16 +179,16 @@
 
           list.innerHTML = items.map(item => {
             const rolesHtml = item.roles.map(r => `
-              <h6 class="text-secondary d-flex justify-content-between flex-wrap">
+              <p class="text-secondary d-flex justify-content-between flex-wrap h6 mb-1">
                 <span>${r.title}</span>
                 <span class="float-lg-end">${r.dates}</span>
-              </h6>
+              </p>
               <p>${r.desc}</p>
             `).join('<br>');
 
             return `
               <li class="px-lg-5 py-lg-3">
-                <a href="${item.url}"><h5 class="text-primary">${item.company}</h5></a>
+                <a href="${item.url}"><h3 class="text-primary h5">${item.company}</h3></a>
                 ${rolesHtml}
               </li>
             `;

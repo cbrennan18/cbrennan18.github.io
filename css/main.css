@@ -4,6 +4,14 @@ html {
     Roboto, "Helvetica Neue", Arial, "Noto Sans", "Apple Color Emoji",
     "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji", sans-serif !important;
 }
+
+/* WCAG AA contrast overrides for Bootstrap defaults */
+.text-secondary { color: #595f64 !important; }          /* 5.0:1 on #f8f9fa */
+.text-primary   { color: #0b5ed7 !important; }          /* 4.88:1 on #f8f9fa, 4.52:1 on #fff */
+.btn-primary    { background-color: #0b5ed7 !important;
+                  border-color: #0b5ed7 !important; }    /* white text 4.52:1 */
+.btn-outline-secondary { color: #595f64 !important;
+                         border-color: #595f64 !important; } /* 5.0:1 on #fff */
 .body-padding-top {
     padding-top: 60px;
 }

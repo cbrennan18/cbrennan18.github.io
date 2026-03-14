@@ -14,14 +14,14 @@
   <meta property="og:type" content="article">
   <meta property="og:title" content="Big Into The Fitness | GPS Running Art | Ciarán Brennan" />
   <meta property="og:description" content="GPS art animation of ~80 runs around Cork city, visualised from Strava data." />
-  <meta property="og:image" content="https://cbrennan.ie/img/bitf.png" />
+  <meta property="og:image" content="https://cbrennan.ie/img/bitf.jpg" />
   <meta property="og:url" content="https://cbrennan.ie/big-into-the-fitness" />
 
   <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Big Into The Fitness | GPS Running Art | Ciarán Brennan">
   <meta name="twitter:description" content="GPS art animation of ~80 runs around Cork city, visualised from Strava data.">
-  <meta name="twitter:image" content="https://cbrennan.ie/img/bitf.png">
+  <meta name="twitter:image" content="https://cbrennan.ie/img/bitf.jpg">
 
   <!-- Favicon -->
   <link rel="icon" href="./img/favicon.ico" sizes="any">
@@ -42,6 +42,9 @@
 
   <!-- Site CSS -->
   <link rel="stylesheet" href="./css/main.css">
+
+  <!-- Preload video poster (LCP) -->
+  <link rel="preload" as="image" href="./img/bitf.jpg">
 
   <!-- Custom Javascript -->
   <script defer src="js/external.js"></script>
@@ -65,9 +68,9 @@
             <h1 class="text-center text-md-start pt-5">
               BIG INTO <span class="text-danger">THE FITNESS</span>
             </h1>
-            <h6 class="text-center text-md-start">
+            <p class="text-center text-md-start h6">
               <i>01 December 2019, 20:07</i>
-            </h6>
+            </p>
 
             <div data-aos="fade-up" data-aos-duration="2000">
               <!-- Video -->
@@ -79,12 +82,9 @@
                   muted
                   playsinline
                   preload="metadata"
-                  poster="./img/bitf.png"
+                  poster="./img/bitf.jpg"
                   aria-label="Animated GPS paths of runs around Cork"
                 >
-                  <!-- If you have an MP4, list it first for broad compatibility -->
-                  <source src="./vid/running.mp4" type="video/mp4" />
-                  <!-- Existing MOV as fallback -->
                   <source src="./vid/running.mov" type="video/quicktime" />
                   Your browser does not support the video tag.
                 </video>
@@ -149,7 +149,7 @@
       "headline": "Big Into The Fitness",
       "description": "GPS art animation of ~80 runs around Cork city, visualised from Strava data.",
       "url": "https://cbrennan.ie/big-into-the-fitness",
-      "image": "https://cbrennan.ie/img/bitf.png",
+      "image": "https://cbrennan.ie/img/bitf.jpg",
       "datePublished": "2019-12-01",
       "author": { "@type": "Person", "name": "Ciarán Brennan", "url": "https://cbrennan.ie" },
       "publisher": { "@type": "Person", "name": "Ciarán Brennan" },

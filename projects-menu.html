@@ -42,6 +42,9 @@
     <!-- Site CSS -->
     <link rel="stylesheet" href="./css/main.css">
 
+    <!-- Preload first project image (LCP) -->
+    <link rel="preload" as="image" href="/img/premierleaguefootballs.jpg">
+
     <!-- Custom Javascript -->
     <script defer src="js/external.js"></script>
 
@@ -55,18 +58,32 @@
   <body>
     <!-- Navbar -->
     <header w3-include-html="navbar.html"></header>
-    <div class="body-padding-bottom d-flex flex-column min-vh-100">
+    <main class="body-padding-bottom d-flex flex-column min-vh-100">
       <section class="pt-4 pt-md-11 flex-fill">
         <div class="container">
           <div class="justify-content-center col-12 mt-5 mb-5">
             <h1 class="text-center pt-5">
                 MY <span class="text-primary">PROJECTS</span><br>
             </h1>
-            <div id="projects-grid" class="row pt-3 pb-3"></div>
+            <div id="projects-grid" class="row pt-3 pb-3">
+              <!-- Static first card for fast LCP; replaced by JS -->
+              <div class="col-md-4 mb-4">
+                <div class="card h-100">
+                  <img src="/img/premierleaguefootballs.jpg" class="card-img-top bg-light project-thumb" alt="FPL Pulse" fetchpriority="high">
+                  <div class="card-body">
+                    <h2 class="card-title h5">FPL PULSE</h2>
+                    <p class="card-text">An animated season summary experience for Fantasy Premier League managers – your highs, lows, and everything in between.</p>
+                  </div>
+                  <div class="card-footer">
+                    <small class="text-muted">28 June 2025, 09:00<br>3 min read</small>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div> <!-- / .row -->
         </div> <!-- / .container -->
       </section>
-    </div>
+    </main>
     <footer w3-include-html="footer.html"></footer>
 
     <!-- AOS + site JS -->
@@ -87,12 +104,13 @@
           grid.innerHTML = items.map((p, i) => {
             const delay = (i % 3) * 300; // 0, 300, 600
             const title = p.titleHtml || p.title;
+            const imgAttrs = i === 0 ? 'fetchpriority="high"' : 'loading="lazy"';
             return `
               <div class="col-md-4 mb-4" data-aos="fade-up" ${delay ? `data-aos-delay="${delay}"` : ''}>
                 <div class="card h-100">
-                  <img src="${p.img}" class="card-img-top bg-light project-thumb" alt="${p.alt || ''}" loading="lazy">
+                  <img src="${p.img}" class="card-img-top bg-light project-thumb" alt="${p.alt || ''}" ${imgAttrs}>
                   <div class="card-body">
-                    <h5 class="card-title">${title}</h5>
+                    <h2 class="card-title h5">${title}</h2>
                     <p class="card-text">${p.excerpt}</p>
                     <a href="${p.url}" class="stretched-link" aria-label="${p.title}"></a>
                   </div>

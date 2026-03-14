@@ -100,7 +100,7 @@
   <!-- Navbar -->
   <header w3-include-html="navbar.html"></header>
 
-  <div class="body-padding-bottom d-flex flex-column min-vh-100">
+  <main class="body-padding-bottom d-flex flex-column min-vh-100">
     <section class="pt-4 pt-md-11 flex-fill">
       <div class="container">
         <div class="row justify-content-center">
@@ -108,9 +108,9 @@
             <h1 class="text-center text-md-start pt-5">
               <span class="text-danger">NETFLIX</span> AND STANDSTILL?
             </h1>
-            <h6 class="text-center text-md-start">
+            <p class="text-center text-md-start h6">
               <i>01 February 2020, 18:40<br>4 min read</i>
-            </h6>
+            </p>
 
             <div data-aos="fade-up" data-aos-duration="1200">
               <img src="./img/netflix.jpg" class="img-fluid" alt="Netflix on TV Screen with remote control" width="800" height="533"/>
@@ -134,16 +134,16 @@
                 gets spread around each service, which in theory should lead to a reduction in quality on the Netflix platform.
               </p>
 
-              <h4 class="mt-4">First Chart: Viewing Stats</h4>
+              <h2 class="mt-4 h4">First Chart: Viewing Stats</h2>
               <p>
                 I decided to take a look at the numbers to see if there was any truth to these grumblings. Using the data
                 Netflix allows me to download from my own account (available from
-                <a href="https://www.netflix.com/viewingactivity">this link</a>), I got a list of all of the TV shows and
+                <a href="https://www.netflix.com/viewingactivity">Netflix Viewing Activity</a>), I got a list of all of the TV shows and
                 movies I’ve watched since I began my subscription — 960 in total.
               </p>
               <p>
                 I separated movies and shows so I could combine the movies with the IMDb dataset (free, non-commercial use
-                <a href="https://www.imdb.com/interfaces/">here</a>). Using Python and Excel, I merged IMDb data with my
+                via <a href="https://www.imdb.com/interfaces/">IMDb Datasets</a>). Using Python and Excel, I merged IMDb data with my
                 Netflix movie history. The viz below is interactive; each data point filters other parts of the chart.
               </p>
 
@@ -170,7 +170,7 @@
                 </object>
               </div>
 
-              <h4 class="mt-4">Second Chart: IMDb Stats</h4>
+              <h2 class="mt-4 h4">Second Chart: IMDb Stats</h2>
               <p>
                 This looks at IMDb ratings over time, with the highest and lowest rated films surfaced each year.
                 Surprisingly, there isn’t a huge difference year to year. The average rating stays fairly constant,
@@ -201,7 +201,7 @@
                 </object>
               </div>
 
-              <h4 class="mt-4">Third Chart: Grouped IMDb Ratings</h4>
+              <h2 class="mt-4 h4">Third Chart: Grouped IMDb Ratings</h2>
               <p>
                 Grouping films helps show distribution shifts:
               </p>
@@ -238,7 +238,7 @@
                 </object>
               </div>
 
-              <h4 class="mt-4">Fourth Chart: Full IMDb Ratings</h4>
+              <h2 class="mt-4 h4">Fourth Chart: Full IMDb Ratings</h2>
               <p>
                 Each movie and its rating, grouped by year. Click any dot to see titles. A “*” indicates multiple movies share that rating.
               </p>
@@ -279,7 +279,7 @@
         </div> <!-- /row -->
       </div> <!-- /container -->
     </section>
-  </div>
+  </main>
 
   <footer w3-include-html="footer.html"></footer>
 
