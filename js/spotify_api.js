@@ -4,7 +4,7 @@ const SCOPES = ['user-read-email', 'user-read-private', 'user-top-read', 'playli
 const REDIRECT_URI = `${window.location.origin}/spotify.html`;
 
 // State
-let ACCESS_TOKEN = localStorage.getItem('spotify_access_token');
+let ACCESS_TOKEN = sessionStorage.getItem('spotify_access_token');
 const yearData = new Map(); // year -> { trackIds, artists, audioFeatures, artistImages }
 
 // Initialize on page load
@@ -55,7 +55,7 @@ async function startSpotifyAuth() {
   if (ACCESS_TOKEN) return;
 
   const codeVerifier = generateRandomString(64);
-  localStorage.setItem('spotify_code_verifier', codeVerifier);
+  sessionStorage.setItem('spotify_code_verifier', codeVerifier);
 
   const codeChallenge = await generateCodeChallenge(codeVerifier);
   const params = new URLSearchParams({
@@ -71,7 +71,7 @@ async function startSpotifyAuth() {
 }
 
 async function exchangeCodeForToken(code) {
-  const codeVerifier = localStorage.getItem('spotify_code_verifier');
+  const codeVerifier = sessionStorage.getItem('spotify_code_verifier');
   if (!codeVerifier) return;
 
   const response = await fetch('https://accounts.spotify.com/api/token', {
@@ -89,12 +89,12 @@ async function exchangeCodeForToken(code) {
   if (response.ok) {
     const data = await response.json();
     ACCESS_TOKEN = data.access_token;
-    localStorage.setItem('spotify_access_token', data.access_token);
+    sessionStorage.setItem('spotify_access_token', data.access_token);
     if (data.refresh_token) {
-      localStorage.setItem('spotify_refresh_token', data.refresh_token);
+      sessionStorage.setItem('spotify_refresh_token', data.refresh_token);
     }
   }
-  localStorage.removeItem('spotify_code_verifier');
+  sessionStorage.removeItem('spotify_code_verifier');
 }
 
 // Spotify API fetch wrapper with token refresh
@@ -121,7 +121,7 @@ async function spotifyFetch(url) {
 }
 
 async function refreshAccessToken() {
-  const refreshToken = localStorage.getItem('spotify_refresh_token');
+  const refreshToken = sessionStorage.getItem('spotify_refresh_token');
   if (!refreshToken) return false;
 
   const response = await fetch('https://accounts.spotify.com/api/token', {
@@ -137,16 +137,16 @@ async function refreshAccessToken() {
   if (response.ok) {
     const data = await response.json();
     ACCESS_TOKEN = data.access_token;
-    localStorage.setItem('spotify_access_token', data.access_token);
+    sessionStorage.setItem('spotify_access_token', data.access_token);
     if (data.refresh_token) {
-      localStorage.setItem('spotify_refresh_token', data.refresh_token);
+      sessionStorage.setItem('spotify_refresh_token', data.refresh_token);
     }
     return true;
   }
 
   // Refresh failed - clear tokens and force re-auth
-  localStorage.removeItem('spotify_access_token');
-  localStorage.removeItem('spotify_refresh_token');
+  sessionStorage.removeItem('spotify_access_token');
+  sessionStorage.removeItem('spotify_refresh_token');
   ACCESS_TOKEN = null;
   return false;
 }
