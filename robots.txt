@@ -2,7 +2,8 @@
 
 # Allow all search engines
 User-agent: *
-Disallow:
+Disallow: /files/
+Disallow: /vid/
 
 # Block AI training crawlers
 User-agent: GPTBot

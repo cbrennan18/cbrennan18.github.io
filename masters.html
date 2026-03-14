@@ -2,20 +2,27 @@
 <html lang="en" prefix="og: http://ogp.me/ns#">
 <head>
   <meta charset="UTF-8" />
-  <title>Ciaran Brennan | US Masters 2021</title>
+  <title>Masters Buster 2021 | Augusta Golf Pool | Ciarán Brennan</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="author" content="Ciaran Brennan" />
-  <meta name="description" content="Tracking how the group's players performed at the 2021 US Masters in Augusta." />
+  <meta name="author" content="Ciarán Brennan" />
+  <meta name="description" content="Track how each player performed in our group's Augusta golf pool at the 2021 US Masters. Round-by-round results and final standings from the tournament." />
+  <link rel="canonical" href="https://cbrennan.ie/masters">
 
   <!-- OpenGraph Meta -->
-  <meta property="og:site_name" content="cbrennan.ie" />
-  <meta property="og:title" content="Ciaran Brennan - 2021 US Masters Augusta Buster" />
-  <meta property="og:description" content="Tracking how the group's players are performing at the 2021 US Masters in Augusta." />
+  <meta property="og:site_name" content="Ciarán Brennan" />
+  <meta property="og:title" content="Masters Buster 2021 | Augusta Golf Pool | Ciarán Brennan" />
+  <meta property="og:description" content="Track player performance in our 2021 US Masters golf pool." />
   <meta property="og:image" content="https://cbrennan.ie/img/oldheadofkinsale.min.jpg" />
   <meta property="og:url" content="https://cbrennan.ie/masters" />
-  <meta property="og:type" content="website" />
+  <meta property="og:type" content="article" />
   <meta property="og:image:width" content="1200" />
   <meta property="og:updated_time" content="1617786000" />
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Masters Buster 2021 | Augusta Golf Pool | Ciarán Brennan">
+  <meta name="twitter:description" content="Track player performance in our 2021 US Masters golf pool.">
+  <meta name="twitter:image" content="https://cbrennan.ie/img/oldheadofkinsale.min.jpg">
 
   <!-- Favicon -->
   <link rel="icon" href="./img/favicon.ico" sizes="any" />
@@ -26,19 +33,19 @@
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet" />
 
   <!-- Font Awesome 7 -->
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css" rel="stylesheet" />
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css" rel="stylesheet" media="print" onload="this.media='all'" />
 
   <!-- Bootstrap 5 -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
 
   <!-- AOS -->
-  <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet" />
+  <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet" media="print" onload="this.media='all'" />
 
   <!-- Site CSS -->
   <link rel="stylesheet" href="./css/main.css" />
 
   <!-- Custom Javascript -->
-  <script src="js/external.js"></script>
+  <script defer src="js/external.js"></script>
 
   <!-- AOS fallback if JS disabled -->
   <noscript>
@@ -55,9 +62,9 @@
       <div class="container">
         <div class="row justify-content-center">
           <div class="col-12 col-md-10 col-lg-8 order-md-2 pt-5 pb-5">
-            <h2 class="text-center text-md-start pt-5">
+            <h1 class="text-center text-md-start pt-5">
               MASTERS <span class="text-danger">BUSTER</span>
-            </h2>
+            </h1>
             <h6 class="text-center text-md-start">
               <i>7 April 2021, 09:00</i>
             </h6>
@@ -67,6 +74,8 @@
                 src="img/oldheadofkinsale.jpg"
                 class="img-fluid"
                 alt="Full Moon Over The Old Head of Kinsale — Photo by Cian O'Regan Photography"
+                width="4034" height="2093"
+                loading="lazy"
               />
               <div class="text-end">
                 <a
@@ -275,5 +284,26 @@
       return Number(totalStr.replace('+', '')) || 9999;
     }
   </script>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Article",
+      "headline": "Masters Buster 2021",
+      "description": "Track player performance in our 2021 US Masters Augusta golf pool.",
+      "url": "https://cbrennan.ie/masters",
+      "image": "https://cbrennan.ie/img/oldheadofkinsale.min.jpg",
+      "datePublished": "2021-04-07",
+      "author": { "@type": "Person", "name": "Ciarán Brennan", "url": "https://cbrennan.ie" },
+      "publisher": { "@type": "Person", "name": "Ciarán Brennan" },
+      "breadcrumb": {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://cbrennan.ie/" },
+          { "@type": "ListItem", "position": 2, "name": "Projects", "item": "https://cbrennan.ie/projects-menu" },
+          { "@type": "ListItem", "position": 3, "name": "Masters 2021", "item": "https://cbrennan.ie/masters" }
+        ]
+      }
+    }
+    </script>
 </body>
 </html>

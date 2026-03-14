@@ -2,24 +2,24 @@
 <html lang="en" prefix="og: http://ogp.me/ns#">
 <head>
   <meta charset="UTF-8" />
-  <title>Spotify Analysis | Ciarán Brennan</title>
+  <title>Spotify Listening Analysis | Visualise Your Top Artists</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net https://cdnjs.cloudflare.com; style-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net https://cdnjs.cloudflare.com https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com https://cdnjs.cloudflare.com; img-src 'self' data: https://i.scdn.co https://mosaic.scdn.co https://image-cdn-ak.spotifycdn.com https://image-cdn-fa.spotifycdn.com https://images.unsplash.com; connect-src 'self' https://api.spotify.com https://accounts.spotify.com;" />
   <meta name="author" content="Ciarán Brennan" />
-  <meta name="description" content="Visualise your Spotify listening habits: top artists, genres and audio attributes over time." />
-  <link rel="canonical" href="https://cbrennan.ie/spotify.html">
+  <meta name="description" content="Connect your Spotify account to visualise your listening habits over time. See your top artists, genres, and audio attributes like danceability and energy." />
+  <link rel="canonical" href="https://cbrennan.ie/spotify">
 
   <!-- OpenGraph -->
   <meta property="og:site_name" content="Ciarán Brennan">
   <meta property="og:type" content="article">
-  <meta property="og:title" content="Spotify Analysis | Ciarán Brennan">
+  <meta property="og:title" content="Spotify Listening Analysis | Visualise Your Top Artists">
   <meta property="og:description" content="Explore how your Spotify taste evolves: artists, genres, and audio attributes." />
   <meta property="og:image" content="https://cbrennan.ie/img/music.jpg" />
-  <meta property="og:url" content="https://cbrennan.ie/spotify.html" />
+  <meta property="og:url" content="https://cbrennan.ie/spotify" />
 
   <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Spotify Analysis | Ciarán Brennan">
+  <meta name="twitter:title" content="Spotify Listening Analysis | Visualise Your Top Artists">
   <meta name="twitter:description" content="Visualise your Spotify listening habits over time.">
   <meta name="twitter:image" content="https://cbrennan.ie/img/music.jpg">
 
@@ -43,7 +43,7 @@
   <link rel="preload" href="js/spotify_api.js" as="script">
 
   <!-- Site JavaScript -->
-  <script src="js/external.js"></script>
+  <script defer src="js/external.js"></script>
 
   <!-- Spotify page styles -->
   <style>
@@ -291,7 +291,7 @@
             <!-- Body / description -->
             <div id="blog-description" style="display:none">
               <figure class="mb-3" data-aos="fade-up" data-aos-duration="800">
-                <img src="./img/music.jpg" class="img-fluid rounded shadow-sm" alt="Spotify app on devices" />
+                <img src="./img/music.jpg" class="img-fluid rounded shadow-sm" alt="Spotify app on devices" width="1920" height="1280" />
                 <figcaption class="mt-2 text-end text-muted small">
                   Photo: <a class="link-secondary" href="https://unsplash.com/@heidifin" target="_blank" rel="noopener">Heidi Fin (Unsplash)</a>
                 </figcaption>
@@ -373,5 +373,26 @@
       if (window.AOS) AOS.init({ once: true });
     });
   </script>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Article",
+      "headline": "Spotify Listening Analysis",
+      "description": "Connect your Spotify account to visualise your listening habits over time.",
+      "url": "https://cbrennan.ie/spotify",
+      "image": "https://cbrennan.ie/img/music.jpg",
+      "datePublished": "2020-07-26",
+      "author": { "@type": "Person", "name": "Ciarán Brennan", "url": "https://cbrennan.ie" },
+      "publisher": { "@type": "Person", "name": "Ciarán Brennan" },
+      "breadcrumb": {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://cbrennan.ie/" },
+          { "@type": "ListItem", "position": 2, "name": "Projects", "item": "https://cbrennan.ie/projects-menu" },
+          { "@type": "ListItem", "position": 3, "name": "Spotify Analysis", "item": "https://cbrennan.ie/spotify" }
+        ]
+      }
+    }
+    </script>
 </body>
 </html>
