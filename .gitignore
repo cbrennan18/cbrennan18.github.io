@@ -10,4 +10,4 @@ Thumbs.db
 
 # Environment
 .env
-.env.*
+.env.*design/
