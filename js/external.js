@@ -61,7 +61,7 @@ function Scroll() {
 function loadUmamiOnce() {
   if (window.umami || document.querySelector('script[data-website-id="b8992f59-bcb2-4f10-a02a-2ffa23f482e0"]')) return;
 
-  const PROD_HOSTS = ['cbrennan.ie', 'www.cbrennan.ie'];
+  const PROD_HOSTS = ['cbrennan.ie', 'www.cbrennan.ie', 'ciaranbrennan.ie', 'www.ciaranbrennan.ie'];
 
   if (!PROD_HOSTS.includes(location.hostname)) {
     // Don’t load Umami on localhost, preview, or any non-prod host
@@ -70,7 +70,7 @@ function loadUmamiOnce() {
 
   const s = document.createElement('script');
   s.defer = true;
-  s.src = 'https://analytics.cbrennan.ie/script.js';
+  s.src = 'https://analytics.ciaranbrennan.ie/script.js';
   s.setAttribute('data-website-id', 'b8992f59-bcb2-4f10-a02a-2ffa23f482e0');
   s.setAttribute('data-do-not-track', 'true'); // respect browser DNT
   document.head.appendChild(s);
