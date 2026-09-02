@@ -10,5 +10,7 @@ Thumbs.db
 
 # Environment
 .env
-.env.*design/
+.env.*
+
+# Local working files
 design/
