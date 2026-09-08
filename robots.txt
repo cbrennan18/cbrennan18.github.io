@@ -1,4 +1,4 @@
-# robots.txt for cbrennan.ie
+# robots.txt for ciaranbrennan.ie
 
 # Allow all search engines
 User-agent: *
@@ -6,15 +6,18 @@ Disallow: /files/
 Disallow: /vid/
 
 # Block AI training crawlers
+# Retrieval crawlers (ChatGPT-User, PerplexityBot) are deliberately
+# allowed — they cite and link, which is discovery, not training.
 User-agent: GPTBot
-User-agent: ChatGPT-User
 User-agent: CCBot
 User-agent: Google-Extended
 User-agent: anthropic-ai
 User-agent: Claude-Web
 User-agent: Bytespider
 User-agent: cohere-ai
+User-agent: Applebot-Extended
+User-agent: meta-externalagent
 Disallow: /
 
 # Sitemap
-Sitemap: https://cbrennan.ie/sitemap.xml
+Sitemap: https://ciaranbrennan.ie/sitemap.xml
