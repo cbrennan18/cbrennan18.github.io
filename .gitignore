@@ -14,3 +14,4 @@ Thumbs.db
 
 # Local working files
 design/
+.claude/settings.local.json
