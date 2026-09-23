@@ -9,7 +9,7 @@
   },
   {
     "title": "MASTERS BUSTER",
-    "url": "masters-2025.html",
+    "url": "masters-2025",
     "img": "/img/masters2025.jpeg",
     "alt": "Masters 2025",
     "excerpt": "Final Masters leaderboard combined with player picks for Masters Buster 2025.",
@@ -17,7 +17,7 @@
   },
   {
     "title": "MASTERS BUSTER",
-    "url": "masters-2024.html",
+    "url": "masters-2024",
     "img": "/img/corkgc.webp",
     "alt": "Masters 2024",
     "excerpt": "Final Masters leaderboard combined with player picks for Masters Buster 2024.",
@@ -25,7 +25,7 @@
   },
   {
     "title": "MASTERS BUSTER",
-    "url": "masters.html",
+    "url": "masters",
     "img": "/img/oldheadofkinsale.jpg",
     "alt": "Masters 2021",
     "excerpt": "Final Masters leaderboard combined with player picks for Masters Buster 2021.",
@@ -34,7 +34,7 @@
   {
     "titleHtml": "<span class=\"text-danger\">SPOTIFY</span> ANALYSIS",
     "title": "SPOTIFY ANALYSIS",
-    "url": "spotify.html",
+    "url": "spotify",
     "img": "/img/music.jpg",
     "alt": "Music",
     "excerpt": "Explore how your Spotify data, including musical taste, changes over time.",
@@ -43,7 +43,7 @@
   {
     "titleHtml": "<span class=\"text-danger\">FREE</span> RUNNING PLANS",
     "title": "FREE RUNNING PLANS",
-    "url": "running-plans.html",
+    "url": "running-plans",
     "img": "/img/startline.jpg",
     "alt": "Running",
     "excerpt": "Free running plans for all levels, tailored to your times and goals.",
@@ -52,7 +52,7 @@
   {
     "titleHtml": "<span class=\"text-danger\">NETFLIX</span> AND STANDSTILL?",
     "title": "NETFLIX AND STANDSTILL?",
-    "url": "netflix-and-standstill.html",
+    "url": "netflix-and-standstill",
     "img": "/img/netflix.jpg",
     "alt": "Netflix on TV",
     "excerpt": "A visual examination of the Netflix films I have watched between 2014 and 2019.",
@@ -61,7 +61,7 @@
   {
     "titleHtml": "BIG INTO <span class=\"text-danger\">THE FITNESS</span>",
     "title": "BIG INTO THE FITNESS",
-    "url": "big-into-the-fitness.html",
+    "url": "big-into-the-fitness",
     "img": "/img/bitf.jpg",
     "alt": "Big Into The Fitness",
     "excerpt": "My first visualisation — an animated video using GPS data to map my runs around Cork since March.",
