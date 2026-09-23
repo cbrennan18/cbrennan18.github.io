@@ -37,9 +37,6 @@
     <!-- Bootstrap 5 -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
 
-    <!-- AOS -->
-    <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet" media="print" onload="this.media='all'" integrity="sha384-/rJKQnzOkEo+daG0jMjU1IwwY9unxt1NBw3Ef2fmOJ3PW/TfAg2KXVoWwMZQZtw9" crossorigin="anonymous">
-
     <!-- Site CSS -->
     <link rel="stylesheet" href="./css/main.css">
 
@@ -49,10 +46,126 @@
     <!-- Custom Javascript -->
     <script defer src="js/external.js"></script>
 
-    <!-- AOS fallback if JS disabled -->
-    <noscript>
-      <style>[data-aos]{opacity:1!important;transform:none!important;}</style>
-    </noscript>
+    <!-- Projects menu — page-scoped styles -->
+    <style>
+      .pm-featured {
+        position: relative;
+        border: 1px solid #dee2e6;
+      }
+      .pm-featured-img {
+        display: block;
+        width: 100%;
+        height: 100%;
+        min-height: 220px;
+        object-fit: cover;
+      }
+      .pm-featured-body {
+        padding: 1.5rem;
+      }
+      .pm-tag {
+        display: inline-block;
+        padding: .15rem .5rem;
+        border: 1px solid #0b5ed7;
+        color: #0b5ed7;
+        font-size: .75rem;
+        font-weight: 600;
+        letter-spacing: .04em;
+        text-transform: uppercase;
+      }
+      .pm-featured h2 {
+        margin-top: .75rem;
+      }
+      .pm-cta {
+        display: inline-block;
+        margin-top: .5rem;
+        color: #0b5ed7;
+        text-decoration: none;
+        font-weight: 600;
+      }
+      .pm-featured:hover .pm-cta,
+      .pm-featured:focus-within .pm-cta {
+        text-decoration: underline;
+      }
+      .pm-featured:focus-within {
+        outline: 2px solid #0b5ed7;
+        outline-offset: 2px;
+      }
+
+      .pm-masters {
+        border: 1px solid #dee2e6;
+        padding: 1.5rem;
+      }
+      .pm-masters-years {
+        display: flex;
+        gap: 1rem;
+        flex-wrap: wrap;
+        margin-top: .5rem;
+      }
+      .pm-masters-years a {
+        color: #0b5ed7;
+        font-weight: 600;
+        text-decoration: none;
+        padding: .25rem 0;
+      }
+      .pm-masters-years a:hover,
+      .pm-masters-years a:focus-visible {
+        text-decoration: underline;
+      }
+      .pm-masters-years a:focus-visible {
+        outline: 2px solid #0b5ed7;
+        outline-offset: 2px;
+      }
+
+      .pm-archive-list {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        border-top: 1px solid #dee2e6;
+      }
+      .pm-archive-row {
+        border-bottom: 1px solid #dee2e6;
+      }
+      .pm-archive-link {
+        display: grid;
+        grid-template-columns: 1fr auto;
+        column-gap: 1rem;
+        row-gap: .25rem;
+        align-items: baseline;
+        padding: 1rem .25rem;
+        color: inherit;
+        text-decoration: none;
+      }
+      .pm-archive-title {
+        grid-column: 1;
+        grid-row: 1;
+        font-weight: 600;
+      }
+      .pm-archive-year {
+        grid-column: 2;
+        grid-row: 1;
+        justify-self: end;
+        color: #595f64;
+        font-size: .9rem;
+      }
+      .pm-archive-desc {
+        grid-column: 1 / -1;
+        grid-row: 2;
+        color: #595f64;
+        font-size: .95rem;
+      }
+      .pm-archive-link:hover,
+      .pm-archive-link:focus-visible {
+        background-color: #f8f9fa;
+      }
+      .pm-archive-link:hover .pm-archive-title,
+      .pm-archive-link:focus-visible .pm-archive-title {
+        text-decoration: underline;
+      }
+      .pm-archive-link:focus-visible {
+        outline: 2px solid #0b5ed7;
+        outline-offset: -2px;
+      }
+    </style>
 
   </head>
 
@@ -66,169 +179,80 @@
             <h1 class="text-center pt-5">
                 MY <span class="text-primary">PROJECTS</span><br>
             </h1>
-            <div id="projects-grid" class="row pt-3 pb-3">
-              <!-- Static cards for crawlers/no-JS and fast LCP; replaced by JS on load -->
-              <div class="col-md-4 mb-4">
-                <div class="card h-100">
-                  <img src="/img/premierleaguefootballs.jpg" class="card-img-top bg-light project-thumb" alt="FPL Pulse" fetchpriority="high">
-                  <div class="card-body">
-                    <h2 class="card-title h5">FPL PULSE</h2>
-                    <p class="card-text">An animated season summary experience for Fantasy Premier League managers – your highs, lows, and everything in between.</p>
-                    <a href="fpl-pulse/" class="stretched-link" aria-label="FPL PULSE"></a>
-                  </div>
-                  <div class="card-footer">
-                    <small class="text-muted">28 June 2025, 09:00<br>3 min read</small>
+
+            <section class="pm-featured mt-5 mb-5">
+              <div class="row g-0 align-items-stretch">
+                <div class="col-12 col-md-5">
+                  <!-- TODO: replace with a real FPL Pulse app screenshot -->
+                  <img src="/img/premierleaguefootballs.jpg" class="pm-featured-img" alt="" fetchpriority="high">
+                </div>
+                <div class="col-12 col-md-7">
+                  <div class="pm-featured-body">
+                    <span class="pm-tag">Live</span>
+                    <h2 class="h4">FPL PULSE</h2>
+                    <p>A live mini-league tracker for Fantasy Premier League managers — standings, form, and movement as the season plays out.</p>
+                    <a href="fpl-pulse/" class="pm-cta stretched-link">View project →</a>
                   </div>
                 </div>
               </div>
-              <div class="col-md-4 mb-4">
-                <div class="card h-100">
-                  <img src="/img/masters2025.jpeg" class="card-img-top bg-light project-thumb" alt="Masters 2025" loading="lazy">
-                  <div class="card-body">
-                    <h2 class="card-title h5">MASTERS BUSTER</h2>
-                    <p class="card-text">Final Masters leaderboard combined with player picks for Masters Buster 2025.</p>
-                    <a href="masters-2025" class="stretched-link" aria-label="MASTERS BUSTER"></a>
-                  </div>
-                  <div class="card-footer">
-                    <small class="text-muted">11 April 2025, 14:00<br>1 min read</small>
-                  </div>
-                </div>
+            </section>
+
+            <!-- Reserved for a future project card
+            <section class="pm-featured mb-5">
+              ... Pitch Compass ...
+            </section>
+            -->
+
+            <section class="pm-masters mb-5">
+              <h2 class="h5">MASTERS BUSTER</h2>
+              <p class="mb-0">Golf pool tracker for our group's Augusta sweepstake</p>
+              <div class="pm-masters-years">
+                <a href="masters-2025">2025</a>
+                <a href="masters-2024">2024</a>
+                <a href="masters">2021</a>
               </div>
-              <div class="col-md-4 mb-4">
-                <div class="card h-100">
-                  <img src="/img/corkgc.webp" class="card-img-top bg-light project-thumb" alt="Masters 2024" loading="lazy">
-                  <div class="card-body">
-                    <h2 class="card-title h5">MASTERS BUSTER</h2>
-                    <p class="card-text">Final Masters leaderboard combined with player picks for Masters Buster 2024.</p>
-                    <a href="masters-2024" class="stretched-link" aria-label="MASTERS BUSTER"></a>
-                  </div>
-                  <div class="card-footer">
-                    <small class="text-muted">11 April 2024, 21:00<br>1 min read</small>
-                  </div>
-                </div>
-              </div>
-              <div class="col-md-4 mb-4">
-                <div class="card h-100">
-                  <img src="/img/oldheadofkinsale.jpg" class="card-img-top bg-light project-thumb" alt="Masters 2021" loading="lazy">
-                  <div class="card-body">
-                    <h2 class="card-title h5">MASTERS BUSTER</h2>
-                    <p class="card-text">Final Masters leaderboard combined with player picks for Masters Buster 2021.</p>
-                    <a href="masters" class="stretched-link" aria-label="MASTERS BUSTER"></a>
-                  </div>
-                  <div class="card-footer">
-                    <small class="text-muted">07 April 2021, 09:00<br>1 min read</small>
-                  </div>
-                </div>
-              </div>
-              <div class="col-md-4 mb-4">
-                <div class="card h-100">
-                  <img src="/img/music.jpg" class="card-img-top bg-light project-thumb" alt="Music" loading="lazy">
-                  <div class="card-body">
-                    <h2 class="card-title h5"><span class="text-danger">SPOTIFY</span> ANALYSIS</h2>
-                    <p class="card-text">Explore how your Spotify data, including musical taste, changes over time.</p>
-                    <a href="spotify" class="stretched-link" aria-label="SPOTIFY ANALYSIS"></a>
-                  </div>
-                  <div class="card-footer">
-                    <small class="text-muted">26 July 2020, 11:00<br>10 min read</small>
-                  </div>
-                </div>
-              </div>
-              <div class="col-md-4 mb-4">
-                <div class="card h-100">
-                  <img src="/img/startline.jpg" class="card-img-top bg-light project-thumb" alt="Running" loading="lazy">
-                  <div class="card-body">
-                    <h2 class="card-title h5"><span class="text-danger">FREE</span> RUNNING PLANS</h2>
-                    <p class="card-text">Free running plans for all levels, tailored to your times and goals.</p>
-                    <a href="running-plans" class="stretched-link" aria-label="FREE RUNNING PLANS"></a>
-                  </div>
-                  <div class="card-footer">
-                    <small class="text-muted">7 May 2020, 16:30<br>3 min read</small>
-                  </div>
-                </div>
-              </div>
-              <div class="col-md-4 mb-4">
-                <div class="card h-100">
-                  <img src="/img/netflix.jpg" class="card-img-top bg-light project-thumb" alt="Netflix on TV" loading="lazy">
-                  <div class="card-body">
-                    <h2 class="card-title h5"><span class="text-danger">NETFLIX</span> AND STANDSTILL?</h2>
-                    <p class="card-text">A visual examination of the Netflix films I have watched between 2014 and 2019.</p>
-                    <a href="netflix-and-standstill" class="stretched-link" aria-label="NETFLIX AND STANDSTILL?"></a>
-                  </div>
-                  <div class="card-footer">
-                    <small class="text-muted">05 February 2020, 18:40<br>4 min read</small>
-                  </div>
-                </div>
-              </div>
-              <div class="col-md-4 mb-4">
-                <div class="card h-100">
-                  <img src="/img/bitf.jpg" class="card-img-top bg-light project-thumb" alt="Big Into The Fitness" loading="lazy">
-                  <div class="card-body">
-                    <h2 class="card-title h5">BIG INTO <span class="text-danger">THE FITNESS</span></h2>
-                    <p class="card-text">My first visualisation — an animated video using GPS data to map my runs around Cork since March.</p>
-                    <a href="big-into-the-fitness" class="stretched-link" aria-label="BIG INTO THE FITNESS"></a>
-                  </div>
-                  <div class="card-footer">
-                    <small class="text-muted">01 December 2019, 20:07<br>1 min read</small>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div> <!-- / .row -->
+            </section>
+
+            <section class="pm-archive mb-5">
+              <h2 class="h5 mb-3">ARCHIVE</h2>
+              <ul class="pm-archive-list">
+                <li class="pm-archive-row">
+                  <a href="running-plans" class="pm-archive-link">
+                    <span class="pm-archive-title">Free Running Plans</span>
+                    <span class="pm-archive-year">2020</span>
+                    <span class="pm-archive-desc">Free running plans for all levels, tailored to your times and goals.</span>
+                  </a>
+                </li>
+                <li class="pm-archive-row">
+                  <a href="netflix-and-standstill" class="pm-archive-link">
+                    <span class="pm-archive-title">Netflix and Standstill?</span>
+                    <span class="pm-archive-year">2020</span>
+                    <span class="pm-archive-desc">A visual examination of the Netflix films I have watched between 2014 and 2019.</span>
+                  </a>
+                </li>
+                <li class="pm-archive-row">
+                  <a href="big-into-the-fitness" class="pm-archive-link">
+                    <span class="pm-archive-title">Big Into The Fitness</span>
+                    <span class="pm-archive-year">2019</span>
+                    <span class="pm-archive-desc">My first visualisation — an animated video using GPS data to map my runs around Cork since March.</span>
+                  </a>
+                </li>
+              </ul>
+            </section>
+          </div>
         </div> <!-- / .container -->
       </section>
     </main>
     <footer w3-include-html="footer.html"></footer>
-
-    <!-- AOS + site JS -->
-    <script defer src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js" integrity="sha384-n1AULnKdMJlK1oQCLNDL9qZsDgXtH6jRYFCpBtWFc+a9Yve0KSoMn575rk755NJZ" crossorigin="anonymous"></script>
 
     <!-- Bootstrap 5 bundle -->
     <script defer src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 
     <!-- Init -->
     <script>
-      async function renderProjects() {
-        try {
-          const res = await fetch('/files/projects.json', { cache: 'no-store' });
-          if (!res.ok) throw new Error('projects.json not found');
-          const items = await res.json();
-
-          const grid = document.getElementById('projects-grid');
-          grid.innerHTML = items.map((p, i) => {
-            const delay = (i % 3) * 300; // 0, 300, 600
-            const title = p.titleHtml || p.title;
-            const imgAttrs = i === 0 ? 'fetchpriority="high"' : 'loading="lazy"';
-            return `
-              <div class="col-md-4 mb-4" data-aos="fade-up" ${delay ? `data-aos-delay="${delay}"` : ''}>
-                <div class="card h-100">
-                  <img src="${p.img}" class="card-img-top bg-light project-thumb" alt="${p.alt || ''}" ${imgAttrs}>
-                  <div class="card-body">
-                    <h2 class="card-title h5">${title}</h2>
-                    <p class="card-text">${p.excerpt}</p>
-                    <a href="${p.url}" class="stretched-link" aria-label="${p.title}"></a>
-                  </div>
-                  <div class="card-footer">
-                    <small class="text-muted">${p.meta}</small>
-                  </div>
-                </div>
-              </div>`;
-          }).join('');
-        } catch (e) {
-          console.error('Projects JSON fetch failed:', e);
-          const grid = document.getElementById('projects-grid');
-          if (grid) grid.innerHTML = '<div class="col-12 text-center text-muted">Projects currently unavailable.</div>';
-        }
-      }
-
-      window.addEventListener('load', async () => {
+      window.addEventListener('load', () => {
         if (typeof includeHTML === 'function') includeHTML();
         if (typeof scrollAnimation === 'function') scrollAnimation();
-
-        await renderProjects();            // 1) render first
-        if (window.AOS) {
-          AOS.init({ once: true });        // 2) then init
-          AOS.refreshHard();               // 3) and rescan injected nodes
-        }
       });
     </script>
     <script type="application/ld+json">
