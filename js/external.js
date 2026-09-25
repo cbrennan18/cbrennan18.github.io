@@ -57,26 +57,6 @@ function Scroll() {
     return false;
 }
 
-// load Umami
-function loadUmamiOnce() {
-  if (window.umami || document.querySelector('script[data-website-id="b8992f59-bcb2-4f10-a02a-2ffa23f482e0"]')) return;
-
-  const PROD_HOSTS = ['ciaranbrennan.ie', 'www.ciaranbrennan.ie'];
-
-  if (!PROD_HOSTS.includes(location.hostname)) {
-    // Don’t load Umami on localhost, preview, or any non-prod host
-    return;
-  }
-
-  const s = document.createElement('script');
-  s.defer = true;
-  s.src = 'https://analytics.ciaranbrennan.ie/script.js';
-  s.setAttribute('data-website-id', 'b8992f59-bcb2-4f10-a02a-2ffa23f482e0');
-  s.setAttribute('data-do-not-track', 'true'); // respect browser DNT
-  document.head.appendChild(s);
-}
-
 window.addEventListener('load', () => {
   if (typeof includeHTML === 'function') includeHTML();
-  setTimeout(loadUmamiOnce, 0);
 });

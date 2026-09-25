@@ -1,8 +1,7 @@
 <footer class="blog-footer p-3 bg-light mt-5">
   <div class="row align-items-center">
     <div class="col-md-3 text-center text-md-start">
-      <a class="navbar-brand d-flex align-items-center" href="./"
-         data-umami-event="Footer logo click">
+      <a class="navbar-brand d-flex align-items-center" href="./">
         <img src="./img/logo-transparent.png" width="50" height="50" class="d-inline-block align-top me-2" alt="Ciarán Brennan">
       </a>
     </div>
@@ -10,15 +9,13 @@
     <div class="col-md-6 text-center">
       <p class="text-secondary mb-1">Created by Ciarán Brennan &copy; 2025</p>
       <a href="#" class="text-secondary me-3" data-bs-toggle="modal" data-bs-target="#contactModal"
-         data-umami-event="Footer contact open">Contact</a>
-      <a href="./privacypolicy" class="text-secondary"
-         data-umami-event="Footer privacy click">Privacy Policy</a>
+         data-umami-event="contact_opened">Contact</a>
+      <a href="./privacypolicy" class="text-secondary">Privacy Policy</a>
     </div>
 
     <div class="col-md-3 text-center text-md-end">
       <a id="backToTop" class="btn btn-link text-secondary" href="#"
-         onclick="Scroll(); return false;"
-         data-umami-event="Back to top click">
+         onclick="Scroll(); return false;">
         <span class="align-middle">Back to top</span>
         <i class="fa-solid fa-arrow-up fa-lg align-middle"></i>
       </a>
@@ -32,8 +29,7 @@
         <form id="gform" action="https://docs.google.com/forms/d/e/1FAIpQLSdaX9TXS1V3LsqCv85vSALoQ7N3giXX8v0jkMQugeHXc-MOKg/formResponse?" target="hidden_iframe" onsubmit="handleSubmit(event)">
           <div class="modal-header">
             <p class="modal-title text-dark h4" id="contactModalLabel">Contact Me</p>
-            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"
-                    data-umami-event="Contact modal close"></button>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
           </div>
           <div class="modal-body">
             <div class="mb-3 text-start">
@@ -50,10 +46,9 @@
             </div>
           </div>
           <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal"
-                    data-umami-event="Contact modal close">Close</button>
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
             <button type="submit" class="btn btn-primary"
-                    data-umami-event="Contact submit">Submit</button>
+                    data-umami-event="contact_submitted">Submit</button>
           </div>
         </form>
         <iframe name="hidden_iframe" id="hidden_iframe" style="display:none;"></iframe>
